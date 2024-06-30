@@ -1,0 +1,64 @@
+//
+//  CertificatesView.swift
+//  OpenCV
+//
+//  Created by Paul Leo on 30/06/2024.
+//
+
+import SwiftUI
+
+struct CertificatesView: View {
+    let certificates: [Certificate]
+    
+    var body: some View {
+        GroupBox {
+            Label("Certifications", systemImage: "rosette")
+                .modifier(Heading())
+            
+            ForEach(certificates) { element in
+                GroupBox {
+                    VStack(alignment: .leading, spacing: 4) {
+                        HStack {
+                            Text(element.name)
+                                .font(.body)
+                                .lineLimit(nil)
+                                .multilineTextAlignment(.leading)
+                                .foregroundStyle(.primary)
+                            Spacer()
+                            if let url = element.url {
+                                Button {
+                                    openLink(url: url)
+                                } label: {
+                                    Image(systemName: "link")
+                                }
+                            }
+                        }
+                        if let date = element.date {
+                            Text(date.formatted(Date.FormatStyle().year().month()))
+                                .font(.caption)
+                                .foregroundStyle(.secondary)
+                        }
+                        if let issuer = element.issuer {
+                            Text(issuer)
+                                .font(.callout)
+                                .lineLimit(nil)
+                                .multilineTextAlignment(.leading)
+                                .foregroundStyle(.secondary)
+                        }
+                    }
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                }
+            }
+        }
+        .backgroundStyle(.ultraThinMaterial)
+        .padding(.horizontal, 4)
+        .shadow(radius: 4)
+    }
+}
+
+#Preview {
+    CertificatesView(certificates: [
+        Certificate(name: "Sun Certified Programmer", date: Date(), url: "", issuer: "Sun Microsystems"),
+        Certificate(name: "Sun Certified Programmer", date: Date(), url: "", issuer: "Sun Microsystems"),
+    ])
+}

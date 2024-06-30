@@ -1,0 +1,158 @@
+//
+//  ResumeView.swift
+//  OpenCV
+//
+//  Created by Paul Leo on 29/06/2024.
+//
+
+import SwiftUI
+import SwiftData
+
+struct ResumeView: View {
+    let resume: Resume
+    
+    var body: some View {
+        ZStack {
+            MeshGradientView()
+            ScrollView(showsIndicators: false) {
+                basics
+                work
+                volunteer
+                education
+                awards
+                certificates
+                publications
+                skills
+                languages
+                interests
+                references
+                projects
+                
+            }
+            .padding()
+        }
+        .ignoresSafeArea()
+    }
+    
+    @ViewBuilder
+    private var basics: some View {
+        BasicsView(basics: resume.basics)
+    }
+    
+    @ViewBuilder
+    private var work: some View {
+        if let works = resume.work {
+            WorkView(works: works)
+                .padding(.top)
+        }
+    }
+    
+    @ViewBuilder
+    private var volunteer: some View {
+        if let vols = resume.volunteer {
+            VolunteerView(vols: vols)
+                .padding(.top)
+        }
+    }
+    
+    @ViewBuilder
+    private var education: some View {
+        if let edus = resume.education {
+            EducationView(educations: edus)
+                .padding(.top)
+        }
+    }
+    
+    @ViewBuilder
+    private var awards: some View {
+        if let awards = resume.awards {
+            AwardsView(awards: awards)
+                .padding(.top)
+        }
+    }
+    
+    @ViewBuilder
+    private var certificates: some View {
+        if let certificates = resume.certificates {
+            CertificatesView(certificates: certificates)
+                .padding(.top)
+       }
+    }
+    
+    @ViewBuilder
+    private var publications: some View {
+        if let publications = resume.publications {
+            PublicationsView(publications: publications)
+                .padding(.top)
+       }
+    }
+    
+    @ViewBuilder
+    private var skills: some View {
+        if let skills = resume.skills {
+            SkillsView(skills: skills)
+                .padding(.top)
+        }
+    }
+    
+    @ViewBuilder
+    private var languages: some View {
+        if let languages = resume.languages {
+            LanguagesView(languages: languages)
+                .padding(.top)
+       }
+    }
+    
+    @ViewBuilder
+    private var interests: some View {
+        if let interests = resume.interests {
+            InterestsView(interests: interests)
+                .padding(.top)
+       }
+    }
+    
+    @ViewBuilder
+    private var references: some View {
+        if let references = resume.references {
+            ReferencesView(references: references)
+                .padding(.top)
+        }
+    }
+    
+    @ViewBuilder
+    private var projects: some View {
+        if let projects = resume.projects {
+            ProjectsView(projects: projects)
+                .padding(.top)
+       }
+    }
+}
+
+struct Heading: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .font(.headline)
+            .fontWeight(.bold)
+            .foregroundStyle(.primary)
+            .frame(maxWidth: .infinity, alignment: .leading)
+    }
+}
+
+struct AsyncTestView: View {
+    @State var resume: Resume?
+    
+    var body: some View {
+        VStack {
+            if let resume {
+                ResumeView(resume: resume)
+            }
+        }
+        .task {
+            resume = await SampleLoader().loadSample()
+        }
+    }
+}
+
+#Preview {
+    AsyncTestView()
+}

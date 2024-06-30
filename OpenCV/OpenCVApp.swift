@@ -25,7 +25,7 @@ struct OpenCVApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            AsyncTestView()
         }
         .modelContainer(sharedModelContainer)
     }

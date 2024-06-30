@@ -1,0 +1,500 @@
+{
+  "basics": {
+    "name": "Paul Leo",
+    "label": "Mobile Architect",
+    "image": "https://s3.eu-west-2.amazonaws.com/www.tapdigital.com/assets/images/cdv_avatar.jpeg",
+    "email": "paul@tapdigital.com",
+    "phone": "+44 (0)7870164151",
+    "url": "https://www.tapdigital.com",
+    "summary": "24+ years in software engineering, wearing many hats: entrepreneur, project manager, software architect, scrum master and consultant. A specialist iOS Developer since the App Store’s inception in 2008 with additional experience in Android. Certifications in Java, Prince2, Scrum Master, Product Owner and Autonomy. Worked on over 30 apps, with three No.1s on the App Store: Burger King, Met Office, Ekstra Bladet (Danish App of the Year 2010), another two Top 10s: London Metro, Snatch. Apps for Chelsea, BMW, Peugeot, ProPublica, Wessex Water, Office2 HD, Didlr, MyPetPortal and more.",
+    "location": {
+      "address": "",
+      "postalCode": "",
+      "city": "",
+      "countryCode": "UK",
+      "region": "Durham"
+    },
+    "profiles": [
+      {
+        "network": "LinkedIn",
+        "username": "paulleo",
+        "url": "https://linkedin.com/in/paulleo"
+      }
+    ]
+  },
+  "work": [
+    {
+      "name": "TapDigital Ltd",
+      "position": "Owner / Director (freelancing company)",
+      "url": "https://www.tapdigital.com",
+      "startDate": "2006-08-01",
+      "summary": "Mobile software services.",
+      "highlights": [
+        "30+ apps delivered to App Stores.",
+        "3 No.1s on the App Store: Burger King, Met Office, Ekstra Bladet (Danish App of the Year 2010).",
+        "2 Top 10s: London Metro, Snatch."
+      ]
+    },
+    {
+      "name": "Chelsea Digital Ventures",
+      "position": "iOS Developer / Lead Architect",
+      "url": "https://www.chelseafc.com",
+      "startDate": "2019-04-01",
+      "endDate": "2022-06-01",
+      "summary": "The Lead Technical Architect for 4 projects within Chelsea:",
+      "highlights": [
+        "Blue Fuel - iOS / Android app for a professional-grade sports nutrition service.",
+        "Perfect Play - iOS / Android app for a football training service using a state-of-the-art, bespoke pose-estimation algorithm within an AR environment.",
+        "C-Score - iOS / Android app for measuring general health. Used AR tech to scan your body, camera to measure heartbeat, SwiftUI game to measure reaction speed.",
+        "Footwork IoT device & companion iOS app - a high-tech exercise ball the size of a shotput used for yoga style exercises. Bluetooth integration with iOS."
+      ]
+    },
+    {
+      "name": "Snatch Media Inc.",
+      "position": "iOS Developer / Lead Architect",
+      "url": "https://www.snatchhq.com",
+      "startDate": "2017-03-01",
+      "endDate": "2018-07-01",
+      "summary": "Developed the Snatch iOS and Android apps.",
+      "highlights": [
+        "Got to No.4 on the App Store",
+        "Implemented a VIPER architecture on both frontend platforms.",
+        "Implemented a pure Scrum methodology for all product development and was the Scrum Master.",
+        "Ethereum Blockchain integration with AWS Serverless environments (SNS, SQS, Lambda).",
+        "Event-driven geospatial architectures - using AWS DynamoDB / AppSync and Firebase Firestore to update frontend interfaces in (near) realtime."
+      ]
+    },
+    {
+      "name": "ReadItSwapIt.co.uk",
+      "position": "C# Developer / Co-owner",
+      "url": "https://readitswapit.co.uk",
+      "startDate": "2007-01-01",
+      "endDate": "2007-06-01",
+      "summary": "Invested and helped commercialise this web start-up into a Webuser® award winning (1.8 million hits pcm) website.",
+      "highlights": [
+        "Enhanced the company’s Web 2.0 community using ASP.NET, C#, CSS and SQL Server.",
+        "Integrated with Amazon’s Web Services and a customisation of Telligent’s Community Server 2007."
+      ]
+    },
+    {
+      "name": "Blueye Software / AccountsVision",
+      "position": "C# Developer & Architect / Co-Owner",
+      "url": "https://blueeyesoftware.co.uk",
+      "startDate": "2003-03-01",
+      "endDate": "2006-08-01",
+      "summary": "Co-founded Blueye Software / AccountsVision in 2003 to produce Accounts Production Software for accountants in practice.",
+      "highlights": [
+        "The architectural role involved the project management, design and Agile development of the C#/.NET software.",
+        "4 years development in C# /.NET winforms (ADO.NET, XML)."
+      ]
+    },
+    {
+      "name": "Sapient",
+      "position": "IT Consultant",
+      "url": "https://www.sapient.co.uk",
+      "startDate": "2000-11-01",
+      "endDate": "2002-11-01",
+      "summary": "Experienced all aspects of IT consultancy; from £multi-million winning project bids to client workshops, architectural designs, technical implementations and rollouts.",
+      "highlights": [
+        "Worked on major projects for Royal Sun & Alliance (VB/SQL), Credit Suisse (JSP), Ukonline.gov.uk (J2EE) and The Open University.",
+        "Specialised in e-learning, becoming one of Sapient’s technical experts in Learning Management Systems for .NET and Java platforms, virtual classrooms and becoming Autonomy certified.",
+        "Also trained in Vuepoint’s VLS."
+      ]
+    },
+    {
+      "name": "IBM",
+      "position": "Software Engineer",
+      "url": "https://www.ibm.com",
+      "startDate": "1999-06-01",
+      "endDate": "1999-09-01",
+      "summary": "Responsible for the configuration of AIX/RS6000 servers for UK MicroPayment and eCheck research projects in IBM’s E-business Solutions Unit.",
+      "highlights": [
+        "Worked with a global Java development team creating a prototype to demonstrate the capabilities of future Internet payment schemes."
+      ]
+    },
+    {
+      "name": "DERA / QinetiQ",
+      "position": "Systems Engineer",
+      "url": "https://www.qinetiq.com",
+      "startDate": "1997-07-01",
+      "endDate": "1998-07-01",
+      "summary": "A year’s placement with a MoD research agency specialising in military satellite communications.",
+      "highlights": [
+        "Work experience included software design and implementation in C",
+        "Robot design work in the DERA team for the BBC show 'Robot Wars'.",
+        "Received training in Satellite Communications at Surrey University."
+      ]
+    }
+  ],
+  "education": [
+    {
+      "institution": "Durham University Business School",
+      "url": "https://www.durham.ac.uk/business/",
+      "area": "MBA",
+      "studyType": "",
+      "startDate": "2007-06-01",
+      "endDate": "2008-06-01",
+      "score": "Distinction",
+      "courses": [
+        "Dean's Scholarship Award.",
+        "Research Thesis – Web 2.0 Strategies and Business Models"
+      ]
+    },
+    {
+      "institution": "Loughborough University",
+      "url": "https://www.lboro.ac.uk/",
+      "area": "MEng in Systems Engineering",
+      "studyType": "",
+      "startDate": "1995-06-01",
+      "endDate": "2000-06-01",
+      "score": "2.1 Hons",
+      "courses": [
+        "Research Thesis – High-bandwidth e-learning technologies and processes"
+      ]
+    },
+    {
+      "institution": "Yarm School",
+      "url": "https://www.yarmschool.org/sixth-form/",
+      "area": "A-Levels",
+      "studyType": "",
+      "startDate": "1993-06-01",
+      "endDate": "1995-06-01",
+      "score": "",
+      "courses": [
+        "Maths (A), Physics, Chemistry."
+      ]
+    },
+    {
+      "institution": "Red House School",
+      "url": "https://www.redhouseschool.co.uk/",
+      "area": "GCSEs",
+      "studyType": "",
+      "startDate": "1987-06-01",
+      "endDate": "1993-06-01",
+      "score": "",
+      "courses": [
+        "9 GCSEs including Maths (A), Chemistry (A), Physics (A)."
+      ]
+    }
+  ],
+  "certificates": [
+    {
+      "name": "Professional Scrum Master II (PSM II)",
+      "date": "2024-03-07",
+      "issuer": "Scrum.org",
+      "url": "https://www.scrum.org/user/376978"
+    },
+    {
+      "name": "Professional Scrum Product Owner (PSPO I)",
+      "date": "2018-01-07",
+      "issuer": "Scrum.org",
+      "url": "https://www.scrum.org/user/376978"
+    },
+    {
+      "name": "Professional Scrum Master (PSM I)",
+      "date": "2018-01-07",
+      "issuer": "Scrum.org",
+      "url": "https://www.scrum.org/user/376978"
+    },
+    {
+      "name": "PRINCE2 Certified Practitioner (P2R/119234)",
+      "date": "2005-11-12",
+      "issuer": "APM GROUP LIMITED",
+      "url": "https://www.axelos.com/successful-candidates-register"
+    },
+    {
+      "name": "PADI certified Open Water Scuba Diver",
+      "date": "2007-07-05",
+      "issuer": "Red Sea Water World, Sharm el Sheikh",
+      "url": "https://www.redseawaterworld.com"
+    },
+    {
+      "name": "Sun Certified Java Programmer (SCJP) for Java 2 Platform 1.4",
+      "date": "2003-02-28",
+      "issuer": "Sun Microsystems"
+    },
+    {
+      "name": "Autonomy Certified Professional",
+      "date": "2002-01-07",
+      "issuer": "Autonomy"
+    }
+  ],
+  "skills": [
+    {
+      "name": "iOS Development",
+      "level": "Master",
+      "keywords": [
+        "Objective-C",
+        "Swift",
+        "SwiftUI",
+        "iOS",
+        "XCode"
+      ]
+    },
+    {
+      "name": "Android Development",
+      "level": "Intermediate",
+      "keywords": [
+        "Kotlin",
+        "Java",
+        "Android Studio"
+      ]
+    },
+    {
+      "name": "Backend Development",
+      "level": "Intermediate",
+      "keywords": [
+        "AWS",
+        "Firebase",
+        "Google Cloud",
+        "Typescript",
+        "Rust"
+      ]
+    },
+    {
+      "name": "Project Management",
+      "level": "Advanced",
+      "keywords": [
+        "Scrum",
+        "Agile",
+        "BDD"
+      ]
+    }
+  ],
+  "languages": [
+    {
+      "language": "English",
+      "fluency": "Native"
+    }
+  ],
+  "interests": [
+    {
+      "name": "Had schoolboy England hockey trials (1 of 30 in the country)",
+      "keywords": [
+        "hockey"
+      ]
+    },
+    {
+      "name": "Play league competitions in badminton and tennis.",
+      "keywords": [
+        "Crossfire BC, London",
+        "Haughton BC, Darlington",
+        "Tennis World, Middlesborough"
+      ]
+    },
+    {
+      "name": "Hobbies",
+      "keywords": [
+        "hiking",
+        "scuba",
+        "Table-Tennis",
+        "wild camping (serious ‘gram-counter’)."
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "name": "Peerwalk",
+      "startDate": "2024-01-01",
+      "description": "AI-powered iPad / MacOS app that allows teams to perform frequent and rapid code reviews.",
+      "highlights": [
+        "Fully SwiftUI MVVM integrating with: Firestore, Factory DI, Github APIs, ChatGPT / Claude / Gemini APIs."
+      ],
+      "url": "https://peerwalk.net"
+    },
+    {
+      "name": "zkFaith",
+      "startDate": "2023-01-01",
+      "endDate": "2023-01-01",
+      "description": "iOS app for Soonami.io demonstrating how zero-knowledge proofs enable next-gen privacy with personal data.",
+      "highlights": [
+        "Fully SwiftUI MVVM integrating with: OnFido, Rust noir library, Firestore, Factory DI, QR Code scan & generation, Face ID."
+      ],
+      "url": "https://soonami.io"
+    },
+    {
+      "name": "Blue Fuel",
+      "startDate": "2019-04-01",
+      "endDate": "2022-06-01",
+      "description": "iOS / Android app for a professional-grade sports nutrition service for Chelsea FC.",
+      "highlights": [
+        "Swift & Kotlin integrating with an Event-Driven Serverless backend - AWS Cognito, Lambda and DynamoDB."
+      ],
+      "url": "https://www.chelseafc.com"
+    },
+    {
+      "name": "Perfect Play",
+      "startDate": "2019-04-01",
+      "endDate": "2022-06-01",
+      "description": "iOS / Android app for a football training service for Chelsea FC.",
+      "highlights": [
+        "Swift & Kotlin integrating with an Event-Driven Serverless backend - AWS Cognito, Lambda and DynamoDB.",
+        "Used a state-of-the-art, bespoke pose-estimation algorithm within an AR environment."
+      ],
+      "url": "https://www.chelseafc.com"
+    },
+    {
+      "name": "C-Score",
+      "startDate": "2019-04-01",
+      "endDate": "2022-06-01",
+      "description": "iOS / Android app for measuring general health for Chelsea FC / MedoPad.",
+      "highlights": [
+        "Used AR tech to scan body to measure body volume index, camera to measure heartbeat.",
+        "SwiftUI game using Formula 1 style starting lights to measure reaction speed."
+      ],
+      "url": "https://www.chelseafc.com"
+    },
+    {
+      "name": "TokyoToys",
+      "startDate": "2019-01-01",
+      "endDate": "2019-12-31",
+      "description": "iOS internal app for Inventory Control Management.",
+      "highlights": [
+        "Firestore, Firebase Storage & Cloud Functions integrating with Realm.",
+        "VIPER & RxSwift."
+      ]
+    },
+    {
+      "name": "Racing Eye",
+      "startDate": "2016-01-01",
+      "endDate": "2016-12-31",
+      "description": "iOS app for a horse racing blogger / commentator.",
+      "highlights": [
+        "First backend system completely based on AWS’s pay-as-you-go structure.",
+        "Swift 3 project with Realm local database sync.",
+        "Twitter Fabric login & TwitterKit integration."
+      ]
+    },
+    {
+      "name": "MyPetPortal",
+      "startDate": "2015-01-01",
+      "endDate": "2015-12-31",
+      "description": "iOS Swift 2 & Android app for largest veterinary practice in London.",
+      "highlights": [
+        "First completely vectored (assetless) app, where SVGs are converted to Core Graphics code.",
+        "TwitterKit integration."
+      ]
+    },
+    {
+      "name": "Peugeot Gravity Drop",
+      "startDate": "2014-06-01",
+      "endDate": "2014-06-30",
+      "description": "Booth app for rollercoaster event.",
+      "highlights": []
+    },
+    {
+      "name": "Peugeot 308",
+      "startDate": "2014-05-01",
+      "endDate": "2014-05-31",
+      "description": "Booth app for Peugeot 308 launch.",
+      "highlights": [
+        "Dropbox syncing of photos from PC to iPad apps in a booth.",
+        "(Ad hoc distribution)"
+      ]
+    },
+    {
+      "name": "The Craftsman",
+      "startDate": "2013-11-01",
+      "endDate": "2013-11-30",
+      "description": "The world’s first interactive thriller for the iPad.",
+      "highlights": [
+        "Darkness sensing interactive movie and puzzle game for Portal Entertainment.",
+        "Backend that emailed and called people with scary messages"
+      ]
+    },
+    {
+      "name": "Office2 HD for Android",
+      "startDate": "2012-07-01",
+      "endDate": "2012-07-31",
+      "description": "Worked on the port of the iOS app to Android.",
+      "highlights": [
+        "Specifically worked on the file manager interface."
+      ]
+    },
+    {
+      "name": "Didlr",
+      "startDate": "2012-05-01",
+      "endDate": "2012-05-31",
+      "description": "A Twitter-like feed for users’ finger drawings.",
+      "highlights": [
+        "Built the initial iOS version and helped design the JSON endpoints for cross-platform capability."
+      ]
+    },
+    {
+      "name": "KAYS Production Manual",
+      "startDate": "2012-04-01",
+      "endDate": "2012-04-30",
+      "description": "Android app updates to improve performance.",
+      "highlights": []
+    },
+    {
+      "name": "BMW ConnectedDrive",
+      "startDate": "2012-01-01",
+      "endDate": "2012-01-31",
+      "description": "An Android brochure app for BMW to showcase certain gadgets within their cars.",
+      "highlights": []
+    },
+    {
+      "name": "Met Office iPhone app",
+      "startDate": "2011-01-01",
+      "endDate": "2011-12-31",
+      "description": "Improved efficiency of GPS location finding to enable the app to faster provide weather in that region.",
+      "highlights": []
+    },
+    {
+      "name": "Wessex Water",
+      "startDate": "2011-09-01",
+      "endDate": "2011-09-30",
+      "description": "Android app for submitting leak reports.",
+      "highlights": [
+        "Tech included boundary region calculations based on GPS point arrays (Geofencing)."
+      ]
+    },
+    {
+      "name": "Learning Quest",
+      "startDate": "2011-05-01",
+      "endDate": "2011-05-31",
+      "description": "iPad app for teaching leadership and teamwork.",
+      "highlights": [
+        "Tech included Urban Airship integration, In-App Purchase of digital content, Core Animation."
+      ]
+    },
+    {
+      "name": "ProPublica",
+      "startDate": "2011-04-01",
+      "endDate": "2011-04-30",
+      "description": "iOS & Android news app using plist feeds to Core Data, pure code with no nibs.",
+      "highlights": []
+    },
+    {
+      "name": "Burger King iPhone app",
+      "startDate": "2010-09-01",
+      "endDate": "2010-09-30",
+      "description": "MapKit integration, Google Forward Geocoding.",
+      "highlights": []
+    },
+    {
+      "name": "Jyllands-Posten / Politiken / Ekstra Bladet",
+      "startDate": "2010-04-01",
+      "endDate": "2010-04-30",
+      "description": "3 iPhone apps for the 3 largest Danish newspapers.",
+      "highlights": [
+        "Tech included TouchXML, Core Data, Atom feed parsing, OAuth, ASIHttpRequest, Release Subscriptions, Google Analytics.",
+        "Ekstra Bladet awarded app of the year in Denmark",
+        "Ekstra Bladet was No.1 on Danish App Store"
+      ]
+    },
+    {
+      "name": "Metro newspaper",
+      "startDate": "2010-05-01",
+      "endDate": "2010-05-31",
+      "description": "iPad app for the London Metro newspaper.",
+      "highlights": [
+        "Tech included TouchXML, Core Data, ShareKit, Three20 framework."
+      ]
+    }
+  ],
+  "meta": {
+    "theme": "stackoverflow"
+  }
+}

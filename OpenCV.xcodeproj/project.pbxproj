@@ -15,6 +15,27 @@
 		E1908B612C2F4F2C002C8F5F /* OpenCVTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1908B602C2F4F2C002C8F5F /* OpenCVTests.swift */; };
 		E1908B6B2C2F4F2C002C8F5F /* OpenCVUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1908B6A2C2F4F2C002C8F5F /* OpenCVUITests.swift */; };
 		E1908B6D2C2F4F2C002C8F5F /* OpenCVUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1908B6C2C2F4F2C002C8F5F /* OpenCVUITestsLaunchTests.swift */; };
+		E1908B7A2C2F5E84002C8F5F /* ResumeContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1908B792C2F5E7E002C8F5F /* ResumeContainerView.swift */; };
+		E1908B7C2C2F5EFC002C8F5F /* ResumeModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1908B7B2C2F5EF9002C8F5F /* ResumeModels.swift */; };
+		E1AD86122C30B0AA008F38A3 /* MeshGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AD86112C30B099008F38A3 /* MeshGradientView.swift */; };
+		E1AD86142C30BBFA008F38A3 /* resume.json in Resources */ = {isa = PBXBuildFile; fileRef = E1AD86132C30BBE3008F38A3 /* resume.json */; };
+		E1AD86162C30C264008F38A3 /* EducationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AD86152C30C251008F38A3 /* EducationView.swift */; };
+		E1AD86182C30D2FB008F38A3 /* VolunteerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AD86172C30D2F3008F38A3 /* VolunteerView.swift */; };
+		E1AD86202C31A385008F38A3 /* BasicsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AD861F2C31A380008F38A3 /* BasicsView.swift */; };
+		E1AD86222C31A67D008F38A3 /* ProjectsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AD86212C31A676008F38A3 /* ProjectsView.swift */; };
+		E1AD86242C31A9DE008F38A3 /* LanguagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AD86232C31A9DE008F38A3 /* LanguagesView.swift */; };
+		E1AD86262C31AC37008F38A3 /* AwardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AD86252C31AC37008F38A3 /* AwardsView.swift */; };
+		E1AD86282C31AECD008F38A3 /* CertificatesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AD86272C31AECD008F38A3 /* CertificatesView.swift */; };
+		E1AD862A2C31B2B1008F38A3 /* PublicationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AD86292C31B2B1008F38A3 /* PublicationsView.swift */; };
+		E1AD862C2C31BA62008F38A3 /* InterestsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AD862B2C31BA62008F38A3 /* InterestsView.swift */; };
+		E1AD862E2C31BA84008F38A3 /* ReferencesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AD862D2C31BA84008F38A3 /* ReferencesView.swift */; };
+		E1AD86312C31BE5F008F38A3 /* SwiftUI+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AD86302C31BE4D008F38A3 /* SwiftUI+Utils.swift */; };
+		E1F487222C2F61B600031976 /* schema.json in Sources */ = {isa = PBXBuildFile; fileRef = E1F487212C2F61AF00031976 /* schema.json */; };
+		E1F487242C2F659200031976 /* sampleResume.json in Resources */ = {isa = PBXBuildFile; fileRef = E1F487232C2F658700031976 /* sampleResume.json */; };
+		E1F487262C2F670900031976 /* ResumeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F487252C2F670300031976 /* ResumeViewModel.swift */; };
+		E1F487282C2F78EC00031976 /* ResumeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F487272C2F78E600031976 /* ResumeView.swift */; };
+		E1F4872A2C2F962B00031976 /* SkillsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F487292C2F962600031976 /* SkillsView.swift */; };
+		E1F4872C2C2F96B100031976 /* WorkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F4872B2C2F96A800031976 /* WorkView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +67,27 @@
 		E1908B662C2F4F2C002C8F5F /* OpenCVUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OpenCVUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1908B6A2C2F4F2C002C8F5F /* OpenCVUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenCVUITests.swift; sourceTree = "<group>"; };
 		E1908B6C2C2F4F2C002C8F5F /* OpenCVUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenCVUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		E1908B792C2F5E7E002C8F5F /* ResumeContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResumeContainerView.swift; sourceTree = "<group>"; };
+		E1908B7B2C2F5EF9002C8F5F /* ResumeModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResumeModels.swift; sourceTree = "<group>"; };
+		E1AD86112C30B099008F38A3 /* MeshGradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeshGradientView.swift; sourceTree = "<group>"; };
+		E1AD86132C30BBE3008F38A3 /* resume.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = resume.json; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.json; };
+		E1AD86152C30C251008F38A3 /* EducationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EducationView.swift; sourceTree = "<group>"; };
+		E1AD86172C30D2F3008F38A3 /* VolunteerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolunteerView.swift; sourceTree = "<group>"; };
+		E1AD861F2C31A380008F38A3 /* BasicsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicsView.swift; sourceTree = "<group>"; };
+		E1AD86212C31A676008F38A3 /* ProjectsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsView.swift; sourceTree = "<group>"; };
+		E1AD86232C31A9DE008F38A3 /* LanguagesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguagesView.swift; sourceTree = "<group>"; };
+		E1AD86252C31AC37008F38A3 /* AwardsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwardsView.swift; sourceTree = "<group>"; };
+		E1AD86272C31AECD008F38A3 /* CertificatesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertificatesView.swift; sourceTree = "<group>"; };
+		E1AD86292C31B2B1008F38A3 /* PublicationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicationsView.swift; sourceTree = "<group>"; };
+		E1AD862B2C31BA62008F38A3 /* InterestsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterestsView.swift; sourceTree = "<group>"; };
+		E1AD862D2C31BA84008F38A3 /* ReferencesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReferencesView.swift; sourceTree = "<group>"; };
+		E1AD86302C31BE4D008F38A3 /* SwiftUI+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SwiftUI+Utils.swift"; sourceTree = "<group>"; };
+		E1F487212C2F61AF00031976 /* schema.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = schema.json; sourceTree = "<group>"; };
+		E1F487232C2F658700031976 /* sampleResume.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = sampleResume.json; sourceTree = "<group>"; };
+		E1F487252C2F670300031976 /* ResumeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResumeViewModel.swift; sourceTree = "<group>"; };
+		E1F487272C2F78E600031976 /* ResumeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResumeView.swift; sourceTree = "<group>"; };
+		E1F487292C2F962600031976 /* SkillsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillsView.swift; sourceTree = "<group>"; };
+		E1F4872B2C2F96A800031976 /* WorkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +138,13 @@
 		E1908B4C2C2F4F2A002C8F5F /* OpenCV */ = {
 			isa = PBXGroup;
 			children = (
+				E1AD862F2C31BE41008F38A3 /* Utils */,
+				E1AD86192C319FF7008F38A3 /* Modules */,
+				E1908B792C2F5E7E002C8F5F /* ResumeContainerView.swift */,
+				E1AD86112C30B099008F38A3 /* MeshGradientView.swift */,
+				E1F487232C2F658700031976 /* sampleResume.json */,
+				E1AD86132C30BBE3008F38A3 /* resume.json */,
+				E1F487212C2F61AF00031976 /* schema.json */,
 				E1908B4D2C2F4F2A002C8F5F /* OpenCVApp.swift */,
 				E1908B4F2C2F4F2A002C8F5F /* ContentView.swift */,
 				E1908B512C2F4F2A002C8F5F /* Item.swift */,
@@ -128,6 +177,76 @@
 				E1908B6C2C2F4F2C002C8F5F /* OpenCVUITestsLaunchTests.swift */,
 			);
 			path = OpenCVUITests;
+			sourceTree = "<group>";
+		};
+		E1AD86192C319FF7008F38A3 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				E1AD861A2C31A008008F38A3 /* Resume */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		E1AD861A2C31A008008F38A3 /* Resume */ = {
+			isa = PBXGroup;
+			children = (
+				E1AD861B2C31A017008F38A3 /* View */,
+				E1AD861C2C31A01E008F38A3 /* ViewModel */,
+				E1AD861D2C31A026008F38A3 /* Model */,
+			);
+			path = Resume;
+			sourceTree = "<group>";
+		};
+		E1AD861B2C31A017008F38A3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E1F487272C2F78E600031976 /* ResumeView.swift */,
+				E1AD861E2C31A03B008F38A3 /* SubViews */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		E1AD861C2C31A01E008F38A3 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				E1F487252C2F670300031976 /* ResumeViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		E1AD861D2C31A026008F38A3 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E1908B7B2C2F5EF9002C8F5F /* ResumeModels.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		E1AD861E2C31A03B008F38A3 /* SubViews */ = {
+			isa = PBXGroup;
+			children = (
+				E1AD861F2C31A380008F38A3 /* BasicsView.swift */,
+				E1F4872B2C2F96A800031976 /* WorkView.swift */,
+				E1AD86212C31A676008F38A3 /* ProjectsView.swift */,
+				E1AD86152C30C251008F38A3 /* EducationView.swift */,
+				E1AD86232C31A9DE008F38A3 /* LanguagesView.swift */,
+				E1AD86172C30D2F3008F38A3 /* VolunteerView.swift */,
+				E1F487292C2F962600031976 /* SkillsView.swift */,
+				E1AD86252C31AC37008F38A3 /* AwardsView.swift */,
+				E1AD86272C31AECD008F38A3 /* CertificatesView.swift */,
+				E1AD86292C31B2B1008F38A3 /* PublicationsView.swift */,
+				E1AD862B2C31BA62008F38A3 /* InterestsView.swift */,
+				E1AD862D2C31BA84008F38A3 /* ReferencesView.swift */,
+			);
+			path = SubViews;
+			sourceTree = "<group>";
+		};
+		E1AD862F2C31BE41008F38A3 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				E1AD86302C31BE4D008F38A3 /* SwiftUI+Utils.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -234,7 +353,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1AD86142C30BBFA008F38A3 /* resume.json in Resources */,
 				E1908B572C2F4F2C002C8F5F /* Preview Assets.xcassets in Resources */,
+				E1F487242C2F659200031976 /* sampleResume.json in Resources */,
 				E1908B542C2F4F2C002C8F5F /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -260,9 +381,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1AD86242C31A9DE008F38A3 /* LanguagesView.swift in Sources */,
+				E1F487222C2F61B600031976 /* schema.json in Sources */,
 				E1908B502C2F4F2A002C8F5F /* ContentView.swift in Sources */,
+				E1908B7C2C2F5EFC002C8F5F /* ResumeModels.swift in Sources */,
+				E1AD86282C31AECD008F38A3 /* CertificatesView.swift in Sources */,
+				E1F4872C2C2F96B100031976 /* WorkView.swift in Sources */,
+				E1F4872A2C2F962B00031976 /* SkillsView.swift in Sources */,
+				E1AD862A2C31B2B1008F38A3 /* PublicationsView.swift in Sources */,
+				E1AD86262C31AC37008F38A3 /* AwardsView.swift in Sources */,
+				E1AD86312C31BE5F008F38A3 /* SwiftUI+Utils.swift in Sources */,
 				E1908B522C2F4F2A002C8F5F /* Item.swift in Sources */,
 				E1908B4E2C2F4F2A002C8F5F /* OpenCVApp.swift in Sources */,
+				E1AD86182C30D2FB008F38A3 /* VolunteerView.swift in Sources */,
+				E1F487262C2F670900031976 /* ResumeViewModel.swift in Sources */,
+				E1AD86202C31A385008F38A3 /* BasicsView.swift in Sources */,
+				E1AD862C2C31BA62008F38A3 /* InterestsView.swift in Sources */,
+				E1908B7A2C2F5E84002C8F5F /* ResumeContainerView.swift in Sources */,
+				E1AD86162C30C264008F38A3 /* EducationView.swift in Sources */,
+				E1AD86222C31A67D008F38A3 /* ProjectsView.swift in Sources */,
+				E1AD86122C30B0AA008F38A3 /* MeshGradientView.swift in Sources */,
+				E1F487282C2F78EC00031976 /* ResumeView.swift in Sources */,
+				E1AD862E2C31BA84008F38A3 /* ReferencesView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -442,7 +582,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.tapdigital.OpenCV;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -471,7 +611,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.tapdigital.OpenCV;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
