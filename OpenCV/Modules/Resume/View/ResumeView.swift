@@ -134,6 +134,7 @@ struct Heading: ViewModifier {
             .font(.headline)
             .fontWeight(.bold)
             .foregroundStyle(.primary)
+            .tint(.black.opacity(0.7))
             .frame(maxWidth: .infinity, alignment: .leading)
     }
 }

@@ -12,47 +12,52 @@ struct PublicationsView: View {
     
     var body: some View {
         GroupBox {
-            Label("Publications", systemImage: "text.book.closed")
-                .modifier(Heading())
-            
-            ForEach(publications) { element in
-                GroupBox {
-                    VStack(alignment: .leading, spacing: 4) {
-                        HStack {
-                            Text(element.name)
-                                .font(.headline)
-                                .lineLimit(nil)
-                                .multilineTextAlignment(.leading)
-                                .foregroundStyle(.primary)
-                            Spacer()
-                            if let url = element.url {
-                                Button {
-                                    openLink(url: url)
-                                } label: {
-                                    Image(systemName: "link")
+            DisclosureGroup {
+                Rectangle().frame(width: 0, height: 0).padding(.top)
+
+                ForEach(publications) { element in
+                    GroupBox {
+                        VStack(alignment: .leading, spacing: 4) {
+                            HStack {
+                                Text(element.name)
+                                    .font(.headline)
+                                    .lineLimit(nil)
+                                    .multilineTextAlignment(.leading)
+                                    .foregroundStyle(.primary)
+                                Spacer()
+                                if let url = element.url {
+                                    Button {
+                                        openLink(url: url)
+                                    } label: {
+                                        Image(systemName: "link")
+                                    }
                                 }
                             }
-                        }
-                        if let publisher = element.publisher {
-                            Text(publisher)
-                                .font(.subheadline)
+                            if let publisher = element.publisher {
+                                Text(publisher)
+                                    .font(.subheadline)
+                                    .foregroundStyle(.secondary)
+                            }
+                            if let date = element.releaseDate {
+                                Text(date.formatted(Date.FormatStyle().year().month()))
+                                    .font(.caption)
+                                    .foregroundStyle(.secondary)
+                            }
+                            Text(element.summary)
+                                .font(.callout)
+                                .lineLimit(nil)
+                                .multilineTextAlignment(.leading)
                                 .foregroundStyle(.secondary)
+                            
                         }
-                        if let date = element.releaseDate {
-                            Text(date.formatted(Date.FormatStyle().year().month()))
-                                .font(.caption)
-                                .foregroundStyle(.secondary)
-                        }
-                        Text(element.summary)
-                            .font(.callout)
-                            .lineLimit(nil)
-                            .multilineTextAlignment(.leading)
-                            .foregroundStyle(.secondary)
-                        
+                        .frame(maxWidth: .infinity, alignment: .leading)
                     }
-                    .frame(maxWidth: .infinity, alignment: .leading)
                 }
-            }
+            } label: {
+                Label("Publications", systemImage: "text.book.closed")
+                    .modifier(Heading())
+            }  
+            .tint(.orange)
         }
         .backgroundStyle(.ultraThinMaterial)
         .padding(.horizontal, 4)

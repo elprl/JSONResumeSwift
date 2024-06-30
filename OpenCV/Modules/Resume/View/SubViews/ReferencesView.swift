@@ -12,24 +12,29 @@ struct ReferencesView: View {
     
     var body: some View {
         GroupBox {
-            Label("References", systemImage: "person.badge.shield.checkmark")
-                .modifier(Heading())
-            
-            ForEach(references) { element in
-                GroupBox {
-                    VStack(alignment: .leading, spacing: 4) {
-                        Text(element.reference)
-                            .font(.body)
-                            .italic()
-                            .foregroundStyle(.primary)
-                        
-                        Text(element.name)
-                            .font(.callout)
-                            .foregroundStyle(.secondary)
+            DisclosureGroup {
+                Rectangle().frame(width: 0, height: 0).padding(.top)
+
+                ForEach(references) { element in
+                    GroupBox {
+                        VStack(alignment: .leading, spacing: 4) {
+                            Text(element.reference)
+                                .font(.body)
+                                .italic()
+                                .foregroundStyle(.primary)
+                            
+                            Text(element.name)
+                                .font(.callout)
+                                .foregroundStyle(.secondary)
+                        }
+                        .frame(maxWidth: .infinity, alignment: .leading)
                     }
-                    .frame(maxWidth: .infinity, alignment: .leading)
                 }
+            } label: {
+                Label("References", systemImage: "person.badge.shield.checkmark")
+                    .modifier(Heading())
             }
+            .tint(.orange)
         }
         .backgroundStyle(.ultraThinMaterial)
         .padding(.horizontal, 4)

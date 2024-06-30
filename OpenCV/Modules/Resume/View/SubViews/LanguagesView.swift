@@ -12,22 +12,27 @@ struct LanguagesView: View {
     
     var body: some View {
         GroupBox {
-            Label("Languages", systemImage: "speaker.wave.2.bubble")
-                .modifier(Heading())
-            
-            ForEach(languages) { element in
-                GroupBox {
-                    HStack(alignment: .center) {
-                        Text(element.language)
-                            .font(.body)
-                            .foregroundStyle(.primary)
-                        Spacer()
-                        Text(element.fluency)
-                            .font(.callout)
-                            .foregroundStyle(.secondary)
+            DisclosureGroup {
+                Rectangle().frame(width: 0, height: 0).padding(.top)
+
+                ForEach(languages) { element in
+                    GroupBox {
+                        HStack(alignment: .center) {
+                            Text(element.language)
+                                .font(.body)
+                                .foregroundStyle(.primary)
+                            Spacer()
+                            Text(element.fluency)
+                                .font(.callout)
+                                .foregroundStyle(.secondary)
+                        }
                     }
                 }
+            } label: {
+                Label("Languages", systemImage: "speaker.wave.2.bubble")
+                    .modifier(Heading())
             }
+            .tint(.orange)
         }
         .backgroundStyle(.ultraThinMaterial)
         .padding(.horizontal, 4)

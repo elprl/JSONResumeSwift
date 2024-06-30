@@ -12,43 +12,48 @@ struct CertificatesView: View {
     
     var body: some View {
         GroupBox {
-            Label("Certifications", systemImage: "rosette")
-                .modifier(Heading())
-            
-            ForEach(certificates) { element in
-                GroupBox {
-                    VStack(alignment: .leading, spacing: 4) {
-                        HStack {
-                            Text(element.name)
-                                .font(.body)
-                                .lineLimit(nil)
-                                .multilineTextAlignment(.leading)
-                                .foregroundStyle(.primary)
-                            Spacer()
-                            if let url = element.url {
-                                Button {
-                                    openLink(url: url)
-                                } label: {
-                                    Image(systemName: "link")
+            DisclosureGroup {
+                Rectangle().frame(width: 0, height: 0).padding(.top)
+
+                ForEach(certificates) { element in
+                    GroupBox {
+                        VStack(alignment: .leading, spacing: 4) {
+                            HStack {
+                                Text(element.name)
+                                    .font(.body)
+                                    .lineLimit(nil)
+                                    .multilineTextAlignment(.leading)
+                                    .foregroundStyle(.primary)
+                                Spacer()
+                                if let url = element.url {
+                                    Button {
+                                        openLink(url: url)
+                                    } label: {
+                                        Image(systemName: "link")
+                                    }
                                 }
                             }
+                            if let date = element.date {
+                                Text(date.formatted(Date.FormatStyle().year().month()))
+                                    .font(.caption)
+                                    .foregroundStyle(.secondary)
+                            }
+                            if let issuer = element.issuer {
+                                Text(issuer)
+                                    .font(.callout)
+                                    .lineLimit(nil)
+                                    .multilineTextAlignment(.leading)
+                                    .foregroundStyle(.secondary)
+                            }
                         }
-                        if let date = element.date {
-                            Text(date.formatted(Date.FormatStyle().year().month()))
-                                .font(.caption)
-                                .foregroundStyle(.secondary)
-                        }
-                        if let issuer = element.issuer {
-                            Text(issuer)
-                                .font(.callout)
-                                .lineLimit(nil)
-                                .multilineTextAlignment(.leading)
-                                .foregroundStyle(.secondary)
-                        }
+                        .frame(maxWidth: .infinity, alignment: .leading)
                     }
-                    .frame(maxWidth: .infinity, alignment: .leading)
                 }
-            }
+            } label: {
+                Label("Certifications", systemImage: "rosette")
+                    .modifier(Heading())
+            }  
+            .tint(.orange)
         }
         .backgroundStyle(.ultraThinMaterial)
         .padding(.horizontal, 4)

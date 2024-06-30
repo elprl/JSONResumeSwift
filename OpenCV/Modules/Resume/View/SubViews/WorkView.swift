@@ -12,80 +12,112 @@ struct WorkView: View {
     
     var body: some View {
         GroupBox {
-            Label("Work Experience", systemImage: "building.2")
-                .modifier(Heading())
-            
-            ForEach(Array(works.enumerated()), id: \.element) { index, element in
-                VStack(alignment: .leading, spacing: 4) {
-                    Text(element.position)
-                        .font(.headline)
-                        .foregroundStyle(.primary)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                    HStack {
-                        Text(element.name)
-                            .font(.headline)
-                            .lineLimit(1)
-                            .foregroundStyle(.primary)
-                        Spacer()
-                        if let url = element.url {
-                            Button {
-                                openLink(url: url)
-                            } label: {
-                                Image(systemName: "link")
-                            }
+            DisclosureGroup {
+                Rectangle().frame(width: 0, height: 0).padding(.top)
+
+                ForEach(Array(works.enumerated()), id: \.element) { index, element in
+                    VStack(alignment: .leading, spacing: 4) {
+                        GroupBox {
+                            position(element: element)
+                            name(element: element)
+                            dates(element: element)
+                            highlights(element: element)
                         }
                     }
-                    Text(element.dates)
-                        .font(.caption)
-                        .foregroundStyle(.secondary)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                    
-                    if !(element.highlights?.isEmpty ?? true) {
-                        DisclosureGroup {
-                            ForEach(element.highlights ?? [], id: \.self) { highlight in
-                                Text("• \(highlight)")
-                                    .font(.body)
-                                    .lineLimit(nil)
-                                    .multilineTextAlignment(.leading)
-                                    .lineSpacing(1.5)
-                                    .foregroundStyle(.primary)
-                                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(.leading, 40)
+                    .padding(.vertical, 4)
+                    .overlay {
+                        HStack(spacing: 0) {
+                            VStack(alignment: .center, spacing: 4) {
+                                Rectangle()
+                                    .frame(width: 1)
+                                    .opacity(index == 0 ? 0 : 1)
+                                Circle()
+                                    .frame(width: 5, height: 5)
+                                Rectangle()
+                                    .frame(width: 1)
+                                    .opacity(index == (works.count - 1) ? 0 : 1)
                             }
-                        } label: {
-                            Text("Highlights")
-                                .font(.caption)
-                                .foregroundStyle(.primary)
-                                .frame(maxWidth: .infinity, alignment: .leading)
+                            .foregroundStyle(.orange)
+                            Spacer()
                         }
-                        .tint(.secondary)
+                        .padding(.leading, 10)
+                        .padding(.vertical, -4)
                     }
                 }
-                .frame(maxWidth: .infinity)
-                .padding(.leading, 40)
-                .padding(.vertical, 4)
-                .overlay {
-                    HStack(spacing: 0) {
-                        VStack(alignment: .center, spacing: 4) {
-                            Rectangle()
-                                .frame(width: 1)
-                                .opacity(index == 0 ? 0 : 1)
-                            Circle()
-                                .frame(width: 5, height: 5)
-                            Rectangle()
-                                .frame(width: 1)
-                                .opacity(index == (works.count - 1) ? 0 : 1)
-                        }
-                        .foregroundStyle(.secondary)
-                        Spacer()
-                    }
-                    .padding(.leading, 10)
-                    .padding(.vertical, -4)
-                }
+            } label: {
+                Label("Work Experience", systemImage: "building.2")
+                    .modifier(Heading())
             }
+            .tint(.orange)
         }
         .backgroundStyle(.ultraThinMaterial)
         .padding(.horizontal, 4)
         .shadow(radius: 4)
+    }
+    
+    @ViewBuilder
+    private func position(element: Work) -> some View {
+        Text(element.position)
+            .font(.headline)
+            .foregroundStyle(.primary)
+            .frame(maxWidth: .infinity, alignment: .leading)
+    }
+    
+    @ViewBuilder
+    private func name(element: Work) -> some View {
+        HStack {
+            Text(element.name)
+                .font(.headline)
+                .lineLimit(1)
+                .foregroundStyle(.primary)
+                .frame(maxWidth: .infinity, alignment: .leading)
+            Spacer()
+            if let url = element.url {
+                Button {
+                    openLink(url: url)
+                } label: {
+                    Image(systemName: "link")
+                }
+            }
+        }
+    }
+    
+    @ViewBuilder
+    private func dates(element: Work) -> some View {
+        Text(element.dates)
+            .font(.caption)
+            .foregroundStyle(.secondary)
+            .frame(maxWidth: .infinity, alignment: .leading)
+    }
+    
+    @ViewBuilder
+    private func highlights(element: Work) -> some View {
+        if !(element.highlights?.isEmpty ?? true) {
+            DisclosureGroup {
+                ForEach(element.highlights ?? [], id: \.self) { highlight in
+                    Text("• \(highlight)")
+                        .font(.body)
+                        .lineLimit(nil)
+                        .multilineTextAlignment(.leading)
+                        .lineSpacing(1.5)
+                        .foregroundStyle(.primary)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                }
+            } label: {
+                Text("Highlights")
+                    .font(.caption)
+                    .foregroundStyle(.primary)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+            }
+            .tint(.gray)
+        }
+    }
+    
+    @ViewBuilder
+    private func overlay(index: Int) -> some View {
+        
     }
 }
 

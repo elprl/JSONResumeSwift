@@ -12,40 +12,45 @@ struct InterestsView: View {
     
     var body: some View {
         GroupBox {
-            Label("Interests", systemImage: "heart")
-                .modifier(Heading())
-            
-            ForEach(interests) { element in
-                GroupBox {
-                    HStack(alignment: .center) {
-                        VStack(alignment: .leading) {
-                            Text(element.name)
-                                .font(.body)
-                                .foregroundStyle(.primary)
-                            ScrollView(.horizontal, showsIndicators: false) {
-                                LazyHStack {
-                                    ForEach(element.keywords ?? [], id: \.self) { keyword in
-                                        VStack {
-                                            Text(keyword)
-                                                .font(.caption)
-                                                .foregroundStyle(.black)
-                                                .lineLimit(1)
-                                                .padding(.vertical, 2)
-                                                .padding(.horizontal, 6)
+            DisclosureGroup {
+                Rectangle().frame(width: 0, height: 0).padding(.top)
+
+                ForEach(interests) { element in
+                    GroupBox {
+                        HStack(alignment: .center) {
+                            VStack(alignment: .leading) {
+                                Text(element.name)
+                                    .font(.body)
+                                    .foregroundStyle(.primary)
+                                ScrollView(.horizontal, showsIndicators: false) {
+                                    LazyHStack {
+                                        ForEach(element.keywords ?? [], id: \.self) { keyword in
+                                            VStack {
+                                                Text(keyword)
+                                                    .font(.caption)
+                                                    .foregroundStyle(.black)
+                                                    .lineLimit(1)
+                                                    .padding(.vertical, 2)
+                                                    .padding(.horizontal, 6)
+                                            }
+                                            .background(.yellow)
+                                            .clipShape(Capsule())
                                         }
-                                        .background(.yellow)
-                                        .clipShape(Capsule())
+                                        Spacer()
                                     }
-                                    Spacer()
+                                    .frame(height: 20)
+                                    .scrollTargetLayout()
                                 }
-                                .frame(height: 20)
-                                .scrollTargetLayout()
+                                .scrollTargetBehavior(.paging)
                             }
-                            .scrollTargetBehavior(.paging)
                         }
                     }
                 }
-            }
+            } label: {
+                Label("Interests", systemImage: "heart")
+                    .modifier(Heading())
+            }  
+            .tint(.orange)
         }
         .backgroundStyle(.ultraThinMaterial)
         .padding(.horizontal, 4)

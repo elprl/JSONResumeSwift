@@ -43,18 +43,22 @@ struct BasicsView: View {
         .padding(.top, 60)
         
         GroupBox {
-            Label("Summary", systemImage: "person")
-                .modifier(Heading())
-            
-            GroupBox {
-                Text(basics.summary)
-                    .font(.body)
-                    .lineLimit(nil)
-                    .foregroundStyle(.primary)
-                    .multilineTextAlignment(.leading)
-                    .lineSpacing(1.5)
-                    .frame(maxWidth: .infinity, alignment: .leading)
+            DisclosureGroup {
+                Rectangle().frame(width: 0, height: 0).padding(.top)
+                GroupBox {
+                    Text(basics.summary)
+                        .font(.body)
+                        .lineLimit(nil)
+                        .foregroundStyle(.primary)
+                        .multilineTextAlignment(.leading)
+                        .lineSpacing(1.5)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                }
+            } label: {
+                Label("Summary", systemImage: "person")
+                    .modifier(Heading())
             }
+            .tint(.orange)
         }
         .padding(.top)
         .backgroundStyle(.ultraThinMaterial)

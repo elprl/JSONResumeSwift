@@ -12,62 +12,67 @@ struct EducationView: View {
     
     var body: some View {
         GroupBox {
-            Label("Education", systemImage: "graduationcap")
-                .modifier(Heading())
-            
-            ForEach(educations) { element in
-                GroupBox {
-                    VStack(alignment: .leading, spacing: 4) {
-                        HStack {
-                            Text(element.institution)
-                                .font(.headline)
-                                .lineLimit(nil)
-                                .multilineTextAlignment(.leading)
-                                .foregroundStyle(.primary)
-                            Spacer()
-                            if let url = element.url {
-                                Button {
-                                    openLink(url: url)
-                                } label: {
-                                    Image(systemName: "link")
+            DisclosureGroup {
+                Rectangle().frame(width: 0, height: 0).padding(.top)
+
+                ForEach(educations) { element in
+                    GroupBox {
+                        VStack(alignment: .leading, spacing: 4) {
+                            HStack {
+                                Text(element.institution)
+                                    .font(.headline)
+                                    .lineLimit(nil)
+                                    .multilineTextAlignment(.leading)
+                                    .foregroundStyle(.primary)
+                                Spacer()
+                                if let url = element.url {
+                                    Button {
+                                        openLink(url: url)
+                                    } label: {
+                                        Image(systemName: "link")
+                                    }
                                 }
                             }
-                        }
-                        Text("\(element.area) (with \(element.score ?? ""))")
-                            .font(.subheadline)
-                            .foregroundStyle(.primary)
-                        if !element.studyType.isEmpty {
-                            Text(element.studyType)
+                            Text("\(element.area) (with \(element.score ?? ""))")
                                 .font(.subheadline)
+                                .foregroundStyle(.primary)
+                            if !element.studyType.isEmpty {
+                                Text(element.studyType)
+                                    .font(.subheadline)
+                                    .foregroundStyle(.secondary)
+                            }
+                            Text(element.dates)
+                                .font(.callout)
                                 .foregroundStyle(.secondary)
-                        }
-                        Text(element.dates)
-                            .font(.callout)
-                            .foregroundStyle(.secondary)
 
-                        if !(element.courses?.isEmpty ?? true) {
-                            DisclosureGroup {
-                                ForEach(element.courses ?? [], id: \.self) { highlight in
-                                    Text("• \(highlight)")
-                                        .font(.body)
-                                        .lineLimit(nil)
-                                        .multilineTextAlignment(.leading)
-                                        .lineSpacing(1.5)
+                            if !(element.courses?.isEmpty ?? true) {
+                                DisclosureGroup {
+                                    ForEach(element.courses ?? [], id: \.self) { highlight in
+                                        Text("• \(highlight)")
+                                            .font(.body)
+                                            .lineLimit(nil)
+                                            .multilineTextAlignment(.leading)
+                                            .lineSpacing(1.5)
+                                            .foregroundStyle(.primary)
+                                            .frame(maxWidth: .infinity, alignment: .leading)
+                                    }
+                                } label: {
+                                    Text("Highlights")
+                                        .font(.caption)
                                         .foregroundStyle(.primary)
                                         .frame(maxWidth: .infinity, alignment: .leading)
                                 }
-                            } label: {
-                                Text("Highlights")
-                                    .font(.caption)
-                                    .foregroundStyle(.primary)
-                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                .tint(.gray)
                             }
-                            .tint(.secondary)
                         }
+                        .frame(maxWidth: .infinity, alignment: .leading)
                     }
-                    .frame(maxWidth: .infinity, alignment: .leading)
                 }
+            } label: {
+                Label("Education", systemImage: "graduationcap")
+                    .modifier(Heading())
             }
+            .tint(.orange)
         }
         .backgroundStyle(.ultraThinMaterial)
         .padding(.horizontal, 4)

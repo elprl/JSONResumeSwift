@@ -12,29 +12,34 @@ struct AwardsView: View {
     
     var body: some View {
         GroupBox {
-            Label("Awards", systemImage: "trophy")
-                .modifier(Heading())
-            
-            ForEach(awards) { element in
-                GroupBox {
-                    VStack(alignment: .leading, spacing: 4) {
-                        Text(element.title)
-                            .font(.body)
-                            .foregroundStyle(.primary)
-                        if let date = element.date {
-                            Text(date.formatted(Date.FormatStyle().year().month()))
-                                .font(.caption)
+            DisclosureGroup {
+                Rectangle().frame(width: 0, height: 0).padding(.top)
+
+                ForEach(awards) { element in
+                    GroupBox {
+                        VStack(alignment: .leading, spacing: 4) {
+                            Text(element.title)
+                                .font(.body)
+                                .foregroundStyle(.primary)
+                            if let date = element.date {
+                                Text(date.formatted(Date.FormatStyle().year().month()))
+                                    .font(.caption)
+                                    .foregroundStyle(.secondary)
+                            }
+                            Text(element.summary)
+                                .font(.callout)
+                                .lineLimit(nil)
+                                .multilineTextAlignment(.leading)
                                 .foregroundStyle(.secondary)
                         }
-                        Text(element.summary)
-                            .font(.callout)
-                            .lineLimit(nil)
-                            .multilineTextAlignment(.leading)
-                            .foregroundStyle(.secondary)
+                        .frame(maxWidth: .infinity, alignment: .leading)
                     }
-                    .frame(maxWidth: .infinity, alignment: .leading)
                 }
-            }
+            } label: {
+                Label("Awards", systemImage: "trophy")
+                    .modifier(Heading())
+            } 
+            .tint(.orange)
         }
         .backgroundStyle(.ultraThinMaterial)
         .padding(.horizontal, 4)
