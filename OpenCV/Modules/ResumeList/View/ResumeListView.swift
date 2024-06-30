@@ -67,7 +67,7 @@ struct ResumeListView: View {
             if let resume = resumes.first(where: { $0.basics.name == person.name }) {
                 ResumeView(resume: resume)
             } else if let jsonString = person.cachedJSON {
-                Text("Resume not yet loaded")
+                CachedResumeView(jsonString: jsonString)
             } else {
                 Text("Resume not yet loaded")
             }

@@ -33,6 +33,7 @@
 		E1AD86372C31D51F008F38A3 /* ResumeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AD86362C31D51F008F38A3 /* ResumeListView.swift */; };
 		E1AD86392C31D67A008F38A3 /* ResumeListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AD86382C31D678008F38A3 /* ResumeListViewModel.swift */; };
 		E1AD863B2C31D6C3008F38A3 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AD863A2C31D6BE008F38A3 /* Person.swift */; };
+		E1AD863D2C32229D008F38A3 /* CachedResumeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AD863C2C32229D008F38A3 /* CachedResumeView.swift */; };
 		E1F487222C2F61B600031976 /* schema.json in Sources */ = {isa = PBXBuildFile; fileRef = E1F487212C2F61AF00031976 /* schema.json */; };
 		E1F487242C2F659200031976 /* sampleResume.json in Resources */ = {isa = PBXBuildFile; fileRef = E1F487232C2F658700031976 /* sampleResume.json */; };
 		E1F487262C2F670900031976 /* ResumeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F487252C2F670300031976 /* ResumeViewModel.swift */; };
@@ -88,6 +89,7 @@
 		E1AD86362C31D51F008F38A3 /* ResumeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResumeListView.swift; sourceTree = "<group>"; };
 		E1AD86382C31D678008F38A3 /* ResumeListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResumeListViewModel.swift; sourceTree = "<group>"; };
 		E1AD863A2C31D6BE008F38A3 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
+		E1AD863C2C32229D008F38A3 /* CachedResumeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachedResumeView.swift; sourceTree = "<group>"; };
 		E1F487212C2F61AF00031976 /* schema.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = schema.json; sourceTree = "<group>"; };
 		E1F487232C2F658700031976 /* sampleResume.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = sampleResume.json; sourceTree = "<group>"; };
 		E1F487252C2F670300031976 /* ResumeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResumeViewModel.swift; sourceTree = "<group>"; };
@@ -244,6 +246,7 @@
 				E1AD86292C31B2B1008F38A3 /* PublicationsView.swift */,
 				E1AD862B2C31BA62008F38A3 /* InterestsView.swift */,
 				E1AD862D2C31BA84008F38A3 /* ReferencesView.swift */,
+				E1AD863C2C32229D008F38A3 /* CachedResumeView.swift */,
 			);
 			path = SubViews;
 			sourceTree = "<group>";
@@ -435,6 +438,7 @@
 				E1AD86262C31AC37008F38A3 /* AwardsView.swift in Sources */,
 				E1AD86312C31BE5F008F38A3 /* SwiftUI+Utils.swift in Sources */,
 				E1908B522C2F4F2A002C8F5F /* Item.swift in Sources */,
+				E1AD863D2C32229D008F38A3 /* CachedResumeView.swift in Sources */,
 				E1908B4E2C2F4F2A002C8F5F /* OpenCVApp.swift in Sources */,
 				E1AD86182C30D2FB008F38A3 /* VolunteerView.swift in Sources */,
 				E1F487262C2F670900031976 /* ResumeViewModel.swift in Sources */,
