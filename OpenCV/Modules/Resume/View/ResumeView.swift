@@ -29,7 +29,6 @@ struct ResumeView: View {
                 interests
                 references
                 projects
-                
             }
             .navigationTitle("Resume")
             .navigationBarTitleDisplayMode(.inline)
@@ -152,7 +151,7 @@ struct AsyncTestView: View {
             }
         }
         .task {
-            resume = await SampleLoader().loadSample()
+            resume = await ResumeLoader().loadSample()
         }
     }
 }

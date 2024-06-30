@@ -10,13 +10,14 @@ import SwiftData
 
 @Model
 final class Person {
-    var name: String
+    var name: String?
     var createdAt: Date
     var resumeUrl: String
+    var image: String?
+    var cachedJSON: String?
     
-    init(name: String, createdAt: Date = Date(), resumeUrl: String) {
-        self.name = name
-        self.createdAt = createdAt
+    init(resumeUrl: String) {
+        self.createdAt = Date()
         self.resumeUrl = resumeUrl
     }
 }

@@ -12,13 +12,19 @@ final class ResumeViewModel: ObservableObject {
     
     @MainActor
     func loadResume() async {
-        if let resume = await SampleLoader().loadSample() {
+        if let resume = await ResumeLoader().loadSample() {
             self.resume = resume
         }
     }
 }
 
-struct SampleLoader {
+struct ResumeLoader: ResumeLoaderProtocol {
+}
+
+protocol ResumeLoaderProtocol {
+}
+
+extension ResumeLoaderProtocol {
     
     func loadSample() async -> Resume? {
         if let jsonString = await loadJSONFromFile(fileName: "resume") {
@@ -30,7 +36,25 @@ struct SampleLoader {
         return nil
     }
     
-    private func loadJSONFromFile(fileName: String = "sampleResume") async -> String? {
+    func loadResume(urlString: String) async -> (Resume, String)? {
+        guard let url = URL(string: urlString) else { return nil }
+        let urlSession = URLSession.shared
+        
+        do {
+            let (data, _) = try await urlSession.data(from: url)
+            guard let jsonString = String(data: data, encoding: .utf8) else { return nil }
+            guard let resume = await decodeSample(jsonString: jsonString) else { return nil }
+            return (resume, jsonString)
+        }
+        catch {
+            // Error handling in case the data couldn't be loaded
+            // For now, only display the error on the console
+            debugPrint("Error loading \(url): \(String(describing: error))")
+        }
+        return nil
+    }
+    
+    func loadJSONFromFile(fileName: String = "sampleResume") async -> String? {
         guard let fileURL = Bundle.main.url(forResource: fileName, withExtension: "json") else {
             print("File not found.")
             return nil
@@ -45,7 +69,7 @@ struct SampleLoader {
         }
     }
     
-    private func decodeSample(jsonString: String) async -> Resume? {
+    func decodeSample(jsonString: String) async -> Resume? {
         // Convert JSON string to Data
         if let jsonData = jsonString.data(using: .utf8) {
             

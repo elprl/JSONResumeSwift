@@ -25,6 +25,20 @@ struct Resume: Codable {
     let meta: Meta?
 }
 
+extension Resume: Hashable {
+    static func == (lhs: Resume, rhs: Resume) -> Bool {
+        return lhs.basics.name == rhs.basics.name
+    }
+    
+    var hashValue: Int {
+        return basics.name.hashValue
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(basics.name)
+    }
+}
+
 /// Contains basic information about the individual.
 struct Basics: Codable {
     /// Full name of the individual.
@@ -59,16 +73,16 @@ struct Location: Codable {
     let postalCode: String?
     let city: String?
     /// Country code as per ISO-3166-1 ALPHA-2, e.g., US, AU, IN.
-    let countryCode: String
+    let countryCode: String?
     /// General region where the individual lives, e.g., US state or province.
-    let region: String
+    let region: String?
 }
 
-extension Location: Identifiable {
-    var id: String {
-        return countryCode + region
-    }
-}
+//extension Location: Identifiable {
+//    var id: String {
+//        return countryCode + region
+//    }
+//}
 
 /// Represents a social network profile.
 struct Profile: Codable {
@@ -315,7 +329,7 @@ struct Meta: Codable {
     /// Version field following semver, e.g., v1.0.0.
     let version: String?
     /// Last modified date in ISO 8601 format.
-    let lastModified: Date?
+    let lastModified: String?
     /// theme
     let theme: String?
 }
