@@ -40,7 +40,7 @@ struct BasicsView: View {
         .backgroundStyle(.ultraThinMaterial)
         .padding(.horizontal, 4)
         .shadow(radius: 4)
-        .padding(.top, 60)
+        .padding(.top)
         
         GroupBox {
             DisclosureGroup {

@@ -14,6 +14,8 @@ struct ResumeView: View {
     var body: some View {
         ZStack {
             MeshGradientView()
+                .ignoresSafeArea()
+
             ScrollView(showsIndicators: false) {
                 basics
                 work
@@ -29,9 +31,10 @@ struct ResumeView: View {
                 projects
                 
             }
-            .padding()
+            .navigationTitle("Resume")
+            .navigationBarTitleDisplayMode(.inline)
+            .padding(.horizontal)
         }
-        .ignoresSafeArea()
     }
     
     @ViewBuilder

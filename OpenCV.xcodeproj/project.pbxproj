@@ -30,6 +30,9 @@
 		E1AD862C2C31BA62008F38A3 /* InterestsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AD862B2C31BA62008F38A3 /* InterestsView.swift */; };
 		E1AD862E2C31BA84008F38A3 /* ReferencesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AD862D2C31BA84008F38A3 /* ReferencesView.swift */; };
 		E1AD86312C31BE5F008F38A3 /* SwiftUI+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AD86302C31BE4D008F38A3 /* SwiftUI+Utils.swift */; };
+		E1AD86372C31D51F008F38A3 /* ResumeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AD86362C31D51F008F38A3 /* ResumeListView.swift */; };
+		E1AD86392C31D67A008F38A3 /* ResumeListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AD86382C31D678008F38A3 /* ResumeListViewModel.swift */; };
+		E1AD863B2C31D6C3008F38A3 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AD863A2C31D6BE008F38A3 /* Person.swift */; };
 		E1F487222C2F61B600031976 /* schema.json in Sources */ = {isa = PBXBuildFile; fileRef = E1F487212C2F61AF00031976 /* schema.json */; };
 		E1F487242C2F659200031976 /* sampleResume.json in Resources */ = {isa = PBXBuildFile; fileRef = E1F487232C2F658700031976 /* sampleResume.json */; };
 		E1F487262C2F670900031976 /* ResumeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F487252C2F670300031976 /* ResumeViewModel.swift */; };
@@ -82,6 +85,9 @@
 		E1AD862B2C31BA62008F38A3 /* InterestsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterestsView.swift; sourceTree = "<group>"; };
 		E1AD862D2C31BA84008F38A3 /* ReferencesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReferencesView.swift; sourceTree = "<group>"; };
 		E1AD86302C31BE4D008F38A3 /* SwiftUI+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SwiftUI+Utils.swift"; sourceTree = "<group>"; };
+		E1AD86362C31D51F008F38A3 /* ResumeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResumeListView.swift; sourceTree = "<group>"; };
+		E1AD86382C31D678008F38A3 /* ResumeListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResumeListViewModel.swift; sourceTree = "<group>"; };
+		E1AD863A2C31D6BE008F38A3 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		E1F487212C2F61AF00031976 /* schema.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = schema.json; sourceTree = "<group>"; };
 		E1F487232C2F658700031976 /* sampleResume.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = sampleResume.json; sourceTree = "<group>"; };
 		E1F487252C2F670300031976 /* ResumeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResumeViewModel.swift; sourceTree = "<group>"; };
@@ -182,6 +188,7 @@
 		E1AD86192C319FF7008F38A3 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				E1AD86322C31D4E3008F38A3 /* ResumeList */,
 				E1AD861A2C31A008008F38A3 /* Resume */,
 			);
 			path = Modules;
@@ -247,6 +254,40 @@
 				E1AD86302C31BE4D008F38A3 /* SwiftUI+Utils.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		E1AD86322C31D4E3008F38A3 /* ResumeList */ = {
+			isa = PBXGroup;
+			children = (
+				E1AD86352C31D509008F38A3 /* View */,
+				E1AD86342C31D501008F38A3 /* ViewModel */,
+				E1AD86332C31D4F9008F38A3 /* Model */,
+			);
+			path = ResumeList;
+			sourceTree = "<group>";
+		};
+		E1AD86332C31D4F9008F38A3 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E1AD863A2C31D6BE008F38A3 /* Person.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		E1AD86342C31D501008F38A3 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				E1AD86382C31D678008F38A3 /* ResumeListViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		E1AD86352C31D509008F38A3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E1AD86362C31D51F008F38A3 /* ResumeListView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -381,7 +422,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1AD863B2C31D6C3008F38A3 /* Person.swift in Sources */,
 				E1AD86242C31A9DE008F38A3 /* LanguagesView.swift in Sources */,
+				E1AD86372C31D51F008F38A3 /* ResumeListView.swift in Sources */,
 				E1F487222C2F61B600031976 /* schema.json in Sources */,
 				E1908B502C2F4F2A002C8F5F /* ContentView.swift in Sources */,
 				E1908B7C2C2F5EFC002C8F5F /* ResumeModels.swift in Sources */,
@@ -402,6 +445,7 @@
 				E1AD86222C31A67D008F38A3 /* ProjectsView.swift in Sources */,
 				E1AD86122C30B0AA008F38A3 /* MeshGradientView.swift in Sources */,
 				E1F487282C2F78EC00031976 /* ResumeView.swift in Sources */,
+				E1AD86392C31D67A008F38A3 /* ResumeListViewModel.swift in Sources */,
 				E1AD862E2C31BA84008F38A3 /* ReferencesView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
