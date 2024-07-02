@@ -7,23 +7,70 @@
 import Foundation
 import Combine
 import SwiftUI
+import SwiftData
 
 final class ResumeViewModel: ObservableObject {
-    @Published var resume: Resume?
+    @Published var note: String = ""
+    private var cancellables: Set<AnyCancellable> = []
+    let modelContext: ModelContext
+    let resumeUrl: String
+
+    init(modelContext: ModelContext, resumeUrl: String) {
+        self.modelContext = modelContext
+        self.resumeUrl = resumeUrl
+        self.$note
+            .dropFirst()
+            .debounce(for: .milliseconds(600), scheduler: RunLoop.main)
+            .removeDuplicates()
+            .receive(on: RunLoop.main)
+            .sink(receiveCompletion: { _ in
+                print("note receiveCompletion")
+            }, receiveValue: { newNote in
+                print("note receiveValue \(newNote)")
+                self.saveNote(note: newNote)
+            })
+            .store(in: &cancellables)
+    }
     
-    @MainActor
-    func loadResume() async {
-        if let resume = await ResumeLoader().loadSample() {
-            self.resume = resume
+    private func saveNote(note: String) {
+        var descriptor = FetchDescriptor<Note>(
+            predicate: #Predicate { $0.resumeUrl == resumeUrl },
+            sortBy: [
+                .init(\.resumeUrl)
+            ]
+        )
+        descriptor.fetchLimit = 1
+        do {
+            let fetchedNote = try modelContext.fetch(descriptor)
+            if let first = fetchedNote.first {
+                if first.note != note {
+                    first.note = note
+                    first.updatedAt = Date()
+                    save()
+                }
+            } else {
+                let newNote = Note(resumeUrl: resumeUrl, createdAt: Date(), updatedAt: Date(), note: note)
+                modelContext.insert(newNote)
+                save()
+            }
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+    
+    private func save() {
+        do {
+            try modelContext.save() // Ensure changes are saved to the context
+        } catch {
+            // Handle error appropriately
+            print("Failed to save context: \(error)")
         }
     }
 }
 
-struct ResumeLoader: ResumeLoaderProtocol {
-}
+struct ResumeLoader: ResumeLoaderProtocol {}
 
-protocol ResumeLoaderProtocol {
-}
+protocol ResumeLoaderProtocol {}
 
 extension ResumeLoaderProtocol {
     

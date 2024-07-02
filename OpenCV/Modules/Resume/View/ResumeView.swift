@@ -9,7 +9,25 @@ import SwiftUI
 import SwiftData
 
 struct ResumeView: View {
+    @Environment(\.colorScheme) private var colorScheme
+    @Query private var notes: [Note]
+    @StateObject private var viewModel: ResumeViewModel
     let resume: Resume
+    let modelContext: ModelContext
+    
+    init(resume: Resume, resumeUrl: String, modelContext: ModelContext) {
+        self.resume = resume
+        var descriptor = FetchDescriptor<Note>(
+            predicate: #Predicate { $0.resumeUrl == resumeUrl },
+            sortBy: [
+                .init(\.resumeUrl)
+            ]
+        )
+        descriptor.fetchLimit = 1
+        _notes = Query(descriptor)
+        _viewModel = StateObject(wrappedValue: ResumeViewModel(modelContext: modelContext, resumeUrl: resumeUrl))
+        self.modelContext = modelContext
+    }
     
     var body: some View {
         ZStack {
@@ -30,11 +48,45 @@ struct ResumeView: View {
                 interests
                 references
                 projects
+                
+                Divider().padding()
+                myNotes
             }
             .navigationTitle(resume.basics.name)
             .navigationBarTitleDisplayMode(.inline)
             .padding(.horizontal)
         }
+    }
+    
+    @ViewBuilder
+    private var myNotes: some View {
+        GroupBox {
+            DisclosureGroup {
+                Rectangle().frame(width: 0, height: 0).padding(.top)
+                GroupBox {
+                    TextField("Enter notes", text: $viewModel.note,  axis: .vertical)
+                        .lineLimit(4...10)
+                        .foregroundColor(.primary)
+                        .frame(maxWidth: .infinity)
+                        .task {
+                            self.viewModel.note = notes.first?.note ?? ""
+                        }
+                }
+                .backgroundStyle(.ultraThickMaterial)
+                .clipShape(RoundedRectangle(cornerRadius: 8))
+                .padding(4)
+                .shadow(radius: 4)
+            } label: {
+                Label("My Notes", systemImage: "doc")
+                    .modifier(Heading())
+            }
+            .tint(colorScheme == .dark ? .orange : .brown)
+        }
+        .backgroundStyle(.ultraThickMaterial)
+        .clipShape(RoundedRectangle(cornerRadius: 8))
+        .padding(.horizontal, 4)
+        .shadow(radius: 4)
+        .padding(.bottom, 160)
     }
     
     @ViewBuilder
@@ -143,11 +195,14 @@ struct Heading: ViewModifier {
 
 struct AsyncTestView: View {
     @State var resume: Resume?
-    
+
     var body: some View {
         VStack {
             if let resume {
-                ResumeView(resume: resume)
+                let config = ModelConfiguration(isStoredInMemoryOnly: true)
+                let container = try! ModelContainer(for: Person.self, configurations: config)
+
+                ResumeView(resume: resume, resumeUrl: "", modelContext: container.mainContext)
             }
         }
         .task {

@@ -10,11 +10,13 @@ import SwiftUI
 struct CachedResumeView: View {
     @State var resume: Resume?
     let jsonString: String
+    let resumeUrl : String
+    @Environment(\.modelContext) private var modelContext
     
     var body: some View {
         VStack {
             if let resume {
-                ResumeView(resume: resume)
+                ResumeView(resume: resume, resumeUrl: resumeUrl, modelContext: modelContext)
             } else {
                 ProgressView()
             }
@@ -26,5 +28,5 @@ struct CachedResumeView: View {
 }
 
 #Preview {
-    CachedResumeView(jsonString: "")
+    CachedResumeView(jsonString: "", resumeUrl: "")
 }

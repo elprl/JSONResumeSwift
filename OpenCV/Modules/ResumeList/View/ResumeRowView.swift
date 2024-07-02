@@ -10,6 +10,7 @@ import SwiftData
 import SDWebImageSwiftUI
 
 struct ResumeRowView: View {
+    @Environment(\.modelContext) private var modelContext
     @Environment(\.colorScheme) private var colorScheme
     @ObservedObject var viewModel: ResumeListViewModel
     let person: Person
@@ -17,9 +18,9 @@ struct ResumeRowView: View {
     var body: some View {
         NavigationLink {
             if let resume = viewModel.resumes.first(where: { $0.basics.name == person.name }) {
-                ResumeView(resume: resume)
+                ResumeView(resume: resume, resumeUrl: person.resumeUrl, modelContext: modelContext)
             } else if let jsonString = person.cachedJSON {
-                CachedResumeView(jsonString: jsonString)
+                CachedResumeView(jsonString: jsonString, resumeUrl: person.resumeUrl)
             } else {
                 Text("Resume not yet loaded")
             }

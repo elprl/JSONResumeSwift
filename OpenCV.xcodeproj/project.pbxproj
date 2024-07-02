@@ -10,6 +10,7 @@
 		E13829902C337588000DA139 /* ResumeRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E138298F2C337588000DA139 /* ResumeRowView.swift */; };
 		E13829952C343C22000DA139 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = E13829942C343C22000DA139 /* SDWebImageSwiftUI */; };
 		E13829972C347729000DA139 /* InputFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13829962C347729000DA139 /* InputFormView.swift */; };
+		E138299B2C34A186000DA139 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = E138299A2C34A184000DA139 /* Note.swift */; };
 		E1908B4E2C2F4F2A002C8F5F /* OpenCVApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1908B4D2C2F4F2A002C8F5F /* OpenCVApp.swift */; };
 		E1908B502C2F4F2A002C8F5F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1908B4F2C2F4F2A002C8F5F /* ContentView.swift */; };
 		E1908B522C2F4F2A002C8F5F /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1908B512C2F4F2A002C8F5F /* Item.swift */; };
@@ -18,7 +19,6 @@
 		E1908B612C2F4F2C002C8F5F /* OpenCVTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1908B602C2F4F2C002C8F5F /* OpenCVTests.swift */; };
 		E1908B6B2C2F4F2C002C8F5F /* OpenCVUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1908B6A2C2F4F2C002C8F5F /* OpenCVUITests.swift */; };
 		E1908B6D2C2F4F2C002C8F5F /* OpenCVUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1908B6C2C2F4F2C002C8F5F /* OpenCVUITestsLaunchTests.swift */; };
-		E1908B7A2C2F5E84002C8F5F /* ResumeContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1908B792C2F5E7E002C8F5F /* ResumeContainerView.swift */; };
 		E1908B7C2C2F5EFC002C8F5F /* ResumeModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1908B7B2C2F5EF9002C8F5F /* ResumeModels.swift */; };
 		E1AD86122C30B0AA008F38A3 /* MeshGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AD86112C30B099008F38A3 /* MeshGradientView.swift */; };
 		E1AD86142C30BBFA008F38A3 /* resume.json in Resources */ = {isa = PBXBuildFile; fileRef = E1AD86132C30BBE3008F38A3 /* resume.json */; };
@@ -65,6 +65,7 @@
 /* Begin PBXFileReference section */
 		E138298F2C337588000DA139 /* ResumeRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResumeRowView.swift; sourceTree = "<group>"; };
 		E13829962C347729000DA139 /* InputFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputFormView.swift; sourceTree = "<group>"; };
+		E138299A2C34A184000DA139 /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 		E1908B4A2C2F4F2A002C8F5F /* JSON CV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "JSON CV.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1908B4D2C2F4F2A002C8F5F /* OpenCVApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenCVApp.swift; sourceTree = "<group>"; };
 		E1908B4F2C2F4F2A002C8F5F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -76,7 +77,6 @@
 		E1908B662C2F4F2C002C8F5F /* OpenCVUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OpenCVUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1908B6A2C2F4F2C002C8F5F /* OpenCVUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenCVUITests.swift; sourceTree = "<group>"; };
 		E1908B6C2C2F4F2C002C8F5F /* OpenCVUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenCVUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		E1908B792C2F5E7E002C8F5F /* ResumeContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResumeContainerView.swift; sourceTree = "<group>"; };
 		E1908B7B2C2F5EF9002C8F5F /* ResumeModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResumeModels.swift; sourceTree = "<group>"; };
 		E1AD86112C30B099008F38A3 /* MeshGradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeshGradientView.swift; sourceTree = "<group>"; };
 		E1AD86132C30BBE3008F38A3 /* resume.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = resume.json; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.json; };
@@ -154,7 +154,6 @@
 			children = (
 				E1AD862F2C31BE41008F38A3 /* Utils */,
 				E1AD86192C319FF7008F38A3 /* Modules */,
-				E1908B792C2F5E7E002C8F5F /* ResumeContainerView.swift */,
 				E1F487232C2F658700031976 /* sampleResume.json */,
 				E1AD86132C30BBE3008F38A3 /* resume.json */,
 				E1F487212C2F61AF00031976 /* schema.json */,
@@ -231,6 +230,7 @@
 		E1AD861D2C31A026008F38A3 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				E138299A2C34A184000DA139 /* Note.swift */,
 				E1908B7B2C2F5EF9002C8F5F /* ResumeModels.swift */,
 			);
 			path = Model;
@@ -457,10 +457,10 @@
 				E1AD86182C30D2FB008F38A3 /* VolunteerView.swift in Sources */,
 				E1F487262C2F670900031976 /* ResumeViewModel.swift in Sources */,
 				E13829972C347729000DA139 /* InputFormView.swift in Sources */,
+				E138299B2C34A186000DA139 /* Note.swift in Sources */,
 				E1AD86202C31A385008F38A3 /* BasicsView.swift in Sources */,
 				E13829902C337588000DA139 /* ResumeRowView.swift in Sources */,
 				E1AD862C2C31BA62008F38A3 /* InterestsView.swift in Sources */,
-				E1908B7A2C2F5E84002C8F5F /* ResumeContainerView.swift in Sources */,
 				E1AD86162C30C264008F38A3 /* EducationView.swift in Sources */,
 				E1AD86222C31A67D008F38A3 /* ProjectsView.swift in Sources */,
 				E1AD86122C30B0AA008F38A3 /* MeshGradientView.swift in Sources */,
