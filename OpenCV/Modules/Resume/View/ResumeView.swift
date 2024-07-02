@@ -31,7 +31,7 @@ struct ResumeView: View {
                 references
                 projects
             }
-            .navigationTitle("Resume")
+            .navigationTitle(resume.basics.name)
             .navigationBarTitleDisplayMode(.inline)
             .padding(.horizontal)
         }

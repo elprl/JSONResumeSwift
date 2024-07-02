@@ -4,10 +4,9 @@
 //
 //  Created by Paul Leo on 30/06/2024.
 //
-
+import Foundation
 import Combine
 import SwiftData
-import SwiftUI
 
 @MainActor
 final class ResumeListViewModel: ObservableObject {
@@ -19,30 +18,32 @@ final class ResumeListViewModel: ObservableObject {
     
 //    @Published var people: [Person] = []
     @Published var resumes: Set<Resume> = Set<Resume>()
-    @Published var showingAlert = false
+    @Published var showingSheet = false
+    @Published var showingDeleteAlert = false
     @Published var url = "https://gist.githubusercontent.com/elprl/725d3337a3baedcfd95306e296587e8a/raw/32a1e309f1ab8fc0ab19c7695ad941cdd3c93a9d/resume.json"
-    @Published var errorMessage: String?
+    @Published var state: LoadingViewState<Resume> = .appeared
 }
 
 extension ResumeListViewModel {
     
-    func addItem() async throws {        
-        Task { @MainActor in            
+    func addItem(urlString: String) async throws {
+        state = .loading
+        Task { @MainActor in
             do {
-                if let (resume, jsonString) = try await ResumeLoader().loadResume(urlString: url) {
+                if let (resume, jsonString) = try await ResumeLoader().loadResume(urlString: urlString) {
                     resumes.insert(resume)
 
-                    let newPerson = Person(resumeUrl: url)
+                    let newPerson = Person(resumeUrl: urlString)
                     newPerson.name = resume.basics.name
                     newPerson.image = resume.basics.image
+                    newPerson.profession = resume.basics.label
                     newPerson.cachedJSON = jsonString
-                    withAnimation {
-                        modelContext.insert(newPerson)
-                        save()
-                    }
+                    modelContext.insert(newPerson)
+                    save()
+                    state = .loaded(resume)
                 }
             } catch {
-                errorMessage = "Cannot parse JSON resume"
+                state = .error("Cannot parse JSON resume. Check JSON has valid schema.\n\(error.localizedDescription)")
             }
         }
     }
@@ -60,5 +61,16 @@ extension ResumeListViewModel {
             // Handle error appropriately
             print("Failed to save context: \(error)")
         }
+    }
+    
+    var isValidUrl: Bool {
+        // Check if the URL starts with "https" and ends with ".json"
+        if url.hasPrefix("https://") && url.hasSuffix(".json") {
+            // Check if the URL is a valid URL
+            if let url = URL(string: url), url.scheme == "https" {
+                return true
+            }
+        }
+        return false
     }
 }

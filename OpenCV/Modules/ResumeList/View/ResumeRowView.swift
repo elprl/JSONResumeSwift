@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SwiftData
+import SDWebImageSwiftUI
 
 struct ResumeRowView: View {
     @Environment(\.colorScheme) private var colorScheme
@@ -24,14 +25,17 @@ struct ResumeRowView: View {
             }
         } label: {
             GroupBox {
-                HStack {
+                HStack(spacing: 14) {
                     if let imageUrl = person.image {
-                        AsyncImage(url: URL(string: imageUrl)) { image in
+                        WebImage(url: URL(string: imageUrl)) { image in
                             image.resizable()
                         } placeholder: {
-                            ProgressView()
+                            Rectangle().foregroundColor(.gray)
                         }
-                        .frame(width: 50, height: 50)
+                        .indicator(.activity) // Activity Indicator
+                        .transition(.fade(duration: 0.5)) // Fade Transition with duration
+                        .scaledToFit()
+                        .frame(width: 54, height: 54)
                         .clipShape(Circle())
                         .shadow(radius: 4)
                     } else {
@@ -44,7 +48,14 @@ struct ResumeRowView: View {
                                 .lineLimit(1)
                                 .foregroundStyle(.primary)
                                 .frame(maxWidth: .infinity, alignment: .leading)
-                            Text("Created: \(person.createdAt.formatted(.relative(presentation: .named, unitsStyle: .wide)))")
+                            if let profession = person.profession {
+                                Text(profession)
+                                    .font(.subheadline)
+                                    .lineLimit(1)
+                                    .foregroundStyle(.secondary)
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                            }
+                            Text("Added: \(person.createdAt.formatted(.relative(presentation: .named, unitsStyle: .wide)))")
                                 .font(.caption)
                                 .lineLimit(1)
                                 .foregroundStyle(.secondary)
@@ -56,12 +67,20 @@ struct ResumeRowView: View {
                     }
                     Spacer()
                     Button {
-                        Task { @MainActor in
-                            deleteItem(person)
-                        }
+                        viewModel.showingDeleteAlert = true
                     } label: {
                         Image(systemName: "trash")
                             .foregroundStyle(colorScheme == .dark ? .orange : .brown)
+                    }
+                    .alert("Are you sure?", isPresented: $viewModel.showingDeleteAlert) {
+                        Button("Delete", role: .destructive, action: {
+                            Task { @MainActor in
+                                viewModel.deleteItem(person)
+                            }
+                        })
+                        Button("Cancel", role: .cancel, action: {})
+                    } message: {
+                        Text("Delete \(person.name ?? "this person") (including your notes) permanently.")
                     }
                 }
             }
@@ -70,14 +89,6 @@ struct ResumeRowView: View {
             .padding(4)
             .shadow(radius: 4)
             .tint(.primary)
-        }
-    }
-    
-    func deleteItem(_ resume: Person) {
-        withAnimation {
-//            Task { @MainActor in
-                viewModel.deleteItem(resume)
-//            }
         }
     }
 }

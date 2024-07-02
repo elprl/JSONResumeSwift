@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SDWebImageSwiftUI
 
 struct BasicsView: View {
     @Environment(\.colorScheme) private var colorScheme
@@ -14,11 +15,14 @@ struct BasicsView: View {
     var body: some View {
         GroupBox {
             HStack(alignment: .center, spacing: 2) {
-                AsyncImage(url: URL(string: basics.image ?? "")) { image in
+                WebImage(url: URL(string: basics.image ?? "")) { image in
                     image.resizable()
                 } placeholder: {
-                    ProgressView()
+                    Rectangle().foregroundColor(.gray)
                 }
+                .indicator(.activity) // Activity Indicator
+                .transition(.fade(duration: 0.5)) // Fade Transition with duration
+                .scaledToFit()
                 .frame(width: 70, height: 70)
                 .clipShape(Circle())
                 .shadow(radius: 4)
@@ -36,6 +40,30 @@ struct BasicsView: View {
                 }
                 .padding(.leading)
                 Spacer()
+                VStack(alignment: .trailing, spacing: 8) {
+                    if let phone = basics.phone {
+                        Button {
+                            openLink(url: "tel://\(phone)")
+                        } label: {
+                            Image(systemName: "phone")
+                        }
+                    }
+                    if let email = basics.email {
+                        Button {
+                            openLink(url: "mailto:\(email)")
+                        } label: {
+                            Image(systemName: "mail")
+                        }
+                    }
+                    if let url = basics.url {
+                        Button {
+                            openLink(url: url)
+                        } label: {
+                            Image(systemName: "link")
+                        }
+                    }
+                }
+                .tint(colorScheme == .dark ? .orange : .brown)
             }
         }
         .backgroundStyle(.ultraThinMaterial)

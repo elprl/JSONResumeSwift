@@ -24,9 +24,9 @@ struct SkillsView: View {
                                     .font(.body)
                                     .foregroundStyle(.primary)
                                 Spacer()
-                                Text(element.level)
+                                Text(element.skillLevel)
                                     .font(.callout)
-                                    .foregroundStyle(.primary)
+                                    .foregroundStyle(colorScheme == .dark ? .orange : .brown)
                             }
                             ScrollView(.horizontal, showsIndicators: false) {
                                 LazyHStack {
@@ -34,13 +34,14 @@ struct SkillsView: View {
                                         VStack {
                                             Text(keyword)
                                                 .font(.caption)
-                                                .foregroundStyle(.black)
+                                                .foregroundStyle(colorScheme == .dark ? .black : .white)
                                                 .lineLimit(1)
                                                 .padding(.vertical, 2)
-                                                .padding(.horizontal, 6)
+                                                .padding(.horizontal, 8)
                                         }
-                                        .background(.yellow)
+                                        .background(colorScheme == .dark ? .orange : .brown)
                                         .clipShape(Capsule())
+                                        .shadow(radius: 1)
                                     }
                                     Spacer()
                                 }

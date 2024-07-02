@@ -6,6 +6,7 @@
 //
 import Foundation
 import Combine
+import SwiftUI
 
 final class ResumeViewModel: ObservableObject {
     @Published var resume: Resume?

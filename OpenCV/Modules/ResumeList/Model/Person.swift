@@ -10,14 +10,22 @@ import SwiftData
 
 @Model
 final class Person {
-    var name: String?
+    @Attribute(.unique) var resumeUrl: String
     var createdAt: Date
-    var resumeUrl: String
+    var name: String?
+    var profession: String?
+    var notes: String?
     var image: String?
     var cachedJSON: String?
     
     init(resumeUrl: String) {
         self.createdAt = Date()
         self.resumeUrl = resumeUrl
+    }
+}
+
+extension Person: Identifiable {
+    var id: String {
+        return resumeUrl
     }
 }

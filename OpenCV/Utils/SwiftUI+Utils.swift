@@ -15,3 +15,11 @@ extension View {
         }
     }
 }
+
+enum LoadingViewState<Result> {
+    case appeared
+    case loading
+    case loaded(Result)
+    case empty(String)
+    case error(String)
+}

@@ -29,12 +29,12 @@ struct InterestsView: View {
                                             VStack {
                                                 Text(keyword)
                                                     .font(.caption)
-                                                    .foregroundStyle(.black)
+                                                    .foregroundStyle(colorScheme == .dark ? .black : .white)
                                                     .lineLimit(1)
                                                     .padding(.vertical, 2)
                                                     .padding(.horizontal, 6)
                                             }
-                                            .background(.yellow)
+                                            .background(colorScheme == .dark ? .orange : .brown)
                                             .clipShape(Capsule())
                                         }
                                         Spacer()

@@ -27,52 +27,44 @@ struct ResumeListView: View {
                     LazyVStack {
                         ForEach(people) { person in
                             ResumeRowView(viewModel: viewModel, person: person)
-                                .transition(.opacity)
+                                .transition(.move(edge: .leading))
                         }
                     }
+                    .animation(.easeInOut, value: people)
                 }
                 .overlay {
                     if people.isEmpty {
                         ContentUnavailableView(
                             "No resumes found",
                             systemImage: "person.badge.plus",
-                            description: Text("Tap + to add a new resume")
+                            description: Text("Tap to add a new resume")
                         )
+                        .contentShape(Rectangle())
+                        .onTapGesture {
+                            self.viewModel.state = .appeared
+                            self.viewModel.showingSheet = true
+                        }
                     }
                 }
-                .navigationTitle("Resumes")
+                .navigationTitle("CVs")
                 .navigationBarTitleDisplayMode(.inline)
                 .padding()
                 .toolbar {
                     ToolbarItem {
                         Button(action: {
-                            self.viewModel.showingAlert = true
+                            self.viewModel.state = .appeared
+                            self.viewModel.showingSheet = true
                         }) {
                             Label("Add Item", systemImage: "person.badge.plus")
                         }
-                        .tint(colorScheme == .dark ? .orange : .brown)
-                        .alert("Enter your name", isPresented: $viewModel.showingAlert) {
-                            TextField("Enter url to JSON resume", text: $viewModel.url)
-                            Button("OK", action: addItem)
-                            Button("Cancel", role: .cancel, action: {})
-                        } message: {
-                            Text("Xcode will print whatever you type.")
+                        .sheet(isPresented: $viewModel.showingSheet) { InputFormView(viewModel: viewModel)
                         }
                     }
                 }
             }
         }
+        .tint(colorScheme == .dark ? .orange : .brown)
         .environment(\.modelContext, viewModel.modelContext)
-    }
-    
-    func addItem() {
-        Task { @MainActor in
-            do {
-                try await viewModel.addItem()
-            } catch {
-                print("error")
-            }
-        }
     }
 }
 

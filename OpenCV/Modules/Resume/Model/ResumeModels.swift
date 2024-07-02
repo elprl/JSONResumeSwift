@@ -5,6 +5,7 @@
 //  Created by Paul Leo on 28/06/2024.
 //
 import Foundation
+import SwiftUI
 
 /// Represents a resume with various sections such as basics, work, education, etc.
 struct Resume: Codable {
@@ -247,6 +248,17 @@ struct Skill: Codable {
 extension Skill: Identifiable {
     var id: String {
         return name
+    }
+    
+    var skillLevel: LocalizedStringKey {
+        switch level.lowercased() {
+        case "beginner": return "\(Image(systemName: "star"))"
+        case "intermediate": return "\(Image(systemName: "star"))\(Image(systemName: "star"))"
+        case "advanced": return "\(Image(systemName: "star"))\(Image(systemName: "star"))\(Image(systemName: "star"))"
+        case "expert", "master": return "\(Image(systemName: "star"))\(Image(systemName: "star"))\(Image(systemName: "star"))\(Image(systemName: "star"))"
+        default:
+            return "\(level)"
+        }
     }
 }
 
