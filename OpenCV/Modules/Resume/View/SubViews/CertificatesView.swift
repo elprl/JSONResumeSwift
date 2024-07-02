@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct CertificatesView: View {
+    @Environment(\.colorScheme) private var colorScheme
     let certificates: [Certificate]
     
     var body: some View {
@@ -48,14 +49,19 @@ struct CertificatesView: View {
                         }
                         .frame(maxWidth: .infinity, alignment: .leading)
                     }
+                    .backgroundStyle(.ultraThinMaterial)
+                    .clipShape(RoundedRectangle(cornerRadius: 8))
+                    .padding(4)
+                    .shadow(radius: 4)
                 }
             } label: {
                 Label("Certifications", systemImage: "rosette")
                     .modifier(Heading())
             }  
-            .tint(.orange)
+            .tint(colorScheme == .dark ? .orange : .brown)
         }
         .backgroundStyle(.ultraThinMaterial)
+        .clipShape(RoundedRectangle(cornerRadius: 8))
         .padding(.horizontal, 4)
         .shadow(radius: 4)
     }

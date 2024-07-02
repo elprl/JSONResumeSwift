@@ -25,8 +25,16 @@ struct OpenCVApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ResumeListView()
+            ContainerView()
         }
         .modelContainer(sharedModelContainer)
+    }
+}
+
+struct ContainerView: View {
+    @Environment(\.modelContext) private var modelContext
+    
+    var body: some View {
+        ResumeListView(modelContext: modelContext)
     }
 }

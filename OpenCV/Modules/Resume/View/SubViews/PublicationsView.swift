@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct PublicationsView: View {
+    @Environment(\.colorScheme) private var colorScheme
     let publications: [Publication]
     
     var body: some View {
@@ -52,14 +53,19 @@ struct PublicationsView: View {
                         }
                         .frame(maxWidth: .infinity, alignment: .leading)
                     }
+                    .backgroundStyle(.ultraThinMaterial)
+                    .clipShape(RoundedRectangle(cornerRadius: 8))
+                    .padding(4)
+                    .shadow(radius: 4)
                 }
             } label: {
                 Label("Publications", systemImage: "text.book.closed")
                     .modifier(Heading())
             }  
-            .tint(.orange)
+            .tint(colorScheme == .dark ? .orange : .brown)
         }
         .backgroundStyle(.ultraThinMaterial)
+        .clipShape(RoundedRectangle(cornerRadius: 8))
         .padding(.horizontal, 4)
         .shadow(radius: 4)
     }

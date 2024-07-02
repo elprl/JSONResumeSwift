@@ -14,7 +14,8 @@ struct ResumeView: View {
     var body: some View {
         ZStack {
             MeshGradientView()
-                .ignoresSafeArea()
+                .opacity(0.3)
+               .ignoresSafeArea()
 
             ScrollView(showsIndicators: false) {
                 basics
@@ -136,7 +137,6 @@ struct Heading: ViewModifier {
             .font(.headline)
             .fontWeight(.bold)
             .foregroundStyle(.primary)
-            .tint(.black.opacity(0.7))
             .frame(maxWidth: .infinity, alignment: .leading)
     }
 }

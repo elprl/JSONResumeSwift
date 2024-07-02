@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ProjectsView: View {
+    @Environment(\.colorScheme) private var colorScheme
     let projects: [Project]
     
     var body: some View {
@@ -60,8 +61,13 @@ struct ProjectsView: View {
                                         .frame(maxWidth: .infinity, alignment: .leading)
                                 }
                                 .tint(.gray)
+                                .padding(.top, -8)
                             }
                         }
+                        .backgroundStyle(.ultraThinMaterial)
+                        .clipShape(RoundedRectangle(cornerRadius: 8))
+                        .padding(4)
+                        .shadow(radius: 4)
                     }
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(.leading, 40)
@@ -78,7 +84,7 @@ struct ProjectsView: View {
                                     .frame(width: 1)
                                     .opacity(index == (projects.count - 1) ? 0 : 1)
                             }
-                            .foregroundStyle(.orange)
+                            .foregroundStyle(colorScheme == .dark ? .orange : .brown)
                             Spacer()
                         }
                         .padding(.leading, 10)
@@ -89,9 +95,10 @@ struct ProjectsView: View {
                 Label("Projects", systemImage: "wrench.and.screwdriver")
                     .modifier(Heading())
             }
-            .tint(.orange)
+            .tint(colorScheme == .dark ? .orange : .brown)
         }
         .backgroundStyle(.ultraThinMaterial)
+        .clipShape(RoundedRectangle(cornerRadius: 8))
         .padding(.horizontal, 4)
         .shadow(radius: 4)
     }

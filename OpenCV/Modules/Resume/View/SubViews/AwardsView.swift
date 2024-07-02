@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct AwardsView: View {
+    @Environment(\.colorScheme) private var colorScheme
     let awards: [Award]
     
     var body: some View {
@@ -34,14 +35,19 @@ struct AwardsView: View {
                         }
                         .frame(maxWidth: .infinity, alignment: .leading)
                     }
+                    .backgroundStyle(.ultraThinMaterial)
+                    .clipShape(RoundedRectangle(cornerRadius: 8))
+                    .padding(4)
+                    .shadow(radius: 4)
                 }
             } label: {
                 Label("Awards", systemImage: "trophy")
                     .modifier(Heading())
             } 
-            .tint(.orange)
+            .tint(colorScheme == .dark ? .orange : .brown)
         }
         .backgroundStyle(.ultraThinMaterial)
+        .clipShape(RoundedRectangle(cornerRadius: 8))
         .padding(.horizontal, 4)
         .shadow(radius: 4)
     }

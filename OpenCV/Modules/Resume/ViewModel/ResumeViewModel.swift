@@ -36,7 +36,7 @@ extension ResumeLoaderProtocol {
         return nil
     }
     
-    func loadResume(urlString: String) async -> (Resume, String)? {
+    func loadResume(urlString: String) async throws -> (Resume, String)? {
         guard let url = URL(string: urlString) else { return nil }
         let urlSession = URLSession.shared
         
@@ -50,8 +50,8 @@ extension ResumeLoaderProtocol {
             // Error handling in case the data couldn't be loaded
             // For now, only display the error on the console
             debugPrint("Error loading \(url): \(String(describing: error))")
+            throw error
         }
-        return nil
     }
     
     func loadJSONFromFile(fileName: String = "sampleResume") async -> String? {

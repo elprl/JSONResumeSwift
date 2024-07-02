@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct EducationView: View {
-    let educations: [Education]
+    @Environment(\.colorScheme) private var colorScheme
+   let educations: [Education]
     
     var body: some View {
         GroupBox {
@@ -63,18 +64,24 @@ struct EducationView: View {
                                         .frame(maxWidth: .infinity, alignment: .leading)
                                 }
                                 .tint(.gray)
+                                .padding(.top, -4)
                             }
                         }
                         .frame(maxWidth: .infinity, alignment: .leading)
                     }
+                    .backgroundStyle(.ultraThinMaterial)
+                    .clipShape(RoundedRectangle(cornerRadius: 8))
+                    .padding(4)
+                    .shadow(radius: 4)
                 }
             } label: {
                 Label("Education", systemImage: "graduationcap")
                     .modifier(Heading())
             }
-            .tint(.orange)
+            .tint(colorScheme == .dark ? .orange : .brown)
         }
         .backgroundStyle(.ultraThinMaterial)
+        .clipShape(RoundedRectangle(cornerRadius: 8))
         .padding(.horizontal, 4)
         .shadow(radius: 4)
     }

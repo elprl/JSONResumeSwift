@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ReferencesView: View {
+    @Environment(\.colorScheme) private var colorScheme
     let references: [Reference]
     
     var body: some View {
@@ -29,14 +30,19 @@ struct ReferencesView: View {
                         }
                         .frame(maxWidth: .infinity, alignment: .leading)
                     }
+                    .backgroundStyle(.ultraThinMaterial)
+                    .clipShape(RoundedRectangle(cornerRadius: 8))
+                    .padding(4)
+                    .shadow(radius: 4)
                 }
             } label: {
                 Label("References", systemImage: "person.badge.shield.checkmark")
                     .modifier(Heading())
             }
-            .tint(.orange)
+            .tint(colorScheme == .dark ? .orange : .brown)
         }
         .backgroundStyle(.ultraThinMaterial)
+        .clipShape(RoundedRectangle(cornerRadius: 8))
         .padding(.horizontal, 4)
         .shadow(radius: 4)
     }

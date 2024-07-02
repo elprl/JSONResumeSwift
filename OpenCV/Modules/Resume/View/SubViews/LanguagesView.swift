@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct LanguagesView: View {
+    @Environment(\.colorScheme) private var colorScheme
     let languages: [Language]
     
     var body: some View {
@@ -27,14 +28,19 @@ struct LanguagesView: View {
                                 .foregroundStyle(.secondary)
                         }
                     }
+                    .backgroundStyle(.ultraThinMaterial)
+                    .clipShape(RoundedRectangle(cornerRadius: 8))
+                    .padding(4)
+                    .shadow(radius: 4)
                 }
             } label: {
                 Label("Languages", systemImage: "speaker.wave.2.bubble")
                     .modifier(Heading())
             }
-            .tint(.orange)
+            .tint(colorScheme == .dark ? .orange : .brown)
         }
         .backgroundStyle(.ultraThinMaterial)
+        .clipShape(RoundedRectangle(cornerRadius: 8))
         .padding(.horizontal, 4)
         .shadow(radius: 4)
     }

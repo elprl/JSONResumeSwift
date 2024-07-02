@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct WorkView: View {
+    @Environment(\.colorScheme) private var colorScheme
     let works: [Work]
     
     var body: some View {
@@ -23,6 +24,10 @@ struct WorkView: View {
                             dates(element: element)
                             highlights(element: element)
                         }
+                        .backgroundStyle(.ultraThinMaterial)
+                        .clipShape(RoundedRectangle(cornerRadius: 8))
+                        .padding(4)
+                        .shadow(radius: 4)
                     }
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(.leading, 40)
@@ -39,7 +44,7 @@ struct WorkView: View {
                                     .frame(width: 1)
                                     .opacity(index == (works.count - 1) ? 0 : 1)
                             }
-                            .foregroundStyle(.orange)
+                            .foregroundStyle(colorScheme == .dark ? .orange : .brown)
                             Spacer()
                         }
                         .padding(.leading, 10)
@@ -50,9 +55,10 @@ struct WorkView: View {
                 Label("Work Experience", systemImage: "building.2")
                     .modifier(Heading())
             }
-            .tint(.orange)
+            .tint(colorScheme == .dark ? .orange : .brown)
         }
         .backgroundStyle(.ultraThinMaterial)
+        .clipShape(RoundedRectangle(cornerRadius: 8))
         .padding(.horizontal, 4)
         .shadow(radius: 4)
     }
@@ -69,7 +75,7 @@ struct WorkView: View {
     private func name(element: Work) -> some View {
         HStack {
             Text(element.name)
-                .font(.headline)
+                .font(.subheadline)
                 .lineLimit(1)
                 .foregroundStyle(.primary)
                 .frame(maxWidth: .infinity, alignment: .leading)
@@ -112,6 +118,7 @@ struct WorkView: View {
                     .frame(maxWidth: .infinity, alignment: .leading)
             }
             .tint(.gray)
+            .padding(.top, -8)
         }
     }
     

@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct VolunteerView: View {
+    @Environment(\.colorScheme) private var colorScheme
     let vols: [Volunteer]
     
     var body: some View {
@@ -55,6 +56,7 @@ struct VolunteerView: View {
                                     .frame(maxWidth: .infinity, alignment: .leading)
                             }
                             .tint(.secondary)
+                            .padding(.top, -4)
                         }
                     }
                     .frame(maxWidth: .infinity)
@@ -72,7 +74,7 @@ struct VolunteerView: View {
                                     .frame(width: 1)
                                     .opacity(index == (vols.count - 1) ? 0 : 1)
                             }
-                            .foregroundStyle(.orange)
+                            .foregroundStyle(colorScheme == .dark ? .orange : .brown)
                             Spacer()
                         }
                         .padding(.leading, 10)
@@ -83,9 +85,10 @@ struct VolunteerView: View {
                 Label("Volunteer Experience", systemImage: "figure.2.arms.open")
                     .modifier(Heading())
             } 
-            .tint(.orange)
+            .tint(colorScheme == .dark ? .orange : .brown)
         }
         .backgroundStyle(.ultraThinMaterial)
+        .clipShape(RoundedRectangle(cornerRadius: 8))
         .padding(.horizontal, 4)
         .shadow(radius: 4)
     }

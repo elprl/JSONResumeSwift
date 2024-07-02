@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct InterestsView: View {
+    @Environment(\.colorScheme) private var colorScheme
     let interests: [Interest]
     
     var body: some View {
@@ -45,14 +46,19 @@ struct InterestsView: View {
                             }
                         }
                     }
+                    .backgroundStyle(.ultraThinMaterial)
+                    .clipShape(RoundedRectangle(cornerRadius: 8))
+                    .padding(4)
+                    .shadow(radius: 4)
                 }
             } label: {
                 Label("Interests", systemImage: "heart")
                     .modifier(Heading())
             }  
-            .tint(.orange)
+            .tint(colorScheme == .dark ? .orange : .brown)
         }
         .backgroundStyle(.ultraThinMaterial)
+        .clipShape(RoundedRectangle(cornerRadius: 8))
         .padding(.horizontal, 4)
         .shadow(radius: 4)
     }

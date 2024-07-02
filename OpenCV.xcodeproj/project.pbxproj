@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E13829902C337588000DA139 /* ResumeRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E138298F2C337588000DA139 /* ResumeRowView.swift */; };
 		E1908B4E2C2F4F2A002C8F5F /* OpenCVApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1908B4D2C2F4F2A002C8F5F /* OpenCVApp.swift */; };
 		E1908B502C2F4F2A002C8F5F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1908B4F2C2F4F2A002C8F5F /* ContentView.swift */; };
 		E1908B522C2F4F2A002C8F5F /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1908B512C2F4F2A002C8F5F /* Item.swift */; };
@@ -60,6 +61,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E138298F2C337588000DA139 /* ResumeRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResumeRowView.swift; sourceTree = "<group>"; };
 		E1908B4A2C2F4F2A002C8F5F /* OpenCV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OpenCV.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1908B4D2C2F4F2A002C8F5F /* OpenCVApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenCVApp.swift; sourceTree = "<group>"; };
 		E1908B4F2C2F4F2A002C8F5F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -289,6 +291,7 @@
 			isa = PBXGroup;
 			children = (
 				E1AD86362C31D51F008F38A3 /* ResumeListView.swift */,
+				E138298F2C337588000DA139 /* ResumeRowView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -443,6 +446,7 @@
 				E1AD86182C30D2FB008F38A3 /* VolunteerView.swift in Sources */,
 				E1F487262C2F670900031976 /* ResumeViewModel.swift in Sources */,
 				E1AD86202C31A385008F38A3 /* BasicsView.swift in Sources */,
+				E13829902C337588000DA139 /* ResumeRowView.swift in Sources */,
 				E1AD862C2C31BA62008F38A3 /* InterestsView.swift in Sources */,
 				E1908B7A2C2F5E84002C8F5F /* ResumeContainerView.swift in Sources */,
 				E1AD86162C30C264008F38A3 /* EducationView.swift in Sources */,

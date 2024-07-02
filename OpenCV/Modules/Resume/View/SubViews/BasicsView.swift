@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct BasicsView: View {
+    @Environment(\.colorScheme) private var colorScheme
     let basics: Basics
     
     var body: some View {
@@ -38,6 +39,7 @@ struct BasicsView: View {
             }
         }
         .backgroundStyle(.ultraThinMaterial)
+        .clipShape(RoundedRectangle(cornerRadius: 8))
         .padding(.horizontal, 4)
         .shadow(radius: 4)
         .padding(.top)
@@ -54,14 +56,19 @@ struct BasicsView: View {
                         .lineSpacing(1.5)
                         .frame(maxWidth: .infinity, alignment: .leading)
                 }
+                .backgroundStyle(.ultraThinMaterial)
+                .clipShape(RoundedRectangle(cornerRadius: 8))
+                .padding(4)
+                .shadow(radius: 4)
             } label: {
                 Label("Summary", systemImage: "person")
                     .modifier(Heading())
             }
-            .tint(.orange)
+            .tint(colorScheme == .dark ? .orange : .brown)
         }
         .padding(.top)
         .backgroundStyle(.ultraThinMaterial)
+        .clipShape(RoundedRectangle(cornerRadius: 8))
         .padding(.horizontal, 4)
         .shadow(radius: 4)
     }

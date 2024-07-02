@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct SkillsView: View {
+    @Environment(\.colorScheme) private var colorScheme
     let skills: [Skill]
     
     var body: some View {
@@ -17,46 +18,51 @@ struct SkillsView: View {
 
                 ForEach(skills) { element in
                     GroupBox {
-                        HStack(alignment: .center) {
-                            VStack(alignment: .leading) {
+                        VStack(alignment: .leading) {
+                            HStack(alignment: .center) {
                                 Text(element.name)
                                     .font(.body)
                                     .foregroundStyle(.primary)
-                                ScrollView(.horizontal, showsIndicators: false) {
-                                    LazyHStack {
-                                        ForEach(element.keywords ?? [], id: \.self) { keyword in
-                                            VStack {
-                                                Text(keyword)
-                                                    .font(.caption)
-                                                    .foregroundStyle(.black)
-                                                    .lineLimit(1)
-                                                    .padding(.vertical, 2)
-                                                    .padding(.horizontal, 6)
-                                            }
-                                            .background(.yellow)
-                                            .clipShape(Capsule())
-                                        }
-                                        Spacer()
-                                    }
-                                    .frame(height: 20)
-                                    .scrollTargetLayout()
-                                }
-                                .scrollTargetBehavior(.paging)
+                                Spacer()
+                                Text(element.level)
+                                    .font(.callout)
+                                    .foregroundStyle(.primary)
                             }
-                            Spacer()
-                            Text(element.level)
-                                .font(.callout)
-                                .foregroundStyle(.primary)
+                            ScrollView(.horizontal, showsIndicators: false) {
+                                LazyHStack {
+                                    ForEach(element.keywords ?? [], id: \.self) { keyword in
+                                        VStack {
+                                            Text(keyword)
+                                                .font(.caption)
+                                                .foregroundStyle(.black)
+                                                .lineLimit(1)
+                                                .padding(.vertical, 2)
+                                                .padding(.horizontal, 6)
+                                        }
+                                        .background(.yellow)
+                                        .clipShape(Capsule())
+                                    }
+                                    Spacer()
+                                }
+                                .frame(height: 20)
+                                .scrollTargetLayout()
+                            }
+                            .scrollTargetBehavior(.paging)                            
                         }
                     }
+                    .backgroundStyle(.ultraThinMaterial)
+                    .clipShape(RoundedRectangle(cornerRadius: 8))
+                    .padding(4)
+                    .shadow(radius: 4)
                 }
             } label: {
                 Label("Skills", systemImage: "star")
                     .modifier(Heading())
             } 
-            .tint(.orange)
+            .tint(colorScheme == .dark ? .orange : .brown)
         }
         .backgroundStyle(.ultraThinMaterial)
+        .clipShape(RoundedRectangle(cornerRadius: 8))
         .padding(.horizontal, 4)
         .shadow(radius: 4)
     }
