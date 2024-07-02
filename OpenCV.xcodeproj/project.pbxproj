@@ -151,7 +151,6 @@
 				E1AD862F2C31BE41008F38A3 /* Utils */,
 				E1AD86192C319FF7008F38A3 /* Modules */,
 				E1908B792C2F5E7E002C8F5F /* ResumeContainerView.swift */,
-				E1AD86112C30B099008F38A3 /* MeshGradientView.swift */,
 				E1F487232C2F658700031976 /* sampleResume.json */,
 				E1AD86132C30BBE3008F38A3 /* resume.json */,
 				E1F487212C2F61AF00031976 /* schema.json */,
@@ -236,6 +235,7 @@
 		E1AD861E2C31A03B008F38A3 /* SubViews */ = {
 			isa = PBXGroup;
 			children = (
+				E1AD86112C30B099008F38A3 /* MeshGradientView.swift */,
 				E1AD861F2C31A380008F38A3 /* BasicsView.swift */,
 				E1F4872B2C2F96A800031976 /* WorkView.swift */,
 				E1AD86212C31A676008F38A3 /* ProjectsView.swift */,

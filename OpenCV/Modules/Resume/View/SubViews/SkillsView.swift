@@ -47,7 +47,7 @@ struct SkillsView: View {
                                 .frame(height: 20)
                                 .scrollTargetLayout()
                             }
-                            .scrollTargetBehavior(.paging)                            
+                            .scrollTargetBehavior(.paging)
                         }
                     }
                     .backgroundStyle(.ultraThinMaterial)

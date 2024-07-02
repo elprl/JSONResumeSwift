@@ -15,9 +15,9 @@ struct MeshGradientView: View {
                 .init(0, 0.5), .init(0.5, 0.5), .init(1, 0.5),
                 .init(0, 1), .init(0.5, 1), .init(1, 1)
             ], colors: [
-                .red, .purple, .indigo,
-                .orange, .white, .blue,
-                .yellow, .orange, .mint
+                .logoRed, .logoGreen, .indigo,
+                .logoOrange, .logoGreen, .logoBlue,
+                .yellow, .logoOrange, .mint
             ], background: .black.opacity(0.7))
             .ignoresSafeArea()
         }
