@@ -16,7 +16,7 @@ struct SettingsView: View {
         NavigationStack {
             List {
                 appPreferences
-                version
+                miscellaneous
             }
             .listStyle(.insetGrouped)
             .scrollContentBackground(.hidden)
@@ -38,8 +38,8 @@ struct SettingsView: View {
     }
     
     @ViewBuilder
-    var appPreferences: some View {
-        Section(header: SectionHeaderBlock(title: "App Preferences", description: "App wide settings")) {
+    private var appPreferences: some View {
+        Section(header: SectionHeaderBlock(title: "App Preferences", description: "")) {
             Picker(selection: $darkLightAutoMode, label: Text("Visual Mode").font(.headline)) {
                 Text("Automatic").font(.callout).tag(UIUserInterfaceStyle.unspecified)
                 Text("Dark").font(.callout).tag(UIUserInterfaceStyle.dark)
@@ -50,28 +50,36 @@ struct SettingsView: View {
     }
     
     @ViewBuilder
-    var version: some View {
-        Section {
-//            NavigationLink(value: NavigationItem.releaseNotes) {
-                HStack {
-                    Text("Version")
-                        .font(.headline)
-                        .lineLimit(1)
-                        .foregroundStyle(.primary)
-                    Spacer()
-                    Text(versionString)
-                        .font(.callout)
-                        .lineLimit(1)
-                        .foregroundStyle(.secondary)
+    private var miscellaneous: some View {
+        Section(header: SectionHeaderBlock(title: "Miscellaneous", description: "")) {
+            NavigationLink("Licenses") {
+                List {
+                    Text("JSON Resume\nhttps://github.com/jsonresume")
                 }
-//            }
+            }
+            version
         }
     }
     
-    var versionString: String {
+    @ViewBuilder
+    private var version: some View {
+        HStack {
+            Text("Version")
+                .font(.headline)
+                .lineLimit(1)
+                .foregroundStyle(.primary)
+            Spacer()
+            Text(versionString)
+                .font(.callout)
+                .lineLimit(1)
+                .foregroundStyle(.secondary)
+        }
+    }
+    
+    private var versionString: String {
         if let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String,
            let build = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String {
-            return "Preview v\(version) (\(build))"
+            return "v\(version) (\(build))"
         }
         return "unknown"
     }
