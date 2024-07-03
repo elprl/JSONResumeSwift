@@ -20,6 +20,7 @@ final class ResumeListViewModel: ObservableObject {
     @Published var resumes: Set<Resume> = Set<Resume>()
     @Published var showingSheet = false
     @Published var showingDeleteAlert = false
+    @Published var showingSettingsSheet = false
     @Published var url = "https://gist.githubusercontent.com/elprl/725d3337a3baedcfd95306e296587e8a/raw/32a1e309f1ab8fc0ab19c7695ad941cdd3c93a9d/resume.json"
     @Published var state: LoadingViewState<Resume> = .appeared
 }

@@ -23,3 +23,13 @@ enum LoadingViewState<Result> {
     case empty(String)
     case error(String)
 }
+
+struct Heading: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .font(.headline)
+            .fontWeight(.bold)
+            .foregroundStyle(.primary)
+            .frame(maxWidth: .infinity, alignment: .leading)
+    }
+}

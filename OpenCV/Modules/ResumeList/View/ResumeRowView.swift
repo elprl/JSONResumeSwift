@@ -14,16 +14,20 @@ struct ResumeRowView: View {
     @Environment(\.colorScheme) private var colorScheme
     @ObservedObject var viewModel: ResumeListViewModel
     let person: Person
+    let namespace: Namespace.ID
     
     var body: some View {
         NavigationLink {
-            if let resume = viewModel.resumes.first(where: { $0.basics.name == person.name }) {
-                ResumeView(resume: resume, resumeUrl: person.resumeUrl, modelContext: modelContext)
-            } else if let jsonString = person.cachedJSON {
-                CachedResumeView(jsonString: jsonString, resumeUrl: person.resumeUrl)
-            } else {
-                Text("Resume not yet loaded")
+            Group {
+                if let resume = viewModel.resumes.first(where: { $0.basics.name == person.name }) {
+                    ResumeView(resume: resume, resumeUrl: person.resumeUrl, modelContext: modelContext)
+                } else if let jsonString = person.cachedJSON {
+                    CachedResumeView(jsonString: jsonString, resumeUrl: person.resumeUrl)
+                } else {
+                    Text("Resume not yet loaded")
+                }
             }
+            .navigationTransition(.zoom(sourceID: person.id, in: namespace))
         } label: {
             GroupBox {
                 HStack(spacing: 14) {
@@ -95,9 +99,10 @@ struct ResumeRowView: View {
 }
 
 #Preview {
+    @Previewable @Namespace() var namespace
     let config = ModelConfiguration(isStoredInMemoryOnly: true)
     let container = try! ModelContainer(for: Person.self, configurations: config)
     // Create a mock ViewModel
     let viewModel = ResumeListViewModel(modelContext: container.mainContext)
-    ResumeRowView(viewModel: viewModel, person: Person(resumeUrl: ""))
+    ResumeRowView(viewModel: viewModel, person: Person(resumeUrl: ""), namespace: namespace)
 }

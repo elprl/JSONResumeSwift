@@ -33,8 +33,11 @@ struct OpenCVApp: App {
 
 struct ContainerView: View {
     @Environment(\.modelContext) private var modelContext
+    @AppStorage("darkLightAutoMode") var darkLightAutoMode: UIUserInterfaceStyle = .unspecified
+
     
     var body: some View {
         ResumeListView(modelContext: modelContext)
+            .preferredColorScheme(ColorScheme(darkLightAutoMode)) // tint on status bar
     }
 }

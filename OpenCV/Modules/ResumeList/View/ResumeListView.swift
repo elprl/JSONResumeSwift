@@ -12,6 +12,7 @@ struct ResumeListView: View {
     @Query private var people: [Person]
     @StateObject private var viewModel: ResumeListViewModel
     @Environment(\.colorScheme) private var colorScheme
+    @Namespace() var namespace
 
     init(modelContext: ModelContext) {
         _viewModel = StateObject(wrappedValue: ResumeListViewModel(modelContext: modelContext))
@@ -26,8 +27,9 @@ struct ResumeListView: View {
                 ScrollView {
                     LazyVStack {
                         ForEach(people) { person in
-                            ResumeRowView(viewModel: viewModel, person: person)
+                            ResumeRowView(viewModel: viewModel, person: person, namespace: namespace)
                                 .transition(.move(edge: .leading))
+                                .matchedTransitionSource(id: person.id, in: namespace)
                         }
                     }
                     .animation(.easeInOut, value: people)
@@ -50,7 +52,7 @@ struct ResumeListView: View {
                 .navigationBarTitleDisplayMode(.inline)
                 .padding()
                 .toolbar {
-                    ToolbarItem {
+                    ToolbarItemGroup(placement: .topBarTrailing) {
                         Button(action: {
                             self.viewModel.state = .appeared
                             self.viewModel.showingSheet = true
@@ -60,11 +62,21 @@ struct ResumeListView: View {
                         .sheet(isPresented: $viewModel.showingSheet) { InputFormView(viewModel: viewModel)
                         }
                     }
+                    
+                    ToolbarItemGroup(placement: .topBarLeading) {
+                        Button(action: {
+                            self.viewModel.showingSettingsSheet = true
+                        }) {
+                            Label("Settings", systemImage: "gearshape")
+                        }
+                        .sheet(isPresented: $viewModel.showingSettingsSheet) {
+                            SettingsView()
+                        }
+                    }
                 }
             }
         }
         .tint(colorScheme == .dark ? .orange : .brown)
-//        .environment(\.modelContext, viewModel.modelContext)
     }
 }
 

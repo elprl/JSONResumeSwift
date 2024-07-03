@@ -150,16 +150,6 @@ struct ResumeView: View {
     }
 }
 
-struct Heading: ViewModifier {
-    func body(content: Content) -> some View {
-        content
-            .font(.headline)
-            .fontWeight(.bold)
-            .foregroundStyle(.primary)
-            .frame(maxWidth: .infinity, alignment: .leading)
-    }
-}
-
 struct AsyncTestView: View {
     @State var resume: Resume?
 
