@@ -42,9 +42,11 @@ extension ResumeListViewModel {
                     modelContext.insert(newPerson)
                     save()
                     state = .loaded(resume)
+                } else {
+                    state = .error("Cannot read resume. Check JSON has valid schema.")
                 }
             } catch {
-                state = .error("Cannot parse JSON resume. Check JSON has valid schema.\n\(error.localizedDescription)")
+                state = .error("Cannot read resume. Check JSON has valid schema.\n\(error.localizedDescription)")
             }
         }
     }
@@ -53,6 +55,11 @@ extension ResumeListViewModel {
     func deleteItem(_ item: Person) {
         modelContext.delete(item)
         save()
+        deleteNotes(for: item)
+    }
+    
+    private func deleteNotes(for person: Person) {
+        UserDefaults.standard.removeObject(forKey: person.resumeUrl)
     }
     
     private func save() {

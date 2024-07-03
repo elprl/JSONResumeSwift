@@ -22,7 +22,7 @@ struct CachedResumeView: View {
             }
         }
         .task {
-            resume = await ResumeLoaderService().decodeSample(jsonString: jsonString)
+            resume = try? await ResumeLoaderService().decodeSample(jsonString: jsonString)
         }
     }
 }

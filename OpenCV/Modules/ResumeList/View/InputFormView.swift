@@ -14,64 +14,108 @@ struct InputFormView: View {
     @ObservedObject var viewModel: ResumeListViewModel
 
     var body: some View {
-        VStack {
-            GroupBox {
-                Text("JSON CV")
-                    .lineLimit(1)
-                    .font(.headline)
-                    .foregroundStyle(.primary)
-                    .padding(.vertical)
-                Text("JSON CV is based on the Open Source JSON Resume project: \nhttps://github.com/jsonresume\n\nThe CV URL entered below must conform to the JSON schema:\nhttps://jsonresume.org/schema")
-                    .lineLimit(nil)
-                    .multilineTextAlignment(.leading)
-                    .font(.body)
-                    .foregroundStyle(.secondary)
-                    .padding(.bottom)
+        NavigationStack {
+            VStack {
                 GroupBox {
-                    TextField("Enter a URL, e.g. https://domain.com/resume.json", text: $viewModel.url)
-                        .keyboardType(.URL)
-                        .textInputAutocapitalization(.never)
-                        .disableAutocorrection(true)
+                    header
+                    input
+                    submit
                 }
-                
-                switch viewModel.state {
-                case .appeared:
-                    Button {
-                        addItem()
-                    } label: {
-                        Text("Submit")
-                    }
-                    .disabled(!viewModel.isValidUrl)
-                    .buttonStyle(.bordered)
-                    .padding()
-                case .loading:
-                    ProgressView()
-                case .loaded(_):
-                    Image(systemName: "checkmark")
-                        .foregroundStyle(.green)
-                case .empty(_):
-                    EmptyView()
-                case let .error(message):
-                    Text(message)
-                        .lineLimit(nil)
-                        .multilineTextAlignment(.leading)
-                        .font(.body)
-                        .foregroundStyle(.red)
-                        .padding()
+                .backgroundStyle(.ultraThinMaterial)
+                .clipShape(RoundedRectangle(cornerRadius: 8))
+                .padding(4)
+                .shadow(radius: 4)
+                .tint(colorScheme == .dark ? .orange : .brown)
+                .padding()
+                Spacer()
+            }
+            .background(MeshGradientView().opacity(0.3).ignoresSafeArea())
+            .navigationTitle("Add New CV")
+            .toolbar {
+                ToolbarItemGroup(placement: .topBarTrailing) {
+                    Button(role: .cancel, action: {
+                        self.dismiss()
+                    }, label: {
+                        Text("Cancel")
+                    })
+                    .tint(colorScheme == .dark ? .orange : .brown)
                 }
             }
-            .backgroundStyle(.ultraThinMaterial)
-            .clipShape(RoundedRectangle(cornerRadius: 8))
-            .padding(4)
-            .shadow(radius: 4)
-            .tint(colorScheme == .dark ? .orange : .brown)
-            .padding()
+            .onReceive(viewModel.$state) { state in
+                if case .loaded(_) = state {
+                    self.dismiss()
+                }
+            }
         }
-        .presentationSizing(.form.fitted(horizontal: false, vertical: true))
-        .onReceive(viewModel.$state) { state in
-            if case .loaded(_) = state {
-                self.dismiss()
+        .presentationSizing(.form)
+    }
+    
+    @ViewBuilder
+    private var header: some View {
+        Text("JSON CV is based on the open-source JSON Resume project: \nhttps://github.com/jsonresume\n\nThe CV URL entered below must conform to the JSON schema:\nhttps://jsonresume.org/schema")
+            .lineLimit(nil)
+            .multilineTextAlignment(.leading)
+            .font(.body)
+            .foregroundStyle(.secondary)
+            .padding(.bottom)
+    }
+    
+    @ViewBuilder
+    private var input: some View {
+        GroupBox {
+            HStack {
+                TextField("Enter a URL to CV, e.g. https://www.domain.com/resume.json", text: $viewModel.url, axis: .vertical)
+                    .lineLimit(4...10)
+                    .keyboardType(.URL)
+                    .textInputAutocapitalization(.never)
+                    .disableAutocorrection(true)
+                Spacer()
+                Button {
+                    viewModel.url = ""
+                    viewModel.state = .appeared
+                } label: {
+                    Image(systemName: "xmark.circle")
+                }
             }
+        }
+        .backgroundStyle(.ultraThinMaterial)
+        .clipShape(RoundedRectangle(cornerRadius: 8))
+        .padding(4)
+        .shadow(radius: 4)
+        .tint(colorScheme == .dark ? .orange : .brown)
+    }
+    
+    @ViewBuilder
+    private var submit: some View {
+        switch viewModel.state {
+        case .appeared:
+            Button {
+                addItem()
+            } label: {
+                Text("Submit")
+                    .tint(colorScheme == .dark ? .black : .white)
+                    .padding(.horizontal)
+                    .padding(.vertical, 4)
+            }
+            .disabled(!viewModel.isValidUrl)
+            .background {
+                Capsule().fill(colorScheme == .dark ? .orange : .brown).shadow(radius: 4)
+            }
+            .padding()
+        case .loading:
+            ProgressView()
+        case .loaded(_):
+            Image(systemName: "checkmark")
+                .foregroundStyle(.green)
+        case .empty(_):
+            EmptyView()
+        case let .error(message):
+            Text(message)
+                .lineLimit(nil)
+                .multilineTextAlignment(.leading)
+                .font(.body)
+                .foregroundStyle(.red)
+                .padding()
         }
     }
     

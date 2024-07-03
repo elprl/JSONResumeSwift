@@ -15,7 +15,7 @@ extension ResumeLoaderProtocol {
     func loadSample() async -> Resume? {
         if let jsonString = await loadJSONFromFile(fileName: "resume") {
             print("JSON content: \(jsonString)")
-            return await decodeSample(jsonString: jsonString)
+            return try? await decodeSample(jsonString: jsonString)
         } else {
             print("Failed to load JSON content.")
         }
@@ -28,8 +28,8 @@ extension ResumeLoaderProtocol {
         
         do {
             let (data, _) = try await urlSession.data(from: url)
-            guard let jsonString = String(data: data, encoding: .utf8) else { return nil }
-            guard let resume = await decodeSample(jsonString: jsonString) else { return nil }
+            guard let jsonString = String(data: data, encoding: .utf8) else { throw TDAPIError.invalidJsonDecoding }
+            guard let resume = try await decodeSample(jsonString: jsonString) else { throw TDAPIError.invalidJsonDecoding }
             return (resume, jsonString)
         }
         catch {
@@ -55,7 +55,7 @@ extension ResumeLoaderProtocol {
         }
     }
     
-    func decodeSample(jsonString: String) async -> Resume? {
+    func decodeSample(jsonString: String) async throws -> Resume? {
         // Convert JSON string to Data
         if let jsonData = jsonString.data(using: .utf8) {
             
@@ -72,8 +72,38 @@ extension ResumeLoaderProtocol {
                 return resume
             } catch {
                 print("Error: \(error)")
+                throw TDAPIError.invalidJsonDecoding
             }
         }
-        return nil
+        throw TDAPIError.invalidJsonDecoding
+    }
+}
+
+enum TDAPIError: LocalizedError {
+    case invalidJsonEncoding
+    case invalidJsonDecoding
+    case invalidResponse
+    case badResponse(Int, String)
+    case urlSessionError(String)
+    case streamError(String)
+    case invalidParams(String)
+    
+    var errorDescription: String? {
+        switch self {
+        case .invalidJsonEncoding:
+            return NSLocalizedString("Failed to encode JSON.", comment: "")
+        case .invalidJsonDecoding:
+            return NSLocalizedString("Failed to decode JSON.", comment: "")
+        case .invalidResponse:
+            return NSLocalizedString("Invalid response.", comment: "")
+        case .badResponse(_, let message):
+            return message
+        case .urlSessionError(let description):
+            return description
+        case .streamError(let description):
+            return description
+        case .invalidParams(let description):
+            return description
+        }
     }
 }

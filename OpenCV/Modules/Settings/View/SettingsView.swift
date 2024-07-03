@@ -25,11 +25,11 @@ struct SettingsView: View {
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItemGroup(placement: .navigationBarTrailing) {
-                    Button(action: {
+                    Button(role: .cancel, action: {
                         self.dismiss()
                     }, label: {
-                        Image(systemName: "xmark.circle")
-                            .foregroundColor(colorScheme == .dark ? .orange : .brown)
+                        Text("Cancel")
+                            .foregroundStyle(colorScheme == .dark ? .orange : .brown)
                     })
                 }
             }
