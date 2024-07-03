@@ -22,7 +22,6 @@ struct SettingsView: View {
             .scrollContentBackground(.hidden)
             .background(MeshGradientView().opacity(0.3).ignoresSafeArea())
             .navigationTitle("Settings")
-            .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItemGroup(placement: .navigationBarTrailing) {
                     Button(role: .cancel, action: {
@@ -56,6 +55,8 @@ struct SettingsView: View {
                 List {
                     Text("JSON Resume\nhttps://github.com/jsonresume")
                 }
+                .scrollContentBackground(.hidden)
+                .background(MeshGradientView().opacity(0.3).ignoresSafeArea())
             }
             version
         }
@@ -93,7 +94,7 @@ struct SectionHeaderBlock: View {
         HStack {
             VStack(alignment: .leading) {
                 Text(title)
-                    .font(.headline)
+                    .font(.caption)
                     .foregroundColor(.primary)
                 Text(description)
                     .font(.caption)

@@ -12,6 +12,7 @@ struct InputFormView: View {
     @Environment(\.colorScheme) private var colorScheme
     @Environment(\.dismiss) private var dismiss
     @ObservedObject var viewModel: ResumeListViewModel
+    @AppStorage("darkLightAutoMode") private var darkLightAutoMode: UIUserInterfaceStyle = .unspecified
 
     var body: some View {
         NavigationStack {
@@ -48,6 +49,7 @@ struct InputFormView: View {
             }
         }
         .presentationSizing(.form)
+        .preferredColorScheme(ColorScheme(darkLightAutoMode)) // tint on status bar
     }
     
     @ViewBuilder
@@ -64,7 +66,7 @@ struct InputFormView: View {
     private var input: some View {
         GroupBox {
             HStack {
-                TextField("Enter a URL to CV, e.g. https://www.domain.com/resume.json", text: $viewModel.url, axis: .vertical)
+                TextField("Enter a URL to CV \n(e.g. https://www.domain.com/resume.json)", text: $viewModel.url, axis: .vertical)
                     .lineLimit(4...10)
                     .keyboardType(.URL)
                     .textInputAutocapitalization(.never)
@@ -99,7 +101,9 @@ struct InputFormView: View {
             }
             .disabled(!viewModel.isValidUrl)
             .background {
-                Capsule().fill(colorScheme == .dark ? .orange : .brown).shadow(radius: 4)
+                Capsule().fill(colorScheme == .dark ? .orange : .brown)
+                    .shadow(radius: 4)
+                    .opacity(viewModel.isValidUrl ? 1.0 : 0.3)
             }
             .padding()
         case .loading:
