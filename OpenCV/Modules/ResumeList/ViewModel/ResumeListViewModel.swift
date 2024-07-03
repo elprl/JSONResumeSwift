@@ -30,7 +30,7 @@ extension ResumeListViewModel {
         state = .loading
         Task { @MainActor in
             do {
-                if let (resume, jsonString) = try await ResumeLoader().loadResume(urlString: urlString) {
+                if let (resume, jsonString) = try await ResumeLoaderService().loadResume(urlString: urlString) {
                     resumes.insert(resume)
 
                     let newPerson = Person(resumeUrl: urlString)

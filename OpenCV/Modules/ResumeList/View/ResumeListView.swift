@@ -64,7 +64,7 @@ struct ResumeListView: View {
             }
         }
         .tint(colorScheme == .dark ? .orange : .brown)
-        .environment(\.modelContext, viewModel.modelContext)
+//        .environment(\.modelContext, viewModel.modelContext)
     }
 }
 

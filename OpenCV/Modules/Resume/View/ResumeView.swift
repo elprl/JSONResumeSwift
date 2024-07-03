@@ -10,23 +10,16 @@ import SwiftData
 
 struct ResumeView: View {
     @Environment(\.colorScheme) private var colorScheme
-    @Query private var notes: [Note]
     @StateObject private var viewModel: ResumeViewModel
-    let resume: Resume
-    let modelContext: ModelContext
+    private let resume: Resume
+    private let modelContext: ModelContext
+    private let resumeUrl: String
     
     init(resume: Resume, resumeUrl: String, modelContext: ModelContext) {
         self.resume = resume
-        var descriptor = FetchDescriptor<Note>(
-            predicate: #Predicate { $0.resumeUrl == resumeUrl },
-            sortBy: [
-                .init(\.resumeUrl)
-            ]
-        )
-        descriptor.fetchLimit = 1
-        _notes = Query(descriptor)
-        _viewModel = StateObject(wrappedValue: ResumeViewModel(modelContext: modelContext, resumeUrl: resumeUrl))
+        self.resumeUrl = resumeUrl
         self.modelContext = modelContext
+        _viewModel = StateObject(wrappedValue: ResumeViewModel(resumeUrl: resumeUrl))
     }
     
     var body: some View {
@@ -60,33 +53,7 @@ struct ResumeView: View {
     
     @ViewBuilder
     private var myNotes: some View {
-        GroupBox {
-            DisclosureGroup {
-                Rectangle().frame(width: 0, height: 0).padding(.top)
-                GroupBox {
-                    TextField("Enter notes", text: $viewModel.note,  axis: .vertical)
-                        .lineLimit(4...10)
-                        .foregroundColor(.primary)
-                        .frame(maxWidth: .infinity)
-                        .task {
-                            self.viewModel.note = notes.first?.note ?? ""
-                        }
-                }
-                .backgroundStyle(.ultraThickMaterial)
-                .clipShape(RoundedRectangle(cornerRadius: 8))
-                .padding(4)
-                .shadow(radius: 4)
-            } label: {
-                Label("My Notes", systemImage: "doc")
-                    .modifier(Heading())
-            }
-            .tint(colorScheme == .dark ? .orange : .brown)
-        }
-        .backgroundStyle(.ultraThickMaterial)
-        .clipShape(RoundedRectangle(cornerRadius: 8))
-        .padding(.horizontal, 4)
-        .shadow(radius: 4)
-        .padding(.bottom, 160)
+        MyNotesView(resumeUrl: resumeUrl)
     }
     
     @ViewBuilder
@@ -206,7 +173,7 @@ struct AsyncTestView: View {
             }
         }
         .task {
-            resume = await ResumeLoader().loadSample()
+            resume = await ResumeLoaderService().loadSample()
         }
     }
 }
