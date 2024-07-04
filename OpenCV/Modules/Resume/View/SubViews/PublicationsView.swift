@@ -40,7 +40,7 @@ struct PublicationsView: View {
                                     .foregroundStyle(.secondary)
                             }
                             if let date = element.releaseDate {
-                                Text(date.formatted(Date.FormatStyle().year().month()))
+                                Text(date)
                                     .font(.caption)
                                     .foregroundStyle(.secondary)
                             }
@@ -73,7 +73,7 @@ struct PublicationsView: View {
 
 #Preview {
     PublicationsView(publications: [
-        Publication(name: "Quantum Entaglement of Hydrogen elections", publisher: "Nature", releaseDate: Date(), url: "https://www.nature.com", summary: "Communications across Galaxies with Quantum Entaglement of Hydrogen elections"),
-        Publication(name: "Quantum Entaglement of Hydrogen elections", publisher: "Nature", releaseDate: Date(), url: "https://www.nature.com", summary: "Communications across Galaxies with Quantum Entaglement of Hydrogen elections")
+        Publication(name: "Quantum Entaglement of Hydrogen elections", publisher: "Nature", releaseDate: "2020-12-22", url: "https://www.nature.com", summary: "Communications across Galaxies with Quantum Entaglement of Hydrogen elections"),
+        Publication(name: "Quantum Entaglement of Hydrogen elections", publisher: "Nature", releaseDate: "2020-12-22", url: "https://www.nature.com", summary: "Communications across Galaxies with Quantum Entaglement of Hydrogen elections")
     ])
 }

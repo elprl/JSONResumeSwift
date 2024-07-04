@@ -130,8 +130,8 @@ struct WorkView: View {
 
 #Preview {
     WorkView(works: [
-        Work(name: "Chelsea FC", location: "London", description: "Football Club", position: "Vice President", url: "https://company.com", startDate: Date(), endDate: Date(), summary: "Lead Architect", highlights: ["Started the company"]),
-        Work(name: "Arsenal FC", location: "London", description: "Football Club", position: "Vice President", url: "https://company.com", startDate: Date(), endDate: Date(), summary: "Lead Architect", highlights: []),
-        Work(name: "Man United", location: "London", description: "Football Club", position: "Vice President", url: "https://company.com", startDate: Date(), endDate: Date(), summary: "Lead Architect", highlights: ["Started the company", "Peerwalk (2024) - AI-powered iPad / MacOS app that allows teams to perform frequent and rapid code reviews. Fully SwiftUI MVVM integrating with: Firestore, Factory DI, Github APIs, ChatGPT / Claude / Gemini APIs."])
+        Work(name: "Chelsea FC", location: "London", description: "Football Club", position: "Vice President", url: "https://company.com", startDate: "2020-12-22", endDate: "2020-12-22", summary: "Lead Architect", highlights: ["Started the company"]),
+        Work(name: "Arsenal FC", location: "London", description: "Football Club", position: "Vice President", url: "https://company.com", startDate: "2020-12-22", endDate: "2020-12-22", summary: "Lead Architect", highlights: []),
+        Work(name: "Man United", location: "London", description: "Football Club", position: "Vice President", url: "https://company.com", startDate: "2020-12-22", endDate: "2020-12-22", summary: "Lead Architect", highlights: ["Started the company", "Peerwalk (2024) - AI-powered iPad / MacOS app that allows teams to perform frequent and rapid code reviews. Fully SwiftUI MVVM integrating with: Firestore, Factory DI, Github APIs, ChatGPT / Claude / Gemini APIs."])
     ])
 }

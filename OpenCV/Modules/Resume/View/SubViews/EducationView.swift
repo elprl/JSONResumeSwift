@@ -89,7 +89,7 @@ struct EducationView: View {
 
 #Preview {
     EducationView(educations: [
-        Education(institution: "Durham University", url: "", area: "MEng in Systems Engineerring", studyType: "", startDate: Date(), endDate: Date(), score: "Distinction", courses: []),
-        Education(institution: "Durahm Unfi", url: "", area: "MENg in engineerring", studyType: "", startDate: Date(), endDate: Date(), score: "Distinction", courses: [])
+        Education(institution: "Durham University", url: "", area: "MEng in Systems Engineerring", studyType: "", startDate: "2020-12-22", endDate: "2020-12-22", score: "Distinction", courses: []),
+        Education(institution: "Durahm Unfi", url: "", area: "MENg in engineerring", studyType: "", startDate: "2020-12-22", endDate: "2020-12-22", score: "Distinction", courses: [])
     ])
 }

@@ -35,7 +35,7 @@ struct CertificatesView: View {
                                 }
                             }
                             if let date = element.date {
-                                Text(date.formatted(Date.FormatStyle().year().month()))
+                                Text(date)
                                     .font(.caption)
                                     .foregroundStyle(.secondary)
                             }
@@ -69,7 +69,7 @@ struct CertificatesView: View {
 
 #Preview {
     CertificatesView(certificates: [
-        Certificate(name: "Sun Certified Programmer", date: Date(), url: "", issuer: "Sun Microsystems"),
-        Certificate(name: "Sun Certified Programmer", date: Date(), url: "", issuer: "Sun Microsystems"),
+        Certificate(name: "Sun Certified Programmer", date: "2020-12-22", url: "", issuer: "Sun Microsystems"),
+        Certificate(name: "Sun Certified Programmer", date: "2020-12-22", url: "", issuer: "Sun Microsystems"),
     ])
 }

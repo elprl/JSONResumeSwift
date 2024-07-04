@@ -96,7 +96,7 @@ struct VolunteerView: View {
 
 #Preview {
     VolunteerView(vols: [
-        Volunteer(organization: "Org", position: "vp", url: "MEng in Systems Engineerring", startDate: Date(), endDate: Date(), summary: "Distinction", highlights: []),
-        Volunteer(organization: "Org", position: "vp", url: "MEng in Systems Engineerring", startDate: Date(), endDate: Date(), summary: "Distinction", highlights: []),
+        Volunteer(organization: "Org", position: "vp", url: "MEng in Systems Engineerring", startDate: "2020-12-22", endDate: "2020-12-22", summary: "Distinction", highlights: []),
+        Volunteer(organization: "Org", position: "vp", url: "MEng in Systems Engineerring", startDate: "2020-12-22", endDate: "2020-12-22", summary: "Distinction", highlights: []),
     ])
 }
