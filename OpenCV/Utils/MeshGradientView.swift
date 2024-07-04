@@ -24,10 +24,9 @@ struct MeshGradientView: View {
             } else {
                 // Fallback on earlier versions
                 LinearGradient(colors: [
-                    .logoRed, .logoGreen, .indigo,
-                    .logoOrange, .logoGreen, .logoBlue,
-                    .yellow, .logoOrange, .mint
-                ], startPoint: .topLeading, endPoint: .bottomTrailing)
+                    .logoRed, .logoGreen,
+                    .logoOrange, .logoBlue,
+                ], startPoint: .top, endPoint: .bottom)
                 .ignoresSafeArea()
             }
         }

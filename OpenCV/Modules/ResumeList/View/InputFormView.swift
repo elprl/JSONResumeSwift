@@ -58,6 +58,7 @@ struct InputFormView: View {
             .multilineTextAlignment(.leading)
             .font(.body)
             .foregroundStyle(.secondary)
+            .frame(maxWidth: .infinity, alignment: .leading)
             .padding(.bottom)
     }
     
