@@ -17,79 +17,7 @@ struct ProjectsView: View {
                 Rectangle().frame(width: 0, height: 0).padding(.top)
 
                 ForEach(Array(projects.enumerated()), id: \.element) { index, element in
-                    VStack(alignment: .leading, spacing: 4) {
-                        GroupBox {
-                            HStack {
-                                Text(element.name)
-                                    .font(.headline)
-                                    .lineLimit(nil)
-                                    .multilineTextAlignment(.leading)
-                                    .foregroundStyle(.primary)
-                                Spacer()
-                                if let url = element.url {
-                                    Button {
-                                        openLink(url: url)
-                                    } label: {
-                                        Image(systemName: "link")
-                                    }
-                                }
-                            }
-                            Text(element.description)
-                                .font(.subheadline)
-                                .foregroundStyle(.primary)
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                            Text(element.dates)
-                                .font(.caption)
-                                .foregroundStyle(.secondary)
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                            
-                            if !(element.highlights?.isEmpty ?? true) {
-                                DisclosureGroup {
-                                    ForEach(element.highlights ?? [], id: \.self) { highlight in
-                                        Text("• \(highlight)")
-                                            .font(.body)
-                                            .lineLimit(nil)
-                                            .multilineTextAlignment(.leading)
-                                            .lineSpacing(1.5)
-                                            .foregroundStyle(.primary)
-                                            .frame(maxWidth: .infinity, alignment: .leading)
-                                    }
-                                } label: {
-                                    Text("Highlights")
-                                        .font(.caption)
-                                        .foregroundStyle(.primary)
-                                        .frame(maxWidth: .infinity, alignment: .leading)
-                                }
-                                .tint(.gray)
-                                .padding(.top, -8)
-                            }
-                        }
-                        .backgroundStyle(.ultraThinMaterial)
-                        .clipShape(RoundedRectangle(cornerRadius: 8))
-                        .padding(4)
-                        .shadow(radius: 4)
-                    }
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding(.leading, 40)
-                    .padding(.vertical, 4)
-                    .overlay {
-                        HStack(spacing: 0) {
-                            VStack(alignment: .center, spacing: 4) {
-                                Rectangle()
-                                    .frame(width: 1)
-                                    .opacity(index == 0 ? 0 : 1)
-                                Circle()
-                                    .frame(width: 5, height: 5)
-                                Rectangle()
-                                    .frame(width: 1)
-                                    .opacity(index == (projects.count - 1) ? 0 : 1)
-                            }
-                            .foregroundStyle(colorScheme == .dark ? .orange : .brown)
-                            Spacer()
-                        }
-                        .padding(.leading, 10)
-                        .padding(.vertical, -4)
-                    }
+                    row(index: index, element: element)
                 }
             } label: {
                 Label("Projects", systemImage: "wrench.and.screwdriver")
@@ -101,6 +29,82 @@ struct ProjectsView: View {
         .clipShape(RoundedRectangle(cornerRadius: 8))
         .padding(.horizontal, 4)
         .shadow(radius: 4)
+    }
+    
+    private func row(index: Int, element: Project) -> some View {
+        VStack(alignment: .leading, spacing: 4) {
+            GroupBox {
+                HStack {
+                    Text(element.name)
+                        .font(.headline)
+                        .lineLimit(nil)
+                        .multilineTextAlignment(.leading)
+                        .foregroundStyle(.primary)
+                    Spacer()
+                    if let url = element.url {
+                        Button {
+                            openLink(url: url)
+                        } label: {
+                            Image(systemName: "link")
+                        }
+                    }
+                }
+                Text(element.description ?? "")
+                    .font(.subheadline)
+                    .foregroundStyle(.primary)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                Text(element.dates)
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                
+                if !(element.highlights?.isEmpty ?? true) {
+                    DisclosureGroup {
+                        ForEach(element.highlights ?? [], id: \.self) { highlight in
+                            Text("• \(highlight)")
+                                .font(.body)
+                                .lineLimit(nil)
+                                .multilineTextAlignment(.leading)
+                                .lineSpacing(1.5)
+                                .foregroundStyle(.primary)
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                        }
+                    } label: {
+                        Text("Highlights")
+                            .font(.caption)
+                            .foregroundStyle(.primary)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                    }
+                    .tint(.gray)
+                    .padding(.top, -8)
+                }
+            }
+            .backgroundStyle(.ultraThinMaterial)
+            .clipShape(RoundedRectangle(cornerRadius: 8))
+            .padding(4)
+            .shadow(radius: 4)
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .padding(.leading, 40)
+        .padding(.vertical, 4)
+        .overlay {
+            HStack(spacing: 0) {
+                VStack(alignment: .center, spacing: 4) {
+                    Rectangle()
+                        .frame(width: 1)
+                        .opacity(index == 0 ? 0 : 1)
+                    Circle()
+                        .frame(width: 5, height: 5)
+                    Rectangle()
+                        .frame(width: 1)
+                        .opacity(index == (projects.count - 1) ? 0 : 1)
+                }
+                .foregroundStyle(colorScheme == .dark ? .orange : .brown)
+                Spacer()
+            }
+            .padding(.leading, 10)
+            .padding(.vertical, -4)
+        }
     }
 }
 

@@ -76,7 +76,7 @@ struct BasicsView: View {
             DisclosureGroup {
                 Rectangle().frame(width: 0, height: 0).padding(.top)
                 GroupBox {
-                    Text(basics.summary)
+                    Text(basics.summary ?? "")
                         .font(.body)
                         .lineLimit(nil)
                         .foregroundStyle(.primary)

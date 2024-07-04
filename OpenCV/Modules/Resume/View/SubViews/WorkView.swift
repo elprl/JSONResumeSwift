@@ -65,7 +65,7 @@ struct WorkView: View {
     
     @ViewBuilder
     private func position(element: Work) -> some View {
-        Text(element.position)
+        Text(element.position ?? "")
             .font(.headline)
             .foregroundStyle(.primary)
             .frame(maxWidth: .infinity, alignment: .leading)

@@ -44,7 +44,7 @@ struct PublicationsView: View {
                                     .font(.caption)
                                     .foregroundStyle(.secondary)
                             }
-                            Text(element.summary)
+                            Text(element.summary ?? "")
                                 .font(.callout)
                                 .lineLimit(nil)
                                 .multilineTextAlignment(.leading)
