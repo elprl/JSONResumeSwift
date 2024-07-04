@@ -55,7 +55,7 @@ struct Basics: Codable {
     /// URL to personal website, e.g., personal homepage.
     let url: String?
     /// Short 2-3 sentence biography about the individual.
-    let summary: String
+    let summary: String?
     let location: Location?
     /// Social networks the individual participates in.
     let profiles: [Profile]?
@@ -110,7 +110,7 @@ struct Work: Codable, PeriodProtocol {
     /// Description of the company, e.g., Social Media Company.
     let description: String?
     /// Position held, e.g., Software Engineer.
-    let position: String
+    let position: String?
     /// URL to the company, e.g., http://facebook.example.com.
     let url: String?
     /// Start date of the work experience in ISO 8601 format (see schema.json).
@@ -118,14 +118,14 @@ struct Work: Codable, PeriodProtocol {
     /// End date of the work experience in ISO 8601 format (see schema.json).
     let endDate: String?
     /// Overview of responsibilities at the company.
-    let summary: String
+    let summary: String?
     /// Multiple accomplishments.
     let highlights: [String]?
 }
 
 extension Work: Identifiable, Hashable {
     var id: String {
-        return name + summary + (startDate ?? "")
+        return name + (summary ?? "") + (startDate ?? "")
     }
 }
 
@@ -134,7 +134,7 @@ struct Volunteer: Codable, PeriodProtocol, Hashable {
     /// Name of the organization, e.g., Facebook.
     let organization: String
     /// Position held, e.g., Software Engineer.
-    let position: String
+    let position: String?
     /// URL to the organization, e.g., http://facebook.example.com.
     let url: String?
     /// Start date of the volunteer experience in ISO 8601 format (see schema.json).
@@ -142,14 +142,14 @@ struct Volunteer: Codable, PeriodProtocol, Hashable {
     /// End date of the volunteer experience in ISO 8601 format (see schema.json).
     let endDate: String?
     /// Overview of responsibilities at the organization.
-    let summary: String
+    let summary: String?
     /// Accomplishments and achievements.
     let highlights: [String]?
 }
 
 extension Volunteer: Identifiable {
     var id: String {
-        return organization + position + (startDate ?? "")
+        return organization + (position ?? "") + (startDate ?? "")
     }
 }
 
@@ -162,7 +162,7 @@ struct Education: Codable, PeriodProtocol {
     /// Area of study, e.g., Arts.
     let area: String
     /// Type of study, e.g., Bachelor.
-    let studyType: String
+    let studyType: String?
     /// Start date of the education in ISO 8601 format (see schema.json).
     let startDate: String?
     /// End date of the education in ISO 8601 format (see schema.json).
@@ -188,7 +188,7 @@ struct Award: Codable {
     /// Awarder, e.g., Time Magazine.
     let awarder: String?
     /// Summary of the award, e.g., Received for my work with Quantum Physics.
-    let summary: String
+    let summary: String?
 }
 
 extension Award: Identifiable {
@@ -226,7 +226,7 @@ struct Publication: Codable {
     /// URL to the publication, e.g., http://www.computer.org.example.com/csdl/mags/co/1996/10/rx069-abs.html.
     let url: String?
     /// Short summary of the publication.
-    let summary: String
+    let summary: String?
 }
 
 extension Publication: Identifiable {
@@ -240,7 +240,7 @@ struct Skill: Codable {
     /// Name of the skill, e.g., Web Development.
     let name: String
     /// Level of expertise, e.g., Master.
-    let level: String
+    let level: String?
     /// Keywords pertaining to this skill, e.g., HTML.
     let keywords: [String]?
 }
@@ -251,6 +251,7 @@ extension Skill: Identifiable {
     }
     
     var skillLevel: LocalizedStringKey {
+        guard let level else { return "" }
         switch level.lowercased() {
         case "beginner": return "\(Image(systemName: "star"))"
         case "intermediate": return "\(Image(systemName: "star"))\(Image(systemName: "star"))"
@@ -309,7 +310,7 @@ struct Project: Codable, PeriodProtocol, Hashable {
     /// Name of the project, e.g., The World Wide Web.
     let name: String
     /// Short summary of the project.
-    let description: String
+    let description: String?
     /// Multiple features or highlights of the project.
     let highlights: [String]?
     /// Special elements involved in the project.

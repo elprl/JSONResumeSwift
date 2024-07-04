@@ -37,8 +37,8 @@ struct EducationView: View {
                             Text("\(element.area) (with \(element.score ?? ""))")
                                 .font(.subheadline)
                                 .foregroundStyle(.primary)
-                            if !element.studyType.isEmpty {
-                                Text(element.studyType)
+                            if !(element.studyType ?? "").isEmpty {
+                                Text(element.studyType ?? "")
                                     .font(.subheadline)
                                     .foregroundStyle(.secondary)
                             }
