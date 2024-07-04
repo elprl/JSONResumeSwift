@@ -82,7 +82,6 @@ iOSInjectionProject/
 Config.xcconfig
 
 ## Xcode Patch
-*.xcodeproj/*
 !*.xcodeproj/project.pbxproj
 *.xcbkptlist
 /*.gcno
