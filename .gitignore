@@ -84,11 +84,8 @@ Config.xcconfig
 ## Xcode Patch
 *.xcodeproj/*
 !*.xcodeproj/project.pbxproj
-!*.xcodeproj/xcshareddata/
+*.xcbkptlist
 /*.gcno
-
-### Xcode Patch ###
-**/xcshareddata/WorkspaceSettings.xcsettings
 
 # End of https://www.gitignore.io/api/xcode,swift,cocoapods
 
