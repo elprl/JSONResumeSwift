@@ -23,7 +23,7 @@ struct AwardsView: View {
                                 .font(.body)
                                 .foregroundStyle(.primary)
                             if let date = element.date {
-                                Text(date.formatted(Date.FormatStyle().year().month()))
+                                Text(date)
                                     .font(.caption)
                                     .foregroundStyle(.secondary)
                             }
@@ -55,7 +55,7 @@ struct AwardsView: View {
 
 #Preview {
     AwardsView(awards: [
-        Award(title: "Victoria Cross", date: Date(), awarder: "Army", summary: "For bravery and honour"),
-        Award(title: "Victoria Cross", date: Date(), awarder: "Army", summary: "For bravery and honour")
+        Award(title: "Victoria Cross", date: "2020-12-22", awarder: "Army", summary: "For bravery and honour"),
+        Award(title: "Victoria Cross", date: "2020-12-22", awarder: "Army", summary: "For bravery and honour")
     ])
 }

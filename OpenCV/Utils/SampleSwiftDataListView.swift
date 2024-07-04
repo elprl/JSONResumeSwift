@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  SampleSwiftDataListView.swift
 //  OpenCV
 //
 //  Created by Paul Leo on 28/06/2024.
@@ -8,7 +8,7 @@
 import SwiftUI
 import SwiftData
 
-struct ContentView: View {
+struct SampleSwiftDataListView: View {
     @Environment(\.modelContext) private var modelContext
     @Query private var items: [Item]
 
@@ -55,7 +55,17 @@ struct ContentView: View {
     }
 }
 
+@Model
+final class Item {
+    var timestamp: Date
+    
+    init(timestamp: Date) {
+        self.timestamp = timestamp
+    }
+}
+
+
 #Preview {
-    ContentView()
+    SampleSwiftDataListView()
         .modelContainer(for: Item.self, inMemory: true)
 }

@@ -113,10 +113,10 @@ struct Work: Codable, PeriodProtocol {
     let position: String
     /// URL to the company, e.g., http://facebook.example.com.
     let url: String?
-    /// Start date of the work experience in ISO 8601 format.
-    let startDate: Date?
-    /// End date of the work experience in ISO 8601 format.
-    let endDate: Date?
+    /// Start date of the work experience in ISO 8601 format (see schema.json).
+    let startDate: String?
+    /// End date of the work experience in ISO 8601 format (see schema.json).
+    let endDate: String?
     /// Overview of responsibilities at the company.
     let summary: String
     /// Multiple accomplishments.
@@ -125,7 +125,7 @@ struct Work: Codable, PeriodProtocol {
 
 extension Work: Identifiable, Hashable {
     var id: String {
-        return name + summary + (startDate?.ISO8601Format() ?? "")
+        return name + summary + (startDate ?? "")
     }
 }
 
@@ -137,10 +137,10 @@ struct Volunteer: Codable, PeriodProtocol, Hashable {
     let position: String
     /// URL to the organization, e.g., http://facebook.example.com.
     let url: String?
-    /// Start date of the volunteer experience in ISO 8601 format.
-    let startDate: Date?
-    /// End date of the volunteer experience in ISO 8601 format.
-    let endDate: Date?
+    /// Start date of the volunteer experience in ISO 8601 format (see schema.json).
+    let startDate: String?
+    /// End date of the volunteer experience in ISO 8601 format (see schema.json).
+    let endDate: String?
     /// Overview of responsibilities at the organization.
     let summary: String
     /// Accomplishments and achievements.
@@ -149,7 +149,7 @@ struct Volunteer: Codable, PeriodProtocol, Hashable {
 
 extension Volunteer: Identifiable {
     var id: String {
-        return organization + position + (startDate?.ISO8601Format() ?? "")
+        return organization + position + (startDate ?? "")
     }
 }
 
@@ -163,10 +163,10 @@ struct Education: Codable, PeriodProtocol {
     let area: String
     /// Type of study, e.g., Bachelor.
     let studyType: String
-    /// Start date of the education in ISO 8601 format.
-    let startDate: Date?
-    /// End date of the education in ISO 8601 format.
-    let endDate: Date?
+    /// Start date of the education in ISO 8601 format (see schema.json).
+    let startDate: String?
+    /// End date of the education in ISO 8601 format (see schema.json).
+    let endDate: String?
     /// Grade point average, e.g., 3.67/4.0.
     let score: String?
     /// Notable courses/subjects.
@@ -175,7 +175,7 @@ struct Education: Codable, PeriodProtocol {
 
 extension Education: Identifiable {
     var id: String {
-        return institution + area + (startDate?.ISO8601Format() ?? "")
+        return institution + area + (startDate ?? "")
     }
 }
 
@@ -183,8 +183,8 @@ extension Education: Identifiable {
 struct Award: Codable {
     /// Title of the award, e.g., One of the 100 greatest minds of the century.
     let title: String
-    /// Date of the award in ISO 8601 format.
-    let date: Date?
+    /// Date of the award in ISO 8601 format (see schema.json).
+    let date: String?
     /// Awarder, e.g., Time Magazine.
     let awarder: String?
     /// Summary of the award, e.g., Received for my work with Quantum Physics.
@@ -201,8 +201,8 @@ extension Award: Identifiable {
 struct Certificate: Codable {
     /// Name of the certificate, e.g., Certified Kubernetes Administrator.
     let name: String
-    /// Date of the certificate in ISO 8601 format.
-    let date: Date?
+    /// Date of the certificate in ISO 8601 format (see schema.json).
+    let date: String?
     /// URL to the certificate, e.g., http://example.com.
     let url: String?
     /// Issuer of the certificate, e.g., CNCF.
@@ -221,8 +221,8 @@ struct Publication: Codable {
     let name: String
     /// Publisher, e.g., IEEE, Computer Magazine.
     let publisher: String?
-    /// Release date of the publication in ISO 8601 format.
-    let releaseDate: Date?
+    /// Release date of the publication in ISO 8601 format (see schema.json).
+    let releaseDate: String?
     /// URL to the publication, e.g., http://www.computer.org.example.com/csdl/mags/co/1996/10/rx069-abs.html.
     let url: String?
     /// Short summary of the publication.
@@ -314,10 +314,10 @@ struct Project: Codable, PeriodProtocol, Hashable {
     let highlights: [String]?
     /// Special elements involved in the project.
     let keywords: [String]?
-    /// Start date of the project in ISO 8601 format.
-    let startDate: Date?
-    /// End date of the project in ISO 8601 format.
-    let endDate: Date?
+    /// Start date of the project in ISO 8601 format (see schema.json).
+    let startDate: String?
+    /// End date of the project in ISO 8601 format (see schema.json).
+    let endDate: String?
     /// URL to the project, e.g., http://www.computer.org/csdl/mags/co/1996/10/rx069-abs.html.
     let url: String?
     /// Roles played in the project or company.
@@ -353,18 +353,67 @@ struct Meta: Codable {
 //}
 
 protocol PeriodProtocol {
-    var startDate: Date? { get }
-    var endDate: Date? { get }
+    var startDate: String? { get }
+    var endDate: String? { get }
 }
  
 extension PeriodProtocol {
     var dates: String {
-        guard let start = startDate?.formatted(Date.FormatStyle().year().month().day()) else {
+        guard let start = formatDate(from: startDate) else {
             return ""
         }
-        guard let end = endDate?.formatted(Date.FormatStyle().year().month().day()) else {
+        guard let end = formatDate(from: endDate) else {
             return start + " - Present"
         }
+        if start == end {
+            return start
+        }
         return start + " - " + end
+    }
+    
+    func date(from isoDateString: String) -> Date? {
+        let pattern = /^(\d{4})(?:-(\d{2}))?(?:-(\d{2}))?$/
+        guard let matches = try? pattern.wholeMatch(in: isoDateString) else { return nil }
+        
+        let year: Int? = Int(matches.1)
+        let month: Int? = matches.2.flatMap( { Int($0) } )
+        let day: Int? = matches.3.flatMap( { Int($0) } )
+        
+        var dateComponents = DateComponents()
+        dateComponents.year = year
+        dateComponents.month = month ?? 1 // Default to January if month is not specified
+        dateComponents.day = day ?? 1 // Default to 1st if day is not specified
+        
+        return Calendar.current.date(from: dateComponents)
+    }
+    
+    func formatDate(from isoDateString: String?) -> String? {
+        guard let isoDateString else { return nil }
+        let pattern = /^(\d{4})(?:-(\d{2}))?(?:-(\d{2}))?$/
+        guard let matches = try? pattern.wholeMatch(in: isoDateString) else { return nil }
+        
+        let year: Int? = Int(matches.1)
+        let month: Int? = matches.2.flatMap( { Int($0) } )
+        let day: Int? = matches.3.flatMap( { Int($0) } )
+        
+        var dateComponents = DateComponents()
+        dateComponents.year = year
+        dateComponents.month = month ?? 1 // Default to January if month is not specified
+        dateComponents.day = day ?? 1 // Default to 1st if day is not specified
+        let date = Calendar.current.date(from: dateComponents)
+        
+        if day != nil {
+            return date?.formatted(Date.FormatStyle().year().month().day())
+        }
+
+        if month != nil {
+            return date?.formatted(Date.FormatStyle().year().month())
+        }
+        
+        if year != nil {
+            return date?.formatted(Date.FormatStyle().year())
+        }
+        
+        return "Present"
     }
 }
