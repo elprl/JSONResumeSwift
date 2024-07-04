@@ -48,7 +48,6 @@ struct InputFormView: View {
                 }
             }
         }
-        .presentationSizing(.form)
         .preferredColorScheme(ColorScheme(darkLightAutoMode)) // tint on status bar
     }
     

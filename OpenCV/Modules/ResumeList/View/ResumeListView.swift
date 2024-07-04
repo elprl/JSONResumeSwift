@@ -27,9 +27,14 @@ struct ResumeListView: View {
                 ScrollView {
                     LazyVStack {
                         ForEach(people) { person in
-                            ResumeRowView(viewModel: viewModel, person: person, namespace: namespace)
-                                .transition(.move(edge: .leading))
-                                .matchedTransitionSource(id: person.id, in: namespace)
+                            if #available(iOS 18.0, *) {
+                                ResumeRowView(viewModel: viewModel, person: person, namespace: namespace)
+                                    .transition(.move(edge: .leading))
+                                    .matchedTransitionSource(id: person.id, in: namespace)
+                            } else {
+                                ResumeRowView(viewModel: viewModel, person: person, namespace: namespace)
+                                    .transition(.move(edge: .leading))
+                            }
                         }
                     }
                     .animation(.easeInOut, value: people)
@@ -59,7 +64,13 @@ struct ResumeListView: View {
                         }) {
                             Label("Add Item", systemImage: "person.badge.plus")
                         }
-                        .sheet(isPresented: $viewModel.showingSheet) { InputFormView(viewModel: viewModel)
+                        .sheet(isPresented: $viewModel.showingSheet) { 
+                            if #available(iOS 18.0, *) {
+                                InputFormView(viewModel: viewModel)
+                                    .presentationSizing(.form)
+                            } else {
+                                InputFormView(viewModel: viewModel)
+                            }
                         }
                     }
                     

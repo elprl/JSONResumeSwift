@@ -10,16 +10,26 @@ struct MeshGradientView: View {
     
     var body: some View {
         ZStack {
-            MeshGradient(width: 3, height: 3, points: [
-                .init(0, 0), .init(0.5, 0), .init(1, 0),
-                .init(0, 0.5), .init(0.5, 0.5), .init(1, 0.5),
-                .init(0, 1), .init(0.5, 1), .init(1, 1)
-            ], colors: [
-                .logoRed, .logoGreen, .indigo,
-                .logoOrange, .logoGreen, .logoBlue,
-                .yellow, .logoOrange, .mint
-            ], background: .black.opacity(0.7))
-            .ignoresSafeArea()
+            if #available(iOS 18.0, *) {
+                MeshGradient(width: 3, height: 3, points: [
+                    .init(0, 0), .init(0.5, 0), .init(1, 0),
+                    .init(0, 0.5), .init(0.5, 0.5), .init(1, 0.5),
+                    .init(0, 1), .init(0.5, 1), .init(1, 1)
+                ], colors: [
+                    .logoRed, .logoGreen, .indigo,
+                    .logoOrange, .logoGreen, .logoBlue,
+                    .yellow, .logoOrange, .mint
+                ], background: .black.opacity(0.7))
+                .ignoresSafeArea()
+            } else {
+                // Fallback on earlier versions
+                LinearGradient(colors: [
+                    .logoRed, .logoGreen, .indigo,
+                    .logoOrange, .logoGreen, .logoBlue,
+                    .yellow, .logoOrange, .mint
+                ], startPoint: .topLeading, endPoint: .bottomTrailing)
+                .ignoresSafeArea()
+            }
         }
     }
 }

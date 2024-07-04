@@ -18,16 +18,12 @@ struct ResumeRowView: View {
     
     var body: some View {
         NavigationLink {
-            Group {
-                if let resume = viewModel.resumes.first(where: { $0.basics.name == person.name }) {
-                    ResumeView(resume: resume, resumeUrl: person.resumeUrl, modelContext: modelContext)
-                } else if let jsonString = person.cachedJSON {
-                    CachedResumeView(jsonString: jsonString, resumeUrl: person.resumeUrl)
-                } else {
-                    Text("Resume not yet loaded")
-                }
+            if #available(iOS 18.0, *) {
+                navDestination
+                    .navigationTransition(.zoom(sourceID: person.id, in: namespace))
+            } else {
+                navDestination
             }
-            .navigationTransition(.zoom(sourceID: person.id, in: namespace))
         } label: {
             GroupBox {
                 HStack(spacing: 14) {
@@ -96,8 +92,22 @@ struct ResumeRowView: View {
             .tint(.primary)
         }
     }
+    
+    @ViewBuilder
+    private var navDestination: some View {
+        Group {
+            if let resume = viewModel.resumes.first(where: { $0.basics.name == person.name }) {
+                ResumeView(resume: resume, resumeUrl: person.resumeUrl, modelContext: modelContext)
+            } else if let jsonString = person.cachedJSON {
+                CachedResumeView(jsonString: jsonString, resumeUrl: person.resumeUrl)
+            } else {
+                Text("Resume not yet loaded")
+            }
+        }
+    }
 }
 
+@available(iOS 18.0, *)
 #Preview {
     @Previewable @Namespace() var namespace
     let config = ModelConfiguration(isStoredInMemoryOnly: true)
