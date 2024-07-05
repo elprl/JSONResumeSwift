@@ -1,18 +1,18 @@
 //
-//  OpenCVApp.swift
-//  OpenCV
+//  OpenCVAppClipApp.swift
+//  OpenCVAppClip
 //
-//  Created by Paul Leo on 28/06/2024.
+//  Created by Paul Leo on 05/07/2024.
 //
 
 import SwiftUI
 import SwiftData
 
 @main
-struct OpenCVApp: App {
+struct OpenCVAppClipApp: App {
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
-            Person.self //, Note.self
+            Person.self,
         ])
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
 
@@ -26,34 +26,15 @@ struct OpenCVApp: App {
     var body: some Scene {
         WindowGroup {
             ContainerView()
-                .onContinueUserActivity(NSUserActivityTypeBrowsingWeb, perform: handleUserActivity)
         }
         .modelContainer(sharedModelContainer)
-    }
-    
-    func handleUserActivity(_ userActivity: NSUserActivity) {
-        guard
-            let incomingURL = userActivity.webpageURL,
-            let components = URLComponents(
-                url: incomingURL,
-                resolvingAgainstBaseURL: true),
-            let queryItems = components.queryItems
-        else {
-            return
-        }
-        
-        guard let url = queryItems.first(where: { $0.name == "url" })?.value else {
-            return
-        }
-        
-        print("url: \(url)")
     }
 }
 
 struct ContainerView: View {
     @Environment(\.modelContext) private var modelContext
     @AppStorage("darkLightAutoMode") var darkLightAutoMode: UIUserInterfaceStyle = .unspecified
-    
+
     var body: some View {
         ResumeListView(modelContext: modelContext)
             .preferredColorScheme(ColorScheme(darkLightAutoMode)) // tint on status bar

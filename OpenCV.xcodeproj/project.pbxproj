@@ -7,11 +7,55 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E106A1722C379932009C2D92 /* OpenCVAppClipApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E106A1712C379932009C2D92 /* OpenCVAppClipApp.swift */; };
+		E106A1742C379932009C2D92 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E106A1732C379932009C2D92 /* ContentView.swift */; };
+		E106A1762C379932009C2D92 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = E106A1752C379932009C2D92 /* Item.swift */; };
+		E106A1782C379933009C2D92 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E106A1772C379933009C2D92 /* Assets.xcassets */; };
+		E106A17B2C379933009C2D92 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E106A17A2C379933009C2D92 /* Preview Assets.xcassets */; };
+		E106A1872C379933009C2D92 /* OpenCVAppClipTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E106A1862C379933009C2D92 /* OpenCVAppClipTests.swift */; };
+		E106A1912C379933009C2D92 /* OpenCVAppClipUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E106A1902C379933009C2D92 /* OpenCVAppClipUITests.swift */; };
+		E106A1932C379933009C2D92 /* OpenCVAppClipUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E106A1922C379933009C2D92 /* OpenCVAppClipUITestsLaunchTests.swift */; };
+		E106A1962C379933009C2D92 /* OpenCVAppClip.app in Embed App Clips */ = {isa = PBXBuildFile; fileRef = E106A16F2C379932009C2D92 /* OpenCVAppClip.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		E115BF4B2C370E21000A74C7 /* PeriodProtocolTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E115BF4A2C370E0B000A74C7 /* PeriodProtocolTests.swift */; };
 		E13829902C337588000DA139 /* ResumeRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E138298F2C337588000DA139 /* ResumeRowView.swift */; };
 		E13829952C343C22000DA139 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = E13829942C343C22000DA139 /* SDWebImageSwiftUI */; };
 		E13829972C347729000DA139 /* InputFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13829962C347729000DA139 /* InputFormView.swift */; };
 		E138299B2C34A186000DA139 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = E138299A2C34A184000DA139 /* Note.swift */; };
+		E1526D852C38571D00D88453 /* WorkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F4872B2C2F96A800031976 /* WorkView.swift */; };
+		E1526D862C38571D00D88453 /* ResumeLoaderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E8457E2C35B81C0065489C /* ResumeLoaderService.swift */; };
+		E1526D872C38571D00D88453 /* ResumeRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E138298F2C337588000DA139 /* ResumeRowView.swift */; };
+		E1526D882C38571D00D88453 /* ResumeModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1908B7B2C2F5EF9002C8F5F /* ResumeModels.swift */; };
+		E1526D892C38571D00D88453 /* ResumeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F487252C2F670300031976 /* ResumeViewModel.swift */; };
+		E1526D8A2C38571D00D88453 /* VolunteerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AD86172C30D2F3008F38A3 /* VolunteerView.swift */; };
+		E1526D8B2C38571D00D88453 /* ProjectsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AD86212C31A676008F38A3 /* ProjectsView.swift */; };
+		E1526D8C2C38571D00D88453 /* CertificatesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AD86272C31AECD008F38A3 /* CertificatesView.swift */; };
+		E1526D8D2C38571D00D88453 /* QRCodeGeneratorService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E152C6D52C375E78000949AB /* QRCodeGeneratorService.swift */; };
+		E1526D8E2C38571D00D88453 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E845842C35C0A00065489C /* SettingsView.swift */; };
+		E1526D8F2C38571D00D88453 /* ReferencesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AD862D2C31BA84008F38A3 /* ReferencesView.swift */; };
+		E1526D902C38571D00D88453 /* ResumeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AD86362C31D51F008F38A3 /* ResumeListView.swift */; };
+		E1526D912C38571D00D88453 /* QRCodeGenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E152C6D22C3757B4000949AB /* QRCodeGenView.swift */; };
+		E1526D922C38571D00D88453 /* ResumeListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AD86382C31D678008F38A3 /* ResumeListViewModel.swift */; };
+		E1526D932C38571D00D88453 /* InputFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13829962C347729000DA139 /* InputFormView.swift */; };
+		E1526D942C38571D00D88453 /* AwardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AD86252C31AC37008F38A3 /* AwardsView.swift */; };
+		E1526D952C38571D00D88453 /* ResumeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F487272C2F78E600031976 /* ResumeView.swift */; };
+		E1526D962C38571D00D88453 /* MeshGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AD86112C30B099008F38A3 /* MeshGradientView.swift */; };
+		E1526D972C38571D00D88453 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AD863A2C31D6BE008F38A3 /* Person.swift */; };
+		E1526D982C38571D00D88453 /* SwiftUI+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AD86302C31BE4D008F38A3 /* SwiftUI+Utils.swift */; };
+		E1526D992C38571D00D88453 /* MyNotesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E8457B2C35AE690065489C /* MyNotesViewModel.swift */; };
+		E1526D9A2C38571D00D88453 /* CachedResumeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AD863C2C32229D008F38A3 /* CachedResumeView.swift */; };
+		E1526D9B2C38571D00D88453 /* EducationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AD86152C30C251008F38A3 /* EducationView.swift */; };
+		E1526D9C2C38571D00D88453 /* MyNotesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E845792C35A9D60065489C /* MyNotesView.swift */; };
+		E1526D9D2C38571D00D88453 /* LanguagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AD86232C31A9DE008F38A3 /* LanguagesView.swift */; };
+		E1526D9E2C38571D00D88453 /* InterestsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AD862B2C31BA62008F38A3 /* InterestsView.swift */; };
+		E1526D9F2C38571D00D88453 /* BasicsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AD861F2C31A380008F38A3 /* BasicsView.swift */; };
+		E1526DA02C38571D00D88453 /* SkillsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F487292C2F962600031976 /* SkillsView.swift */; };
+		E1526DA12C38571D00D88453 /* PublicationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AD86292C31B2B1008F38A3 /* PublicationsView.swift */; };
+		E1526DA22C38571D00D88453 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1908B532C2F4F2C002C8F5F /* Assets.xcassets */; };
+		E1526DA42C38576100D88453 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = E1526DA32C38576100D88453 /* SDWebImageSwiftUI */; };
+		E1526DA62C38576100D88453 /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = E1526DA52C38576100D88453 /* CodeScanner */; };
+		E152C6CF2C375739000949AB /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = E152C6CE2C375739000949AB /* CodeScanner */; };
+		E152C6D42C3757BD000949AB /* QRCodeGenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E152C6D22C3757B4000949AB /* QRCodeGenView.swift */; };
+		E152C6D62C375E84000949AB /* QRCodeGeneratorService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E152C6D52C375E78000949AB /* QRCodeGeneratorService.swift */; };
 		E1908B4E2C2F4F2A002C8F5F /* OpenCVApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1908B4D2C2F4F2A002C8F5F /* OpenCVApp.swift */; };
 		E1908B502C2F4F2A002C8F5F /* SampleSwiftDataListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1908B4F2C2F4F2A002C8F5F /* SampleSwiftDataListView.swift */; };
 		E1908B542C2F4F2C002C8F5F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1908B532C2F4F2C002C8F5F /* Assets.xcassets */; };
@@ -49,6 +93,27 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		E106A1832C379933009C2D92 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E1908B422C2F4F2A002C8F5F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E106A16E2C379932009C2D92;
+			remoteInfo = OpenCVAppClip;
+		};
+		E106A18D2C379933009C2D92 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E1908B422C2F4F2A002C8F5F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E106A16E2C379932009C2D92;
+			remoteInfo = OpenCVAppClip;
+		};
+		E106A1942C379933009C2D92 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E1908B422C2F4F2A002C8F5F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E106A16E2C379932009C2D92;
+			remoteInfo = OpenCVAppClip;
+		};
 		E1908B5D2C2F4F2C002C8F5F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = E1908B422C2F4F2A002C8F5F /* Project object */;
@@ -65,12 +130,49 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		E152C6A12C3748A7000949AB /* Embed App Clips */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/AppClips";
+			dstSubfolderSpec = 16;
+			files = (
+				E106A1962C379933009C2D92 /* OpenCVAppClip.app in Embed App Clips */,
+			);
+			name = "Embed App Clips";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		E106A16F2C379932009C2D92 /* OpenCVAppClip.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OpenCVAppClip.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E106A1712C379932009C2D92 /* OpenCVAppClipApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenCVAppClipApp.swift; sourceTree = "<group>"; };
+		E106A1732C379932009C2D92 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		E106A1752C379932009C2D92 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		E106A1772C379933009C2D92 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E106A17A2C379933009C2D92 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		E106A17C2C379933009C2D92 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E106A17D2C379933009C2D92 /* OpenCVAppClip.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OpenCVAppClip.entitlements; sourceTree = "<group>"; };
+		E106A1822C379933009C2D92 /* OpenCVAppClipTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OpenCVAppClipTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E106A1862C379933009C2D92 /* OpenCVAppClipTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenCVAppClipTests.swift; sourceTree = "<group>"; };
+		E106A18C2C379933009C2D92 /* OpenCVAppClipUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OpenCVAppClipUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E106A1902C379933009C2D92 /* OpenCVAppClipUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenCVAppClipUITests.swift; sourceTree = "<group>"; };
+		E106A1922C379933009C2D92 /* OpenCVAppClipUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenCVAppClipUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		E115BF492C36F5C1000A74C7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		E115BF4A2C370E0B000A74C7 /* PeriodProtocolTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeriodProtocolTests.swift; sourceTree = "<group>"; };
 		E138298F2C337588000DA139 /* ResumeRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResumeRowView.swift; sourceTree = "<group>"; };
 		E13829962C347729000DA139 /* InputFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputFormView.swift; sourceTree = "<group>"; };
 		E138299A2C34A184000DA139 /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
+		E152C67B2C3748A6000949AB /* OpenCVAppClipApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenCVAppClipApp.swift; sourceTree = "<group>"; };
+		E152C6812C3748A7000949AB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E152C6842C3748A7000949AB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		E152C6862C3748A7000949AB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E152C6872C3748A7000949AB /* OpenCVAppClip.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OpenCVAppClip.entitlements; sourceTree = "<group>"; };
+		E152C6902C3748A7000949AB /* OpenCVAppClipTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenCVAppClipTests.swift; sourceTree = "<group>"; };
+		E152C69A2C3748A7000949AB /* OpenCVAppClipUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenCVAppClipUITests.swift; sourceTree = "<group>"; };
+		E152C69C2C3748A7000949AB /* OpenCVAppClipUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenCVAppClipUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		E152C6D22C3757B4000949AB /* QRCodeGenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeGenView.swift; sourceTree = "<group>"; };
+		E152C6D52C375E78000949AB /* QRCodeGeneratorService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeGeneratorService.swift; sourceTree = "<group>"; };
 		E1908B4A2C2F4F2A002C8F5F /* JSON CV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "JSON CV.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1908B4D2C2F4F2A002C8F5F /* OpenCVApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenCVApp.swift; sourceTree = "<group>"; };
 		E1908B4F2C2F4F2A002C8F5F /* SampleSwiftDataListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleSwiftDataListView.swift; sourceTree = "<group>"; };
@@ -112,10 +214,34 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		E106A16C2C379932009C2D92 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E1526DA62C38576100D88453 /* CodeScanner in Frameworks */,
+				E1526DA42C38576100D88453 /* SDWebImageSwiftUI in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E106A17F2C379933009C2D92 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E106A1892C379933009C2D92 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E1908B472C2F4F2A002C8F5F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E152C6CF2C375739000949AB /* CodeScanner in Frameworks */,
 				E13829952C343C22000DA139 /* SDWebImageSwiftUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -137,13 +263,111 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E106A1702C379932009C2D92 /* OpenCVAppClip */ = {
+			isa = PBXGroup;
+			children = (
+				E106A1712C379932009C2D92 /* OpenCVAppClipApp.swift */,
+				E106A1732C379932009C2D92 /* ContentView.swift */,
+				E106A1752C379932009C2D92 /* Item.swift */,
+				E106A1772C379933009C2D92 /* Assets.xcassets */,
+				E106A17C2C379933009C2D92 /* Info.plist */,
+				E106A17D2C379933009C2D92 /* OpenCVAppClip.entitlements */,
+				E106A1792C379933009C2D92 /* Preview Content */,
+			);
+			path = OpenCVAppClip;
+			sourceTree = "<group>";
+		};
+		E106A1792C379933009C2D92 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				E106A17A2C379933009C2D92 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		E106A1852C379933009C2D92 /* OpenCVAppClipTests */ = {
+			isa = PBXGroup;
+			children = (
+				E106A1862C379933009C2D92 /* OpenCVAppClipTests.swift */,
+			);
+			path = OpenCVAppClipTests;
+			sourceTree = "<group>";
+		};
+		E106A18F2C379933009C2D92 /* OpenCVAppClipUITests */ = {
+			isa = PBXGroup;
+			children = (
+				E106A1902C379933009C2D92 /* OpenCVAppClipUITests.swift */,
+				E106A1922C379933009C2D92 /* OpenCVAppClipUITestsLaunchTests.swift */,
+			);
+			path = OpenCVAppClipUITests;
+			sourceTree = "<group>";
+		};
+		E152C67A2C3748A6000949AB /* OpenCVAppClip */ = {
+			isa = PBXGroup;
+			children = (
+				E152C67B2C3748A6000949AB /* OpenCVAppClipApp.swift */,
+				E152C6812C3748A7000949AB /* Assets.xcassets */,
+				E152C6862C3748A7000949AB /* Info.plist */,
+				E152C6872C3748A7000949AB /* OpenCVAppClip.entitlements */,
+				E152C6832C3748A7000949AB /* Preview Content */,
+			);
+			path = OpenCVAppClip;
+			sourceTree = "<group>";
+		};
+		E152C6832C3748A7000949AB /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				E152C6842C3748A7000949AB /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		E152C68F2C3748A7000949AB /* OpenCVAppClipTests */ = {
+			isa = PBXGroup;
+			children = (
+				E152C6902C3748A7000949AB /* OpenCVAppClipTests.swift */,
+			);
+			path = OpenCVAppClipTests;
+			sourceTree = "<group>";
+		};
+		E152C6992C3748A7000949AB /* OpenCVAppClipUITests */ = {
+			isa = PBXGroup;
+			children = (
+				E152C69A2C3748A7000949AB /* OpenCVAppClipUITests.swift */,
+				E152C69C2C3748A7000949AB /* OpenCVAppClipUITestsLaunchTests.swift */,
+			);
+			path = OpenCVAppClipUITests;
+			sourceTree = "<group>";
+		};
+		E152C6C82C374F66000949AB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E152C6CC2C3754B6000949AB /* Scan */ = {
+			isa = PBXGroup;
+			children = (
+				E152C6D22C3757B4000949AB /* QRCodeGenView.swift */,
+			);
+			path = Scan;
+			sourceTree = "<group>";
+		};
 		E1908B412C2F4F2A002C8F5F = {
 			isa = PBXGroup;
 			children = (
 				E1908B4C2C2F4F2A002C8F5F /* OpenCV */,
 				E1908B5F2C2F4F2C002C8F5F /* OpenCVTests */,
 				E1908B692C2F4F2C002C8F5F /* OpenCVUITests */,
+				E152C67A2C3748A6000949AB /* OpenCVAppClip */,
+				E152C68F2C3748A7000949AB /* OpenCVAppClipTests */,
+				E152C6992C3748A7000949AB /* OpenCVAppClipUITests */,
+				E106A1702C379932009C2D92 /* OpenCVAppClip */,
+				E106A1852C379933009C2D92 /* OpenCVAppClipTests */,
+				E106A18F2C379933009C2D92 /* OpenCVAppClipUITests */,
 				E1908B4B2C2F4F2A002C8F5F /* Products */,
+				E152C6C82C374F66000949AB /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -153,6 +377,9 @@
 				E1908B4A2C2F4F2A002C8F5F /* JSON CV.app */,
 				E1908B5C2C2F4F2C002C8F5F /* OpenCVTests.xctest */,
 				E1908B662C2F4F2C002C8F5F /* OpenCVUITests.xctest */,
+				E106A16F2C379932009C2D92 /* OpenCVAppClip.app */,
+				E106A1822C379933009C2D92 /* OpenCVAppClipTests.xctest */,
+				E106A18C2C379933009C2D92 /* OpenCVAppClipUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -203,6 +430,7 @@
 		E1AD86192C319FF7008F38A3 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				E152C6CC2C3754B6000949AB /* Scan */,
 				E1E845802C35BF990065489C /* Settings */,
 				E1AD86322C31D4E3008F38A3 /* ResumeList */,
 				E1AD861A2C31A008008F38A3 /* Resume */,
@@ -317,6 +545,7 @@
 		E1E8457D2C35B8020065489C /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				E152C6D52C375E78000949AB /* QRCodeGeneratorService.swift */,
 				E1E8457E2C35B81C0065489C /* ResumeLoaderService.swift */,
 			);
 			path = Services;
@@ -357,6 +586,63 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		E106A16E2C379932009C2D92 /* OpenCVAppClip */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E106A1972C379933009C2D92 /* Build configuration list for PBXNativeTarget "OpenCVAppClip" */;
+			buildPhases = (
+				E106A16B2C379932009C2D92 /* Sources */,
+				E106A16C2C379932009C2D92 /* Frameworks */,
+				E106A16D2C379932009C2D92 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = OpenCVAppClip;
+			packageProductDependencies = (
+				E1526DA32C38576100D88453 /* SDWebImageSwiftUI */,
+				E1526DA52C38576100D88453 /* CodeScanner */,
+			);
+			productName = OpenCVAppClip;
+			productReference = E106A16F2C379932009C2D92 /* OpenCVAppClip.app */;
+			productType = "com.apple.product-type.application.on-demand-install-capable";
+		};
+		E106A1812C379933009C2D92 /* OpenCVAppClipTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E106A19A2C379933009C2D92 /* Build configuration list for PBXNativeTarget "OpenCVAppClipTests" */;
+			buildPhases = (
+				E106A17E2C379933009C2D92 /* Sources */,
+				E106A17F2C379933009C2D92 /* Frameworks */,
+				E106A1802C379933009C2D92 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E106A1842C379933009C2D92 /* PBXTargetDependency */,
+			);
+			name = OpenCVAppClipTests;
+			productName = OpenCVAppClipTests;
+			productReference = E106A1822C379933009C2D92 /* OpenCVAppClipTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		E106A18B2C379933009C2D92 /* OpenCVAppClipUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E106A19D2C379933009C2D92 /* Build configuration list for PBXNativeTarget "OpenCVAppClipUITests" */;
+			buildPhases = (
+				E106A1882C379933009C2D92 /* Sources */,
+				E106A1892C379933009C2D92 /* Frameworks */,
+				E106A18A2C379933009C2D92 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E106A18E2C379933009C2D92 /* PBXTargetDependency */,
+			);
+			name = OpenCVAppClipUITests;
+			productName = OpenCVAppClipUITests;
+			productReference = E106A18C2C379933009C2D92 /* OpenCVAppClipUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		E1908B492C2F4F2A002C8F5F /* OpenCV */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = E1908B702C2F4F2C002C8F5F /* Build configuration list for PBXNativeTarget "OpenCV" */;
@@ -364,14 +650,17 @@
 				E1908B462C2F4F2A002C8F5F /* Sources */,
 				E1908B472C2F4F2A002C8F5F /* Frameworks */,
 				E1908B482C2F4F2A002C8F5F /* Resources */,
+				E152C6A12C3748A7000949AB /* Embed App Clips */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				E106A1952C379933009C2D92 /* PBXTargetDependency */,
 			);
 			name = OpenCV;
 			packageProductDependencies = (
 				E13829942C343C22000DA139 /* SDWebImageSwiftUI */,
+				E152C6CE2C375739000949AB /* CodeScanner */,
 			);
 			productName = OpenCV;
 			productReference = E1908B4A2C2F4F2A002C8F5F /* JSON CV.app */;
@@ -423,6 +712,17 @@
 				LastSwiftUpdateCheck = 1600;
 				LastUpgradeCheck = 1600;
 				TargetAttributes = {
+					E106A16E2C379932009C2D92 = {
+						CreatedOnToolsVersion = 16.0;
+					};
+					E106A1812C379933009C2D92 = {
+						CreatedOnToolsVersion = 16.0;
+						TestTargetID = E106A16E2C379932009C2D92;
+					};
+					E106A18B2C379933009C2D92 = {
+						CreatedOnToolsVersion = 16.0;
+						TestTargetID = E106A16E2C379932009C2D92;
+					};
 					E1908B492C2F4F2A002C8F5F = {
 						CreatedOnToolsVersion = 16.0;
 					};
@@ -447,6 +747,7 @@
 			mainGroup = E1908B412C2F4F2A002C8F5F;
 			packageReferences = (
 				E13829932C343C22000DA139 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
+				E152C6CD2C375739000949AB /* XCRemoteSwiftPackageReference "CodeScanner" */,
 			);
 			productRefGroup = E1908B4B2C2F4F2A002C8F5F /* Products */;
 			projectDirPath = "";
@@ -455,11 +756,38 @@
 				E1908B492C2F4F2A002C8F5F /* OpenCV */,
 				E1908B5B2C2F4F2C002C8F5F /* OpenCVTests */,
 				E1908B652C2F4F2C002C8F5F /* OpenCVUITests */,
+				E106A16E2C379932009C2D92 /* OpenCVAppClip */,
+				E106A1812C379933009C2D92 /* OpenCVAppClipTests */,
+				E106A18B2C379933009C2D92 /* OpenCVAppClipUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		E106A16D2C379932009C2D92 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E106A17B2C379933009C2D92 /* Preview Assets.xcassets in Resources */,
+				E1526DA22C38571D00D88453 /* Assets.xcassets in Resources */,
+				E106A1782C379933009C2D92 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E106A1802C379933009C2D92 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E106A18A2C379933009C2D92 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E1908B482C2F4F2A002C8F5F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -488,6 +816,62 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		E106A16B2C379932009C2D92 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E106A1742C379932009C2D92 /* ContentView.swift in Sources */,
+				E1526D852C38571D00D88453 /* WorkView.swift in Sources */,
+				E1526D862C38571D00D88453 /* ResumeLoaderService.swift in Sources */,
+				E1526D872C38571D00D88453 /* ResumeRowView.swift in Sources */,
+				E1526D882C38571D00D88453 /* ResumeModels.swift in Sources */,
+				E1526D892C38571D00D88453 /* ResumeViewModel.swift in Sources */,
+				E1526D8A2C38571D00D88453 /* VolunteerView.swift in Sources */,
+				E1526D8B2C38571D00D88453 /* ProjectsView.swift in Sources */,
+				E1526D8C2C38571D00D88453 /* CertificatesView.swift in Sources */,
+				E1526D8D2C38571D00D88453 /* QRCodeGeneratorService.swift in Sources */,
+				E1526D8E2C38571D00D88453 /* SettingsView.swift in Sources */,
+				E1526D8F2C38571D00D88453 /* ReferencesView.swift in Sources */,
+				E1526D902C38571D00D88453 /* ResumeListView.swift in Sources */,
+				E1526D912C38571D00D88453 /* QRCodeGenView.swift in Sources */,
+				E1526D922C38571D00D88453 /* ResumeListViewModel.swift in Sources */,
+				E1526D932C38571D00D88453 /* InputFormView.swift in Sources */,
+				E1526D942C38571D00D88453 /* AwardsView.swift in Sources */,
+				E1526D952C38571D00D88453 /* ResumeView.swift in Sources */,
+				E1526D962C38571D00D88453 /* MeshGradientView.swift in Sources */,
+				E1526D972C38571D00D88453 /* Person.swift in Sources */,
+				E1526D982C38571D00D88453 /* SwiftUI+Utils.swift in Sources */,
+				E1526D992C38571D00D88453 /* MyNotesViewModel.swift in Sources */,
+				E1526D9A2C38571D00D88453 /* CachedResumeView.swift in Sources */,
+				E1526D9B2C38571D00D88453 /* EducationView.swift in Sources */,
+				E1526D9C2C38571D00D88453 /* MyNotesView.swift in Sources */,
+				E1526D9D2C38571D00D88453 /* LanguagesView.swift in Sources */,
+				E1526D9E2C38571D00D88453 /* InterestsView.swift in Sources */,
+				E1526D9F2C38571D00D88453 /* BasicsView.swift in Sources */,
+				E1526DA02C38571D00D88453 /* SkillsView.swift in Sources */,
+				E1526DA12C38571D00D88453 /* PublicationsView.swift in Sources */,
+				E106A1762C379932009C2D92 /* Item.swift in Sources */,
+				E106A1722C379932009C2D92 /* OpenCVAppClipApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E106A17E2C379933009C2D92 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E106A1872C379933009C2D92 /* OpenCVAppClipTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E106A1882C379933009C2D92 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E106A1912C379933009C2D92 /* OpenCVAppClipUITests.swift in Sources */,
+				E106A1932C379933009C2D92 /* OpenCVAppClipUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E1908B462C2F4F2A002C8F5F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -505,6 +889,7 @@
 				E1AD86312C31BE5F008F38A3 /* SwiftUI+Utils.swift in Sources */,
 				E1E8457A2C35A9D60065489C /* MyNotesView.swift in Sources */,
 				E1AD863D2C32229D008F38A3 /* CachedResumeView.swift in Sources */,
+				E152C6D62C375E84000949AB /* QRCodeGeneratorService.swift in Sources */,
 				E1908B4E2C2F4F2A002C8F5F /* OpenCVApp.swift in Sources */,
 				E1AD86182C30D2FB008F38A3 /* VolunteerView.swift in Sources */,
 				E1F487262C2F670900031976 /* ResumeViewModel.swift in Sources */,
@@ -516,6 +901,7 @@
 				E1E8457F2C35B8280065489C /* ResumeLoaderService.swift in Sources */,
 				E1AD862C2C31BA62008F38A3 /* InterestsView.swift in Sources */,
 				E1E845852C35C0A00065489C /* SettingsView.swift in Sources */,
+				E152C6D42C3757BD000949AB /* QRCodeGenView.swift in Sources */,
 				E1AD86162C30C264008F38A3 /* EducationView.swift in Sources */,
 				E1AD86222C31A67D008F38A3 /* ProjectsView.swift in Sources */,
 				E1AD86122C30B0AA008F38A3 /* MeshGradientView.swift in Sources */,
@@ -546,6 +932,21 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		E106A1842C379933009C2D92 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E106A16E2C379932009C2D92 /* OpenCVAppClip */;
+			targetProxy = E106A1832C379933009C2D92 /* PBXContainerItemProxy */;
+		};
+		E106A18E2C379933009C2D92 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E106A16E2C379932009C2D92 /* OpenCVAppClip */;
+			targetProxy = E106A18D2C379933009C2D92 /* PBXContainerItemProxy */;
+		};
+		E106A1952C379933009C2D92 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E106A16E2C379932009C2D92 /* OpenCVAppClip */;
+			targetProxy = E106A1942C379933009C2D92 /* PBXContainerItemProxy */;
+		};
 		E1908B5E2C2F4F2C002C8F5F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = E1908B492C2F4F2A002C8F5F /* OpenCV */;
@@ -559,6 +960,150 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		E106A1982C379933009C2D92 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = OpenCVAppClip/OpenCVAppClip.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 100;
+				DEVELOPMENT_ASSET_PATHS = "\"OpenCVAppClip/Preview Content\"";
+				DEVELOPMENT_TEAM = WY258SLJLV;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = OpenCVAppClip/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "JSON CV";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.business";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tapdigital.OpenCV.Clip;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		E106A1992C379933009C2D92 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = OpenCVAppClip/OpenCVAppClip.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 100;
+				DEVELOPMENT_ASSET_PATHS = "\"OpenCVAppClip/Preview Content\"";
+				DEVELOPMENT_TEAM = WY258SLJLV;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = OpenCVAppClip/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "JSON CV";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.business";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tapdigital.OpenCV.Clip;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		E106A19B2C379933009C2D92 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = WY258SLJLV;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tapdigital.OpenCV.OpenCVAppClipTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/OpenCVAppClip.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/OpenCVAppClip";
+			};
+			name = Debug;
+		};
+		E106A19C2C379933009C2D92 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = WY258SLJLV;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tapdigital.OpenCV.OpenCVAppClipTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/OpenCVAppClip.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/OpenCVAppClip";
+			};
+			name = Release;
+		};
+		E106A19E2C379933009C2D92 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = WY258SLJLV;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tapdigital.OpenCV.OpenCVAppClipUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = OpenCVAppClip;
+			};
+			name = Debug;
+		};
+		E106A19F2C379933009C2D92 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = WY258SLJLV;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tapdigital.OpenCV.OpenCVAppClipUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = OpenCVAppClip;
+			};
+			name = Release;
+		};
 		E1908B6E2C2F4F2C002C8F5F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -594,6 +1139,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = WY258SLJLV;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -657,6 +1203,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = WY258SLJLV;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -683,6 +1230,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 100;
 				DEVELOPMENT_ASSET_PATHS = "\"OpenCV/Preview Content\"";
@@ -690,6 +1239,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = OpenCV/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.business";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -704,6 +1254,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.tapdigital.OpenCV;
 				PRODUCT_MODULE_NAME = OpenCV;
 				PRODUCT_NAME = "JSON CV";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -715,6 +1266,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 100;
 				DEVELOPMENT_ASSET_PATHS = "\"OpenCV/Preview Content\"";
@@ -722,6 +1275,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = OpenCV/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.business";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -736,6 +1290,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.tapdigital.OpenCV;
 				PRODUCT_MODULE_NAME = OpenCV;
 				PRODUCT_NAME = "JSON CV";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -817,6 +1372,33 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		E106A1972C379933009C2D92 /* Build configuration list for PBXNativeTarget "OpenCVAppClip" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E106A1982C379933009C2D92 /* Debug */,
+				E106A1992C379933009C2D92 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E106A19A2C379933009C2D92 /* Build configuration list for PBXNativeTarget "OpenCVAppClipTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E106A19B2C379933009C2D92 /* Debug */,
+				E106A19C2C379933009C2D92 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E106A19D2C379933009C2D92 /* Build configuration list for PBXNativeTarget "OpenCVAppClipUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E106A19E2C379933009C2D92 /* Debug */,
+				E106A19F2C379933009C2D92 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		E1908B452C2F4F2A002C8F5F /* Build configuration list for PBXProject "OpenCV" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -864,6 +1446,14 @@
 				minimumVersion = 3.1.1;
 			};
 		};
+		E152C6CD2C375739000949AB /* XCRemoteSwiftPackageReference "CodeScanner" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/twostraws/CodeScanner";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.5.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -871,6 +1461,21 @@
 			isa = XCSwiftPackageProductDependency;
 			package = E13829932C343C22000DA139 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
 			productName = SDWebImageSwiftUI;
+		};
+		E1526DA32C38576100D88453 /* SDWebImageSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E13829932C343C22000DA139 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
+			productName = SDWebImageSwiftUI;
+		};
+		E1526DA52C38576100D88453 /* CodeScanner */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E152C6CD2C375739000949AB /* XCRemoteSwiftPackageReference "CodeScanner" */;
+			productName = CodeScanner;
+		};
+		E152C6CE2C375739000949AB /* CodeScanner */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E152C6CD2C375739000949AB /* XCRemoteSwiftPackageReference "CodeScanner" */;
+			productName = CodeScanner;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
