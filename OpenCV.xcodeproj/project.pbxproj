@@ -166,6 +166,7 @@
 		E13829962C347729000DA139 /* InputFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputFormView.swift; sourceTree = "<group>"; };
 		E138299A2C34A184000DA139 /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 		E1526DAA2C3987C400D88453 /* String+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Utils.swift"; sourceTree = "<group>"; };
+		E1526DAD2C398FDC00D88453 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		E152C67B2C3748A6000949AB /* OpenCVAppClipApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenCVAppClipApp.swift; sourceTree = "<group>"; };
 		E152C6812C3748A7000949AB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E152C6842C3748A7000949AB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -390,6 +391,7 @@
 		E1908B4C2C2F4F2A002C8F5F /* OpenCV */ = {
 			isa = PBXGroup;
 			children = (
+				E1526DAD2C398FDC00D88453 /* README.md */,
 				E115BF492C36F5C1000A74C7 /* Info.plist */,
 				E1908B4D2C2F4F2A002C8F5F /* OpenCVApp.swift */,
 				E1E8457D2C35B8020065489C /* Services */,
