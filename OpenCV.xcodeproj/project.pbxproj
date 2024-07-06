@@ -53,6 +53,8 @@
 		E1526DA22C38571D00D88453 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1908B532C2F4F2C002C8F5F /* Assets.xcassets */; };
 		E1526DA42C38576100D88453 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = E1526DA32C38576100D88453 /* SDWebImageSwiftUI */; };
 		E1526DA62C38576100D88453 /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = E1526DA52C38576100D88453 /* CodeScanner */; };
+		E1526DAB2C3987C900D88453 /* String+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1526DAA2C3987C400D88453 /* String+Utils.swift */; };
+		E1526DAC2C3987C900D88453 /* String+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1526DAA2C3987C400D88453 /* String+Utils.swift */; };
 		E152C6CF2C375739000949AB /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = E152C6CE2C375739000949AB /* CodeScanner */; };
 		E152C6D42C3757BD000949AB /* QRCodeGenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E152C6D22C3757B4000949AB /* QRCodeGenView.swift */; };
 		E152C6D62C375E84000949AB /* QRCodeGeneratorService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E152C6D52C375E78000949AB /* QRCodeGeneratorService.swift */; };
@@ -163,6 +165,7 @@
 		E138298F2C337588000DA139 /* ResumeRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResumeRowView.swift; sourceTree = "<group>"; };
 		E13829962C347729000DA139 /* InputFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputFormView.swift; sourceTree = "<group>"; };
 		E138299A2C34A184000DA139 /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
+		E1526DAA2C3987C400D88453 /* String+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Utils.swift"; sourceTree = "<group>"; };
 		E152C67B2C3748A6000949AB /* OpenCVAppClipApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenCVAppClipApp.swift; sourceTree = "<group>"; };
 		E152C6812C3748A7000949AB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E152C6842C3748A7000949AB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -499,6 +502,7 @@
 		E1AD862F2C31BE41008F38A3 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				E1526DAA2C3987C400D88453 /* String+Utils.swift */,
 				E1AD86112C30B099008F38A3 /* MeshGradientView.swift */,
 				E1AD86302C31BE4D008F38A3 /* SwiftUI+Utils.swift */,
 				E1908B4F2C2F4F2A002C8F5F /* SampleSwiftDataListView.swift */,
@@ -831,6 +835,7 @@
 				E1526D8C2C38571D00D88453 /* CertificatesView.swift in Sources */,
 				E1526D8D2C38571D00D88453 /* QRCodeGeneratorService.swift in Sources */,
 				E1526D8E2C38571D00D88453 /* SettingsView.swift in Sources */,
+				E1526DAC2C3987C900D88453 /* String+Utils.swift in Sources */,
 				E1526D8F2C38571D00D88453 /* ReferencesView.swift in Sources */,
 				E1526D902C38571D00D88453 /* ResumeListView.swift in Sources */,
 				E1526D912C38571D00D88453 /* QRCodeGenView.swift in Sources */,
@@ -887,6 +892,7 @@
 				E1AD862A2C31B2B1008F38A3 /* PublicationsView.swift in Sources */,
 				E1AD86262C31AC37008F38A3 /* AwardsView.swift in Sources */,
 				E1AD86312C31BE5F008F38A3 /* SwiftUI+Utils.swift in Sources */,
+				E1526DAB2C3987C900D88453 /* String+Utils.swift in Sources */,
 				E1E8457A2C35A9D60065489C /* MyNotesView.swift in Sources */,
 				E1AD863D2C32229D008F38A3 /* CachedResumeView.swift in Sources */,
 				E152C6D62C375E84000949AB /* QRCodeGeneratorService.swift in Sources */,

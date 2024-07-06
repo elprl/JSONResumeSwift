@@ -26,27 +26,8 @@ struct OpenCVApp: App {
     var body: some Scene {
         WindowGroup {
             ContainerView()
-                .onContinueUserActivity(NSUserActivityTypeBrowsingWeb, perform: handleUserActivity)
         }
         .modelContainer(sharedModelContainer)
-    }
-    
-    func handleUserActivity(_ userActivity: NSUserActivity) {
-        guard
-            let incomingURL = userActivity.webpageURL,
-            let components = URLComponents(
-                url: incomingURL,
-                resolvingAgainstBaseURL: true),
-            let queryItems = components.queryItems
-        else {
-            return
-        }
-        
-        guard let url = queryItems.first(where: { $0.name == "url" })?.value else {
-            return
-        }
-        
-        print("url: \(url)")
     }
 }
 

@@ -7,13 +7,16 @@
 import UIKit
 import CoreImage
 
-struct QRCodeGenerator: QRCodeGeneratorServiceProtocol { }
 
-protocol QRCodeGeneratorServiceProtocol { }
+protocol CodeGeneratorServiceProtocol { 
+    func generateCode(from string: String) -> UIImage?
+}
 
-extension QRCodeGeneratorServiceProtocol {
+struct QRCodeGenerator  { }
+
+extension QRCodeGenerator: CodeGeneratorServiceProtocol{
     
-    func generateQRCode(from string: String) -> UIImage? {
+    func generateCode(from string: String) -> UIImage? {
         let data = string.data(using: String.Encoding.ascii)
         
         if let filter = CIFilter(name: "CIQRCodeGenerator") {

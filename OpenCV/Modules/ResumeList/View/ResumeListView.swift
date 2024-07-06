@@ -53,7 +53,7 @@ struct ResumeListView: View {
                         }
                     }
                 }
-                .sheet(isPresented: $viewModel.showingSheet) {
+                .sheet(isPresented: $viewModel.showingInputSheet) {
                     if #available(iOS 18.0, *) {
                         InputFormView(viewModel: viewModel)
                             .presentationSizing(.form)
@@ -71,7 +71,7 @@ struct ResumeListView: View {
                         .contentShape(Rectangle())
                         .onTapGesture {
                             self.viewModel.state = .appeared
-                            self.viewModel.showingSheet = true
+                            self.viewModel.showingInputSheet = true
                         }
                     }
                 }
@@ -82,7 +82,7 @@ struct ResumeListView: View {
                     ToolbarItemGroup(placement: .topBarTrailing) {
                         Button(action: {
                             self.viewModel.state = .appeared
-                            self.viewModel.showingSheet = true
+                            self.viewModel.showingInputSheet = true
                         }) {
                             Label("Add Item", systemImage: "person.badge.plus")
                         }
@@ -102,6 +102,7 @@ struct ResumeListView: View {
             }
         }
         .tint(colorScheme == .dark ? .orange : .brown)
+        .onContinueUserActivity(NSUserActivityTypeBrowsingWeb, perform: viewModel.handleUserActivity)
     }
 }
 

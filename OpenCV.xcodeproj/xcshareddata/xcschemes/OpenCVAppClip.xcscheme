@@ -77,8 +77,8 @@
       <EnvironmentVariables>
          <EnvironmentVariable
             key = "_XCAppClipURL"
-            value = ""
-            isEnabled = "NO">
+            value = "https://appclip.apple.com/id?p=com.tapdigital.OpenCV&amp;url=aHR0cHM6Ly9naXN0LmdpdGh1YnVzZXJjb250ZW50LmNvbS9lbHBybC83MjVkMzMzN2EzYmFlZGNmZDk1MzA2ZTI5NjU4N2U4YS9yYXcvMzJhMWUzMDlmMWFiOGZjMGFiMTljNzY5NWFkOTQxY2RkM2M5M2E5ZC9yZXN1bWUuanNvbg=="
+            isEnabled = "YES">
          </EnvironmentVariable>
       </EnvironmentVariables>
    </LaunchAction>

@@ -24,7 +24,7 @@ struct QRCodeGenView: View {
                 .tint(colorScheme == .dark ? .orange : .brown)
                 .padding(.horizontal, 20)
                 GroupBox {
-                    if let qrCodeImage = QRCodeGenerator().generateQRCode(from: isRaw ? resumeUrl : generateAppClipLink(resumeUrl: resumeUrl)) {
+                    if let qrCodeImage = QRCodeGenerator().generateCode(from: isRaw ? resumeUrl : generateAppClipLink(resumeUrl: resumeUrl)) {
                         Image(uiImage: qrCodeImage)
                             .interpolation(.none)
                             .resizable()
@@ -72,7 +72,7 @@ struct QRCodeGenView: View {
     }
     
     private func generateAppClipLink(resumeUrl: String) -> String {
-        return "https://appclip.apple.com/id?p=\(Bundle.main.bundleIdentifier ?? "com.tapdigital.OpenCV")&url=\(resumeUrl.toBase64())"
+        return "https://appclip.apple.com/id?p=com.tapdigital.OpenCV.Clip&url=\(resumeUrl.toBase64)"
     }
 }
 
