@@ -66,11 +66,13 @@ struct InputFormView: View {
     private var input: some View {
         GroupBox {
             HStack {
-                TextField("Enter a URL to CV \n(e.g. https://www.domain.com/resume.json)", text: $viewModel.url, axis: .vertical)
+                TextField("", text: $viewModel.url, axis: .vertical)
                     .lineLimit(4...10)
                     .keyboardType(.URL)
                     .textInputAutocapitalization(.never)
                     .disableAutocorrection(true)
+                    .modifier(PlaceholderStyle(showPlaceHolder: viewModel.url.isEmpty,
+                                               placeholder: "Enter a URL to CV \n(e.g. https://www.domain.com/resume.json)"))
                 Spacer()
                 Button {
                     viewModel.url = ""
@@ -78,6 +80,7 @@ struct InputFormView: View {
                 } label: {
                     Image(systemName: "xmark.circle")
                 }
+                .disabled(viewModel.url.isEmpty)
             }
         }
         .backgroundStyle(.ultraThinMaterial)
@@ -130,6 +133,25 @@ struct InputFormView: View {
             } catch {
                 print("error")
             }
+        }
+    }
+}
+
+public struct PlaceholderStyle: ViewModifier {
+    var showPlaceHolder: Bool
+    var placeholder: String
+
+    public func body(content: Content) -> some View {
+        ZStack(alignment: .leading) {
+            if showPlaceHolder {
+                Text(placeholder)
+                    .foregroundStyle(.secondary)
+                    .padding(.top, -20)
+                    .padding(.horizontal, 4)
+            }
+            content
+                .foregroundStyle(.primary)
+                .padding(4.0)
         }
     }
 }

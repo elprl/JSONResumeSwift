@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SwiftData
+import CodeScanner
 
 struct ResumeListView: View {
     @Query private var people: [Person]
@@ -27,17 +28,38 @@ struct ResumeListView: View {
                 ScrollView {
                     LazyVStack {
                         ForEach(people) { person in
-                            if #available(iOS 18.0, *) {
-                                ResumeRowView(viewModel: viewModel, person: person, namespace: namespace)
-                                    .transition(.move(edge: .leading))
-                                    .matchedTransitionSource(id: person.id, in: namespace)
-                            } else {
-                                ResumeRowView(viewModel: viewModel, person: person, namespace: namespace)
-                                    .transition(.move(edge: .leading))
+                            Group {
+                                if #available(iOS 18.0, *) {
+                                    ResumeRowView(viewModel: viewModel, person: person, namespace: namespace)
+                                        .transition(.move(edge: .leading))
+                                        .matchedTransitionSource(id: person.id, in: namespace)
+                                } else {
+                                    ResumeRowView(viewModel: viewModel, person: person, namespace: namespace)
+                                        .transition(.move(edge: .leading))
+                                }
+                            }
+                            .sheet(isPresented: $viewModel.showingQRCodeSheet) {
+                                QRCodeGenView(resumeUrl: person.resumeUrl)
                             }
                         }
                     }
                     .animation(.easeInOut, value: people)
+                }
+                .sheet(isPresented: $viewModel.showingScanSheet) {
+                    CodeScannerView(codeTypes: [.qr]) { response in
+                        if case let .success(result) = response {
+                            viewModel.scannedCode = result.string
+                            viewModel.showingScanSheet = false
+                        }
+                    }
+                }
+                .sheet(isPresented: $viewModel.showingInputSheet) {
+                    if #available(iOS 18.0, *) {
+                        InputFormView(viewModel: viewModel)
+                            .presentationSizing(.form)
+                    } else {
+                        InputFormView(viewModel: viewModel)
+                    }
                 }
                 .overlay {
                     if people.isEmpty {
@@ -49,7 +71,7 @@ struct ResumeListView: View {
                         .contentShape(Rectangle())
                         .onTapGesture {
                             self.viewModel.state = .appeared
-                            self.viewModel.showingSheet = true
+                            self.viewModel.showingInputSheet = true
                         }
                     }
                 }
@@ -60,17 +82,9 @@ struct ResumeListView: View {
                     ToolbarItemGroup(placement: .topBarTrailing) {
                         Button(action: {
                             self.viewModel.state = .appeared
-                            self.viewModel.showingSheet = true
+                            self.viewModel.showingInputSheet = true
                         }) {
                             Label("Add Item", systemImage: "person.badge.plus")
-                        }
-                        .sheet(isPresented: $viewModel.showingSheet) { 
-                            if #available(iOS 18.0, *) {
-                                InputFormView(viewModel: viewModel)
-                                    .presentationSizing(.form)
-                            } else {
-                                InputFormView(viewModel: viewModel)
-                            }
                         }
                     }
                     
@@ -88,6 +102,7 @@ struct ResumeListView: View {
             }
         }
         .tint(colorScheme == .dark ? .orange : .brown)
+        .onContinueUserActivity(NSUserActivityTypeBrowsingWeb, perform: viewModel.handleUserActivity)
     }
 }
 

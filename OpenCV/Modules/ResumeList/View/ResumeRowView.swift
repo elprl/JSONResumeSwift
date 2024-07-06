@@ -67,22 +67,36 @@ struct ResumeRowView: View {
                         }
                     }
                     Spacer()
-                    Button {
-                        viewModel.showingDeleteAlert = true
+                    Menu {
+                        Button {
+                            viewModel.showingQRCodeSheet = true
+                        } label: {
+                            Label("Share Resume", systemImage: "square.and.arrow.up")
+                                .foregroundStyle(colorScheme == .dark ? .orange : .brown)
+                        }
+                        Button {
+                            viewModel.showingDeleteAlert = true
+                        } label: {
+                            Label("Delete", systemImage: "trash")
+                                .foregroundStyle(colorScheme == .dark ? .orange : .brown)
+                        }
                     } label: {
-                        Image(systemName: "trash")
+                        Image(systemName: "ellipsis.circle")
                             .foregroundStyle(colorScheme == .dark ? .orange : .brown)
                     }
-                    .alert("Are you sure?", isPresented: $viewModel.showingDeleteAlert) {
-                        Button("Delete", role: .destructive, action: {
-                            Task { @MainActor in
-                                viewModel.deleteItem(person)
-                            }
-                        })
-                        Button("Cancel", role: .cancel, action: {})
-                    } message: {
-                        Text("Delete \(person.name ?? "this person") (including your notes) permanently.")
-                    }
+                    .menuOrder(.fixed)
+                    .highPriorityGesture(TapGesture())
+                    
+                }
+                .alert("Are you sure?", isPresented: $viewModel.showingDeleteAlert) {
+                    Button("Delete", role: .destructive, action: {
+                        Task { @MainActor in
+                            viewModel.deleteItem(person)
+                        }
+                    })
+                    Button("Cancel", role: .cancel, action: {})
+                } message: {
+                    Text("Delete \(person.name ?? "this person") (including your notes) permanently.")
                 }
             }
             .backgroundStyle(.ultraThinMaterial)

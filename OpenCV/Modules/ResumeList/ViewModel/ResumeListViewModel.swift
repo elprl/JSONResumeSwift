@@ -18,11 +18,18 @@ final class ResumeListViewModel: ObservableObject {
     
 //    @Published var people: [Person] = []
     @Published var resumes: Set<Resume> = Set<Resume>()
-    @Published var showingSheet = false
+    @Published var showingInputSheet = false
+    @Published var showingScanSheet = false
+    @Published var showingQRCodeSheet = false
     @Published var showingDeleteAlert = false
     @Published var showingSettingsSheet = false
+#if DEBUG
     @Published var url = "https://gist.githubusercontent.com/elprl/725d3337a3baedcfd95306e296587e8a/raw/32a1e309f1ab8fc0ab19c7695ad941cdd3c93a9d/resume.json"
+#else
+    @Published var url = ""
+#endif
     @Published var state: LoadingViewState<Resume> = .appeared
+    @Published var scannedCode: String = ""
 }
 
 extension ResumeListViewModel {
@@ -80,5 +87,29 @@ extension ResumeListViewModel {
             }
         }
         return false
+    }
+    
+    func generateAppClipLink(resumeUrl: String) -> String {
+        return "https://appclip.apple.com/id?p=com.tapdigital.OpenCV.Clip&url=\(resumeUrl.toBase64)"
+    }
+    
+    @MainActor
+    func handleUserActivity(_ userActivity: NSUserActivity) {
+        guard
+            let incomingURL = userActivity.webpageURL,
+            let components = URLComponents(
+                url: incomingURL,
+                resolvingAgainstBaseURL: true),
+            let queryItems = components.queryItems
+        else {
+            return
+        }
+        
+        guard let url = queryItems.first(where: { $0.name == "url" })?.value?.fromBase64 else {
+            return
+        }
+        print("App Clip URL: \(url)")
+        self.url = url
+        self.showingInputSheet = true
     }
 }

@@ -10,11 +10,8 @@ import Testing
 struct PeriodProtocolTests {
 
     @Test func testDateFormatting() async throws {
-        // Write your test here and use APIs like `#expect(...)` to check expected conditions.
-        
         struct Period: PeriodProtocol {
             var startDate: String?
-            
             var endDate: String?
         }
         let period = Period()
