@@ -13,7 +13,7 @@ struct ResumeRowView: View {
     @Environment(\.modelContext) private var modelContext
     @Environment(\.colorScheme) private var colorScheme
     @ObservedObject var viewModel: ResumeListViewModel
-    let person: Person
+    @State var person: Person
     let namespace: Namespace.ID
     
     var body: some View {
@@ -31,16 +31,16 @@ struct ResumeRowView: View {
                         WebImage(url: URL(string: imageUrl)) { image in
                             image.resizable()
                         } placeholder: {
-                            Rectangle().foregroundColor(.gray)
+                            placeholderImage
                         }
                         .indicator(.activity) // Activity Indicator
-                        .transition(.fade(duration: 0.5)) // Fade Transition with duration
+                        .transition(.fade(duration: 0.6)) // Fade Transition with duration
                         .scaledToFit()
                         .frame(width: 54, height: 54)
                         .clipShape(Circle())
                         .shadow(radius: 4)
                     } else {
-                        ProgressView()
+                        placeholderImage
                     }
                     VStack {
                         if let name = person.name {
@@ -76,6 +76,7 @@ struct ResumeRowView: View {
                         }
                         Button {
                             viewModel.showingDeleteAlert = true
+                            viewModel.selectedPerson = person
                         } label: {
                             Label("Delete", systemImage: "trash")
                                 .foregroundStyle(colorScheme == .dark ? .orange : .brown)
@@ -87,16 +88,6 @@ struct ResumeRowView: View {
                     .menuOrder(.fixed)
                     .highPriorityGesture(TapGesture())
                     
-                }
-                .alert("Are you sure?", isPresented: $viewModel.showingDeleteAlert) {
-                    Button("Delete", role: .destructive, action: {
-                        Task { @MainActor in
-                            viewModel.deleteItem(person)
-                        }
-                    })
-                    Button("Cancel", role: .cancel, action: {})
-                } message: {
-                    Text("Delete \(person.name ?? "this person") (including your notes) permanently.")
                 }
             }
             .backgroundStyle(.ultraThinMaterial)
@@ -118,6 +109,14 @@ struct ResumeRowView: View {
                 Text("Resume not yet loaded")
             }
         }
+    }
+    
+    @ViewBuilder
+    private var placeholderImage: some View {
+        Image(systemName: "person.circle")
+            .resizable()
+            .aspectRatio(contentMode: .fit)
+            .frame(width: 54, height: 54)
     }
 }
 

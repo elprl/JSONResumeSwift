@@ -11,6 +11,10 @@ struct SettingsView: View {
     @Environment(\.dismiss) private var dismiss
     @Environment(\.colorScheme) private var colorScheme
     @AppStorage("darkLightAutoMode") private var darkLightAutoMode: UIUserInterfaceStyle = .unspecified
+    
+    private struct Constants {
+        static let appId = "6511210635"
+    }
 
     var body: some View {
         NavigationStack {
@@ -23,7 +27,7 @@ struct SettingsView: View {
             .background(MeshGradientView().opacity(0.3).ignoresSafeArea())
             .navigationTitle("Settings")
             .toolbar {
-                ToolbarItemGroup(placement: .navigationBarTrailing) {
+                ToolbarItemGroup(placement: .topBarTrailing) {
                     Button(role: .cancel, action: {
                         self.dismiss()
                     }, label: {
@@ -39,7 +43,7 @@ struct SettingsView: View {
     @ViewBuilder
     private var appPreferences: some View {
         Section(header: SectionHeaderBlock(title: "App Preferences", description: "")) {
-            Picker(selection: $darkLightAutoMode, label: Text("Visual Mode").font(.headline)) {
+            Picker(selection: $darkLightAutoMode, label: Text("Visual Mode")) {
                 Text("Automatic").font(.callout).tag(UIUserInterfaceStyle.unspecified)
                 Text("Dark").font(.callout).tag(UIUserInterfaceStyle.dark)
                 Text("Light").font(.callout).tag(UIUserInterfaceStyle.light)
@@ -51,7 +55,7 @@ struct SettingsView: View {
     @ViewBuilder
     private var miscellaneous: some View {
         Section(header: SectionHeaderBlock(title: "Miscellaneous", description: "")) {
-            NavigationLink("Licenses") {
+            NavigationLink("Licenses & Thanks") {
                 List {
                     Text("JSON Resume\nhttps://github.com/jsonresume")
                     Text("SDWebImageSwiftUI\nhttps://github.com/SDWebImage/SDWebImageSwiftUI.git")
@@ -59,7 +63,38 @@ struct SettingsView: View {
                 .scrollContentBackground(.hidden)
                 .background(MeshGradientView().opacity(0.3).ignoresSafeArea())
             }
+            createJSON
+            share
             version
+        }
+        .tint(.primary)
+    }
+    
+    @ViewBuilder
+    private var createJSON: some View {
+        Button {
+            openLink(url: "https://jsonresume.org/getting-started")
+        } label: {
+            HStack {
+                Text("How to create JSON CV")
+                    .lineLimit(1)
+                    .foregroundStyle(.primary)
+                Spacer()
+                Image(systemName: "link")
+            }
+        }
+    }
+    
+    @ViewBuilder
+    private var share: some View {
+        ShareLink(item: URL(string: "https://apps.apple.com/app/id\(Constants.appId)")!, preview: SharePreview("https://apps.apple.com/app/id\(Constants.appId)", image: Image("AppIcon"))) {
+            HStack {
+                Text("Share App")
+                    .lineLimit(1)
+                    .foregroundStyle(.primary)
+                Spacer()
+                Image(systemName: "square.and.arrow.up")
+            }
         }
     }
     
@@ -67,7 +102,6 @@ struct SettingsView: View {
     private var version: some View {
         HStack {
             Text("Version")
-                .font(.headline)
                 .lineLimit(1)
                 .foregroundStyle(.primary)
             Spacer()

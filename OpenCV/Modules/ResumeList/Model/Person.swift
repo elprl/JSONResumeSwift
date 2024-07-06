@@ -24,8 +24,16 @@ final class Person {
     }
 }
 
-extension Person: Identifiable {
+extension Person: Identifiable, Hashable {
     var id: String {
         return resumeUrl
+    }
+    
+    var hashValue: Int {
+        return resumeUrl.hashValue
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(resumeUrl)
     }
 }

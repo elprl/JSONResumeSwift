@@ -74,13 +74,21 @@ struct InputFormView: View {
                     .modifier(PlaceholderStyle(showPlaceHolder: viewModel.url.isEmpty,
                                                placeholder: "Enter a URL to CV \n(e.g. https://www.domain.com/resume.json)"))
                 Spacer()
-                Button {
-                    viewModel.url = ""
-                    viewModel.state = .appeared
-                } label: {
-                    Image(systemName: "xmark.circle")
+                VStack {
+                    Button {
+                        viewModel.url = ""
+                        viewModel.state = .appeared
+                    } label: {
+                        Image(systemName: "xmark.circle")
+                    }
+                    .disabled(viewModel.url.isEmpty)
+                    .padding(.bottom, 20)
+                    Button {
+                        viewModel.showingScanSheet = true
+                    } label: {
+                        Image(systemName: "qrcode.viewfinder")
+                    }
                 }
-                .disabled(viewModel.url.isEmpty)
             }
         }
         .backgroundStyle(.ultraThinMaterial)

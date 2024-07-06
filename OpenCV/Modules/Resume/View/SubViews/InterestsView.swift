@@ -20,7 +20,7 @@ struct InterestsView: View {
                     GroupBox {
                         HStack(alignment: .center) {
                             VStack(alignment: .leading) {
-                                Text(element.name)
+                                Text(element.name ?? "")
                                     .font(.body)
                                     .foregroundStyle(.primary)
                                 ScrollView(.horizontal, showsIndicators: false) {

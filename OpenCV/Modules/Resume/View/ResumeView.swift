@@ -45,7 +45,7 @@ struct ResumeView: View {
                 Divider().padding()
                 myNotes
             }
-            .navigationTitle(resume.basics.name)
+            .navigationTitle(resume.basics.name ?? "")
             .navigationBarTitleDisplayMode(.inline)
             .padding(.horizontal)
         }

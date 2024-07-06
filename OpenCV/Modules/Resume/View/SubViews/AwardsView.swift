@@ -19,7 +19,7 @@ struct AwardsView: View {
                 ForEach(awards) { element in
                     GroupBox {
                         VStack(alignment: .leading, spacing: 4) {
-                            Text(element.title)
+                            Text(element.title ?? "")
                                 .font(.body)
                                 .foregroundStyle(.primary)
                             if let date = element.date {

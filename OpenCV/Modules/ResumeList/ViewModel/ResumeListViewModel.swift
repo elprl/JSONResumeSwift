@@ -7,6 +7,7 @@
 import Foundation
 import Combine
 import SwiftData
+import CodeScanner
 
 @MainActor
 final class ResumeListViewModel: ObservableObject {
@@ -30,6 +31,7 @@ final class ResumeListViewModel: ObservableObject {
 #endif
     @Published var state: LoadingViewState<Resume> = .appeared
     @Published var scannedCode: String = ""
+    @Published var selectedPerson: Person?
 }
 
 extension ResumeListViewModel {
@@ -59,10 +61,12 @@ extension ResumeListViewModel {
     }
     
     // Delete
-    func deleteItem(_ item: Person) {
-        modelContext.delete(item)
-        save()
-        deleteNotes(for: item)
+    func deleteItem(_ item: Person?) {
+        if let item {
+            modelContext.delete(item)
+            save()
+            deleteNotes(for: item)
+        }
     }
     
     private func deleteNotes(for person: Person) {
@@ -79,14 +83,20 @@ extension ResumeListViewModel {
     }
     
     var isValidUrl: Bool {
-        // Check if the URL starts with "https" and ends with ".json"
-        if url.hasPrefix("https://") && url.hasSuffix(".json") {
+        // Check if the URL is valid
+        if isValidURL(url: url) {
             // Check if the URL is a valid URL
-            if let url = URL(string: url), url.scheme == "https" {
+            if let _ = URL(string: url) {
                 return true
             }
         }
         return false
+    }
+    
+    private func isValidURL(url: String) -> Bool {
+        let urlPattern = #"^(https?|ftp)://[^\s/$.?#].[^\s]*$"#
+        let urlTest = NSPredicate(format: "SELF MATCHES %@", urlPattern)
+        return urlTest.evaluate(with: url)
     }
     
     func generateAppClipLink(resumeUrl: String) -> String {
@@ -111,5 +121,17 @@ extension ResumeListViewModel {
         print("App Clip URL: \(url)")
         self.url = url
         self.showingInputSheet = true
+    }
+    
+    @MainActor
+    func handleQRScan(response: Result<ScanResult, ScanError>) {
+        if case let .success(result) = response {
+            if result.string.hasPrefix("https://registry.jsonresume.org/") {
+                url = result.string + ".json"
+            } else {
+                url = result.string
+            }
+            showingScanSheet = false
+        }
     }
 }

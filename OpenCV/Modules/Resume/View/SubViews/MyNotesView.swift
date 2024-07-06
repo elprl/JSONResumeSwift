@@ -32,6 +32,7 @@ struct MyNotesView: View {
             } label: {
                 Label("My Notes", systemImage: "doc")
                     .modifier(Heading())
+                    .tint(.primary)
             }
             .tint(colorScheme == .dark ? .orange : .brown)
         }

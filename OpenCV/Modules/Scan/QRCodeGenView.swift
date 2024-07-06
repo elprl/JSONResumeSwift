@@ -11,13 +11,13 @@ struct QRCodeGenView: View {
     @Environment(\.colorScheme) private var colorScheme
     @AppStorage("darkLightAutoMode") private var darkLightAutoMode: UIUserInterfaceStyle = .unspecified
     let resumeUrl: String
-    @State private var isRaw: Bool = true
+    @State private var isRaw: Bool = false
     
     var body: some View {
         NavigationStack {
             VStack {
                 Picker(selection: $isRaw, label: Text("JSON Link or App Clip")) {
-                    Text("Raw JSON").font(.body).tag(true)
+                    Text("JSON URL").font(.body).tag(true)
                     Text("App Clip").font(.body).tag(false)
                 }
                 .font(.body)
@@ -28,9 +28,19 @@ struct QRCodeGenView: View {
                         Image(uiImage: qrCodeImage)
                             .interpolation(.none)
                             .resizable()
-                            .frame(width: 320, height: 320)
+                            .aspectRatio(contentMode: .fit)
+//                            .frame(width: 320, height: 320)
                     } else {
                         Text("Failed to generate QR Code")
+                    }
+                    if !isRaw {
+                        HStack(alignment: .center) {
+                            Image(systemName: "apple.logo").padding(.trailing, -6)
+                            Text("App Clip").padding(.top, 6)
+                        }
+                        .foregroundStyle(.black)
+                        .font(.title)
+                        .bold()
                     }
                 }
                 .backgroundStyle(.white)

@@ -74,7 +74,7 @@ struct WorkView: View {
     @ViewBuilder
     private func name(element: Work) -> some View {
         HStack {
-            Text(element.name)
+            Text(element.name ?? "")
                 .font(.subheadline)
                 .lineLimit(1)
                 .foregroundStyle(.primary)

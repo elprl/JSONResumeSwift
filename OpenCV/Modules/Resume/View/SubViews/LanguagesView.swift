@@ -19,11 +19,11 @@ struct LanguagesView: View {
                 ForEach(languages) { element in
                     GroupBox {
                         HStack(alignment: .center) {
-                            Text(element.language)
+                            Text(element.language ?? "")
                                 .font(.body)
                                 .foregroundStyle(.primary)
                             Spacer()
-                            Text(element.fluency)
+                            Text(element.fluency ?? "")
                                 .font(.callout)
                                 .foregroundStyle(.secondary)
                         }
