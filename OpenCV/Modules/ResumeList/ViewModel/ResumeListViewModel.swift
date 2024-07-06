@@ -7,6 +7,7 @@
 import Foundation
 import Combine
 import SwiftData
+import CodeScanner
 
 @MainActor
 final class ResumeListViewModel: ObservableObject {
@@ -120,5 +121,17 @@ extension ResumeListViewModel {
         print("App Clip URL: \(url)")
         self.url = url
         self.showingInputSheet = true
+    }
+    
+    @MainActor
+    func handleQRScan(response: Result<ScanResult, ScanError>) {
+        if case let .success(result) = response {
+            if result.string.hasPrefix("https://registry.jsonresume.org/") {
+                url = result.string + ".json"
+            } else {
+                url = result.string
+            }
+            showingScanSheet = false
+        }
     }
 }

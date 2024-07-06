@@ -46,11 +46,8 @@ struct ResumeListView: View {
                     .animation(.easeInOut, value: people)
                 }
                 .sheet(isPresented: $viewModel.showingScanSheet) {
-                    CodeScannerView(codeTypes: [.qr]) { response in
-                        if case let .success(result) = response {
-                            viewModel.scannedCode = result.string
-                            viewModel.showingScanSheet = false
-                        }
+                    CodeScannerView(codeTypes: [.qr], showViewfinder: true) { response in
+                        viewModel.handleQRScan(response: response)
                     }
                 }
                 .sheet(isPresented: $viewModel.showingInputSheet) {

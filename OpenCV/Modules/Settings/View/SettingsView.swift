@@ -55,7 +55,7 @@ struct SettingsView: View {
     @ViewBuilder
     private var miscellaneous: some View {
         Section(header: SectionHeaderBlock(title: "Miscellaneous", description: "")) {
-            NavigationLink("Licenses") {
+            NavigationLink("Licenses & Thanks") {
                 List {
                     Text("JSON Resume\nhttps://github.com/jsonresume")
                     Text("SDWebImageSwiftUI\nhttps://github.com/SDWebImage/SDWebImageSwiftUI.git")
@@ -63,8 +63,25 @@ struct SettingsView: View {
                 .scrollContentBackground(.hidden)
                 .background(MeshGradientView().opacity(0.3).ignoresSafeArea())
             }
+            createJSON
             share
             version
+        }
+        .tint(.primary)
+    }
+    
+    @ViewBuilder
+    private var createJSON: some View {
+        Button {
+            openLink(url: "https://jsonresume.org/getting-started")
+        } label: {
+            HStack {
+                Text("How to create JSON CV")
+                    .lineLimit(1)
+                    .foregroundStyle(.primary)
+                Spacer()
+                Image(systemName: "link")
+            }
         }
     }
     
@@ -78,7 +95,6 @@ struct SettingsView: View {
                 Spacer()
                 Image(systemName: "square.and.arrow.up")
             }
-            .tint(.primary)
         }
     }
     
