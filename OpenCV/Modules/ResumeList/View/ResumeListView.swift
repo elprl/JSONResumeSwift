@@ -10,7 +10,7 @@ import SwiftData
 import CodeScanner
 
 struct ResumeListView: View {
-    @Query private var people: [Person]
+    @Query(sort: \Person.createdAt, order: .reverse) private var people: [Person]
     @StateObject private var viewModel: ResumeListViewModel
     @Environment(\.colorScheme) private var colorScheme
     @Namespace() var namespace
@@ -27,7 +27,7 @@ struct ResumeListView: View {
                     .ignoresSafeArea()
                 ScrollView {
                     LazyVStack {
-                        ForEach(people) { person in
+                        ForEach(people, id: \.self) { person in
                             Group {
                                 if #available(iOS 18.0, *) {
                                     ResumeRowView(viewModel: viewModel, person: person, namespace: namespace)
@@ -62,18 +62,7 @@ struct ResumeListView: View {
                     }
                 }
                 .overlay {
-                    if people.isEmpty {
-                        ContentUnavailableView(
-                            "No resumes found",
-                            systemImage: "person.badge.plus",
-                            description: Text("Tap to add a new resume")
-                        )
-                        .contentShape(Rectangle())
-                        .onTapGesture {
-                            self.viewModel.state = .appeared
-                            self.viewModel.showingInputSheet = true
-                        }
-                    }
+                    empty
                 }
                 .navigationTitle("CVs")
                 .navigationBarTitleDisplayMode(.inline)
@@ -99,10 +88,36 @@ struct ResumeListView: View {
                         }
                     }
                 }
+                .alert("Are you sure?", isPresented: $viewModel.showingDeleteAlert) {
+                    Button("Delete", role: .destructive, action: {
+                        Task { @MainActor in
+                            viewModel.deleteItem(viewModel.selectedPerson)
+                        }
+                    })
+                    Button("Cancel", role: .cancel, action: {})
+                } message: {
+                    Text("Delete \(viewModel.selectedPerson?.name ?? "this person") (including your notes) permanently.")
+                }
             }
         }
         .tint(colorScheme == .dark ? .orange : .brown)
         .onContinueUserActivity(NSUserActivityTypeBrowsingWeb, perform: viewModel.handleUserActivity)
+    }
+    
+    @ViewBuilder
+    private var empty: some View {
+        if people.isEmpty {
+            ContentUnavailableView(
+                "No CVs found",
+                systemImage: "person.badge.plus",
+                description: Text("Tap to add a new resume")
+            )
+            .contentShape(Rectangle())
+            .onTapGesture {
+                self.viewModel.state = .appeared
+                self.viewModel.showingInputSheet = true
+            }
+        }
     }
 }
 

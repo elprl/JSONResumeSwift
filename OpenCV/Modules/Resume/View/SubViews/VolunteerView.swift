@@ -37,7 +37,7 @@ struct VolunteerView: View {
                 .font(.headline)
                 .foregroundStyle(.primary)
                 .frame(maxWidth: .infinity, alignment: .leading)
-            Text(element.organization)
+            Text(element.organization ?? "")
                 .font(.subheadline)
                 .foregroundStyle(.primary)
                 .frame(maxWidth: .infinity, alignment: .leading)

@@ -20,7 +20,7 @@ struct SkillsView: View {
                     GroupBox {
                         VStack(alignment: .leading) {
                             HStack(alignment: .center) {
-                                Text(element.name)
+                                Text(element.name ?? "")
                                     .font(.body)
                                     .foregroundStyle(.primary)
                                 Spacer()

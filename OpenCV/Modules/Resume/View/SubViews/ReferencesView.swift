@@ -19,12 +19,12 @@ struct ReferencesView: View {
                 ForEach(references) { element in
                     GroupBox {
                         VStack(alignment: .leading, spacing: 4) {
-                            Text(element.reference)
+                            Text(element.reference ?? "")
                                 .font(.body)
                                 .italic()
                                 .foregroundStyle(.primary)
                             
-                            Text(element.name)
+                            Text(element.name ?? "")
                                 .font(.callout)
                                 .foregroundStyle(.secondary)
                         }

@@ -18,7 +18,7 @@ struct BasicsView: View {
                 WebImage(url: URL(string: basics.image ?? "")) { image in
                     image.resizable()
                 } placeholder: {
-                    Rectangle().foregroundColor(.gray)
+                    placeholderImage
                 }
                 .indicator(.activity) // Activity Indicator
                 .transition(.fade(duration: 0.5)) // Fade Transition with duration
@@ -28,7 +28,7 @@ struct BasicsView: View {
                 .shadow(radius: 4)
                 
                 VStack(alignment: .leading, spacing: 2) {
-                    Text(basics.name)
+                    Text(basics.name ?? "")
                         .font(.title2)
                         .foregroundStyle(.primary)
                     Text(basics.label ?? "")
@@ -72,6 +72,11 @@ struct BasicsView: View {
         .shadow(radius: 4)
         .padding(.top)
         
+        summary
+    }
+    
+    @ViewBuilder
+    private var summary: some View {
         GroupBox {
             DisclosureGroup {
                 Rectangle().frame(width: 0, height: 0).padding(.top)
@@ -99,6 +104,14 @@ struct BasicsView: View {
         .clipShape(RoundedRectangle(cornerRadius: 8))
         .padding(.horizontal, 4)
         .shadow(radius: 4)
+    }
+    
+    @ViewBuilder
+    private var placeholderImage: some View {
+        Image(systemName: "person.circle")
+            .resizable()
+            .aspectRatio(contentMode: .fit)
+            .frame(width: 54, height: 54)
     }
 }
 

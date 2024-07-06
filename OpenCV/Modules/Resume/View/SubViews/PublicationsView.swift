@@ -20,7 +20,7 @@ struct PublicationsView: View {
                     GroupBox {
                         VStack(alignment: .leading, spacing: 4) {
                             HStack {
-                                Text(element.name)
+                                Text(element.name ?? "")
                                     .font(.headline)
                                     .lineLimit(nil)
                                     .multilineTextAlignment(.leading)

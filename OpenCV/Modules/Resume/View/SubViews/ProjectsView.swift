@@ -35,7 +35,7 @@ struct ProjectsView: View {
         VStack(alignment: .leading, spacing: 4) {
             GroupBox {
                 HStack {
-                    Text(element.name)
+                    Text(element.name ?? "")
                         .font(.headline)
                         .lineLimit(nil)
                         .multilineTextAlignment(.leading)

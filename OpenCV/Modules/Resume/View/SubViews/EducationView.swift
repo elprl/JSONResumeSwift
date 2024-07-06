@@ -20,7 +20,7 @@ struct EducationView: View {
                     GroupBox {
                         VStack(alignment: .leading, spacing: 4) {
                             HStack {
-                                Text(element.institution)
+                                Text(element.institution ?? "")
                                     .font(.headline)
                                     .lineLimit(nil)
                                     .multilineTextAlignment(.leading)
@@ -34,7 +34,7 @@ struct EducationView: View {
                                     }
                                 }
                             }
-                            Text("\(element.area) (with \(element.score ?? ""))")
+                            Text("\(element.area ?? "") (\(element.score ?? ""))")
                                 .font(.subheadline)
                                 .foregroundStyle(.primary)
                             if !(element.studyType ?? "").isEmpty {
