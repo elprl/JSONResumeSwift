@@ -1,4 +1,4 @@
-# JSON CV iOS / iPadOS App
+# JSON Resume Swift iOS / iPadOS App
 
 An app to show a standardised CV from the open-source JSON Resume project - https://github.com/jsonresume.
 
