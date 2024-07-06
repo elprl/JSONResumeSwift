@@ -54,6 +54,7 @@ struct SettingsView: View {
             NavigationLink("Licenses") {
                 List {
                     Text("JSON Resume\nhttps://github.com/jsonresume")
+                    Text("SDWebImageSwiftUI\nhttps://github.com/SDWebImage/SDWebImageSwiftUI.git")
                 }
                 .scrollContentBackground(.hidden)
                 .background(MeshGradientView().opacity(0.3).ignoresSafeArea())
