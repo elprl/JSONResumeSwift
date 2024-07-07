@@ -127,7 +127,7 @@ extension ResumeListViewModel {
     @MainActor
     func handleQRScan(response: Result<ScanResult, ScanError>) {
         if case let .success(result) = response {
-            if result.string.hasPrefix("https://registry.jsonresume.org/") {
+            if result.string.hasPrefix("https://registry.jsonresume.org/") && !result.string.hasSuffix(".json") {
                 url = result.string + ".json"
             } else {
                 url = result.string

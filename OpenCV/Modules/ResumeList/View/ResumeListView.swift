@@ -38,12 +38,14 @@ struct ResumeListView: View {
                                         .transition(.move(edge: .leading))
                                 }
                             }
-                            .sheet(isPresented: $viewModel.showingQRCodeSheet) {
-                                QRCodeGenView(resumeUrl: person.resumeUrl)
-                            }
                         }
                     }
                     .animation(.easeInOut, value: people)
+                }
+                .sheet(isPresented: $viewModel.showingQRCodeSheet) {
+                    if let resumeUrl = viewModel.selectedPerson?.resumeUrl {
+                        QRCodeGenView(resumeUrl: resumeUrl)
+                    }
                 }
                 .sheet(isPresented: $viewModel.showingScanSheet) {
                     CodeScannerView(codeTypes: [.qr], showViewfinder: true) { response in
