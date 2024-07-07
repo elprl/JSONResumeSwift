@@ -1,0 +1,331 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "" : {
+
+    },
+    "%@" : {
+
+    },
+    "%@ (%@)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ (%2$@)"
+          }
+        }
+      }
+    },
+    "%@%@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@%2$@"
+          }
+        }
+      }
+    },
+    "%@%@%@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@%2$@%3$@"
+          }
+        }
+      }
+    },
+    "%@%@%@%@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@%2$@%3$@%4$@"
+          }
+        }
+      }
+    },
+    "• %@" : {
+
+    },
+    "Add Item" : {
+
+    },
+    "Add New CV" : {
+      "localizations" : {
+        "en-GB" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add New CV"
+          }
+        },
+        "en-US" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add New Resume"
+          }
+        }
+      }
+    },
+    "Added: %@" : {
+
+    },
+    "App Clip" : {
+
+    },
+    "Are you sure?" : {
+
+    },
+    "Automatic" : {
+
+    },
+    "Awards" : {
+
+    },
+    "Cancel" : {
+
+    },
+    "Certifications" : {
+
+    },
+    "Copy to Clipboard" : {
+
+    },
+    "CV not yet loaded" : {
+      "localizations" : {
+        "en-GB" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CV not yet loaded"
+          }
+        },
+        "en-US" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Resume not yet loaded"
+          }
+        }
+      }
+    },
+    "CVs" : {
+      "localizations" : {
+        "en-GB" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CVs"
+          }
+        },
+        "en-US" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Resumes"
+          }
+        }
+      }
+    },
+    "Dark" : {
+
+    },
+    "Delete" : {
+
+    },
+    "Delete %@ (including your notes) permanently." : {
+
+    },
+    "Education" : {
+
+    },
+    "Enter notes" : {
+
+    },
+    "Failed to decode JSON." : {
+
+    },
+    "Failed to encode JSON." : {
+
+    },
+    "Failed to generate QR Code" : {
+
+    },
+    "Highlights" : {
+
+    },
+    "How to create JSON CV" : {
+      "localizations" : {
+        "en-GB" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "How to create JSON CV"
+          }
+        },
+        "en-US" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "How to create JSON Resume"
+          }
+        }
+      }
+    },
+    "https://apps.apple.com/app/id%@" : {
+
+    },
+    "Interests" : {
+
+    },
+    "Invalid response." : {
+
+    },
+    "Item at %@" : {
+
+    },
+    "JSON CV is based on the open-source JSON Resume project: \nhttps://github.com/jsonresume\n\nThe CV URL entered below must conform to the JSON schema:\nhttps://jsonresume.org/schema" : {
+      "localizations" : {
+        "en-GB" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "JSON CV is based on the open-source JSON Resume project: \nhttps://github.com/jsonresume\n\nThe CV URL entered below must conform to the JSON schema:\nhttps://jsonresume.org/schema"
+          }
+        },
+        "en-US" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "JSON Resume is based on the open-source JSON Resume project: \nhttps://github.com/jsonresume\n\nThe Resume URL entered below must conform to the JSON schema:\nhttps://jsonresume.org/schema"
+          }
+        }
+      }
+    },
+    "JSON Link or App Clip" : {
+
+    },
+    "JSON Resume\nhttps://github.com/jsonresume" : {
+
+    },
+    "JSON URL" : {
+
+    },
+    "Languages" : {
+
+    },
+    "Licenses & Thanks" : {
+
+    },
+    "Light" : {
+
+    },
+    "Loading CV..." : {
+      "localizations" : {
+        "en-GB" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Loading CV..."
+          }
+        },
+        "en-US" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Loading resume…"
+          }
+        }
+      }
+    },
+    "My Notes" : {
+
+    },
+    "No CVs found" : {
+      "localizations" : {
+        "en-GB" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No CVs found"
+          }
+        },
+        "en-US" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No resumes found"
+          }
+        }
+      }
+    },
+    "or" : {
+
+    },
+    "Projects" : {
+
+    },
+    "Publications" : {
+
+    },
+    "References" : {
+
+    },
+    "SDWebImageSwiftUI\nhttps://github.com/SDWebImage/SDWebImageSwiftUI.git" : {
+
+    },
+    "Select an item" : {
+
+    },
+    "Settings" : {
+
+    },
+    "Share App" : {
+
+    },
+    "Share CV" : {
+      "localizations" : {
+        "en-GB" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Share CV"
+          }
+        },
+        "en-US" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Share Resume"
+          }
+        }
+      }
+    },
+    "Skills" : {
+
+    },
+    "Submit" : {
+
+    },
+    "Summary" : {
+
+    },
+    "Tap to add a new CV" : {
+      "localizations" : {
+        "en-GB" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tap to add a new CV"
+          }
+        },
+        "en-US" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tap to add a new resume"
+          }
+        }
+      }
+    },
+    "Version" : {
+
+    },
+    "Visual Mode" : {
+
+    },
+    "Volunteer Experience" : {
+
+    },
+    "Work Experience" : {
+
+    }
+  },
+  "version" : "1.0"
+}

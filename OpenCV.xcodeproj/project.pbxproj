@@ -17,6 +17,8 @@
 		E106A1932C379933009C2D92 /* OpenCVAppClipUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E106A1922C379933009C2D92 /* OpenCVAppClipUITestsLaunchTests.swift */; };
 		E106A1962C379933009C2D92 /* OpenCVAppClip.app in Embed App Clips */ = {isa = PBXBuildFile; fileRef = E106A16F2C379932009C2D92 /* OpenCVAppClip.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		E115BF4B2C370E21000A74C7 /* PeriodProtocolTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E115BF4A2C370E0B000A74C7 /* PeriodProtocolTests.swift */; };
+		E128B7A32C3AC5B000248AA7 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = E128B7A22C3AC5B000248AA7 /* Localizable.xcstrings */; };
+		E128B7A42C3AC5B000248AA7 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = E128B7A22C3AC5B000248AA7 /* Localizable.xcstrings */; };
 		E13829902C337588000DA139 /* ResumeRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E138298F2C337588000DA139 /* ResumeRowView.swift */; };
 		E13829952C343C22000DA139 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = E13829942C343C22000DA139 /* SDWebImageSwiftUI */; };
 		E13829972C347729000DA139 /* InputFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13829962C347729000DA139 /* InputFormView.swift */; };
@@ -162,6 +164,7 @@
 		E106A1922C379933009C2D92 /* OpenCVAppClipUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenCVAppClipUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		E115BF492C36F5C1000A74C7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		E115BF4A2C370E0B000A74C7 /* PeriodProtocolTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeriodProtocolTests.swift; sourceTree = "<group>"; };
+		E128B7A22C3AC5B000248AA7 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		E138298F2C337588000DA139 /* ResumeRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResumeRowView.swift; sourceTree = "<group>"; };
 		E13829962C347729000DA139 /* InputFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputFormView.swift; sourceTree = "<group>"; };
 		E138299A2C34A184000DA139 /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
@@ -402,6 +405,7 @@
 				E1F487212C2F61AF00031976 /* schema.json */,
 				E1908B532C2F4F2C002C8F5F /* Assets.xcassets */,
 				E1908B552C2F4F2C002C8F5F /* Preview Content */,
+				E128B7A22C3AC5B000248AA7 /* Localizable.xcstrings */,
 			);
 			path = OpenCV;
 			sourceTree = "<group>";
@@ -749,6 +753,8 @@
 			knownRegions = (
 				en,
 				Base,
+				"en-US",
+				"en-GB",
 			);
 			mainGroup = E1908B412C2F4F2A002C8F5F;
 			packageReferences = (
@@ -776,6 +782,7 @@
 			files = (
 				E106A17B2C379933009C2D92 /* Preview Assets.xcassets in Resources */,
 				E1526DA22C38571D00D88453 /* Assets.xcassets in Resources */,
+				E128B7A42C3AC5B000248AA7 /* Localizable.xcstrings in Resources */,
 				E106A1782C379933009C2D92 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -799,6 +806,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E1AD86142C30BBFA008F38A3 /* resume.json in Resources */,
+				E128B7A32C3AC5B000248AA7 /* Localizable.xcstrings in Resources */,
 				E1908B572C2F4F2C002C8F5F /* Preview Assets.xcassets in Resources */,
 				E1F487242C2F659200031976 /* sampleResume.json in Resources */,
 				E1908B542C2F4F2C002C8F5F /* Assets.xcassets in Resources */,
@@ -1172,6 +1180,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -1229,6 +1238,7 @@
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -1248,6 +1258,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = OpenCV/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.business";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Used to scan QR codes.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -1284,6 +1295,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = OpenCV/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.business";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Used to scan QR codes.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

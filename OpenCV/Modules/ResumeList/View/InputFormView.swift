@@ -72,7 +72,7 @@ struct InputFormView: View {
                     .textInputAutocapitalization(.never)
                     .disableAutocorrection(true)
                     .modifier(PlaceholderStyle(showPlaceHolder: viewModel.url.isEmpty,
-                                               placeholder: "Enter a URL to CV \n(e.g. https://www.domain.com/resume.json)"))
+                                               placeholder: "Enter a URL to CV \n(e.g. https://registry.jsonresume.org/elprl.json)"))
                 Spacer()
                 VStack {
                     Button {
