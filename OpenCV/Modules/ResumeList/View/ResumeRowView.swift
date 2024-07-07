@@ -72,6 +72,8 @@ struct ResumeRowView: View {
                     Menu {
                         Button {
                             viewModel.showingQRCodeSheet = true
+                            viewModel.selectedPerson = person
+                            viewModel.url = person.resumeUrl
                         } label: {
                             Label("Share CV", systemImage: "square.and.arrow.up")
                                 .foregroundStyle(colorScheme == .dark ? .orange : .brown)
