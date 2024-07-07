@@ -261,22 +261,6 @@
     "References" : {
 
     },
-    "Scan CV" : {
-      "localizations" : {
-        "en-GB" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Scan CV"
-          }
-        },
-        "en-US" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Scan Resume"
-          }
-        }
-      }
-    },
     "SDWebImageSwiftUI\nhttps://github.com/SDWebImage/SDWebImageSwiftUI.git" : {
 
     },

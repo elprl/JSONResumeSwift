@@ -66,7 +66,7 @@ struct QRCodeGenView: View {
                 }
                 Spacer()
             }
-            .navigationTitle("Scan CV")
+            .navigationTitle("Share CV")
             .toolbar {
                 ToolbarItemGroup(placement: .topBarTrailing) {
                     Button(role: .cancel, action: {
