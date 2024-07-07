@@ -123,13 +123,12 @@ struct ResumeListView: View {
             return people
         }
         return people.filter { person in
-            person.name?.localizedCaseInsensitiveContains(viewModel.searchString) ?? false
+            (person.name?.localizedCaseInsensitiveContains(viewModel.searchString) ?? false) || (person.cachedJSON?.localizedCaseInsensitiveContains(viewModel.searchString) ?? false)
         }
     }
 }
 
 #Preview {
-    let config = ModelConfiguration(isStoredInMemoryOnly: true)
-    let container = try! ModelContainer(for: Person.self, configurations: config)
-    ResumeListView(modelContext: container.mainContext)
+    ResumeListView(modelContext: PreviewController.previewContainer.mainContext)
+        .modelContainer(PreviewController.previewContainer)
 }

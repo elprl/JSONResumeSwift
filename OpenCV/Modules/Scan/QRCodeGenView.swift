@@ -10,8 +10,8 @@ struct QRCodeGenView: View {
     @Environment(\.dismiss) private var dismiss
     @Environment(\.colorScheme) private var colorScheme
     @AppStorage("darkLightAutoMode") private var darkLightAutoMode: UIUserInterfaceStyle = .unspecified
+    @AppStorage("shareLinkType") private var isRaw: Bool = false
     let resumeUrl: String
-    @State private var isRaw: Bool = false
     
     var body: some View {
         NavigationStack {
