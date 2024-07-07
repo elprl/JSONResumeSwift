@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftData
+import SwiftUI
 
 @Model
 final class Person {
@@ -36,4 +37,24 @@ extension Person: Identifiable, Hashable {
     func hash(into hasher: inout Hasher) {
         hasher.combine(resumeUrl)
     }
+}
+
+@MainActor
+class PreviewController {
+    static let previewContainer: ModelContainer = {
+        do {
+            let config = ModelConfiguration(isStoredInMemoryOnly: true)
+            let container = try ModelContainer(for: Person.self, configurations: config)
+            
+            for i in 1..<100 {
+                let user = Person(resumeUrl: UUID().uuidString)
+                user.name = UUID().uuidString
+                container.mainContext.insert(user)
+            }
+            
+            return container
+        } catch {
+            fatalError("Failed to create model container for previewing: \(error.localizedDescription)")
+        }
+    }()
 }

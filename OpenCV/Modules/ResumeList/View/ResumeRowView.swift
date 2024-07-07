@@ -124,9 +124,7 @@ struct ResumeRowView: View {
 @available(iOS 18.0, *)
 #Preview {
     @Previewable @Namespace() var namespace
-    let config = ModelConfiguration(isStoredInMemoryOnly: true)
-    let container = try! ModelContainer(for: Person.self, configurations: config)
-    // Create a mock ViewModel
-    let viewModel = ResumeListViewModel(modelContext: container.mainContext)
-    ResumeRowView(viewModel: viewModel, person: Person(resumeUrl: ""), namespace: namespace)
+    let viewModel = ResumeListViewModel(modelContext: PreviewController.previewContainer.mainContext)
+    ResumeRowView(viewModel: viewModel, person: Person(resumeUrl: "https://registry.jsonresume.org/elprl.json"), namespace: namespace)
+        .modelContainer(PreviewController.previewContainer)
 }

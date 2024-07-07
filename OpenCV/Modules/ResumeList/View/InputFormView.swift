@@ -165,9 +165,7 @@ public struct PlaceholderStyle: ViewModifier {
 }
 
 #Preview {
-    let config = ModelConfiguration(isStoredInMemoryOnly: true)
-    let container = try! ModelContainer(for: Person.self, configurations: config)
-    // Create a mock ViewModel
-    let viewModel = ResumeListViewModel(modelContext: container.mainContext)
+    let viewModel = ResumeListViewModel(modelContext: PreviewController.previewContainer.mainContext)
     InputFormView(viewModel: viewModel)
+        .modelContainer(PreviewController.previewContainer)
 }
