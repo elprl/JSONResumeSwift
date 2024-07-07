@@ -27,7 +27,7 @@ struct ResumeListView: View {
                     .ignoresSafeArea()
                 ScrollView {
                     LazyVStack {
-                        ForEach(people, id: \.self) { person in
+                        ForEach(filteredPeople, id: \.self) { person in
                             Group {
                                 if #available(iOS 18.0, *) {
                                     ResumeRowView(viewModel: viewModel, person: person, namespace: namespace)
@@ -62,7 +62,7 @@ struct ResumeListView: View {
                     empty
                 }
                 .navigationTitle("CVs")
-                .navigationBarTitleDisplayMode(.inline)
+                .navigationBarTitleDisplayMode(.automatic)
                 .padding()
                 .toolbar {
                     ToolbarItemGroup(placement: .topBarTrailing) {
@@ -98,6 +98,7 @@ struct ResumeListView: View {
             }
         }
         .tint(colorScheme == .dark ? .orange : .brown)
+        .searchable(text: $viewModel.searchString)
         .onContinueUserActivity(NSUserActivityTypeBrowsingWeb, perform: viewModel.handleUserActivity)
     }
     
@@ -107,13 +108,22 @@ struct ResumeListView: View {
             ContentUnavailableView(
                 "No CVs found",
                 systemImage: "person.badge.plus",
-                description: Text("Tap to add a new resume")
+                description: Text("Tap to add a new CV")
             )
             .contentShape(Rectangle())
             .onTapGesture {
                 self.viewModel.state = .appeared
                 self.viewModel.showingInputSheet = true
             }
+        }
+    }
+    
+    private var filteredPeople: [Person] {
+        if viewModel.searchString.isEmpty {
+            return people
+        }
+        return people.filter { person in
+            person.name?.localizedCaseInsensitiveContains(viewModel.searchString) ?? false
         }
     }
 }

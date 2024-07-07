@@ -56,6 +56,7 @@
    </TestAction>
    <LaunchAction
       buildConfiguration = "Debug"
+      appClipInvocationURLString = "https://appclip.apple.com/id?p=com.tapdigital.OpenCV.Clip&amp;url=aHR0cHM6Ly9yZWdpc3RyeS5qc29ucmVzdW1lLm9yZy9lbHBybC5qc29u"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       launchStyle = "0"
@@ -74,16 +75,10 @@
             ReferencedContainer = "container:OpenCV.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
-      <EnvironmentVariables>
-         <EnvironmentVariable
-            key = "_XCAppClipURL"
-            value = "https://appclip.apple.com/id?p=com.tapdigital.OpenCV&amp;url=aHR0cHM6Ly9naXN0LmdpdGh1YnVzZXJjb250ZW50LmNvbS9lbHBybC83MjVkMzMzN2EzYmFlZGNmZDk1MzA2ZTI5NjU4N2U4YS9yYXcvMzJhMWUzMDlmMWFiOGZjMGFiMTljNzY5NWFkOTQxY2RkM2M5M2E5ZC9yZXN1bWUuanNvbg=="
-            isEnabled = "YES">
-         </EnvironmentVariable>
-      </EnvironmentVariables>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
+      appClipInvocationURLString = "https://appclip.apple.com/id?p=com.tapdigital.OpenCV.Clip&amp;url=aHR0cHM6Ly9yZWdpc3RyeS5qc29ucmVzdW1lLm9yZy9lbHBybC5qc29u"
       shouldUseLaunchSchemeArgsEnv = "YES"
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"

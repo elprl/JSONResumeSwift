@@ -41,6 +41,8 @@ struct ResumeRowView: View {
                         .shadow(radius: 4)
                     } else {
                         placeholderImage
+                            .frame(width: 54, height: 54)
+                            .shadow(radius: 4)
                     }
                     VStack {
                         if let name = person.name {
@@ -62,7 +64,7 @@ struct ResumeRowView: View {
                                 .foregroundStyle(.secondary)
                                 .frame(maxWidth: .infinity, alignment: .leading)
                         } else {
-                            Text("Loading resume...")
+                            Text("Loading CV...")
                                 .foregroundStyle(.primary)
                         }
                     }
@@ -71,7 +73,7 @@ struct ResumeRowView: View {
                         Button {
                             viewModel.showingQRCodeSheet = true
                         } label: {
-                            Label("Share Resume", systemImage: "square.and.arrow.up")
+                            Label("Share CV", systemImage: "square.and.arrow.up")
                                 .foregroundStyle(colorScheme == .dark ? .orange : .brown)
                         }
                         Button {
@@ -106,7 +108,7 @@ struct ResumeRowView: View {
             } else if let jsonString = person.cachedJSON {
                 CachedResumeView(jsonString: jsonString, resumeUrl: person.resumeUrl)
             } else {
-                Text("Resume not yet loaded")
+                Text("CV not yet loaded")
             }
         }
     }
@@ -116,7 +118,6 @@ struct ResumeRowView: View {
         Image(systemName: "person.circle")
             .resizable()
             .aspectRatio(contentMode: .fit)
-            .frame(width: 54, height: 54)
     }
 }
 

@@ -25,13 +25,14 @@ final class ResumeListViewModel: ObservableObject {
     @Published var showingDeleteAlert = false
     @Published var showingSettingsSheet = false
 #if DEBUG
-    @Published var url = "https://gist.githubusercontent.com/elprl/725d3337a3baedcfd95306e296587e8a/raw/32a1e309f1ab8fc0ab19c7695ad941cdd3c93a9d/resume.json"
+    @Published var url = "https://registry.jsonresume.org/elprl.json"
 #else
     @Published var url = ""
 #endif
     @Published var state: LoadingViewState<Resume> = .appeared
     @Published var scannedCode: String = ""
     @Published var selectedPerson: Person?
+    @Published var searchString: String = ""
 }
 
 extension ResumeListViewModel {
