@@ -45,9 +45,22 @@ struct ResumeView: View {
                 Divider().padding()
                 myNotes
             }
-            .navigationTitle(resume.basics.name ?? "")
-            .navigationBarTitleDisplayMode(.inline)
             .padding(.horizontal)
+        }
+        .navigationTitle(resume.basics.name ?? "")
+        .navigationBarTitleDisplayMode(.inline)
+        .navigationDestination(isPresented: $viewModel.showAIChat, destination: {
+            AIChatMessagesView(modelContext: modelContext, resumeUrl: resumeUrl)
+                .modelContainer(modelContext.container)
+        })
+        .toolbar {
+            ToolbarItemGroup(placement: .topBarTrailing) {
+                Button(action: {
+                    self.viewModel.showAIChat = true
+                }) {
+                    Label("AI Chat", systemImage: "message")
+                }
+            }
         }
     }
     

@@ -16,6 +16,52 @@
 		E106A1912C379933009C2D92 /* OpenCVAppClipUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E106A1902C379933009C2D92 /* OpenCVAppClipUITests.swift */; };
 		E106A1932C379933009C2D92 /* OpenCVAppClipUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E106A1922C379933009C2D92 /* OpenCVAppClipUITestsLaunchTests.swift */; };
 		E106A1962C379933009C2D92 /* OpenCVAppClip.app in Embed App Clips */ = {isa = PBXBuildFile; fileRef = E106A16F2C379932009C2D92 /* OpenCVAppClip.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		E10CC71E2C46C10E00CC34B1 /* AIChatMessageRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10CC71D2C46C10E00CC34B1 /* AIChatMessageRowView.swift */; };
+		E10CC71F2C46C10E00CC34B1 /* AIChatMessagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10CC71C2C46C10E00CC34B1 /* AIChatMessagesView.swift */; };
+		E10CC7202C46C10E00CC34B1 /* AIChatMessageRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10CC71D2C46C10E00CC34B1 /* AIChatMessageRowView.swift */; };
+		E10CC7212C46C10E00CC34B1 /* AIChatMessagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10CC71C2C46C10E00CC34B1 /* AIChatMessagesView.swift */; };
+		E10CC7232C46C11300CC34B1 /* AIChatMessagesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10CC7222C46C11300CC34B1 /* AIChatMessagesViewModel.swift */; };
+		E10CC7242C46C11300CC34B1 /* AIChatMessagesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10CC7222C46C11300CC34B1 /* AIChatMessagesViewModel.swift */; };
+		E10CC7262C46C19B00CC34B1 /* ChatMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10CC7252C46C19600CC34B1 /* ChatMessage.swift */; };
+		E10CC7272C46C19B00CC34B1 /* ChatMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10CC7252C46C19600CC34B1 /* ChatMessage.swift */; };
+		E10CC72A2C46C6A800CC34B1 /* Markdown in Frameworks */ = {isa = PBXBuildFile; productRef = E10CC7292C46C6A800CC34B1 /* Markdown */; };
+		E10CC7472C46E93E00CC34B1 /* ClaudeAPIModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10CC7352C46E93E00CC34B1 /* ClaudeAPIModels.swift */; };
+		E10CC7482C46E93E00CC34B1 /* ChatGPTAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10CC7312C46E93E00CC34B1 /* ChatGPTAPIService.swift */; };
+		E10CC7492C46E93E00CC34B1 /* GeminiAPIModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10CC73A2C46E93E00CC34B1 /* GeminiAPIModels.swift */; };
+		E10CC74A2C46E93E00CC34B1 /* GeminiAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10CC7392C46E93E00CC34B1 /* GeminiAPIService.swift */; };
+		E10CC74B2C46E93E00CC34B1 /* OpenSourceLLMAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10CC7372C46E93E00CC34B1 /* OpenSourceLLMAPIService.swift */; };
+		E10CC74C2C46E93E00CC34B1 /* AGIServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10CC7302C46E93E00CC34B1 /* AGIServiceProtocol.swift */; };
+		E10CC74D2C46E93E00CC34B1 /* ClaudeAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10CC7342C46E93E00CC34B1 /* ClaudeAPIService.swift */; };
+		E10CC74E2C46E93E00CC34B1 /* ChatGPTAPIModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10CC7322C46E93E00CC34B1 /* ChatGPTAPIModels.swift */; };
+		E10CC7522C46E9C000CC34B1 /* SwiftAnthropic in Frameworks */ = {isa = PBXBuildFile; productRef = E10CC7512C46E9C000CC34B1 /* SwiftAnthropic */; };
+		E10CC7552C46EA1A00CC34B1 /* GoogleGenerativeAI in Frameworks */ = {isa = PBXBuildFile; productRef = E10CC7542C46EA1A00CC34B1 /* GoogleGenerativeAI */; };
+		E10CC7572C46EA4700CC34B1 /* TokenServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10CC7562C46EA4700CC34B1 /* TokenServiceProtocol.swift */; };
+		E10CC7592C46EA8900CC34B1 /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = E10CC7582C46EA8900CC34B1 /* Config.xcconfig */; };
+		E10CC75B2C46EB2300CC34B1 /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10CC75A2C46EB2300CC34B1 /* KeychainService.swift */; };
+		E10CC75C2C46EB2300CC34B1 /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10CC75A2C46EB2300CC34B1 /* KeychainService.swift */; };
+		E10CC75E2C46EB5100CC34B1 /* OSLog+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10CC75D2C46EB5100CC34B1 /* OSLog+Utils.swift */; };
+		E10CC75F2C46EB5100CC34B1 /* OSLog+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10CC75D2C46EB5100CC34B1 /* OSLog+Utils.swift */; };
+		E10CC7612C46EC5E00CC34B1 /* UserDefaults+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10CC7602C46EC5E00CC34B1 /* UserDefaults+Utils.swift */; };
+		E10CC7622C46EC5E00CC34B1 /* UserDefaults+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10CC7602C46EC5E00CC34B1 /* UserDefaults+Utils.swift */; };
+		E10CC7652C46ECBF00CC34B1 /* APIAccessToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10CC7632C46ECBF00CC34B1 /* APIAccessToken.swift */; };
+		E10CC7662C46ECBF00CC34B1 /* UserAPIAccounts.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10CC7642C46ECBF00CC34B1 /* UserAPIAccounts.swift */; };
+		E10CC76A2C46ED7D00CC34B1 /* GPT3 Tokenizer in Frameworks */ = {isa = PBXBuildFile; productRef = E10CC7692C46ED7D00CC34B1 /* GPT3 Tokenizer */; };
+		E10CC76B2C46F18000CC34B1 /* GeminiAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10CC7392C46E93E00CC34B1 /* GeminiAPIService.swift */; };
+		E10CC76C2C46F18000CC34B1 /* TokenServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10CC7562C46EA4700CC34B1 /* TokenServiceProtocol.swift */; };
+		E10CC76D2C46F18000CC34B1 /* ChatGPTAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10CC7312C46E93E00CC34B1 /* ChatGPTAPIService.swift */; };
+		E10CC76E2C46F18000CC34B1 /* UserAPIAccounts.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10CC7642C46ECBF00CC34B1 /* UserAPIAccounts.swift */; };
+		E10CC76F2C46F18000CC34B1 /* APIAccessToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10CC7632C46ECBF00CC34B1 /* APIAccessToken.swift */; };
+		E10CC7702C46F18000CC34B1 /* GeminiAPIModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10CC73A2C46E93E00CC34B1 /* GeminiAPIModels.swift */; };
+		E10CC7712C46F18000CC34B1 /* AGIServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10CC7302C46E93E00CC34B1 /* AGIServiceProtocol.swift */; };
+		E10CC7722C46F18000CC34B1 /* OpenSourceLLMAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10CC7372C46E93E00CC34B1 /* OpenSourceLLMAPIService.swift */; };
+		E10CC7732C46F18000CC34B1 /* ChatGPTAPIModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10CC7322C46E93E00CC34B1 /* ChatGPTAPIModels.swift */; };
+		E10CC7742C46F18000CC34B1 /* ClaudeAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10CC7342C46E93E00CC34B1 /* ClaudeAPIService.swift */; };
+		E10CC7752C46F18000CC34B1 /* ClaudeAPIModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10CC7352C46E93E00CC34B1 /* ClaudeAPIModels.swift */; };
+		E10CC7772C46F3E000CC34B1 /* Markdown in Frameworks */ = {isa = PBXBuildFile; productRef = E10CC7762C46F3E000CC34B1 /* Markdown */; };
+		E10CC7792C46F3E000CC34B1 /* SwiftAnthropic in Frameworks */ = {isa = PBXBuildFile; productRef = E10CC7782C46F3E000CC34B1 /* SwiftAnthropic */; };
+		E10CC77B2C46F3E000CC34B1 /* GoogleGenerativeAI in Frameworks */ = {isa = PBXBuildFile; productRef = E10CC77A2C46F3E000CC34B1 /* GoogleGenerativeAI */; };
+		E10CC77D2C46F3E000CC34B1 /* GPT3 Tokenizer in Frameworks */ = {isa = PBXBuildFile; productRef = E10CC77C2C46F3E000CC34B1 /* GPT3 Tokenizer */; };
+		E10CC77E2C46F46B00CC34B1 /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = E10CC7582C46EA8900CC34B1 /* Config.xcconfig */; };
 		E115BF4B2C370E21000A74C7 /* PeriodProtocolTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E115BF4A2C370E0B000A74C7 /* PeriodProtocolTests.swift */; };
 		E128B7A32C3AC5B000248AA7 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = E128B7A22C3AC5B000248AA7 /* Localizable.xcstrings */; };
 		E128B7A42C3AC5B000248AA7 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = E128B7A22C3AC5B000248AA7 /* Localizable.xcstrings */; };
@@ -61,7 +107,6 @@
 		E152C6D42C3757BD000949AB /* QRCodeGenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E152C6D22C3757B4000949AB /* QRCodeGenView.swift */; };
 		E152C6D62C375E84000949AB /* QRCodeGeneratorService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E152C6D52C375E78000949AB /* QRCodeGeneratorService.swift */; };
 		E1908B4E2C2F4F2A002C8F5F /* OpenCVApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1908B4D2C2F4F2A002C8F5F /* OpenCVApp.swift */; };
-		E1908B502C2F4F2A002C8F5F /* SampleSwiftDataListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1908B4F2C2F4F2A002C8F5F /* SampleSwiftDataListView.swift */; };
 		E1908B542C2F4F2C002C8F5F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1908B532C2F4F2C002C8F5F /* Assets.xcassets */; };
 		E1908B572C2F4F2C002C8F5F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1908B562C2F4F2C002C8F5F /* Preview Assets.xcassets */; };
 		E1908B612C2F4F2C002C8F5F /* OpenCVTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1908B602C2F4F2C002C8F5F /* OpenCVTests.swift */; };
@@ -94,6 +139,10 @@
 		E1F487282C2F78EC00031976 /* ResumeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F487272C2F78E600031976 /* ResumeView.swift */; };
 		E1F4872A2C2F962B00031976 /* SkillsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F487292C2F962600031976 /* SkillsView.swift */; };
 		E1F4872C2C2F96B100031976 /* WorkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F4872B2C2F96A800031976 /* WorkView.swift */; };
+		E1FCACA62C4700B900D1A76E /* Date+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FCACA52C4700B900D1A76E /* Date+Utils.swift */; };
+		E1FCACA72C4700B900D1A76E /* Date+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FCACA52C4700B900D1A76E /* Date+Utils.swift */; };
+		E1FCACA92C47030D00D1A76E /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FCACA82C47030D00D1A76E /* Card.swift */; };
+		E1FCACAA2C47030D00D1A76E /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FCACA82C47030D00D1A76E /* Card.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -162,6 +211,25 @@
 		E106A18C2C379933009C2D92 /* OpenCVAppClipUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OpenCVAppClipUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E106A1902C379933009C2D92 /* OpenCVAppClipUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenCVAppClipUITests.swift; sourceTree = "<group>"; };
 		E106A1922C379933009C2D92 /* OpenCVAppClipUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenCVAppClipUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		E10CC71C2C46C10E00CC34B1 /* AIChatMessagesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIChatMessagesView.swift; sourceTree = "<group>"; };
+		E10CC71D2C46C10E00CC34B1 /* AIChatMessageRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIChatMessageRowView.swift; sourceTree = "<group>"; };
+		E10CC7222C46C11300CC34B1 /* AIChatMessagesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIChatMessagesViewModel.swift; sourceTree = "<group>"; };
+		E10CC7252C46C19600CC34B1 /* ChatMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessage.swift; sourceTree = "<group>"; };
+		E10CC7302C46E93E00CC34B1 /* AGIServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AGIServiceProtocol.swift; sourceTree = "<group>"; };
+		E10CC7312C46E93E00CC34B1 /* ChatGPTAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatGPTAPIService.swift; sourceTree = "<group>"; };
+		E10CC7322C46E93E00CC34B1 /* ChatGPTAPIModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatGPTAPIModels.swift; sourceTree = "<group>"; };
+		E10CC7342C46E93E00CC34B1 /* ClaudeAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClaudeAPIService.swift; sourceTree = "<group>"; };
+		E10CC7352C46E93E00CC34B1 /* ClaudeAPIModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClaudeAPIModels.swift; sourceTree = "<group>"; };
+		E10CC7372C46E93E00CC34B1 /* OpenSourceLLMAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenSourceLLMAPIService.swift; sourceTree = "<group>"; };
+		E10CC7392C46E93E00CC34B1 /* GeminiAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeminiAPIService.swift; sourceTree = "<group>"; };
+		E10CC73A2C46E93E00CC34B1 /* GeminiAPIModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeminiAPIModels.swift; sourceTree = "<group>"; };
+		E10CC7562C46EA4700CC34B1 /* TokenServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenServiceProtocol.swift; sourceTree = "<group>"; };
+		E10CC7582C46EA8900CC34B1 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
+		E10CC75A2C46EB2300CC34B1 /* KeychainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainService.swift; sourceTree = "<group>"; };
+		E10CC75D2C46EB5100CC34B1 /* OSLog+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OSLog+Utils.swift"; sourceTree = "<group>"; };
+		E10CC7602C46EC5E00CC34B1 /* UserDefaults+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Utils.swift"; sourceTree = "<group>"; };
+		E10CC7632C46ECBF00CC34B1 /* APIAccessToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIAccessToken.swift; sourceTree = "<group>"; };
+		E10CC7642C46ECBF00CC34B1 /* UserAPIAccounts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAPIAccounts.swift; sourceTree = "<group>"; };
 		E115BF492C36F5C1000A74C7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		E115BF4A2C370E0B000A74C7 /* PeriodProtocolTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeriodProtocolTests.swift; sourceTree = "<group>"; };
 		E128B7A22C3AC5B000248AA7 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
@@ -182,7 +250,6 @@
 		E152C6D52C375E78000949AB /* QRCodeGeneratorService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeGeneratorService.swift; sourceTree = "<group>"; };
 		E1908B4A2C2F4F2A002C8F5F /* JSON CV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "JSON CV.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1908B4D2C2F4F2A002C8F5F /* OpenCVApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenCVApp.swift; sourceTree = "<group>"; };
-		E1908B4F2C2F4F2A002C8F5F /* SampleSwiftDataListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleSwiftDataListView.swift; sourceTree = "<group>"; };
 		E1908B532C2F4F2C002C8F5F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E1908B562C2F4F2C002C8F5F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		E1908B5C2C2F4F2C002C8F5F /* OpenCVTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OpenCVTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -218,6 +285,8 @@
 		E1F487272C2F78E600031976 /* ResumeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResumeView.swift; sourceTree = "<group>"; };
 		E1F487292C2F962600031976 /* SkillsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillsView.swift; sourceTree = "<group>"; };
 		E1F4872B2C2F96A800031976 /* WorkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkView.swift; sourceTree = "<group>"; };
+		E1FCACA52C4700B900D1A76E /* Date+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Utils.swift"; sourceTree = "<group>"; };
+		E1FCACA82C47030D00D1A76E /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -225,8 +294,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E10CC77B2C46F3E000CC34B1 /* GoogleGenerativeAI in Frameworks */,
+				E10CC7772C46F3E000CC34B1 /* Markdown in Frameworks */,
 				E1526DA62C38576100D88453 /* CodeScanner in Frameworks */,
+				E10CC77D2C46F3E000CC34B1 /* GPT3 Tokenizer in Frameworks */,
 				E1526DA42C38576100D88453 /* SDWebImageSwiftUI in Frameworks */,
+				E10CC7792C46F3E000CC34B1 /* SwiftAnthropic in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -248,8 +321,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E10CC7552C46EA1A00CC34B1 /* GoogleGenerativeAI in Frameworks */,
+				E10CC72A2C46C6A800CC34B1 /* Markdown in Frameworks */,
 				E152C6CF2C375739000949AB /* CodeScanner in Frameworks */,
+				E10CC76A2C46ED7D00CC34B1 /* GPT3 Tokenizer in Frameworks */,
 				E13829952C343C22000DA139 /* SDWebImageSwiftUI in Frameworks */,
+				E10CC7522C46E9C000CC34B1 /* SwiftAnthropic in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -307,6 +384,116 @@
 				E106A1922C379933009C2D92 /* OpenCVAppClipUITestsLaunchTests.swift */,
 			);
 			path = OpenCVAppClipUITests;
+			sourceTree = "<group>";
+		};
+		E10CC7182C46C0C500CC34B1 /* AIChat */ = {
+			isa = PBXGroup;
+			children = (
+				E10CC71B2C46C0DE00CC34B1 /* View */,
+				E10CC71A2C46C0D700CC34B1 /* ViewModel */,
+				E10CC7192C46C0CE00CC34B1 /* Model */,
+			);
+			path = AIChat;
+			sourceTree = "<group>";
+		};
+		E10CC7192C46C0CE00CC34B1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E10CC7252C46C19600CC34B1 /* ChatMessage.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		E10CC71A2C46C0D700CC34B1 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				E10CC7222C46C11300CC34B1 /* AIChatMessagesViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		E10CC71B2C46C0DE00CC34B1 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E10CC71C2C46C10E00CC34B1 /* AIChatMessagesView.swift */,
+				E10CC72B2C46DAC500CC34B1 /* SubViews */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		E10CC72B2C46DAC500CC34B1 /* SubViews */ = {
+			isa = PBXGroup;
+			children = (
+				E1FCACA82C47030D00D1A76E /* Card.swift */,
+				E10CC71D2C46C10E00CC34B1 /* AIChatMessageRowView.swift */,
+			);
+			path = SubViews;
+			sourceTree = "<group>";
+		};
+		E10CC72C2C46E8FB00CC34B1 /* AIService */ = {
+			isa = PBXGroup;
+			children = (
+				E10CC7672C46ECC500CC34B1 /* Models */,
+				E10CC7562C46EA4700CC34B1 /* TokenServiceProtocol.swift */,
+				E10CC73D2C46E93E00CC34B1 /* AI */,
+			);
+			path = AIService;
+			sourceTree = "<group>";
+		};
+		E10CC7332C46E93E00CC34B1 /* OpenAI */ = {
+			isa = PBXGroup;
+			children = (
+				E10CC7312C46E93E00CC34B1 /* ChatGPTAPIService.swift */,
+				E10CC7322C46E93E00CC34B1 /* ChatGPTAPIModels.swift */,
+			);
+			path = OpenAI;
+			sourceTree = "<group>";
+		};
+		E10CC7362C46E93E00CC34B1 /* Anthropic */ = {
+			isa = PBXGroup;
+			children = (
+				E10CC7342C46E93E00CC34B1 /* ClaudeAPIService.swift */,
+				E10CC7352C46E93E00CC34B1 /* ClaudeAPIModels.swift */,
+			);
+			path = Anthropic;
+			sourceTree = "<group>";
+		};
+		E10CC7382C46E93E00CC34B1 /* CustomAi */ = {
+			isa = PBXGroup;
+			children = (
+				E10CC7372C46E93E00CC34B1 /* OpenSourceLLMAPIService.swift */,
+			);
+			path = CustomAi;
+			sourceTree = "<group>";
+		};
+		E10CC73B2C46E93E00CC34B1 /* Gemini */ = {
+			isa = PBXGroup;
+			children = (
+				E10CC7392C46E93E00CC34B1 /* GeminiAPIService.swift */,
+				E10CC73A2C46E93E00CC34B1 /* GeminiAPIModels.swift */,
+			);
+			path = Gemini;
+			sourceTree = "<group>";
+		};
+		E10CC73D2C46E93E00CC34B1 /* AI */ = {
+			isa = PBXGroup;
+			children = (
+				E10CC7302C46E93E00CC34B1 /* AGIServiceProtocol.swift */,
+				E10CC7332C46E93E00CC34B1 /* OpenAI */,
+				E10CC7362C46E93E00CC34B1 /* Anthropic */,
+				E10CC7382C46E93E00CC34B1 /* CustomAi */,
+				E10CC73B2C46E93E00CC34B1 /* Gemini */,
+			);
+			path = AI;
+			sourceTree = "<group>";
+		};
+		E10CC7672C46ECC500CC34B1 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E10CC7632C46ECBF00CC34B1 /* APIAccessToken.swift */,
+				E10CC7642C46ECBF00CC34B1 /* UserAPIAccounts.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		E152C67A2C3748A6000949AB /* OpenCVAppClip */ = {
@@ -404,6 +591,7 @@
 				E1AD86132C30BBE3008F38A3 /* resume.json */,
 				E1F487212C2F61AF00031976 /* schema.json */,
 				E1908B532C2F4F2C002C8F5F /* Assets.xcassets */,
+				E10CC7582C46EA8900CC34B1 /* Config.xcconfig */,
 				E1908B552C2F4F2C002C8F5F /* Preview Content */,
 				E128B7A22C3AC5B000248AA7 /* Localizable.xcstrings */,
 			);
@@ -439,10 +627,11 @@
 		E1AD86192C319FF7008F38A3 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				E152C6CC2C3754B6000949AB /* Scan */,
-				E1E845802C35BF990065489C /* Settings */,
 				E1AD86322C31D4E3008F38A3 /* ResumeList */,
 				E1AD861A2C31A008008F38A3 /* Resume */,
+				E10CC7182C46C0C500CC34B1 /* AIChat */,
+				E152C6CC2C3754B6000949AB /* Scan */,
+				E1E845802C35BF990065489C /* Settings */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -508,10 +697,12 @@
 		E1AD862F2C31BE41008F38A3 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				E10CC75D2C46EB5100CC34B1 /* OSLog+Utils.swift */,
 				E1526DAA2C3987C400D88453 /* String+Utils.swift */,
+				E1FCACA52C4700B900D1A76E /* Date+Utils.swift */,
 				E1AD86112C30B099008F38A3 /* MeshGradientView.swift */,
+				E10CC7602C46EC5E00CC34B1 /* UserDefaults+Utils.swift */,
 				E1AD86302C31BE4D008F38A3 /* SwiftUI+Utils.swift */,
-				E1908B4F2C2F4F2A002C8F5F /* SampleSwiftDataListView.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -555,8 +746,10 @@
 		E1E8457D2C35B8020065489C /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				E10CC72C2C46E8FB00CC34B1 /* AIService */,
 				E152C6D52C375E78000949AB /* QRCodeGeneratorService.swift */,
 				E1E8457E2C35B81C0065489C /* ResumeLoaderService.swift */,
+				E10CC75A2C46EB2300CC34B1 /* KeychainService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -612,6 +805,10 @@
 			packageProductDependencies = (
 				E1526DA32C38576100D88453 /* SDWebImageSwiftUI */,
 				E1526DA52C38576100D88453 /* CodeScanner */,
+				E10CC7762C46F3E000CC34B1 /* Markdown */,
+				E10CC7782C46F3E000CC34B1 /* SwiftAnthropic */,
+				E10CC77A2C46F3E000CC34B1 /* GoogleGenerativeAI */,
+				E10CC77C2C46F3E000CC34B1 /* GPT3 Tokenizer */,
 			);
 			productName = OpenCVAppClip;
 			productReference = E106A16F2C379932009C2D92 /* OpenCVAppClip.app */;
@@ -671,6 +868,10 @@
 			packageProductDependencies = (
 				E13829942C343C22000DA139 /* SDWebImageSwiftUI */,
 				E152C6CE2C375739000949AB /* CodeScanner */,
+				E10CC7292C46C6A800CC34B1 /* Markdown */,
+				E10CC7512C46E9C000CC34B1 /* SwiftAnthropic */,
+				E10CC7542C46EA1A00CC34B1 /* GoogleGenerativeAI */,
+				E10CC7692C46ED7D00CC34B1 /* GPT3 Tokenizer */,
 			);
 			productName = OpenCV;
 			productReference = E1908B4A2C2F4F2A002C8F5F /* JSON CV.app */;
@@ -760,6 +961,10 @@
 			packageReferences = (
 				E13829932C343C22000DA139 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
 				E152C6CD2C375739000949AB /* XCRemoteSwiftPackageReference "CodeScanner" */,
+				E10CC7282C46C6A800CC34B1 /* XCRemoteSwiftPackageReference "swift-markdown" */,
+				E10CC7502C46E9C000CC34B1 /* XCRemoteSwiftPackageReference "SwiftAnthropic" */,
+				E10CC7532C46EA1A00CC34B1 /* XCRemoteSwiftPackageReference "generative-ai-swift" */,
+				E10CC7682C46ED7D00CC34B1 /* XCRemoteSwiftPackageReference "GPT3-Tokenizer" */,
 			);
 			productRefGroup = E1908B4B2C2F4F2A002C8F5F /* Products */;
 			projectDirPath = "";
@@ -781,6 +986,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E106A17B2C379933009C2D92 /* Preview Assets.xcassets in Resources */,
+				E10CC77E2C46F46B00CC34B1 /* Config.xcconfig in Resources */,
 				E1526DA22C38571D00D88453 /* Assets.xcassets in Resources */,
 				E128B7A42C3AC5B000248AA7 /* Localizable.xcstrings in Resources */,
 				E106A1782C379933009C2D92 /* Assets.xcassets in Resources */,
@@ -809,6 +1015,7 @@
 				E128B7A32C3AC5B000248AA7 /* Localizable.xcstrings in Resources */,
 				E1908B572C2F4F2C002C8F5F /* Preview Assets.xcassets in Resources */,
 				E1F487242C2F659200031976 /* sampleResume.json in Resources */,
+				E10CC7592C46EA8900CC34B1 /* Config.xcconfig in Resources */,
 				E1908B542C2F4F2C002C8F5F /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -844,12 +1051,26 @@
 				E1526D8B2C38571D00D88453 /* ProjectsView.swift in Sources */,
 				E1526D8C2C38571D00D88453 /* CertificatesView.swift in Sources */,
 				E1526D8D2C38571D00D88453 /* QRCodeGeneratorService.swift in Sources */,
+				E10CC7242C46C11300CC34B1 /* AIChatMessagesViewModel.swift in Sources */,
 				E1526D8E2C38571D00D88453 /* SettingsView.swift in Sources */,
 				E1526DAC2C3987C900D88453 /* String+Utils.swift in Sources */,
 				E1526D8F2C38571D00D88453 /* ReferencesView.swift in Sources */,
+				E10CC7622C46EC5E00CC34B1 /* UserDefaults+Utils.swift in Sources */,
 				E1526D902C38571D00D88453 /* ResumeListView.swift in Sources */,
 				E1526D912C38571D00D88453 /* QRCodeGenView.swift in Sources */,
 				E1526D922C38571D00D88453 /* ResumeListViewModel.swift in Sources */,
+				E10CC76B2C46F18000CC34B1 /* GeminiAPIService.swift in Sources */,
+				E1FCACA92C47030D00D1A76E /* Card.swift in Sources */,
+				E10CC76C2C46F18000CC34B1 /* TokenServiceProtocol.swift in Sources */,
+				E10CC76D2C46F18000CC34B1 /* ChatGPTAPIService.swift in Sources */,
+				E10CC76E2C46F18000CC34B1 /* UserAPIAccounts.swift in Sources */,
+				E10CC76F2C46F18000CC34B1 /* APIAccessToken.swift in Sources */,
+				E10CC7702C46F18000CC34B1 /* GeminiAPIModels.swift in Sources */,
+				E10CC7712C46F18000CC34B1 /* AGIServiceProtocol.swift in Sources */,
+				E10CC7722C46F18000CC34B1 /* OpenSourceLLMAPIService.swift in Sources */,
+				E10CC7732C46F18000CC34B1 /* ChatGPTAPIModels.swift in Sources */,
+				E10CC7742C46F18000CC34B1 /* ClaudeAPIService.swift in Sources */,
+				E10CC7752C46F18000CC34B1 /* ClaudeAPIModels.swift in Sources */,
 				E1526D932C38571D00D88453 /* InputFormView.swift in Sources */,
 				E1526D942C38571D00D88453 /* AwardsView.swift in Sources */,
 				E1526D952C38571D00D88453 /* ResumeView.swift in Sources */,
@@ -859,14 +1080,20 @@
 				E1526D992C38571D00D88453 /* MyNotesViewModel.swift in Sources */,
 				E1526D9A2C38571D00D88453 /* CachedResumeView.swift in Sources */,
 				E1526D9B2C38571D00D88453 /* EducationView.swift in Sources */,
+				E10CC7202C46C10E00CC34B1 /* AIChatMessageRowView.swift in Sources */,
+				E10CC7212C46C10E00CC34B1 /* AIChatMessagesView.swift in Sources */,
 				E1526D9C2C38571D00D88453 /* MyNotesView.swift in Sources */,
 				E1526D9D2C38571D00D88453 /* LanguagesView.swift in Sources */,
 				E1526D9E2C38571D00D88453 /* InterestsView.swift in Sources */,
 				E1526D9F2C38571D00D88453 /* BasicsView.swift in Sources */,
 				E1526DA02C38571D00D88453 /* SkillsView.swift in Sources */,
+				E1FCACA72C4700B900D1A76E /* Date+Utils.swift in Sources */,
+				E10CC75B2C46EB2300CC34B1 /* KeychainService.swift in Sources */,
 				E1526DA12C38571D00D88453 /* PublicationsView.swift in Sources */,
 				E106A1762C379932009C2D92 /* Item.swift in Sources */,
 				E106A1722C379932009C2D92 /* OpenCVAppClipApp.swift in Sources */,
+				E10CC75F2C46EB5100CC34B1 /* OSLog+Utils.swift in Sources */,
+				E10CC7272C46C19B00CC34B1 /* ChatMessage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -893,14 +1120,16 @@
 			files = (
 				E1AD863B2C31D6C3008F38A3 /* Person.swift in Sources */,
 				E1AD86242C31A9DE008F38A3 /* LanguagesView.swift in Sources */,
+				E10CC7572C46EA4700CC34B1 /* TokenServiceProtocol.swift in Sources */,
+				E10CC75E2C46EB5100CC34B1 /* OSLog+Utils.swift in Sources */,
 				E1AD86372C31D51F008F38A3 /* ResumeListView.swift in Sources */,
-				E1908B502C2F4F2A002C8F5F /* SampleSwiftDataListView.swift in Sources */,
 				E1908B7C2C2F5EFC002C8F5F /* ResumeModels.swift in Sources */,
 				E1AD86282C31AECD008F38A3 /* CertificatesView.swift in Sources */,
 				E1F4872C2C2F96B100031976 /* WorkView.swift in Sources */,
 				E1F4872A2C2F962B00031976 /* SkillsView.swift in Sources */,
 				E1AD862A2C31B2B1008F38A3 /* PublicationsView.swift in Sources */,
 				E1AD86262C31AC37008F38A3 /* AwardsView.swift in Sources */,
+				E10CC7232C46C11300CC34B1 /* AIChatMessagesViewModel.swift in Sources */,
 				E1AD86312C31BE5F008F38A3 /* SwiftUI+Utils.swift in Sources */,
 				E1526DAB2C3987C900D88453 /* String+Utils.swift in Sources */,
 				E1E8457A2C35A9D60065489C /* MyNotesView.swift in Sources */,
@@ -915,15 +1144,32 @@
 				E1AD86202C31A385008F38A3 /* BasicsView.swift in Sources */,
 				E13829902C337588000DA139 /* ResumeRowView.swift in Sources */,
 				E1E8457F2C35B8280065489C /* ResumeLoaderService.swift in Sources */,
+				E10CC7472C46E93E00CC34B1 /* ClaudeAPIModels.swift in Sources */,
+				E10CC7482C46E93E00CC34B1 /* ChatGPTAPIService.swift in Sources */,
+				E10CC7492C46E93E00CC34B1 /* GeminiAPIModels.swift in Sources */,
+				E10CC75C2C46EB2300CC34B1 /* KeychainService.swift in Sources */,
+				E10CC74A2C46E93E00CC34B1 /* GeminiAPIService.swift in Sources */,
+				E10CC7652C46ECBF00CC34B1 /* APIAccessToken.swift in Sources */,
+				E10CC7662C46ECBF00CC34B1 /* UserAPIAccounts.swift in Sources */,
+				E10CC74B2C46E93E00CC34B1 /* OpenSourceLLMAPIService.swift in Sources */,
+				E10CC74C2C46E93E00CC34B1 /* AGIServiceProtocol.swift in Sources */,
+				E10CC74D2C46E93E00CC34B1 /* ClaudeAPIService.swift in Sources */,
+				E10CC74E2C46E93E00CC34B1 /* ChatGPTAPIModels.swift in Sources */,
 				E1AD862C2C31BA62008F38A3 /* InterestsView.swift in Sources */,
+				E10CC71E2C46C10E00CC34B1 /* AIChatMessageRowView.swift in Sources */,
+				E10CC71F2C46C10E00CC34B1 /* AIChatMessagesView.swift in Sources */,
+				E1FCACA62C4700B900D1A76E /* Date+Utils.swift in Sources */,
 				E1E845852C35C0A00065489C /* SettingsView.swift in Sources */,
 				E152C6D42C3757BD000949AB /* QRCodeGenView.swift in Sources */,
+				E1FCACAA2C47030D00D1A76E /* Card.swift in Sources */,
 				E1AD86162C30C264008F38A3 /* EducationView.swift in Sources */,
 				E1AD86222C31A67D008F38A3 /* ProjectsView.swift in Sources */,
+				E10CC7612C46EC5E00CC34B1 /* UserDefaults+Utils.swift in Sources */,
 				E1AD86122C30B0AA008F38A3 /* MeshGradientView.swift in Sources */,
 				E1F487282C2F78EC00031976 /* ResumeView.swift in Sources */,
 				E1AD86392C31D67A008F38A3 /* ResumeListViewModel.swift in Sources */,
 				E1AD862E2C31BA84008F38A3 /* ReferencesView.swift in Sources */,
+				E10CC7262C46C19B00CC34B1 /* ChatMessage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1270,6 +1516,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.0;
+				MOCK_CLAUDE_TOKEN = "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";
+				MOCK_GEMINI_TOKEN = "AIzaSyAakHaDH8DRBRlgd_Uw3y2zcOxVnboD-7w";
+				MOCK_OPENAI_TOKEN = "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";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tapdigital.OpenCV;
 				PRODUCT_MODULE_NAME = OpenCV;
 				PRODUCT_NAME = "JSON CV";
@@ -1307,6 +1556,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.0;
+				MOCK_CLAUDE_TOKEN = "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";
+				MOCK_GEMINI_TOKEN = "AIzaSyAakHaDH8DRBRlgd_Uw3y2zcOxVnboD-7w";
+				MOCK_OPENAI_TOKEN = "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";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tapdigital.OpenCV;
 				PRODUCT_MODULE_NAME = OpenCV;
 				PRODUCT_NAME = "JSON CV";
@@ -1458,6 +1710,38 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		E10CC7282C46C6A800CC34B1 /* XCRemoteSwiftPackageReference "swift-markdown" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-markdown";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.4.0;
+			};
+		};
+		E10CC7502C46E9C000CC34B1 /* XCRemoteSwiftPackageReference "SwiftAnthropic" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/jamesrochabrun/SwiftAnthropic";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.4.0;
+			};
+		};
+		E10CC7532C46EA1A00CC34B1 /* XCRemoteSwiftPackageReference "generative-ai-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/google-gemini/generative-ai-swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.5.4;
+			};
+		};
+		E10CC7682C46ED7D00CC34B1 /* XCRemoteSwiftPackageReference "GPT3-Tokenizer" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/aespinilla/GPT3-Tokenizer";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.1.2;
+			};
+		};
 		E13829932C343C22000DA139 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI.git";
@@ -1477,6 +1761,46 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		E10CC7292C46C6A800CC34B1 /* Markdown */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E10CC7282C46C6A800CC34B1 /* XCRemoteSwiftPackageReference "swift-markdown" */;
+			productName = Markdown;
+		};
+		E10CC7512C46E9C000CC34B1 /* SwiftAnthropic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E10CC7502C46E9C000CC34B1 /* XCRemoteSwiftPackageReference "SwiftAnthropic" */;
+			productName = SwiftAnthropic;
+		};
+		E10CC7542C46EA1A00CC34B1 /* GoogleGenerativeAI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E10CC7532C46EA1A00CC34B1 /* XCRemoteSwiftPackageReference "generative-ai-swift" */;
+			productName = GoogleGenerativeAI;
+		};
+		E10CC7692C46ED7D00CC34B1 /* GPT3 Tokenizer */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E10CC7682C46ED7D00CC34B1 /* XCRemoteSwiftPackageReference "GPT3-Tokenizer" */;
+			productName = "GPT3 Tokenizer";
+		};
+		E10CC7762C46F3E000CC34B1 /* Markdown */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E10CC7282C46C6A800CC34B1 /* XCRemoteSwiftPackageReference "swift-markdown" */;
+			productName = Markdown;
+		};
+		E10CC7782C46F3E000CC34B1 /* SwiftAnthropic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E10CC7502C46E9C000CC34B1 /* XCRemoteSwiftPackageReference "SwiftAnthropic" */;
+			productName = SwiftAnthropic;
+		};
+		E10CC77A2C46F3E000CC34B1 /* GoogleGenerativeAI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E10CC7532C46EA1A00CC34B1 /* XCRemoteSwiftPackageReference "generative-ai-swift" */;
+			productName = GoogleGenerativeAI;
+		};
+		E10CC77C2C46F3E000CC34B1 /* GPT3 Tokenizer */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E10CC7682C46ED7D00CC34B1 /* XCRemoteSwiftPackageReference "GPT3-Tokenizer" */;
+			productName = "GPT3 Tokenizer";
+		};
 		E13829942C343C22000DA139 /* SDWebImageSwiftUI */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = E13829932C343C22000DA139 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
