@@ -50,6 +50,9 @@
     "• %@" : {
 
     },
+    "← Select AI Service" : {
+
+    },
     "Add Item" : {
 
     },
@@ -70,6 +73,9 @@
       }
     },
     "Added: %@" : {
+
+    },
+    "AI Chat" : {
 
     },
     "App Clip" : {
@@ -137,16 +143,28 @@
     "Education" : {
 
     },
+    "Enter a new message below" : {
+
+    },
     "Enter notes" : {
 
     },
-    "Failed to decode JSON." : {
-
-    },
-    "Failed to encode JSON." : {
-
-    },
     "Failed to generate QR Code" : {
+
+    },
+    "Gemini Failed: Internal error" : {
+
+    },
+    "Gemini Failed: Invalid API Key" : {
+
+    },
+    "Gemini Failed: Unknown error" : {
+
+    },
+    "Gemini Failed: Unsupported User Location" : {
+
+    },
+    "Gemini Failed: Your prompt was blocked" : {
 
     },
     "Highlights" : {
@@ -172,6 +190,12 @@
 
     },
     "Interests" : {
+
+    },
+    "Invalid JSON decoding." : {
+
+    },
+    "Invalid JSON encoding." : {
 
     },
     "Invalid response." : {
@@ -249,6 +273,9 @@
         }
       }
     },
+    "No messages found" : {
+
+    },
     "or" : {
 
     },
@@ -259,6 +286,9 @@
 
     },
     "References" : {
+
+    },
+    "Scopes: " : {
 
     },
     "SDWebImageSwiftUI\nhttps://github.com/SDWebImage/SDWebImageSwiftUI.git" : {
