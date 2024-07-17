@@ -46,19 +46,22 @@ final class AIChatMessagesViewModel {
     var hasGeminiKey: Bool = false
     var hasCustomAIHost: Bool = false
     var modelContext: ModelContext
-    private let resumeUrl: String
+    var person: Person
+    var resume: Resume
     @ObservationIgnored private let agiService: AGIServiceProtocol
     @ObservationIgnored private var cancellables: [String: AnyCancellable] = [:]
 
-    init(modelContext: ModelContext, resumeUrl: String, agiService: AGIServiceProtocol = ChatGPTAPIService()) {
+    init(modelContext: ModelContext, person: Person, resume: Resume, agiService: AGIServiceProtocol = ChatGPTAPIService()) {
         self.modelContext = modelContext
-        self.resumeUrl = resumeUrl
+        self.person = person
+        self.resume = resume
         self.agiService = agiService
     }
     
     @MainActor
     func fetchData() async {
         do {
+            let resumeUrl: String = person.resumeUrl
             let descriptor = FetchDescriptor<ChatMessage>(
                 predicate: #Predicate { $0.resumeUrl == resumeUrl },
                 sortBy: [SortDescriptor(\.updatedAt)]
@@ -77,7 +80,7 @@ final class AIChatMessagesViewModel {
   
     @MainActor
     func onSubmitNewMessage() async {
-        let message = ChatMessage(author: .user(resumeUrl), content: newChatText, resumeUrl: resumeUrl)
+        let message = ChatMessage(author: .user(person.resumeUrl), content: newChatText, resumeUrl: person.resumeUrl)
         modelContext.insert(message)
         save()
         await handleAGIStream(content: String(newChatText))
@@ -121,6 +124,13 @@ final class AIChatMessagesViewModel {
         }
     }
     
+    var messages: [ChatMessage] {
+        if case .loaded(let messages) = state {
+            return messages
+        }
+        return []
+    }
+    
     func onTapCopyClipboard(message: ChatMessage) {
         UIPasteboard.general.string = message.content
     }
@@ -129,18 +139,21 @@ final class AIChatMessagesViewModel {
     private func handleAGIStream(content: String) async {
         var streamText = ""
         
-        let message = ChatMessage(author: .openai("gpt-4o"), content: "", resumeUrl: resumeUrl)
+        let message = ChatMessage(author: .openai("gpt-4o"), content: "", resumeUrl: person.resumeUrl)
         modelContext.insert(message)
         save()
         
         Task { @MainActor in
             do {
+                
+                let scopes = HistoryOptions.modeFrom(hasRole: hasRoleScope, hasCode: hasFileScope, hasHistory: hasHistoryScope, hasSelection: hasSelectionScope)
+                agiService.setupHistory(for: resume.description, selectedRows: Set<Int>(), scopes: scopes, messages: messages)
                 let stream = try await agiService.sendMessageStream(text: content, needsJSONResponse: false)
                 for try await text in stream {
                     streamText += text
                     message.content = streamText
                 }
-//                save()
+                save()
             } catch {
                 message.content = error.localizedDescription
                 return

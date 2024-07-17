@@ -66,7 +66,7 @@ public enum TDAPIError: LocalizedError {
 }
 
 struct AGIServiceConstants {
-    static let agiRole = "Play the role of a mentoring Senior Software Engineer who regularly performs Peer Code Reviews or Software Inspections."
+    static let agiRole = "Play the role of a mentoring senior careers consultant who regularly assesses CVs gives constructive advice. Give all output in strict Markdown format only"
     static let agiReviewQ = "Question: perform a detailed code review of the above code. A Peer Code Review should focus on what should be improved in the following categories: architecture, code, design, error handling, maintainability, performance, scalability, readability, security, testability (but not exclusively). Avoid a Static Analysis type of review. "
     static let agiOutput = "Your output must be in a JSON form ONLY with the following structure: "
     static let agiReflectionQ = "Did your answer meet the requirements of my question?"

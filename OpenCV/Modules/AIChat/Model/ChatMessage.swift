@@ -87,4 +87,8 @@ extension ChatMessage: Identifiable {
         default: return false
         }
     }
+    
+    var markdown: LocalizedStringKey {
+        return LocalizedStringKey(content)
+    }
 }
