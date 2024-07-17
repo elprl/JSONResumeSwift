@@ -16,8 +16,8 @@ struct AIChatMessagesView: View {
     private let rowHeight: CGFloat = 60.0
     @FocusState private var isFocused: Bool
 
-    init(modelContext: ModelContext, resumeUrl: String) {
-        _viewModel = State(initialValue: AIChatMessagesViewModel(modelContext: modelContext, resumeUrl: resumeUrl))
+    init(modelContext: ModelContext, person: Person, resume: Resume) {
+        _viewModel = State(initialValue: AIChatMessagesViewModel(modelContext: modelContext, person: person, resume: resume))
     }
     
     var body: some View {
@@ -246,7 +246,7 @@ struct AIChatMessagesView: View {
 #if DEBUG
 
 #Preview {
-    AIChatMessagesView(modelContext: PreviewController.previewContainer.mainContext, resumeUrl: "")
+    AIChatMessagesView(modelContext: PreviewController.previewContainer.mainContext, person: Person(resumeUrl: ""), resume: Resume.mock())
         .modelContainer(PreviewController.previewContainer)
         .previewLayout(.fixed(width: 320, height: 800))
 }

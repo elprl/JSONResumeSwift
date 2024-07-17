@@ -12,14 +12,14 @@ struct ResumeView: View {
     @Environment(\.colorScheme) private var colorScheme
     @StateObject private var viewModel: ResumeViewModel
     private let resume: Resume
+    private let person: Person
     private let modelContext: ModelContext
-    private let resumeUrl: String
-    
-    init(resume: Resume, resumeUrl: String, modelContext: ModelContext) {
+
+    init(resume: Resume, person: Person, modelContext: ModelContext) {
         self.resume = resume
-        self.resumeUrl = resumeUrl
+        self.person = person
         self.modelContext = modelContext
-        _viewModel = StateObject(wrappedValue: ResumeViewModel(resumeUrl: resumeUrl))
+        _viewModel = StateObject(wrappedValue: ResumeViewModel(resumeUrl: person.resumeUrl))
     }
     
     var body: some View {
@@ -50,7 +50,7 @@ struct ResumeView: View {
         .navigationTitle(resume.basics.name ?? "")
         .navigationBarTitleDisplayMode(.inline)
         .navigationDestination(isPresented: $viewModel.showAIChat, destination: {
-            AIChatMessagesView(modelContext: modelContext, resumeUrl: resumeUrl)
+            AIChatMessagesView(modelContext: modelContext, person: person, resume: resume)
                 .modelContainer(modelContext.container)
         })
         .toolbar {
@@ -66,7 +66,7 @@ struct ResumeView: View {
     
     @ViewBuilder
     private var myNotes: some View {
-        MyNotesView(resumeUrl: resumeUrl)
+        MyNotesView(resumeUrl: person.resumeUrl)
     }
     
     @ViewBuilder
@@ -172,7 +172,7 @@ struct AsyncTestView: View {
                 let config = ModelConfiguration(isStoredInMemoryOnly: true)
                 let container = try! ModelContainer(for: Person.self, configurations: config)
 
-                ResumeView(resume: resume, resumeUrl: "", modelContext: container.mainContext)
+                ResumeView(resume: resume, person: Person(resumeUrl: ""), modelContext: container.mainContext)
             }
         }
         .task {

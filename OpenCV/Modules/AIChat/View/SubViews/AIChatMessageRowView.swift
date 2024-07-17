@@ -19,7 +19,7 @@ struct AIChatMessageRowView: View {
             messageContent
             footer
         }
-        .modifier(Card(isSelected: .constant(false), bgColor: message.isMine ? .blue : .logoOrange))
+        .modifier(Card(isSelected: .constant(false), bgColor: message.isMine ? .blue : .orange))
         .padding(.leading, message.isMine ? 32 : 0)
     }
     
@@ -46,7 +46,7 @@ struct AIChatMessageRowView: View {
     
     @ViewBuilder
     var messageContent: some View {
-        Text(message.content)
+        Text(message.markdown)
                 .lineLimit(nil)
                 .multilineTextAlignment(.leading)
                 .foregroundStyle(message.isMine ? .white : .black)
@@ -54,6 +54,7 @@ struct AIChatMessageRowView: View {
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.horizontal, 8)
                 .padding(.top, 2)
+                .tint(message.isMine ? .white : .blue)
    }
     
     
@@ -111,16 +112,16 @@ struct AIChatMessageRowView: View {
     ScrollView {
         LazyVStack {
             
-            AIChatMessageRowView(viewModel: AIChatMessagesViewModel(modelContext: PreviewController.previewContainer.mainContext, resumeUrl: ""), message: message1)
+            AIChatMessageRowView(viewModel: AIChatMessagesViewModel(modelContext: PreviewController.previewContainer.mainContext, person: Person(resumeUrl: ""), resume: Resume.mock()), message: message1)
                 .padding()
             
-            AIChatMessageRowView(viewModel: AIChatMessagesViewModel(modelContext: PreviewController.previewContainer.mainContext, resumeUrl: ""), message: message2)
+            AIChatMessageRowView(viewModel: AIChatMessagesViewModel(modelContext: PreviewController.previewContainer.mainContext, person: Person(resumeUrl: ""), resume: Resume.mock()), message: message2)
                 .padding()
             
-            AIChatMessageRowView(viewModel: AIChatMessagesViewModel(modelContext: PreviewController.previewContainer.mainContext, resumeUrl: ""), message: message3)
+            AIChatMessageRowView(viewModel: AIChatMessagesViewModel(modelContext: PreviewController.previewContainer.mainContext, person: Person(resumeUrl: ""), resume: Resume.mock()), message: message3)
                 .padding()
             
-            AIChatMessageRowView(viewModel: AIChatMessagesViewModel(modelContext: PreviewController.previewContainer.mainContext, resumeUrl: ""), message: message4)
+            AIChatMessageRowView(viewModel: AIChatMessagesViewModel(modelContext: PreviewController.previewContainer.mainContext, person: Person(resumeUrl: ""), resume: Resume.mock()), message: message4)
                 .padding()
         }
     }

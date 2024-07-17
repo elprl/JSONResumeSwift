@@ -106,9 +106,9 @@ struct ResumeRowView: View {
     private var navDestination: some View {
         Group {
             if let resume = viewModel.resumes.first(where: { $0.basics.name == person.name }) {
-                ResumeView(resume: resume, resumeUrl: person.resumeUrl, modelContext: modelContext)
+                ResumeView(resume: resume, person: person, modelContext: modelContext)
             } else if let jsonString = person.cachedJSON {
-                CachedResumeView(jsonString: jsonString, resumeUrl: person.resumeUrl)
+                CachedResumeView(jsonString: jsonString, person: person)
             } else {
                 Text("CV not yet loaded")
             }
