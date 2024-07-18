@@ -106,6 +106,8 @@
 		E152C6CF2C375739000949AB /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = E152C6CE2C375739000949AB /* CodeScanner */; };
 		E152C6D42C3757BD000949AB /* QRCodeGenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E152C6D22C3757B4000949AB /* QRCodeGenView.swift */; };
 		E152C6D62C375E84000949AB /* QRCodeGeneratorService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E152C6D52C375E78000949AB /* QRCodeGeneratorService.swift */; };
+		E15919EF2C4956F2001C6994 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15919EE2C4956EA001C6994 /* DataService.swift */; };
+		E15919F02C4956F2001C6994 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15919EE2C4956EA001C6994 /* DataService.swift */; };
 		E1908B4E2C2F4F2A002C8F5F /* OpenCVApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1908B4D2C2F4F2A002C8F5F /* OpenCVApp.swift */; };
 		E1908B542C2F4F2C002C8F5F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1908B532C2F4F2C002C8F5F /* Assets.xcassets */; };
 		E1908B572C2F4F2C002C8F5F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1908B562C2F4F2C002C8F5F /* Preview Assets.xcassets */; };
@@ -248,6 +250,7 @@
 		E152C69C2C3748A7000949AB /* OpenCVAppClipUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenCVAppClipUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		E152C6D22C3757B4000949AB /* QRCodeGenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeGenView.swift; sourceTree = "<group>"; };
 		E152C6D52C375E78000949AB /* QRCodeGeneratorService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeGeneratorService.swift; sourceTree = "<group>"; };
+		E15919EE2C4956EA001C6994 /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		E1908B4A2C2F4F2A002C8F5F /* JSON CV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "JSON CV.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1908B4D2C2F4F2A002C8F5F /* OpenCVApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenCVApp.swift; sourceTree = "<group>"; };
 		E1908B532C2F4F2C002C8F5F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -548,6 +551,14 @@
 			path = Scan;
 			sourceTree = "<group>";
 		};
+		E15919ED2C4956E1001C6994 /* DataService */ = {
+			isa = PBXGroup;
+			children = (
+				E15919EE2C4956EA001C6994 /* DataService.swift */,
+			);
+			path = DataService;
+			sourceTree = "<group>";
+		};
 		E1908B412C2F4F2A002C8F5F = {
 			isa = PBXGroup;
 			children = (
@@ -746,6 +757,7 @@
 		E1E8457D2C35B8020065489C /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				E15919ED2C4956E1001C6994 /* DataService */,
 				E10CC72C2C46E8FB00CC34B1 /* AIService */,
 				E152C6D52C375E78000949AB /* QRCodeGeneratorService.swift */,
 				E1E8457E2C35B81C0065489C /* ResumeLoaderService.swift */,
@@ -1050,6 +1062,7 @@
 				E1526D8A2C38571D00D88453 /* VolunteerView.swift in Sources */,
 				E1526D8B2C38571D00D88453 /* ProjectsView.swift in Sources */,
 				E1526D8C2C38571D00D88453 /* CertificatesView.swift in Sources */,
+				E15919EF2C4956F2001C6994 /* DataService.swift in Sources */,
 				E1526D8D2C38571D00D88453 /* QRCodeGeneratorService.swift in Sources */,
 				E10CC7242C46C11300CC34B1 /* AIChatMessagesViewModel.swift in Sources */,
 				E1526D8E2C38571D00D88453 /* SettingsView.swift in Sources */,
@@ -1164,6 +1177,7 @@
 				E1FCACAA2C47030D00D1A76E /* Card.swift in Sources */,
 				E1AD86162C30C264008F38A3 /* EducationView.swift in Sources */,
 				E1AD86222C31A67D008F38A3 /* ProjectsView.swift in Sources */,
+				E15919F02C4956F2001C6994 /* DataService.swift in Sources */,
 				E10CC7612C46EC5E00CC34B1 /* UserDefaults+Utils.swift in Sources */,
 				E1AD86122C30B0AA008F38A3 /* MeshGradientView.swift in Sources */,
 				E1F487282C2F78EC00031976 /* ResumeView.swift in Sources */,

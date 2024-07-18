@@ -11,12 +11,19 @@ import SwiftUI
 struct AIChatMessageRowView: View {
     @Environment(\.colorScheme) private var colorScheme
     @State var viewModel: AIChatMessagesViewModel
-    let message: ChatMessage
-    
+    @ObservedObject var message: ChatMessage
+
     var body: some View {
+#if DEBUG
+let _ = Self._printChanges()
+#endif
         VStack(spacing: 0) {
-            header
-            messageContent
+            if message.isMine {
+                myMessageContent
+            } else {
+                header
+                messageContent
+            }
             footer
         }
         .modifier(Card(isSelected: .constant(false), bgColor: message.isMine ? .blue : .orange))
@@ -49,14 +56,31 @@ struct AIChatMessageRowView: View {
         Text(message.markdown)
                 .lineLimit(nil)
                 .multilineTextAlignment(.leading)
-                .foregroundStyle(message.isMine ? .white : .black)
+                .foregroundStyle(.black)
                 .font(.body)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.horizontal, 8)
                 .padding(.top, 2)
-                .tint(message.isMine ? .white : .blue)
-   }
+                .tint(.blue)
+    }
     
+    @ViewBuilder
+    var myMessageContent: some View {
+        HStack(alignment: .center) {
+            Text(message.markdown)
+                    .lineLimit(nil)
+                    .multilineTextAlignment(.leading)
+                    .foregroundStyle(.white)
+                    .font(.body)
+                    .padding(.leading, 8)
+                    .padding(.top, 2)
+                    .tint(.blue)
+            Spacer()
+            optionsMenu
+        }
+        .padding(.horizontal, 8)
+        .padding(.top, 6)
+    }
     
     @ViewBuilder
     var footer: some View {
@@ -94,6 +118,7 @@ struct AIChatMessageRowView: View {
             Image(systemName: "ellipsis")
                 .foregroundStyle(message.isMine ? .white : .black)
                 .padding()
+                .rotationEffect(.degrees(90))
                 .frame(width: 30, height: 30)
         }
         .contentShape(Rectangle())
