@@ -10,12 +10,8 @@ import SwiftUI
 import SDWebImageSwiftUI
 import SwiftData
 
-
-
 struct AIChatMessagesView: View {
     @State private var viewModel: AIChatMessagesViewModel
-    private let maxHeight: CGFloat = 200.0
-    private let rowHeight: CGFloat = 60.0
     @FocusState private var isFocused: Bool
     
     init(modelContext: ModelContext, person: Person, resume: Resume) {
@@ -26,30 +22,46 @@ struct AIChatMessagesView: View {
 #if DEBUG
 let _ = Self._printChanges()
 #endif
-        
-        VStack {
-            switch viewModel.state {
-            case .loading, .appeared:
-                loadingView
-                    .task {
-                        self.viewModel.fetchData()
+        ZStack {
+            MeshGradientView()
+                .opacity(0.3)
+                .ignoresSafeArea(.container)
+            VStack {
+                switch viewModel.state {
+                case .loading, .appeared:
+                    loadingView
+                        .task {
+                            self.viewModel.fetchData()
+                        }
+                case .loaded(_):
+                    if #available(iOS 18.0, *) {
+                        MessageScrollView18(viewModel: viewModel)
+                    } else {
+                        MessageScrollView(viewModel: viewModel)
                     }
-            case .loaded(_):
-                if #available(iOS 18.0, *) {
-                    MessageScrollView18(viewModel: viewModel)
-                } else {
-                    MessageScrollView(viewModel: viewModel)
+                case .empty(_):
+                    noMessages
+                case .error(let message):
+                    error(message: message)
                 }
-            case .empty(_):
-                noMessages
-            case .error(let message):
-                error(message: message)
             }
-            Spacer()
-            scope
-            input
+            .ignoresSafeArea(.container)
+            .padding(.vertical)
+            VStack {
+                Spacer()
+                VStack {
+                    scope
+                        .padding(.horizontal)
+                    input
+                        .padding(.horizontal)
+                }
+                .padding(.bottom, isFocused ? 12 : 32)
+                .background(.ultraThinMaterial)
+            }
+            .ignoresSafeArea(.container)
+            .zIndex(1)
         }
-        .padding()
+        .ignoresSafeArea(.container)
         .navigationTitle("AI Chat")
         .navigationBarTitleDisplayMode(.inline)
         .sheet(isPresented: $viewModel.showingSettingsSheet) {
@@ -92,29 +104,6 @@ let _ = Self._printChanges()
         Label(message, systemImage: "exclamationmark.octagon")
     }
     
-    @ViewBuilder
-    private var list: some View {
-        ScrollView {
-            LazyVStack(alignment: .leading, spacing: 0) {
-                Rectangle().foregroundColor(.clear).frame(height: 1.0) // bug: https://stackoverflow.com/questions/66523786/swiftui-putting-a-lazyvstack-or-lazyhstack-in-a-scrollview-causes-stuttering-a
-                    .padding(.top, 4)
-                ForEach(viewModel.messages) { message in
-                    Button(action: {
-                        withAnimation(.easeInOut(duration: 0.5)) {
-                            self.viewModel.selectedMessageId = message.messageId
-                        }
-                    }, label: {
-                        AIChatMessageRowView(viewModel: viewModel, message: message)
-                            .padding(.horizontal)
-                            .padding(.bottom, 8)
-                            .id(message.id)
-                    })
-                    .transition(.slide)
-                }
-            }
-        }
-    }
-    
     
     @ViewBuilder
     var scope: some View {
@@ -127,8 +116,8 @@ let _ = Self._printChanges()
                 Spacer()
             }
         }
-        .padding(.horizontal)
-        .padding(.vertical, 2)
+        .padding(.top)
+        .padding(.bottom, 2)
     }
     
     @ViewBuilder
@@ -150,9 +139,10 @@ let _ = Self._printChanges()
                 .tint(.logoOrange)
                 .foregroundColor(.primary)
             RoundButton(action: {
-                Task { @MainActor in
+                withAnimation {
                     print("submit")
-                    await self.viewModel.onSubmitNewMessage()
+                    self.viewModel.onSubmitNewMessage()
+                    self.isFocused = false
                 }
             }, imageSize: 30, icon: "paperplane.fill", bgColor: .blue, isLoading: .constant(false))
         }
@@ -194,14 +184,17 @@ let _ = Self._printChanges()
                 Text("Cancel")
             }
         } label: {
-            Image(viewModel.selectedAGI.imageKey)
-                .resizable()
-                .scaledToFit()
-                .foregroundColor(.white)
-                .frame(width: 30, height: 30)
-                .background(Color.gray)
-                .clipShape(Circle())
-                .contentShape(Circle())
+            VStack {
+                Image(viewModel.selectedAGI.imageKey)
+                    .resizable()
+                    .scaledToFit()
+                    .foregroundStyle(.black)
+                    .padding(4)
+            }
+            .frame(width: 30, height: 30)
+            .background(Color.orange)
+            .clipShape(Circle())
+            .contentShape(Circle())
         }
         .menuOrder(.fixed)
         .highPriorityGesture(TapGesture())
@@ -216,6 +209,7 @@ struct MessageScrollView18: View {
     var body: some View {
         ScrollView {
             LazyVStack(alignment: .leading, spacing: 0) {
+                topPadding
                 ForEach(viewModel.messages) { message in
                     Button(action: {
                         withAnimation(.easeInOut(duration: 0.5)) {
@@ -233,6 +227,19 @@ struct MessageScrollView18: View {
             }
             .scrollTargetLayout()
         }
+        .task {
+            withAnimation {
+                self.scrollPosition.scrollTo(edge: .bottom)
+            }
+        }
+        .onChange(of: viewModel.agiContentCount) {
+            Log.view.debug("onAppear MessageScrollView")
+            withAnimation {
+                self.scrollPosition.scrollTo(edge: .bottom)
+            }
+        }
+        .contentMargins(.top, 100.0, for: .scrollIndicators)
+        .contentMargins(.bottom, 120.0, for: .scrollIndicators)
         .scrollPosition($scrollPosition)
         .onScrollGeometryChange(for: Bool.self) { geometry in
             let offset = geometry.contentOffset.y + geometry.containerSize.height
@@ -246,29 +253,35 @@ struct MessageScrollView18: View {
     
     @ViewBuilder
     var scrollToBottom: some View {
-        if !viewModel.isScrollLockActive {
-            VStack {
+        VStack {
+            Spacer()
+            HStack {
                 Spacer()
-                HStack {
-                    Spacer()
-                    RoundButton(action: {
-                        withAnimation {
-                            self.scrollPosition.scrollTo(edge: .bottom)
-                        }
-                    }, imageSize: 44, icon: "chevron.down", bgColor: .blue, isLoading: .constant(false))
-                    .shadow(radius: 3)
-                    .padding(.bottom)
-                    .padding(.trailing)
-                }
+                RoundButton(action: {
+                    withAnimation {
+                        self.scrollPosition.scrollTo(edge: .bottom)
+                    }
+                }, imageSize: 44, icon: "chevron.down", bgColor: .blue, isLoading: .constant(false))
+                .shadow(radius: 3)
+                .padding(.bottom, 130)
+                .padding(.trailing)
+                .disabled(viewModel.isScrollLockActive)
+                .opacity(viewModel.isScrollLockActive ? 0 : 1)
             }
-            .transition(.fade)
         }
+    }
+    
+    @ViewBuilder
+    var topPadding: some View {
+        Color.clear
+            .frame(width: 0, height: 120, alignment: .bottom)
+            .id(0)
     }
     
     @ViewBuilder
     var bottomPadding: some View {
         Color.clear
-            .frame(width: 0, height: 60, alignment: .bottom)
+            .frame(width: 0, height: 160, alignment: .bottom)
     }
 }
 
@@ -280,6 +293,7 @@ struct MessageScrollView: View {
         ScrollViewReader { outerProxy in
             ScrollView {
                 LazyVStack(alignment: .leading, spacing: 0) {
+                    topPadding
                     ForEach(viewModel.messages) { message in
                         Button(action: {
                             withAnimation(.easeInOut(duration: 0.5)) {
@@ -296,6 +310,19 @@ struct MessageScrollView: View {
                     bottomPadding
                 }
             }
+            .task {
+                withAnimation {
+                    outerProxy.scrollTo(Int.max, anchor: .bottom)
+                }
+            }
+            .onChange(of: viewModel.agiContentCount) {
+                Log.view.debug("onAppear MessageScrollView")
+                withAnimation {
+                    outerProxy.scrollTo(Int.max, anchor: .bottom)
+                }
+            }
+            .contentMargins(.top, 100.0, for: .scrollIndicators)
+            .contentMargins(.bottom, 120.0, for: .scrollIndicators)
             .onChange(of: self.didPressScrollToBottom) {
                 withAnimation {
                     if self.didPressScrollToBottom {
@@ -320,21 +347,29 @@ struct MessageScrollView: View {
                     }
                 }, imageSize: 44, icon: "chevron.down", bgColor: .blue, isLoading: .constant(false))
                 .shadow(radius: 3)
-                .padding(.bottom)
+                .padding(.bottom, 130)
                 .padding(.trailing)
+                .disabled(viewModel.isScrollLockActive)
+                .opacity(viewModel.isScrollLockActive ? 0 : 1)
             }
         }
         .transition(.fade)
     }
     
     @ViewBuilder
+    var topPadding: some View {
+        Color.clear
+            .frame(width: 0, height: 120, alignment: .bottom)
+            .id(0)
+    }
+    
+    @ViewBuilder
     var bottomPadding: some View {
         Color.clear
-            .frame(width: 0, height: 60, alignment: .bottom)
+            .frame(width: 0, height: 160, alignment: .bottom)
             .id(Int.max)
     }
 }
-
 
 #if DEBUG
 

@@ -21,6 +21,7 @@ final class AIChatMessagesViewModel {
     var selectedMessage: ChatMessage?
     var selectedMessageId: String?
     var currentSelectedRow: Int?
+    var agiContentCount: Int = 0
     var text: String = ""
     var selectedIndex: Int?
     var isAGIResponding: Bool = false
@@ -52,14 +53,12 @@ final class AIChatMessagesViewModel {
     @ObservationIgnored var scrollLockPublisher = PassthroughSubject<Bool, Never>()
     @ObservationIgnored private var scrollLockPublisherCancellable: AnyCancellable?
     @ObservationIgnored private let agiService: AGIServiceProtocol
-    @ObservationIgnored private let dataService: DataService<ChatMessage>
 
     init(modelContext: ModelContext, person: Person, resume: Resume, agiService: AGIServiceProtocol = ChatGPTAPIService()) {
         self.modelContext = modelContext
         self.person = person
         self.resume = resume
         self.agiService = agiService
-        self.dataService = DataService<ChatMessage>(modelContainer: modelContext.container)
         
         // Debounce the scroll lock updates
         scrollLockPublisherCancellable = scrollLockPublisher
@@ -101,25 +100,21 @@ final class AIChatMessagesViewModel {
     }
     
     @MainActor
-    func onSubmitNewMessage() async {
+    func onSubmitNewMessage() {
         let message = ChatMessage(author: .user(person.resumeUrl), content: newChatText, resumeUrl: person.resumeUrl)
         modelContext.insert(message)
         save()
         messages.append(message)
+        agiContentCount = 0
         handleAGIStream(content: String(newChatText))
         newChatText = ""
     }
     
     @MainActor
-    func onDelete(message: ChatMessage) async {
-        do {
-            await dataService.remove(id: message.id)
-            try await dataService.save()
-            fetchData()
-        } catch {
-            print("Save failed")
-            self.state = .error(error.localizedDescription)
-        }
+    func onDelete(message: ChatMessage) {
+        messages.removeAll(where: { $0.id == message.id })
+        modelContext.delete(message)
+        save()
     }
     
     func onTap(message: ChatMessage) {
@@ -157,7 +152,6 @@ final class AIChatMessagesViewModel {
     
     @MainActor
     private func handleAGIStream(content: String) {
-        
         let message = ChatMessage(author: .openai("gpt-4o"), content: "", resumeUrl: person.resumeUrl)
         modelContext.insert(message)
         messages.append(message)
@@ -171,6 +165,7 @@ final class AIChatMessagesViewModel {
                 for try await text in stream {
                     streamText += text
                     message.content = streamText
+                    self.agiContentCount = streamText.count
                 }
                 save()
             } catch {

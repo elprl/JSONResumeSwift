@@ -33,17 +33,15 @@ let _ = Self._printChanges()
     @ViewBuilder
     var header: some View {
         HStack(alignment: .center) {
-            if !message.isMine {
-                Image(message.author.image)
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 30, height: 30)
-                Text(message.author.displayName)
-                    .lineLimit(1)
-                    .foregroundStyle(message.author.color)
-                    .shadow(radius: 1)
-                    .bold()
-            }
+            Image(message.author.image)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 30, height: 30)
+            Text(message.author.displayName)
+                .lineLimit(1)
+                .foregroundStyle(message.author.color)
+                .shadow(radius: 1)
+                .bold()
             Spacer()
             optionsMenu
         }
@@ -66,7 +64,7 @@ let _ = Self._printChanges()
     
     @ViewBuilder
     var myMessageContent: some View {
-        HStack(alignment: .center) {
+        HStack(alignment: .top) {
             Text(message.markdown)
                     .lineLimit(nil)
                     .multilineTextAlignment(.leading)
@@ -78,7 +76,7 @@ let _ = Self._printChanges()
             Spacer()
             optionsMenu
         }
-        .padding(.horizontal, 8)
+        .padding(.horizontal, 6)
         .padding(.top, 6)
     }
     
@@ -104,8 +102,8 @@ let _ = Self._printChanges()
                 Label("Copy to Clipboard", systemImage: "clipboard")
             }
             Button(role: .destructive) {
-                Task { @MainActor in
-                    await self.viewModel.onDelete(message: message)
+                withAnimation {
+                    self.viewModel.onDelete(message: message)
                 }                
             } label: {
                 Label("Delete", systemImage: "trash")
