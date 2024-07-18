@@ -50,13 +50,13 @@ enum Author: Codable {
         case .claude(_):
             return "claudeIcon"
         case .user(_):
-            return "AppIcon"
+            return "brain"
         }
     }
 }
 
 @Model
-final class ChatMessage {
+final class ChatMessage: ObservableObject {
     @Attribute(.unique) var messageId: String
     var author: Author
     var content: String
@@ -76,7 +76,7 @@ final class ChatMessage {
     }
 }
 
-extension ChatMessage: Identifiable {
+extension ChatMessage: Identifiable, Equatable {
     var id: String {
         return messageId
     }
@@ -90,5 +90,9 @@ extension ChatMessage: Identifiable {
     
     var markdown: LocalizedStringKey {
         return LocalizedStringKey(content)
+    }
+    
+    static func == (lhs: ChatMessage, rhs: ChatMessage) -> Bool {
+        lhs.messageId == rhs.messageId && lhs.content == rhs.content
     }
 }

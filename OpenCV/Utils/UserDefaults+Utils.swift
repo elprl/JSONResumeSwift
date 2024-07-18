@@ -211,6 +211,15 @@ extension UserDefaults {
         }
     }
     
+    var selectedAGI: AGIServiceChoice? {
+        get {
+            return AGIServiceChoice(rawValue: string(forKey: Keys.selectedAGI) ?? "-1") ?? AGIServiceChoice.none
+        }
+        set {
+            setValue(newValue, forKey: Keys.selectedAGI)
+        }
+    }
+    
     var hasAgiKey: Bool? {
         get {
             return bool(forKey: Keys.hasAgiKey)

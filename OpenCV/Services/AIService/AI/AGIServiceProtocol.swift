@@ -164,15 +164,15 @@ enum AGIServiceChoice: String {
     var imageKey: String {
         switch self {
         case .openai:
-            return "openaiLogo"
+            return "openaiIcon"
         case .claude:
             return "claudeIcon"
         case .gemini:
             return "geminiIcon"
         case .customAI:
-            return "custom_ai_icon"
+            return "brain"
         default:
-            return "peerwalk_logo"
+            return "brain"
         }
     }
     

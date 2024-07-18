@@ -124,9 +124,10 @@ struct ResumeRowView: View {
 }
 
 @available(iOS 18.0, *)
-#Preview {
+#Preview(traits: .samplePeopleData) {
     @Previewable @Namespace() var namespace
+    @Previewable @Query var people: [Person]
     let viewModel = ResumeListViewModel(modelContext: PreviewController.previewContainer.mainContext)
-    ResumeRowView(viewModel: viewModel, person: Person(resumeUrl: "https://registry.jsonresume.org/elprl.json"), namespace: namespace)
+    ResumeRowView(viewModel: viewModel, person: people.first ?? Person(resumeUrl: "https://registry.jsonresume.org/elprl.json"), namespace: namespace)
         .modelContainer(PreviewController.previewContainer)
 }

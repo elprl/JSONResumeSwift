@@ -14,6 +14,9 @@ struct ResumeView: View {
     private let resume: Resume
     private let person: Person
     private let modelContext: ModelContext
+    @AppStorage(UserDefaults.Keys.hasAgiKey) var hasAgiKey: Bool = false
+    @AppStorage(UserDefaults.Keys.hasClaudeKey) var hasClaudeKey: Bool = false
+    @AppStorage(UserDefaults.Keys.hasGeminiKey) var hasGeminiKey: Bool = false
 
     init(resume: Resume, person: Person, modelContext: ModelContext) {
         self.resume = resume
@@ -54,11 +57,13 @@ struct ResumeView: View {
                 .modelContainer(modelContext.container)
         })
         .toolbar {
-            ToolbarItemGroup(placement: .topBarTrailing) {
-                Button(action: {
-                    self.viewModel.showAIChat = true
-                }) {
-                    Label("AI Chat", systemImage: "message")
+            if hasAgiKey || hasClaudeKey || hasGeminiKey {
+                ToolbarItemGroup(placement: .topBarTrailing) {
+                    Button(action: {
+                        self.viewModel.showAIChat = true
+                    }) {
+                        Label("AI Chat", systemImage: "message")
+                    }
                 }
             }
         }
