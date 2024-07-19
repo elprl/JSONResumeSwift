@@ -9,7 +9,6 @@
 import Foundation
 @preconcurrency import GoogleGenerativeAI
 
-
 final class GeminiAPIService: ChatGPTAPIService, @unchecked Sendable {
     private var geminiClient: GenerativeModel?
     override var model: String {

@@ -6,12 +6,23 @@
 //
 
 import SwiftUI
+import SDWebImageSwiftUI
+
+enum NavigationItem {
+    case openAISettings
+    case openAIInputSettings
+    case geminiSettings
+    case geminiInputSettings
+    case customAISettings
+    case claudeSettings
+}
 
 struct SettingsView: View {
     @Environment(\.dismiss) private var dismiss
     @Environment(\.colorScheme) private var colorScheme
     @AppStorage("darkLightAutoMode") private var darkLightAutoMode: UIUserInterfaceStyle = .unspecified
-    
+    @StateObject var aiViewModel: OpenAISettingsViewModel = OpenAISettingsViewModel()
+
     private struct Constants {
         static let appId = "6511210635"
     }
@@ -20,12 +31,25 @@ struct SettingsView: View {
         NavigationStack {
             List {
                 appPreferences
+                aiSettings
                 miscellaneous
             }
             .listStyle(.insetGrouped)
             .scrollContentBackground(.hidden)
             .background(MeshGradientView().opacity(0.3).ignoresSafeArea())
             .navigationTitle("Settings")
+            .navigationDestination(for: NavigationItem.self) { navItem in
+                switch navItem {
+                case .openAISettings:
+                    OpenAISettingsSUI(viewModel: aiViewModel)
+                case .geminiSettings:
+                    GeminiSettingsSUI()
+                case .claudeSettings:
+                    ClaudeSettingsSUI()
+                default:
+                    EmptyView()
+                }
+            }
             .toolbar {
                 ToolbarItemGroup(placement: .topBarTrailing) {
                     Button(role: .cancel, action: {
@@ -49,6 +73,50 @@ struct SettingsView: View {
                 Text("Light").font(.callout).tag(UIUserInterfaceStyle.light)
             }
             .tint(colorScheme == .dark ? .orange : .brown)
+        }
+    }
+    
+    @ViewBuilder
+    var aiSettings: some View {
+        Section(header: SectionHeaderBlock(title: "AI SETUP", description: "Setup Integrations with AI Models")) {
+            NavigationLink(value: NavigationItem.openAISettings) {
+                HStack {
+                    WebImage(url: URL(string: "https://chat.openai.com/favicon-32x32.png"))
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 30, height: 30)
+                    Text("OpenAI / ChatGPT")
+                        .font(.body)
+                        .foregroundStyle(.primary)
+                    Spacer()
+                }
+            }
+            
+            NavigationLink(value: NavigationItem.claudeSettings) {
+                HStack {
+                    WebImage(url: URL(string: "https://www.anthropic.com/favicon.ico"))
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 30, height: 30)
+                    Text("Anthropic Claude")
+                        .font(.body)
+                        .foregroundStyle(.primary)
+                    Spacer()
+                }
+            }
+            
+            NavigationLink(value: NavigationItem.geminiSettings) {
+                HStack {
+                    WebImage(url: URL(string: "https://ai.google.dev/static/docs/images/icon_480.png"))
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 30, height: 30)
+                    Text("Google Gemini")
+                        .font(.body)
+                        .foregroundStyle(.primary)
+                    Spacer()
+                }
+            }
         }
     }
     

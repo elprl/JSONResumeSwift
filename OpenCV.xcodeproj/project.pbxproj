@@ -108,6 +108,24 @@
 		E152C6D62C375E84000949AB /* QRCodeGeneratorService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E152C6D52C375E78000949AB /* QRCodeGeneratorService.swift */; };
 		E15919EF2C4956F2001C6994 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15919EE2C4956EA001C6994 /* DataService.swift */; };
 		E15919F02C4956F2001C6994 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15919EE2C4956EA001C6994 /* DataService.swift */; };
+		E15919FC2C49E419001C6994 /* GeminiInputSettingsSUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15919F92C49E419001C6994 /* GeminiInputSettingsSUI.swift */; };
+		E15919FD2C49E419001C6994 /* OpenAISettingsSUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15919F62C49E419001C6994 /* OpenAISettingsSUI.swift */; };
+		E15919FE2C49E419001C6994 /* OpenAITokenInputSUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15919F72C49E419001C6994 /* OpenAITokenInputSUI.swift */; };
+		E15919FF2C49E419001C6994 /* ClaudeSettingsSUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15919FA2C49E419001C6994 /* ClaudeSettingsSUI.swift */; };
+		E1591A002C49E419001C6994 /* GeminiSettingsSUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15919F82C49E419001C6994 /* GeminiSettingsSUI.swift */; };
+		E1591A012C49E419001C6994 /* ClaudeInputSettingsSUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15919FB2C49E419001C6994 /* ClaudeInputSettingsSUI.swift */; };
+		E1591A022C49E419001C6994 /* GeminiInputSettingsSUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15919F92C49E419001C6994 /* GeminiInputSettingsSUI.swift */; };
+		E1591A032C49E419001C6994 /* OpenAISettingsSUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15919F62C49E419001C6994 /* OpenAISettingsSUI.swift */; };
+		E1591A042C49E419001C6994 /* OpenAITokenInputSUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15919F72C49E419001C6994 /* OpenAITokenInputSUI.swift */; };
+		E1591A052C49E419001C6994 /* ClaudeSettingsSUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15919FA2C49E419001C6994 /* ClaudeSettingsSUI.swift */; };
+		E1591A062C49E419001C6994 /* GeminiSettingsSUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15919F82C49E419001C6994 /* GeminiSettingsSUI.swift */; };
+		E1591A072C49E419001C6994 /* ClaudeInputSettingsSUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15919FB2C49E419001C6994 /* ClaudeInputSettingsSUI.swift */; };
+		E1591A0B2C49E435001C6994 /* GeminiSettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1591A092C49E435001C6994 /* GeminiSettingsViewModel.swift */; };
+		E1591A0C2C49E435001C6994 /* OpenAISettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1591A082C49E435001C6994 /* OpenAISettingsViewModel.swift */; };
+		E1591A0D2C49E435001C6994 /* ClaudeSettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1591A0A2C49E435001C6994 /* ClaudeSettingsViewModel.swift */; };
+		E1591A0E2C49E435001C6994 /* GeminiSettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1591A092C49E435001C6994 /* GeminiSettingsViewModel.swift */; };
+		E1591A0F2C49E435001C6994 /* OpenAISettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1591A082C49E435001C6994 /* OpenAISettingsViewModel.swift */; };
+		E1591A102C49E435001C6994 /* ClaudeSettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1591A0A2C49E435001C6994 /* ClaudeSettingsViewModel.swift */; };
 		E1908B4E2C2F4F2A002C8F5F /* OpenCVApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1908B4D2C2F4F2A002C8F5F /* OpenCVApp.swift */; };
 		E1908B542C2F4F2C002C8F5F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1908B532C2F4F2C002C8F5F /* Assets.xcassets */; };
 		E1908B572C2F4F2C002C8F5F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1908B562C2F4F2C002C8F5F /* Preview Assets.xcassets */; };
@@ -251,6 +269,15 @@
 		E152C6D22C3757B4000949AB /* QRCodeGenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeGenView.swift; sourceTree = "<group>"; };
 		E152C6D52C375E78000949AB /* QRCodeGeneratorService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeGeneratorService.swift; sourceTree = "<group>"; };
 		E15919EE2C4956EA001C6994 /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
+		E15919F62C49E419001C6994 /* OpenAISettingsSUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAISettingsSUI.swift; sourceTree = "<group>"; };
+		E15919F72C49E419001C6994 /* OpenAITokenInputSUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAITokenInputSUI.swift; sourceTree = "<group>"; };
+		E15919F82C49E419001C6994 /* GeminiSettingsSUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeminiSettingsSUI.swift; sourceTree = "<group>"; };
+		E15919F92C49E419001C6994 /* GeminiInputSettingsSUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeminiInputSettingsSUI.swift; sourceTree = "<group>"; };
+		E15919FA2C49E419001C6994 /* ClaudeSettingsSUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClaudeSettingsSUI.swift; sourceTree = "<group>"; };
+		E15919FB2C49E419001C6994 /* ClaudeInputSettingsSUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClaudeInputSettingsSUI.swift; sourceTree = "<group>"; };
+		E1591A082C49E435001C6994 /* OpenAISettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAISettingsViewModel.swift; sourceTree = "<group>"; };
+		E1591A092C49E435001C6994 /* GeminiSettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeminiSettingsViewModel.swift; sourceTree = "<group>"; };
+		E1591A0A2C49E435001C6994 /* ClaudeSettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClaudeSettingsViewModel.swift; sourceTree = "<group>"; };
 		E1908B4A2C2F4F2A002C8F5F /* JSON CV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "JSON CV.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1908B4D2C2F4F2A002C8F5F /* OpenCVApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenCVApp.swift; sourceTree = "<group>"; };
 		E1908B532C2F4F2C002C8F5F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -559,6 +586,19 @@
 			path = DataService;
 			sourceTree = "<group>";
 		};
+		E15919F52C49E3F3001C6994 /* Subviews */ = {
+			isa = PBXGroup;
+			children = (
+				E15919F62C49E419001C6994 /* OpenAISettingsSUI.swift */,
+				E15919F72C49E419001C6994 /* OpenAITokenInputSUI.swift */,
+				E15919F82C49E419001C6994 /* GeminiSettingsSUI.swift */,
+				E15919F92C49E419001C6994 /* GeminiInputSettingsSUI.swift */,
+				E15919FA2C49E419001C6994 /* ClaudeSettingsSUI.swift */,
+				E15919FB2C49E419001C6994 /* ClaudeInputSettingsSUI.swift */,
+			);
+			path = Subviews;
+			sourceTree = "<group>";
+		};
 		E1908B412C2F4F2A002C8F5F = {
 			isa = PBXGroup;
 			children = (
@@ -786,6 +826,9 @@
 		E1E845822C35C04E0065489C /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				E1591A082C49E435001C6994 /* OpenAISettingsViewModel.swift */,
+				E1591A092C49E435001C6994 /* GeminiSettingsViewModel.swift */,
+				E1591A0A2C49E435001C6994 /* ClaudeSettingsViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -794,6 +837,7 @@
 			isa = PBXGroup;
 			children = (
 				E1E845842C35C0A00065489C /* SettingsView.swift */,
+				E15919F52C49E3F3001C6994 /* Subviews */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1100,6 +1144,15 @@
 				E1526D9E2C38571D00D88453 /* InterestsView.swift in Sources */,
 				E1526D9F2C38571D00D88453 /* BasicsView.swift in Sources */,
 				E1526DA02C38571D00D88453 /* SkillsView.swift in Sources */,
+				E1591A022C49E419001C6994 /* GeminiInputSettingsSUI.swift in Sources */,
+				E1591A032C49E419001C6994 /* OpenAISettingsSUI.swift in Sources */,
+				E1591A042C49E419001C6994 /* OpenAITokenInputSUI.swift in Sources */,
+				E1591A052C49E419001C6994 /* ClaudeSettingsSUI.swift in Sources */,
+				E1591A0B2C49E435001C6994 /* GeminiSettingsViewModel.swift in Sources */,
+				E1591A0C2C49E435001C6994 /* OpenAISettingsViewModel.swift in Sources */,
+				E1591A0D2C49E435001C6994 /* ClaudeSettingsViewModel.swift in Sources */,
+				E1591A062C49E419001C6994 /* GeminiSettingsSUI.swift in Sources */,
+				E1591A072C49E419001C6994 /* ClaudeInputSettingsSUI.swift in Sources */,
 				E1FCACA72C4700B900D1A76E /* Date+Utils.swift in Sources */,
 				E10CC75B2C46EB2300CC34B1 /* KeychainService.swift in Sources */,
 				E1526DA12C38571D00D88453 /* PublicationsView.swift in Sources */,
@@ -1141,12 +1194,21 @@
 				E1F4872C2C2F96B100031976 /* WorkView.swift in Sources */,
 				E1F4872A2C2F962B00031976 /* SkillsView.swift in Sources */,
 				E1AD862A2C31B2B1008F38A3 /* PublicationsView.swift in Sources */,
+				E1591A0E2C49E435001C6994 /* GeminiSettingsViewModel.swift in Sources */,
+				E1591A0F2C49E435001C6994 /* OpenAISettingsViewModel.swift in Sources */,
+				E1591A102C49E435001C6994 /* ClaudeSettingsViewModel.swift in Sources */,
 				E1AD86262C31AC37008F38A3 /* AwardsView.swift in Sources */,
 				E10CC7232C46C11300CC34B1 /* AIChatMessagesViewModel.swift in Sources */,
 				E1AD86312C31BE5F008F38A3 /* SwiftUI+Utils.swift in Sources */,
 				E1526DAB2C3987C900D88453 /* String+Utils.swift in Sources */,
 				E1E8457A2C35A9D60065489C /* MyNotesView.swift in Sources */,
 				E1AD863D2C32229D008F38A3 /* CachedResumeView.swift in Sources */,
+				E15919FC2C49E419001C6994 /* GeminiInputSettingsSUI.swift in Sources */,
+				E15919FD2C49E419001C6994 /* OpenAISettingsSUI.swift in Sources */,
+				E15919FE2C49E419001C6994 /* OpenAITokenInputSUI.swift in Sources */,
+				E15919FF2C49E419001C6994 /* ClaudeSettingsSUI.swift in Sources */,
+				E1591A002C49E419001C6994 /* GeminiSettingsSUI.swift in Sources */,
+				E1591A012C49E419001C6994 /* ClaudeInputSettingsSUI.swift in Sources */,
 				E152C6D62C375E84000949AB /* QRCodeGeneratorService.swift in Sources */,
 				E1908B4E2C2F4F2A002C8F5F /* OpenCVApp.swift in Sources */,
 				E1AD86182C30D2FB008F38A3 /* VolunteerView.swift in Sources */,

@@ -42,7 +42,18 @@ final class AIChatMessagesViewModel {
         }
     }
     var hasHistoryScope: Bool = true
-    var selectedAGI: AGIServiceChoice = UserDefaults.standard.selectedAGI ?? .none
+    var selectedAGI: AGIServiceChoice = UserDefaults.standard.selectedAGI ?? .none {
+        didSet {
+            switch selectedAGI {
+            case .gemini:
+                self.agiService = GeminiAPIService()
+            case .claude:
+                self.agiService = ClaudeAPIService()
+            default:
+                self.agiService = ChatGPTAPIService()
+            }
+        }
+    }
     var hasAgiKey: Bool = UserDefaults.standard.hasAgiKey ?? false
     var hasClaudeKey: Bool = UserDefaults.standard.hasClaudeKey ?? false
     var hasGeminiKey: Bool = UserDefaults.standard.hasGeminiKey ?? false
@@ -52,7 +63,7 @@ final class AIChatMessagesViewModel {
     var showingSettingsSheet = false
     @ObservationIgnored var scrollLockPublisher = PassthroughSubject<Bool, Never>()
     @ObservationIgnored private var scrollLockPublisherCancellable: AnyCancellable?
-    @ObservationIgnored private let agiService: AGIServiceProtocol
+    @ObservationIgnored private var agiService: AGIServiceProtocol
 
     init(modelContext: ModelContext, person: Person, resume: Resume, agiService: AGIServiceProtocol = ChatGPTAPIService()) {
         self.modelContext = modelContext
@@ -152,7 +163,16 @@ final class AIChatMessagesViewModel {
     
     @MainActor
     private func handleAGIStream(content: String) {
-        let message = ChatMessage(author: .openai("gpt-4o"), content: "", resumeUrl: person.resumeUrl)
+        var author = Author.openai(UserDefaults.standard.agiModel ?? "gpt-4o")
+        switch selectedAGI {
+        case .gemini:
+            author = .gemini(UserDefaults.standard.geminiModel ?? "gemini-1.5-pro-latest")
+        case .claude:
+            author = .claude(UserDefaults.standard.claudeModel ?? "claude-3-sonnet-20240229")
+        default:
+            author = .openai(UserDefaults.standard.agiModel ?? "gpt-4o")
+        }
+        let message = ChatMessage(author: author, content: "", resumeUrl: person.resumeUrl)
         modelContext.insert(message)
         messages.append(message)
         let scopes = HistoryOptions.modeFrom(hasRole: hasRoleScope, hasCode: hasFileScope, hasHistory: hasHistoryScope, hasSelection: hasSelectionScope)
