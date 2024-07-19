@@ -28,6 +28,9 @@ let _ = Self._printChanges()
         }
         .modifier(Card(isSelected: .constant(false), bgColor: message.isMine ? .blue : .orange))
         .padding(.leading, message.isMine ? 32 : 0)
+        .contextMenu(menuItems: {
+            optionsMenuItems
+        })
     }
     
     @ViewBuilder
@@ -39,8 +42,7 @@ let _ = Self._printChanges()
                 .frame(width: 30, height: 30)
             Text(message.author.displayName)
                 .lineLimit(1)
-                .foregroundStyle(message.author.color)
-                .shadow(radius: 1)
+                .foregroundStyle(.black)
                 .bold()
             Spacer()
             optionsMenu
@@ -96,22 +98,7 @@ let _ = Self._printChanges()
     @ViewBuilder
     var optionsMenu: some View {
         Menu {
-            Button {
-                self.viewModel.onTapCopyClipboard(message: message)
-            } label: {
-                Label("Copy to Clipboard", systemImage: "clipboard")
-            }
-            Button(role: .destructive) {
-                withAnimation {
-                    self.viewModel.onDelete(message: message)
-                }                
-            } label: {
-                Label("Delete", systemImage: "trash")
-            }
-            Button(role: .cancel) {
-            } label: {
-                Text("Cancel")
-            }
+            optionsMenuItems
         } label: {
             Image(systemName: "ellipsis")
                 .foregroundStyle(message.isMine ? .white : .black)
@@ -121,6 +108,28 @@ let _ = Self._printChanges()
         }
         .contentShape(Rectangle())
         .menuOrder(.fixed)
+    }
+    
+    @ViewBuilder
+    var optionsMenuItems: some View {
+        Group {
+            Button {
+                self.viewModel.onTapCopyClipboard(message: message)
+            } label: {
+                Label("Copy to Clipboard", systemImage: "clipboard")
+            }
+            Button(role: .destructive) {
+                withAnimation {
+                    self.viewModel.onDelete(message: message)
+                }
+            } label: {
+                Label("Delete", systemImage: "trash")
+            }
+            Button(role: .cancel) {
+            } label: {
+                Text("Cancel")
+            }
+        }
     }
 }
 
