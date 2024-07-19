@@ -142,7 +142,6 @@ class ChatGPTAPIService: @unchecked Sendable, AGIServiceProtocol {
         self.historyList.append(GPTMessage(role: GPTRole.assistant.rawValue, content: responseText))
     }
     
-    @MainActor
     func sendMessageStream(text: String, needsJSONResponse: Bool = false) async throws -> AsyncThrowingStream<String, Error> {
         var urlRequest = self.urlRequest
         do {
@@ -183,7 +182,7 @@ class ChatGPTAPIService: @unchecked Sendable, AGIServiceProtocol {
                     return
                 }
                 
-                Task { @MainActor in
+                Task {
                     do {
                         var responseText = ""
                         for try await line in result.lines {

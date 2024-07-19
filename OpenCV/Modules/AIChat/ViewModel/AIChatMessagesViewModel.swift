@@ -13,8 +13,8 @@ import SwiftData
 
 @Observable
 final class AIChatMessagesViewModel {
-    @MainActor var messages: [ChatMessage] = []
-    @MainActor var state: LoadingViewState<[ChatMessage]> = .appeared
+    var messages: [ChatMessage] = []
+    var state: LoadingViewState<[ChatMessage]> = .appeared
     var newChatText: String = ""
     var newChatPlaceholderText: String?
     var replyPresent: Bool = false
@@ -74,6 +74,7 @@ final class AIChatMessagesViewModel {
         // Debounce the scroll lock updates
         scrollLockPublisherCancellable = scrollLockPublisher
             .debounce(for: .milliseconds(300), scheduler: RunLoop.main)
+            .removeDuplicates()
             .assign(to: \.isScrollLockActive, on: self)
     }
     
@@ -128,6 +129,19 @@ final class AIChatMessagesViewModel {
         save()
     }
     
+    @MainActor
+    func deleteAllMessages() {
+        do {
+            let resumeUrl: String = person.resumeUrl
+            try modelContext.delete(model: ChatMessage.self, where: #Predicate { $0.resumeUrl == resumeUrl })
+        } catch {
+            print("Failed to delete all schools.")
+        }
+        save()
+        messages.removeAll()
+        fetchData()
+    }
+    
     func onTap(message: ChatMessage) {
 
     }
@@ -174,6 +188,7 @@ final class AIChatMessagesViewModel {
         }
         let message = ChatMessage(author: author, content: "", resumeUrl: person.resumeUrl)
         modelContext.insert(message)
+        save()
         messages.append(message)
         let scopes = HistoryOptions.modeFrom(hasRole: hasRoleScope, hasCode: hasFileScope, hasHistory: hasHistoryScope, hasSelection: hasSelectionScope)
         agiService.setupHistory(for: resume.description, selectedRows: Set<Int>(), scopes: scopes, messages: messages)

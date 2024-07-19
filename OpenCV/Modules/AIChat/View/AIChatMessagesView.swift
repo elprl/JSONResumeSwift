@@ -12,10 +12,6 @@ import SwiftData
 
 struct AIChatMessagesView: View {
     @State private var viewModel: AIChatMessagesViewModel
-    @FocusState private var isFocused: Bool
-    @AppStorage(UserDefaults.Keys.hasAgiKey) var hasAgiKey: Bool = false
-    @AppStorage(UserDefaults.Keys.hasClaudeKey) var hasClaudeKey: Bool = false
-    @AppStorage(UserDefaults.Keys.hasGeminiKey) var hasGeminiKey: Bool = false
     
     init(modelContext: ModelContext, person: Person, resume: Resume) {
         _viewModel = State(initialValue: AIChatMessagesViewModel(modelContext: modelContext, person: person, resume: resume))
@@ -28,7 +24,6 @@ let _ = Self._printChanges()
         ZStack {
             MeshGradientView()
                 .opacity(0.3)
-                .ignoresSafeArea(.container)
             VStack {
                 switch viewModel.state {
                 case .loading, .appeared:
@@ -48,23 +43,12 @@ let _ = Self._printChanges()
                     error(message: message)
                 }
             }
-            .ignoresSafeArea(.container)
-            .padding(.vertical)
-            VStack {
-                Spacer()
-                VStack {
-                    scope
-                        .padding(.horizontal)
-                    input
-                        .padding(.horizontal)
-                }
-                .padding(.bottom, isFocused ? 12 : 32)
-                .background(.ultraThinMaterial)
-            }
-            .ignoresSafeArea(.container)
-            .zIndex(1)
         }
-        .ignoresSafeArea(.container)
+        .ignoresSafeArea()
+        .overlay {
+            TextInputView(viewModel: viewModel)
+                .ignoresSafeArea(.container, edges: .bottom)
+        }
         .navigationTitle("AI Chat")
         .navigationBarTitleDisplayMode(.inline)
         .sheet(isPresented: $viewModel.showingSettingsSheet) {
@@ -72,11 +56,24 @@ let _ = Self._printChanges()
         }
         .toolbar {
             ToolbarItemGroup(placement: .topBarTrailing) {
-                Button(action: {
-                    self.viewModel.showingSettingsSheet = true
-                }) {
-                    Label("Settings", systemImage: "gearshape")
+                Menu {
+                    Button(action: {
+                        self.viewModel.deleteAllMessages()
+                    }) {
+                        Label("Clear All", systemImage: "trash")
+                    }
+                    Button(action: {
+                        self.viewModel.showingSettingsSheet = true
+                    }) {
+                        Label("Settings", systemImage: "gearshape")
+                    }
+                } label: {
+                    Image(systemName: "ellipsis")
+                        .padding()
+                        .frame(width: 30, height: 30)
                 }
+                .contentShape(Rectangle())
+                .menuOrder(.fixed)
             }
         }
     }
@@ -106,7 +103,30 @@ let _ = Self._printChanges()
     private func error(message: String) -> some View {
         Label(message, systemImage: "exclamationmark.octagon")
     }
-    
+}
+
+struct TextInputView: View {
+    @State var viewModel: AIChatMessagesViewModel
+    @FocusState private var isFocused: Bool
+    @AppStorage(UserDefaults.Keys.hasAgiKey) var hasAgiKey: Bool = false
+    @AppStorage(UserDefaults.Keys.hasClaudeKey) var hasClaudeKey: Bool = false
+    @AppStorage(UserDefaults.Keys.hasGeminiKey) var hasGeminiKey: Bool = false
+
+    var body: some View {
+        VStack {
+            Spacer()
+            VStack {
+                scope
+                    .padding(.horizontal)
+                input
+                    .padding(.horizontal)
+            }
+            .padding(.top, 12)
+            .padding(.bottom, isFocused ? 12 : 32)
+            .background(.ultraThinMaterial)
+        }
+        .zIndex(1)
+    }
     
     @ViewBuilder
     var scope: some View {
@@ -119,7 +139,6 @@ let _ = Self._printChanges()
                 Spacer()
             }
         }
-        .padding(.top)
         .padding(.bottom, 2)
     }
     
@@ -207,7 +226,7 @@ let _ = Self._printChanges()
 @available(iOS 18.0, *)
 struct MessageScrollView18: View {
     @State private var scrollPosition = ScrollPosition(idType: ChatMessage.ID.self)
-    var viewModel: AIChatMessagesViewModel
+    @State var viewModel: AIChatMessagesViewModel
     
     var body: some View {
         ScrollView {
@@ -227,6 +246,9 @@ struct MessageScrollView18: View {
                     .transition(.slide)
                 }
                 bottomPadding
+                    .onScrollVisibilityChange(threshold: 0.5) { isLast in
+                        self.viewModel.scrollLockPublisher.send(isLast)
+                    }
             }
             .scrollTargetLayout()
         }
@@ -236,7 +258,6 @@ struct MessageScrollView18: View {
             }
         }
         .onChange(of: viewModel.agiContentCount) {
-            Log.view.debug("onAppear MessageScrollView")
             withAnimation {
                 self.scrollPosition.scrollTo(edge: .bottom)
             }
@@ -244,13 +265,6 @@ struct MessageScrollView18: View {
         .contentMargins(.top, 100.0, for: .scrollIndicators)
         .contentMargins(.bottom, 120.0, for: .scrollIndicators)
         .scrollPosition($scrollPosition)
-        .onScrollGeometryChange(for: Bool.self) { geometry in
-            let offset = geometry.contentOffset.y + geometry.containerSize.height
-            let maxOffset = geometry.contentSize.height - 130
-            return offset > maxOffset
-        } action: { oldValue, newValue in
-            self.viewModel.scrollLockPublisher.send(newValue)
-        }
         .overlay(scrollToBottom)
     }
     
@@ -284,7 +298,7 @@ struct MessageScrollView18: View {
     @ViewBuilder
     var bottomPadding: some View {
         Color.clear
-            .frame(width: 0, height: 160, alignment: .bottom)
+            .frame(width: 0, height: 380, alignment: .bottom)
     }
 }
 
@@ -319,7 +333,6 @@ struct MessageScrollView: View {
                 }
             }
             .onChange(of: viewModel.agiContentCount) {
-                Log.view.debug("onAppear MessageScrollView")
                 withAnimation {
                     outerProxy.scrollTo(Int.max, anchor: .bottom)
                 }
@@ -369,7 +382,7 @@ struct MessageScrollView: View {
     @ViewBuilder
     var bottomPadding: some View {
         Color.clear
-            .frame(width: 0, height: 160, alignment: .bottom)
+            .frame(width: 0, height: 380, alignment: .bottom)
             .id(Int.max)
     }
 }
