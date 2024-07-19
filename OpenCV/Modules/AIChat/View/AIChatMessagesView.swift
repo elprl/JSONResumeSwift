@@ -13,6 +13,9 @@ import SwiftData
 struct AIChatMessagesView: View {
     @State private var viewModel: AIChatMessagesViewModel
     @FocusState private var isFocused: Bool
+    @AppStorage(UserDefaults.Keys.hasAgiKey) var hasAgiKey: Bool = false
+    @AppStorage(UserDefaults.Keys.hasClaudeKey) var hasClaudeKey: Bool = false
+    @AppStorage(UserDefaults.Keys.hasGeminiKey) var hasGeminiKey: Bool = false
     
     init(modelContext: ModelContext, person: Person, resume: Resume) {
         _viewModel = State(initialValue: AIChatMessagesViewModel(modelContext: modelContext, person: person, resume: resume))
@@ -152,21 +155,21 @@ let _ = Self._printChanges()
     var commentButton: some View {
         Menu {
             Section(header: Text("Select AI Service".uppercased()).font(.headline).foregroundColor(.orange)) {
-                if viewModel.hasAgiKey {
+                if hasAgiKey {
                     Button {
                         self.viewModel.selectedAGI = .openai
                     } label: {
                         Label(AGIServiceChoice.openai.name, image: AGIServiceChoice.openai.imageKey)
                     }
                 }
-                if viewModel.hasClaudeKey {
+                if hasClaudeKey {
                     Button {
                         self.viewModel.selectedAGI = .claude
                     } label: {
                         Label(AGIServiceChoice.claude.name, image: AGIServiceChoice.claude.imageKey)
                     }
                 }
-                if viewModel.hasGeminiKey {
+                if hasGeminiKey {
                     Button {
                         self.viewModel.selectedAGI = .gemini
                     } label: {
