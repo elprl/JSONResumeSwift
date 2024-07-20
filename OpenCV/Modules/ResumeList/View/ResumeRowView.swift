@@ -70,28 +70,13 @@ struct ResumeRowView: View {
                     }
                     Spacer()
                     Menu {
-                        Button {
-                            viewModel.showingQRCodeSheet = true
-                            viewModel.selectedPerson = person
-                            viewModel.url = person.resumeUrl
-                        } label: {
-                            Label("Share CV", systemImage: "square.and.arrow.up")
-                                .foregroundStyle(colorScheme == .dark ? .orange : .brown)
-                        }
-                        Button {
-                            viewModel.showingDeleteAlert = true
-                            viewModel.selectedPerson = person
-                        } label: {
-                            Label("Delete", systemImage: "trash")
-                                .foregroundStyle(colorScheme == .dark ? .orange : .brown)
-                        }
+                        optionsMenuItems
                     } label: {
                         Image(systemName: "ellipsis.circle")
                             .foregroundStyle(colorScheme == .dark ? .orange : .brown)
                     }
                     .menuOrder(.fixed)
-                    .highPriorityGesture(TapGesture())
-                    
+                    .highPriorityGesture(TapGesture())                    
                 }
             }
             .backgroundStyle(.ultraThinMaterial)
@@ -99,6 +84,9 @@ struct ResumeRowView: View {
             .padding(4)
             .shadow(radius: 4)
             .tint(.primary)
+            .contextMenu(menuItems: {
+                optionsMenuItems
+            })
         }
     }
     
@@ -120,6 +108,27 @@ struct ResumeRowView: View {
         Image(systemName: "person.circle")
             .resizable()
             .aspectRatio(contentMode: .fit)
+    }
+    
+    @ViewBuilder
+    var optionsMenuItems: some View {
+        Group {
+            Button {
+                viewModel.showingQRCodeSheet = true
+                viewModel.selectedPerson = person
+                viewModel.url = person.resumeUrl
+            } label: {
+                Label("Share CV", systemImage: "square.and.arrow.up")
+                    .foregroundStyle(colorScheme == .dark ? .orange : .brown)
+            }
+            Button {
+                viewModel.showingDeleteAlert = true
+                viewModel.selectedPerson = person
+            } label: {
+                Label("Delete", systemImage: "trash")
+                    .foregroundStyle(colorScheme == .dark ? .orange : .brown)
+            }
+        }
     }
 }
 

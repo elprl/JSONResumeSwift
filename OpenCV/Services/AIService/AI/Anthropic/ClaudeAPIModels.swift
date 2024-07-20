@@ -21,12 +21,13 @@ enum ClaudeModel {
  
 extension ClaudeModel: Hashable, Identifiable, Codable {
     static var `default`: ClaudeModel {
-        return .claude(model: "claude-3-sonnet-20240229", tokens: 200000)
+        return .claude(model: "claude-3-5-sonnet-20240620", tokens: 200000)
     }
 
     static var allCases: [ClaudeModel] {
         return [
-            .custom(model: "CUSTOM", tokens: 100000),
+            .custom(model: "CUSTOM", tokens: 200000),
+            .claude(model: "claude-3-5-sonnet-20240620", tokens: 200000),
             .claude(model: "claude-3-haiku-20240307", tokens: 200000),
             .claude(model: "claude-3-sonnet-20240229", tokens: 200000),
             .claude(model: "claude-3-opus-20240229", tokens: 200000),

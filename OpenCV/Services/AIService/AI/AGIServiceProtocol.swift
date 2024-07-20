@@ -134,7 +134,7 @@ enum AGIServiceChoice: String {
     var defaultModel: String {
         switch self {
         case .openai:
-            return UserDefaults.standard.openAiModel ?? "gpt-3.5-turbo"
+            return UserDefaults.standard.openAiModel ?? "gpt-4o-mini"
         case .gemini:
             return UserDefaults.standard.geminiModel ?? GeminiModel.default.id
         case .claude:
@@ -179,7 +179,7 @@ enum AGIServiceChoice: String {
     var placeholder: String {
         switch self {
         case .openai, .claude, .gemini, .customAI:
-            return NSLocalizedString("Ask \(self.name) or / for commands", comment: "")
+            return NSLocalizedString("Chat with \(self.defaultModel)", comment: "")
         default:
             return NSLocalizedString("← Select AI Service", comment: "")
         }
