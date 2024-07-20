@@ -66,34 +66,11 @@ public enum TDAPIError: LocalizedError {
 }
 
 struct AGIServiceConstants {
-    static let agiRole = "Play the role of a mentoring senior careers consultant who regularly assesses CVs gives constructive advice. Give all output in strict Markdown format only"
+    static let agiRole = "Play the role of a mentoring careers consultant who regularly assesses CVs and gives constructive advice."
     static let agiReviewQ = "Question: perform a detailed code review of the above code. A Peer Code Review should focus on what should be improved in the following categories: architecture, code, design, error handling, maintainability, performance, scalability, readability, security, testability (but not exclusively). Avoid a Static Analysis type of review. "
-    static let agiOutput = "Your output must be in a JSON form ONLY with the following structure: "
+    static let agiOutput = "Give all output in the basic Markdown a SwiftUI Text object can handle (e.g.: **bold**, *italics*, ~~strikethrough~~, [link](https://apple.com), 'code')."
     static let agiReflectionQ = "Did your answer meet the requirements of my question?"
-    static let agiAbuseQ = "Determine whether the following chat message is abusive. Your output should ONLY be 'true' or 'false' and nothing else. "
-    static let agiUnitTests = "Give me the unit tests for the previously given code."
-    static let agiComments = "Provide professional code comments for the above code (including class headers, function descriptions and code comments)."
-    static let agiRefactor = "Give me the refactored code for the previously given code."
-    static let agiSummarise = "Summarise what the supplied code does."
     static let agiChainOfThought = "Answer: Let's work through the review step by step to be sure we have the right answer."
-    static let jsonOutput = """
-{
-  "annotations": [
-    {
-      "tag": "Architecture/Patterns/Misuse",
-      "line": "static let shared = MySingletonClass()",
-      "lineNumber": 33,
-      "issueDescription": "The Singleton pattern is being misused, causing unnecessary constraints on flexibility and testability. Consider refactoring the code to use dependency injection."
-    },
-    {
-      "tag": "Architecture/ObjectOriented/Inheritance",
-      "line": "final class Customer: Address {",
-      "lineNumber": 42,
-      "issueDescription": "Inappropriate use of inheritance. The 'Customer' class should not inherit from the 'Address' class. Instead, consider using composition to model the relationship between these two classes."
-    }
-  ]
-}
-"""
 }
 
 struct HistoryOptions: OptionSet {

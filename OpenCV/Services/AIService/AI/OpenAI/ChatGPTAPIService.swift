@@ -72,7 +72,8 @@ class ChatGPTAPIService: @unchecked Sendable, AGIServiceProtocol {
         deleteHistoryList()
         
         if scopes.contains(.role) {
-            let systemPrompt = GPTMessage(role: GPTRole.system.rawValue, content: UserDefaults.standard.agiRole ?? AGIServiceConstants.agiRole)
+            let roleContent = (UserDefaults.standard.agiRole ?? AGIServiceConstants.agiRole) + " " + AGIServiceConstants.agiOutput
+            let systemPrompt = GPTMessage(role: GPTRole.system.rawValue, content: roleContent)
             historyList.append(systemPrompt)
         }
         if scopes.contains(.code) {

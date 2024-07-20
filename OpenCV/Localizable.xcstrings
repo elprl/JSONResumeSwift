@@ -154,6 +154,16 @@
     "Certifications" : {
 
     },
+    "Character count: %lld/%lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Character count: %1$lld/%2$lld"
+          }
+        }
+      }
+    },
     "Chat Model" : {
 
     },
@@ -161,6 +171,9 @@
 
     },
     "Clear All" : {
+
+    },
+    "CodeScanner\nhttps://github.com/twostraws/CodeScanner" : {
 
     },
     "Connect your Anthropic Claude API Account" : {
@@ -261,6 +274,9 @@
     "Gemini Failed: Your prompt was blocked" : {
 
     },
+    "generative-ai-swift\nhttps://github.com/google-gemini/generative-ai-swift" : {
+
+    },
     "Google Gemini" : {
 
     },
@@ -268,6 +284,9 @@
 
     },
     "GPT-4 requires acceptance from OpenAI on limited beta. [Waitlist](https://openai.com/waitlist/gpt-4-api)" : {
+
+    },
+    "GPT3-Tokenizer\nhttps://github.com/aespinilla/GPT3-Tokenizer" : {
 
     },
     "Highlights" : {
@@ -409,6 +428,9 @@
     "References" : {
 
     },
+    "Role Setup" : {
+
+    },
     "Save" : {
 
     },
@@ -456,6 +478,12 @@
 
     },
     "Summary" : {
+
+    },
+    "swift-markdown\nhttps://github.com/apple/swift-markdown" : {
+
+    },
+    "SwiftAnthropic\nhttps://github.com/jamesrochabrun/SwiftAnthropic" : {
 
     },
     "Tap to add a new CV" : {

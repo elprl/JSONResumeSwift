@@ -71,7 +71,7 @@ let _ = Self._printChanges()
                         Label("Settings", systemImage: "gearshape")
                     }
                 } label: {
-                    Image(systemName: "ellipsis")
+                    Image(systemName: "ellipsis.circle")
                         .padding()
                         .frame(width: 30, height: 30)
                 }

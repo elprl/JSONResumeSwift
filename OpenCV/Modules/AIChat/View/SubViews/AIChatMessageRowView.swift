@@ -27,10 +27,10 @@ let _ = Self._printChanges()
             footer
         }
         .modifier(Card(isSelected: .constant(false), bgColor: message.isMine ? .blue : .orange))
-        .padding(.leading, message.isMine ? 32 : 0)
         .contextMenu(menuItems: {
             optionsMenuItems
         })
+        .padding(.leading, message.isMine ? 32 : 0)
     }
     
     @ViewBuilder

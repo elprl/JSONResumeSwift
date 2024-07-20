@@ -139,33 +139,6 @@ extension UserDefaults {
         }
     }
     
-    @objc var agiUnitTests: String? {
-        get {
-            return string(forKey: Keys.agiUnitTests)
-        }
-        set {
-            setValue(newValue, forKey: Keys.agiUnitTests)
-        }
-    }
-    
-    @objc var agiRefactor: String? {
-        get {
-            return string(forKey: Keys.agiRefactor)
-        }
-        set {
-            setValue(newValue, forKey: Keys.agiRefactor)
-        }
-    }
-    
-    @objc var agiSummarise: String? {
-        get {
-            return string(forKey: Keys.agiSummarise)
-        }
-        set {
-            setValue(newValue, forKey: Keys.agiSummarise)
-        }
-    }
-    
     @objc var agiComments: String? {
         get {
             return string(forKey: Keys.agiComments)
