@@ -10,7 +10,7 @@ import SwiftUI
 
 struct AIChatMessageRowView: View {
     @Environment(\.colorScheme) private var colorScheme
-    @State var viewModel: AIChatMessagesViewModel
+    var viewModel: AIChatMessagesViewModel
     @ObservedObject var message: ChatMessage
 
     var body: some View {
@@ -124,10 +124,6 @@ let _ = Self._printChanges()
                 }
             } label: {
                 Label("Delete", systemImage: "trash")
-            }
-            Button(role: .cancel) {
-            } label: {
-                Text("Cancel")
             }
         }
     }

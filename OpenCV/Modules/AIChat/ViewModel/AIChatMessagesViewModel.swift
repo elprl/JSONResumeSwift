@@ -13,17 +13,19 @@ import SwiftData
 
 @Observable
 final class AIChatMessagesViewModel {
-    var messages: [ChatMessage] = []
+    var messages: [ChatMessage] = [] {
+        didSet {
+            if messages.isEmpty {
+                self.state = .empty("No messages found")
+            } else {
+                self.state = .loaded(messages)
+            }
+        }
+    }
     var state: LoadingViewState<[ChatMessage]> = .appeared
     var newChatText: String = ""
-    var newChatPlaceholderText: String?
-    var replyPresent: Bool = false
-    var selectedMessage: ChatMessage?
     var selectedMessageId: String?
-    var currentSelectedRow: Int?
     var agiContentCount: Int = 0
-    var text: String = ""
-    var selectedIndex: Int?
     var isAGIResponding: Bool = false
     var isScrollLockActive: Bool = true
     var hasRoleScope: Bool = true
@@ -42,27 +44,12 @@ final class AIChatMessagesViewModel {
         }
     }
     var hasHistoryScope: Bool = true
-    var selectedAGI: AGIServiceChoice = UserDefaults.standard.selectedAGI ?? .none {
-        didSet {
-            switch selectedAGI {
-            case .gemini:
-                self.agiService = GeminiAPIService()
-            case .claude:
-                self.agiService = ClaudeAPIService()
-            default:
-                self.agiService = ChatGPTAPIService()
-            }
-        }
-    }
-    var hasAgiKey: Bool = UserDefaults.standard.hasAgiKey ?? false
-    var hasClaudeKey: Bool = UserDefaults.standard.hasClaudeKey ?? false
-    var hasGeminiKey: Bool = UserDefaults.standard.hasGeminiKey ?? false
     var modelContext: ModelContext
     var person: Person
     var resume: Resume
     var showingSettingsSheet = false
     @ObservationIgnored var scrollLockPublisher = PassthroughSubject<Bool, Never>()
-    @ObservationIgnored private var scrollLockPublisherCancellable: AnyCancellable?
+    @ObservationIgnored private var cancellables: [AnyCancellable] = []
     @ObservationIgnored private var agiService: AGIServiceProtocol
 
     init(modelContext: ModelContext, person: Person, resume: Resume, agiService: AGIServiceProtocol = ChatGPTAPIService()) {
@@ -72,10 +59,23 @@ final class AIChatMessagesViewModel {
         self.agiService = agiService
         
         // Debounce the scroll lock updates
-        scrollLockPublisherCancellable = scrollLockPublisher
+        scrollLockPublisher
             .debounce(for: .milliseconds(300), scheduler: RunLoop.main)
             .removeDuplicates()
             .assign(to: \.isScrollLockActive, on: self)
+            .store(in: &cancellables)
+    }
+    
+    @MainActor
+    func updateAGIService(selectedAGI: AGIServiceChoice) {
+        switch selectedAGI {
+        case .gemini:
+            self.agiService = GeminiAPIService()
+        case .claude:
+            self.agiService = ClaudeAPIService()
+        default:
+            self.agiService = ChatGPTAPIService()
+        }
     }
     
     @MainActor 
@@ -83,16 +83,10 @@ final class AIChatMessagesViewModel {
         Task {
             do {
                 let identifiers = try await performBackgroundQuery()
-                
                 let fetchedMessages = identifiers.compactMap {
                     self.modelContext.model(for: $0) as? ChatMessage
                 }
-                if fetchedMessages.isEmpty {
-                    self.state = .empty("No messages found")
-                } else {
-                    self.state = .loaded([])
-                    self.messages = fetchedMessages
-                }
+                self.messages = fetchedMessages
             } catch {
                 print("Fetch failed")
                 self.state = .error(error.localizedDescription)
@@ -113,20 +107,23 @@ final class AIChatMessagesViewModel {
     
     @MainActor
     func onSubmitNewMessage() {
-        let message = ChatMessage(author: .user(person.resumeUrl), content: newChatText, resumeUrl: person.resumeUrl)
-        modelContext.insert(message)
-        save()
-        messages.append(message)
-        agiContentCount = 0
-        handleAGIStream(content: String(newChatText))
-        newChatText = ""
+        Task {
+            let message = ChatMessage(author: .user(person.resumeUrl), content: newChatText, resumeUrl: person.resumeUrl)
+            modelContext.insert(message)
+            messages.append(message)
+            Log.pres.debug("Inserted question message")
+            
+            agiContentCount = 0
+            await handleAGIStream(content: String(newChatText))
+            newChatText = ""
+        }
     }
     
     @MainActor
     func onDelete(message: ChatMessage) {
         messages.removeAll(where: { $0.id == message.id })
         modelContext.delete(message)
-        save()
+        Log.pres.debug("deleted message")
     }
     
     @MainActor
@@ -134,12 +131,11 @@ final class AIChatMessagesViewModel {
         do {
             let resumeUrl: String = person.resumeUrl
             try modelContext.delete(model: ChatMessage.self, where: #Predicate { $0.resumeUrl == resumeUrl })
+            Log.pres.debug("deleted all schools.")
         } catch {
-            print("Failed to delete all schools.")
+            Log.pres.error("Failed to delete all schools.")
         }
-        save()
         messages.removeAll()
-        fetchData()
     }
     
     func onTap(message: ChatMessage) {
@@ -165,9 +161,10 @@ final class AIChatMessagesViewModel {
     private func save() {
         do {
             try modelContext.save() // Ensure changes are saved to the context
+            Log.pres.debug("Saved data context")
         } catch {
             // Handle error appropriately
-            print("Failed to save context: \(error)")
+            Log.pres.error("Failed to save context: \(error)")
         }
     }
     
@@ -176,24 +173,25 @@ final class AIChatMessagesViewModel {
     }
     
     @MainActor
-    private func handleAGIStream(content: String) {
-        var author = Author.openai(UserDefaults.standard.agiModel ?? "gpt-4o")
-        switch selectedAGI {
-        case .gemini:
-            author = .gemini(UserDefaults.standard.geminiModel ?? "gemini-1.5-pro-latest")
-        case .claude:
-            author = .claude(UserDefaults.standard.claudeModel ?? "claude-3-sonnet-20240229")
-        default:
-            author = .openai(UserDefaults.standard.agiModel ?? "gpt-4o")
-        }
-        let message = ChatMessage(author: author, content: "", resumeUrl: person.resumeUrl)
-        modelContext.insert(message)
-        save()
-        messages.append(message)
-        let scopes = HistoryOptions.modeFrom(hasRole: hasRoleScope, hasCode: hasFileScope, hasHistory: hasHistoryScope, hasSelection: hasSelectionScope)
-        agiService.setupHistory(for: resume.description, selectedRows: Set<Int>(), scopes: scopes, messages: messages)
-
+    private func handleAGIStream(content: String) async {
         Task {
+            var author = Author.openai(UserDefaults.standard.agiModel ?? "gpt-4o")
+            let currentSelectedAGI = UserDefaults.standard.selectedAGI ?? .none
+            switch currentSelectedAGI {
+            case .gemini:
+                author = .gemini(UserDefaults.standard.geminiModel ?? "gemini-1.5-pro-latest")
+            case .claude:
+                author = .claude(UserDefaults.standard.claudeModel ?? "claude-3-sonnet-20240229")
+            default:
+                author = .openai(UserDefaults.standard.agiModel ?? "gpt-4o")
+            }
+            let message = ChatMessage(author: author, content: "", resumeUrl: person.resumeUrl)
+            modelContext.insert(message)
+            messages.append(message)
+            Log.pres.debug("Added blank AGI message")
+            let scopes = HistoryOptions.modeFrom(hasRole: hasRoleScope, hasCode: hasFileScope, hasHistory: hasHistoryScope, hasSelection: hasSelectionScope)
+            agiService.setupHistory(for: resume.description, selectedRows: Set<Int>(), scopes: scopes, messages: messages)
+            
             do {
                 var streamText = ""
                 let stream = try await agiService.sendMessageStream(text: content, needsJSONResponse: false)
@@ -202,8 +200,8 @@ final class AIChatMessagesViewModel {
                     message.content = streamText
                     self.agiContentCount = streamText.count
                 }
-                save()
             } catch {
+                Log.pres.error("Error thrown with message stream: \(error.localizedDescription)")
                 message.content = error.localizedDescription
                 return
             }

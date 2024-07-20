@@ -99,6 +99,9 @@
     "Add Access Token" : {
 
     },
+    "Add an AI API key in Settings" : {
+
+    },
     "Add Another" : {
 
     },
@@ -377,6 +380,9 @@
       }
     },
     "No messages found" : {
+
+    },
+    "No messages found and no API key added" : {
 
     },
     "Open AI Settings" : {

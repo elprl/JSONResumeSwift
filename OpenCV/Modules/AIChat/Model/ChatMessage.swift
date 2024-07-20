@@ -93,6 +93,6 @@ extension ChatMessage: Identifiable, Equatable {
     }
     
     static func == (lhs: ChatMessage, rhs: ChatMessage) -> Bool {
-        lhs.messageId == rhs.messageId && lhs.content == rhs.content
+        lhs.messageId == rhs.messageId && lhs.content == rhs.content && lhs.updatedAt == rhs.updatedAt
     }
 }

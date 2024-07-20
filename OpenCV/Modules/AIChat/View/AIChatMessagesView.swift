@@ -12,6 +12,9 @@ import SwiftData
 
 struct AIChatMessagesView: View {
     @State private var viewModel: AIChatMessagesViewModel
+    @AppStorage(UserDefaults.Keys.hasAgiKey) var hasAgiKey: Bool = false
+    @AppStorage(UserDefaults.Keys.hasClaudeKey) var hasClaudeKey: Bool = false
+    @AppStorage(UserDefaults.Keys.hasGeminiKey) var hasGeminiKey: Bool = false
     
     init(modelContext: ModelContext, person: Person, resume: Resume) {
         _viewModel = State(initialValue: AIChatMessagesViewModel(modelContext: modelContext, person: person, resume: resume))
@@ -90,12 +93,21 @@ let _ = Self._printChanges()
     @ViewBuilder
     private var noMessages: some View {
         if case .empty = viewModel.state {
-            ContentUnavailableView(
-                "No messages found",
-                systemImage: "message",
-                description: Text("Enter a new message below")
-            )
-            .contentShape(Rectangle())
+            if hasAgiKey || hasClaudeKey || hasGeminiKey {
+                ContentUnavailableView(
+                    "No messages found",
+                    systemImage: "message",
+                    description: Text("Enter a new message below")
+                )
+                .contentShape(Rectangle())
+            } else {
+                ContentUnavailableView(
+                    "No messages found and no API key added",
+                    systemImage: "message",
+                    description: Text("Add an AI API key in Settings")
+                )
+                .contentShape(Rectangle())
+            }
         }
     }
     
@@ -111,6 +123,7 @@ struct TextInputView: View {
     @AppStorage(UserDefaults.Keys.hasAgiKey) var hasAgiKey: Bool = false
     @AppStorage(UserDefaults.Keys.hasClaudeKey) var hasClaudeKey: Bool = false
     @AppStorage(UserDefaults.Keys.hasGeminiKey) var hasGeminiKey: Bool = false
+    @AppStorage(UserDefaults.Keys.selectedAGI) var selectedAGI: AGIServiceChoice = .none
 
     var body: some View {
         VStack {
@@ -146,7 +159,7 @@ struct TextInputView: View {
     var input: some View {
         HStack(alignment: .center, spacing: 6) {
             commentButton
-            TextField(viewModel.selectedAGI.placeholder, text: $viewModel.newChatText, axis: .vertical)
+            TextField(selectedAGI.placeholder, text: $viewModel.newChatText, axis: .vertical)
                 .font(.body)
                 .textFieldStyle(.roundedBorder)
                 .disableAutocorrection(true)
@@ -176,21 +189,24 @@ struct TextInputView: View {
             Section(header: Text("Select AI Service".uppercased()).font(.headline).foregroundColor(.orange)) {
                 if hasAgiKey {
                     Button {
-                        self.viewModel.selectedAGI = .openai
+                        self.selectedAGI = .openai
+                        self.viewModel.updateAGIService(selectedAGI: .openai)
                     } label: {
                         Label(AGIServiceChoice.openai.name, image: AGIServiceChoice.openai.imageKey)
                     }
                 }
                 if hasClaudeKey {
                     Button {
-                        self.viewModel.selectedAGI = .claude
+                        self.selectedAGI = .claude
+                        self.viewModel.updateAGIService(selectedAGI: .claude)
                     } label: {
                         Label(AGIServiceChoice.claude.name, image: AGIServiceChoice.claude.imageKey)
                     }
                 }
                 if hasGeminiKey {
                     Button {
-                        self.viewModel.selectedAGI = .gemini
+                        self.selectedAGI = .gemini
+                        self.viewModel.updateAGIService(selectedAGI: .gemini)
                     } label: {
                         Label(AGIServiceChoice.gemini.name, image: AGIServiceChoice.gemini.imageKey)
                     }
@@ -207,16 +223,13 @@ struct TextInputView: View {
             }
         } label: {
             VStack {
-                Image(viewModel.selectedAGI.imageKey)
+                Image(selectedAGI.imageKey)
                     .resizable()
                     .scaledToFit()
                     .foregroundStyle(.black)
                     .padding(4)
             }
             .frame(width: 30, height: 30)
-            .background(Color.orange)
-            .clipShape(Circle())
-            .contentShape(Circle())
         }
         .menuOrder(.fixed)
         .highPriorityGesture(TapGesture())
@@ -226,7 +239,7 @@ struct TextInputView: View {
 @available(iOS 18.0, *)
 struct MessageScrollView18: View {
     @State private var scrollPosition = ScrollPosition(idType: ChatMessage.ID.self)
-    @State var viewModel: AIChatMessagesViewModel
+    var viewModel: AIChatMessagesViewModel
     
     var body: some View {
         ScrollView {

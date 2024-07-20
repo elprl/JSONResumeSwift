@@ -37,19 +37,13 @@ extension GPTModel: Hashable, Identifiable, Codable {
     
     static var allCases: [GPTModel] {
         return [
-            .custom(model: "CUSTOM", tokens: 8192),
-            .gpt4(model: "gpt-4o-2024-05-13", tokens: 128000),
+            .custom(model: "CUSTOM", tokens: 128000),
             .gpt4(model: "gpt-4o", tokens: 128000),
+            .gpt4(model: "gpt-4o-turbo", tokens: 128000),
+            .gpt4(model: "gpt-4o-mini", tokens: 128000),
             .gpt4(model: "gpt-4-turbo", tokens: 128000),
-            .gpt4(model: "gpt-4-turbo-2024-04-09", tokens: 128000),
-            .gpt4(model: "gpt-4-turbo-preview", tokens: 128000),
-            .gpt4(model: "gpt-4-0125-preview", tokens: 128000),
-            .gpt4(model: "gpt-4-1106-preview", tokens: 128000),
             .gpt4(model: "gpt-4", tokens: 8192),
-            .gpt4(model: "gpt-4-32k", tokens: 32768),
-            .gpt3(model: "gpt-3.5-turbo-1106", tokens: 16385),
-            .gpt3(model: "gpt-3.5-turbo", tokens: 4096),
-            .gpt3(model: "gpt-3.5-turbo-16k", tokens: 16385)
+            .gpt3(model: "gpt-3.5-turbo", tokens: 16385),
         ]
     }
     

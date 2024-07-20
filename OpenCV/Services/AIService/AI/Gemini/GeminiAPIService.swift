@@ -7,7 +7,7 @@
 //
 
 import Foundation
-@preconcurrency import GoogleGenerativeAI
+import GoogleGenerativeAI
 
 final class GeminiAPIService: ChatGPTAPIService, @unchecked Sendable {
     private var geminiClient: GenerativeModel?
