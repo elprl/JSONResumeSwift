@@ -117,6 +117,14 @@ struct SettingsView: View {
                     Spacer()
                 }
             }
+            
+            NavigationLink(destination: SingleTextEditor(text: $aiViewModel.agiRole, defaultText: AGIServiceConstants.agiRole, title: "Role Setup", maxCharacters: 400)) {
+                HStack {
+                    Text("Role Setup").font(.body).lineLimit(1).foregroundColor(.primary)
+                    Spacer()
+                    Text(aiViewModel.agiRole).font(.body).lineLimit(1).foregroundColor(.secondary)
+                }
+            }
         }
     }
     
@@ -127,6 +135,11 @@ struct SettingsView: View {
                 List {
                     Text("JSON Resume\nhttps://github.com/jsonresume")
                     Text("SDWebImageSwiftUI\nhttps://github.com/SDWebImage/SDWebImageSwiftUI.git")
+                    Text("generative-ai-swift\nhttps://github.com/google-gemini/generative-ai-swift")
+                    Text("GPT3-Tokenizer\nhttps://github.com/aespinilla/GPT3-Tokenizer")
+                    Text("SwiftAnthropic\nhttps://github.com/jamesrochabrun/SwiftAnthropic")
+                    Text("CodeScanner\nhttps://github.com/twostraws/CodeScanner")
+                    Text("swift-markdown\nhttps://github.com/apple/swift-markdown")
                 }
                 .scrollContentBackground(.hidden)
                 .background(MeshGradientView().opacity(0.3).ignoresSafeArea())
