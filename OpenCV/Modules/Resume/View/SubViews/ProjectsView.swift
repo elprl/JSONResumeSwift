@@ -49,7 +49,7 @@ struct ProjectsView: View {
                         }
                     }
                 }
-                Text(element.description ?? "")
+                Text(element.projectDescription ?? "")
                     .font(.subheadline)
                     .foregroundStyle(.primary)
                     .frame(maxWidth: .infinity, alignment: .leading)
@@ -110,7 +110,7 @@ struct ProjectsView: View {
 
 #Preview {
     ProjectsView(projects: [
-        Project(name: "Moon Landing", description: "Go tot he moon", highlights: ["spacewalk", "launch"], keywords: ["spacewalk", "launch"], startDate: "2020-12-22", endDate: "2020-12-22", url: "https://github.com/elprl/JSONResumeSwift.git", roles: [], entity: nil, type: nil),
-        Project(name: "Moon Landing", description: "Go tot he moon", highlights: ["spacewalk", "launch"], keywords: ["spacewalk", "launch"], startDate: "2020-12-22", endDate: "2020-12-22", url: "https://github.com/elprl/JSONResumeSwift.git", roles: [], entity: nil, type: nil)
+        Project(name: "Moon Landing", projectDescription: "Go tot he moon", highlights: ["spacewalk", "launch"], keywords: ["spacewalk", "launch"], startDate: "2020-12-22", endDate: "2020-12-22", url: "https://github.com/elprl/JSONResumeSwift.git", roles: [], entity: nil, type: nil),
+        Project(name: "Moon Landing", projectDescription: "Go tot he moon", highlights: ["spacewalk", "launch"], keywords: ["spacewalk", "launch"], startDate: "2020-12-22", endDate: "2020-12-22", url: "https://github.com/elprl/JSONResumeSwift.git", roles: [], entity: nil, type: nil)
     ])
 }

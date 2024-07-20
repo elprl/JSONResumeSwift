@@ -26,7 +26,7 @@ struct Resume: Codable {
     let meta: Meta?
 }
 
-extension Resume: Hashable {
+extension Resume: Hashable, CustomStringConvertible {
     static func == (lhs: Resume, rhs: Resume) -> Bool {
         return lhs.basics.name == rhs.basics.name
     }
@@ -37,6 +37,82 @@ extension Resume: Hashable {
     
     func hash(into hasher: inout Hasher) {
         hasher.combine(basics.name)
+    }
+
+    var description: String {
+        var string = NSLocalizedString("CV\n", comment: "")
+        string.append(basics.description)
+        if let work {
+            string.append("WORK\n")
+            work.forEach { w in
+                string.append(w.description + "\n\n")
+            }
+        }
+        if let volunteer {
+            string.append("VOLUNTEER WORK\n")
+            volunteer.forEach { w in
+                string.append(w.description + "\n\n")
+            }
+        }
+        if let education {
+            string.append("EDUCATION\n")
+            education.forEach { w in
+                string.append(w.description + "\n\n")
+            }
+        }
+        if let awards {
+            string.append("AWARDS\n")
+            awards.forEach { w in
+                string.append(w.description + "\n\n")
+            }
+        }
+        if let certificates {
+            string.append("CERTIFICATES\n")
+            certificates.forEach { w in
+                string.append(w.description + "\n\n")
+            }
+        }
+        if let publications {
+            string.append("PUBLICATIONS\n")
+            publications.forEach { w in
+                string.append(w.description + "\n\n")
+            }
+        }
+        if let skills {
+            string.append("SKILLS\n")
+            skills.forEach { w in
+                string.append(w.description + "\n\n")
+            }
+        }
+        if let languages {
+            string.append("LANGUAGES\n")
+            languages.forEach { w in
+                string.append(w.description + "\n\n")
+            }
+        }
+        if let interests {
+            string.append("INTERESTS\n")
+            interests.forEach { w in
+                string.append(w.description + "\n\n")
+            }
+        }
+        if let references {
+            string.append("REFERENCES\n")
+            references.forEach { w in
+                string.append(w.description + "\n\n")
+            }
+        }
+        if let projects {
+            string.append("PROJECTS\n")
+            projects.forEach { w in
+                string.append(w.description + "\n\n")
+            }
+        }
+        return string
+    }
+    
+    static func mock() -> Self {
+        return Resume(schema: nil, basics: Basics.mock(), work: [], volunteer: [], education: [], awards: [], certificates: [], publications: [], skills: [], languages: [], interests: [], references: [], projects: [], meta: nil)
     }
 }
 
@@ -61,9 +137,45 @@ struct Basics: Codable {
     let profiles: [Profile]?
 }
 
-extension Basics: Identifiable {
+extension Basics: Identifiable, CustomStringConvertible {
     var id: String {
         return name ?? ""
+    }
+    
+    var description: String {
+        var string = ""
+        if let name {
+            string.append("name: \(name)\n")
+        }
+        if let label {
+            string.append("label: \(label)\n")
+        }
+        if let image {
+            string.append("image: \(image)\n")
+        }
+        if let email {
+            string.append("email: \(email)\n")
+        }
+        if let phone {
+            string.append("phone: \(phone)\n")
+        }
+        if let url {
+            string.append("url: \(url)\n")
+        }
+        if let summary {
+            string.append("summary: \(summary)\n")
+        }
+        if let location {
+            string.append("location: \(location.description)\n")
+        }
+        if let profiles {
+            string.append("profiles: \(profiles.description)\n")
+        }
+        return string
+    }
+    
+    static func mock() -> Self {
+        return Basics(name: "", label: "", image: "", email: "", phone: "", url: "", summary: "", location: nil, profiles: [])
     }
 }
 
@@ -79,7 +191,27 @@ struct Location: Codable {
     let region: String?
 }
 
-extension Location: Identifiable {
+extension Location: Identifiable, CustomStringConvertible {
+    var description: String {
+        var string = ""
+        if let address {
+            string.append("\taddress: \(address)\n")
+        }
+        if let postalCode {
+            string.append("\tpostalCode: \(postalCode)\n")
+        }
+        if let city {
+            string.append("\tcity: \(city)\n")
+        }
+        if let countryCode {
+            string.append("\tcountryCode: \(countryCode)\n")
+        }
+        if let region {
+            string.append("\tregion: \(region)\n")
+        }
+        return string
+    }
+    
     var id: String {
         return (address ?? "") + (postalCode ?? "")
     }
@@ -95,9 +227,23 @@ struct Profile: Codable {
     let url: String?
 }
 
-extension Profile: Identifiable {
+extension Profile: Identifiable, CustomStringConvertible {
     var id: String {
         return (network ?? "") + (username ?? "") + (url ?? "")
+    }
+    
+    var description: String {
+        var string = ""
+        if let network {
+            string.append("\tnetwork: \(network)\n")
+        }
+        if let username {
+            string.append("\tusername: \(username)\n")
+        }
+        if let url {
+            string.append("\turl: \(url)\n")
+        }
+        return string
     }
 }
 
@@ -108,7 +254,7 @@ struct Work: Codable, PeriodProtocol {
     /// Location of the company, e.g., Menlo Park, CA.
     let location: String?
     /// Description of the company, e.g., Social Media Company.
-    let description: String?
+    let companyDescription: String?
     /// Position held, e.g., Software Engineer.
     let position: String?
     /// URL to the company, e.g., http://facebook.example.com.
@@ -121,11 +267,55 @@ struct Work: Codable, PeriodProtocol {
     let summary: String?
     /// Multiple accomplishments.
     let highlights: [String]?
+    
+    private enum CodingKeys: String, CodingKey {
+        case name
+        case location
+        case companyDescription = "description"
+        case position
+        case url
+        case startDate
+        case endDate
+        case summary
+        case highlights
+    }
 }
 
-extension Work: Identifiable, Hashable {
+extension Work: Identifiable, Hashable, CustomStringConvertible {
     var id: String {
         return (name ?? "") + (summary ?? "") + (startDate ?? "")
+    }
+    
+    var description: String {
+        var string = ""
+        if let name {
+            string.append("\tname: \(name)\n")
+        }
+        if let location {
+            string.append("\tlocation: \(location)\n")
+        }
+        if let companyDescription {
+            string.append("\tcompanyDescription: \(companyDescription)\n")
+        }
+        if let position {
+            string.append("\tposition: \(position)\n")
+        }
+        if let url {
+            string.append("\turl: \(url)\n")
+        }
+        if let startDate {
+            string.append("\tstartDate: \(startDate)\n")
+        }
+        if let endDate {
+            string.append("\tendDate: \(endDate)\n")
+        }
+        if let summary {
+            string.append("\tsummary: \(summary)\n")
+        }
+        if let highlights {
+            string.append("\thighlights: \(highlights)\n")
+        }
+        return string
     }
 }
 
@@ -147,9 +337,35 @@ struct Volunteer: Codable, PeriodProtocol, Hashable {
     let highlights: [String]?
 }
 
-extension Volunteer: Identifiable {
+extension Volunteer: Identifiable, CustomStringConvertible {
     var id: String {
         return (organization ?? "") + (position ?? "") + (startDate ?? "")
+    }
+    
+    var description: String {
+        var string = ""
+        if let organization {
+            string.append("\torganization: \(organization)\n")
+        }
+        if let position {
+            string.append("\tposition: \(position)\n")
+        }
+        if let url {
+            string.append("\turl: \(url)\n")
+        }
+        if let startDate {
+            string.append("\tstartDate: \(startDate)\n")
+        }
+        if let endDate {
+            string.append("\tendDate: \(endDate)\n")
+        }
+        if let summary {
+            string.append("\tsummary: \(summary)\n")
+        }
+        if let highlights {
+            string.append("\thighlights: \(highlights)\n")
+        }
+        return string
     }
 }
 
@@ -173,9 +389,38 @@ struct Education: Codable, PeriodProtocol {
     let courses: [String]?
 }
 
-extension Education: Identifiable {
+extension Education: Identifiable, CustomStringConvertible {
     var id: String {
         return (institution ?? "") + (area ?? "") + (startDate ?? "")
+    }
+    
+    var description: String {
+        var string = ""
+        if let institution {
+            string.append("\tinstitution: \(institution)\n")
+        }
+        if let url {
+            string.append("\turl: \(url)\n")
+        }
+        if let area {
+            string.append("\tarea: \(area)")
+        }
+        if let studyType {
+            string.append("\tstudyType: \(studyType)")
+        }
+        if let startDate {
+            string.append("\tstartDate: \(startDate)\n")
+        }
+        if let endDate {
+            string.append("\tendDate: \(endDate)\n")
+        }
+        if let score {
+            string.append("\tscore: \(score)\n")
+        }
+        if let courses {
+            string.append("\tcourses: \(courses)\n")
+        }
+        return string
     }
 }
 
@@ -191,9 +436,26 @@ struct Award: Codable {
     let summary: String?
 }
 
-extension Award: Identifiable {
+extension Award: Identifiable, CustomStringConvertible {
     var id: String {
         return (title ?? "")
+    }
+    
+    var description: String {
+        var string = ""
+        if let title {
+            string.append("\ttitle: \(title)\n")
+        }
+        if let date {
+            string.append("\tdate: \(date)\n")
+        }
+        if let awarder {
+            string.append("\tawarder: \(awarder)")
+        }
+        if let summary {
+            string.append("\tsummary: \(summary)")
+        }
+        return string
     }
 }
 
@@ -209,9 +471,26 @@ struct Certificate: Codable {
     let issuer: String?
 }
 
-extension Certificate: Identifiable {
+extension Certificate: Identifiable, CustomStringConvertible {
     var id: String {
         return (name ?? "")
+    }
+    
+    var description: String {
+        var string = ""
+        if let name {
+            string.append("\tname: \(name)\n")
+        }
+        if let date {
+            string.append("\tdate: \(date)\n")
+        }
+        if let url {
+            string.append("\turl: \(url)\n")
+        }
+        if let issuer {
+            string.append("\tissuer: \(issuer)")
+        }
+        return string
     }
 }
 
@@ -229,9 +508,29 @@ struct Publication: Codable {
     let summary: String?
 }
 
-extension Publication: Identifiable {
+extension Publication: Identifiable, CustomStringConvertible {
     var id: String {
         return (name ?? "")
+    }
+    
+    var description: String {
+        var string = ""
+        if let name {
+            string.append("\tname: \(name)\n")
+        }
+        if let publisher {
+            string.append("\tpublisher: \(publisher)\n")
+        }
+        if let releaseDate {
+            string.append("\treleaseDate: \(releaseDate)\n")
+        }
+        if let url {
+            string.append("\turl: \(url)\n")
+        }
+        if let summary {
+            string.append("\tsummary: \(summary)")
+        }
+        return string
     }
 }
 
@@ -245,7 +544,7 @@ struct Skill: Codable {
     let keywords: [String]?
 }
 
-extension Skill: Identifiable {
+extension Skill: Identifiable, CustomStringConvertible {
     var id: String {
         return (name ?? "")
     }
@@ -261,6 +560,20 @@ extension Skill: Identifiable {
             return "\(level)"
         }
     }
+    
+    var description: String {
+        var string = ""
+        if let name {
+            string.append("\tname: \(name)\n")
+        }
+        if let level {
+            string.append("\tlevel: \(level)\n")
+        }
+        if let keywords {
+            string.append("\tkeywords: \(keywords)\n")
+        }
+        return string
+    }
 }
 
 /// Represents a language spoken.
@@ -271,9 +584,20 @@ struct Language: Codable {
     let fluency: String?
 }
 
-extension Language: Identifiable {
+extension Language: Identifiable, CustomStringConvertible {
     var id: String {
         return language ?? ""
+    }
+    
+    var description: String {
+        var string = ""
+        if let language {
+            string.append("\tlanguage: \(language)\n")
+        }
+        if let fluency {
+            string.append("\tfluency: \(fluency)\n")
+        }
+        return string
     }
 }
 
@@ -285,9 +609,20 @@ struct Interest: Codable, Hashable {
     let keywords: [String]?
 }
 
-extension Interest: Identifiable {
+extension Interest: Identifiable, CustomStringConvertible {
     var id: String {
         return name ?? ""
+    }
+    
+    var description: String {
+        var string = ""
+        if let name {
+            string.append("\tname: \(name)\n")
+        }
+        if let keywords {
+            string.append("\tkeywords: \(keywords)\n")
+        }
+        return string
     }
 }
 
@@ -299,9 +634,20 @@ struct Reference: Codable {
     let reference: String?
 }
 
-extension Reference: Identifiable {
+extension Reference: Identifiable, CustomStringConvertible {
     var id: String {
         return name ?? ""
+    }
+    
+    var description: String {
+        var string = ""
+        if let name {
+            string.append("\tname: \(name)\n")
+        }
+        if let reference {
+            string.append("\treference: \(reference)\n")
+        }
+        return string
     }
 }
 
@@ -310,7 +656,7 @@ struct Project: Codable, PeriodProtocol, Hashable {
     /// Name of the project, e.g., The World Wide Web.
     let name: String?
     /// Short summary of the project.
-    let description: String?
+    let projectDescription: String?
     /// Multiple features or highlights of the project.
     let highlights: [String]?
     /// Special elements involved in the project.
@@ -327,11 +673,60 @@ struct Project: Codable, PeriodProtocol, Hashable {
     let entity: String?
     /// Type of project, e.g., 'volunteering', 'presentation', 'talk', 'application', 'conference'.
     let type: String?
+    
+    private enum CodingKeys: String, CodingKey {
+        case name
+        case projectDescription = "description"
+        case highlights
+        case keywords
+        case startDate
+        case endDate
+        case url
+        case roles
+        case entity
+        case type
+    }
 }
 
-extension Project: Identifiable {
+extension Project: Identifiable, CustomStringConvertible {
     var id: String {
         return name ?? ""
+    }
+    
+    var description: String {
+        var string = ""
+        if let name {
+            string.append("\tname: \(name)\n")
+        }
+        if let projectDescription {
+            string.append("\tprojectDescription: \(projectDescription)\n")
+        }
+        if let highlights {
+            string.append("\thighlights: \(highlights)\n")
+        }
+        if let keywords {
+            string.append("\tkeywords: \(keywords)\n")
+        }
+
+        if let startDate {
+            string.append("\tstartDate: \(startDate)\n")
+        }
+        if let endDate {
+            string.append("\tendDate: \(endDate)\n")
+        }
+        if let url {
+            string.append("\turl: \(url)\n")
+        }
+        if let roles {
+            string.append("\troles: \(roles)\n")
+        }
+        if let entity {
+            string.append("\tentity: \(entity)\n")
+        }
+        if let type {
+            string.append("\ttype: \(type)\n")
+        }
+        return string
     }
 }
 

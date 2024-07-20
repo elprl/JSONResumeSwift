@@ -12,7 +12,7 @@ import SwiftData
 struct OpenCVApp: App {
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
-            Person.self //, Note.self
+            Person.self, ChatMessage.self
         ])
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
 

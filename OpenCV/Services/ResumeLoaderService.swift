@@ -78,32 +78,3 @@ extension ResumeLoaderProtocol {
         throw TDAPIError.invalidJsonDecoding
     }
 }
-
-enum TDAPIError: LocalizedError {
-    case invalidJsonEncoding
-    case invalidJsonDecoding
-    case invalidResponse
-    case badResponse(Int, String)
-    case urlSessionError(String)
-    case streamError(String)
-    case invalidParams(String)
-    
-    var errorDescription: String? {
-        switch self {
-        case .invalidJsonEncoding:
-            return NSLocalizedString("Failed to encode JSON.", comment: "")
-        case .invalidJsonDecoding:
-            return NSLocalizedString("Failed to decode JSON.", comment: "")
-        case .invalidResponse:
-            return NSLocalizedString("Invalid response.", comment: "")
-        case .badResponse(_, let message):
-            return message
-        case .urlSessionError(let description):
-            return description
-        case .streamError(let description):
-            return description
-        case .invalidParams(let description):
-            return description
-        }
-    }
-}

@@ -11,6 +11,7 @@ import SwiftData
 
 final class ResumeViewModel: ObservableObject {
     let resumeUrl: String
+    @Published var showAIChat: Bool = false
 
     init(resumeUrl: String) {
         self.resumeUrl = resumeUrl

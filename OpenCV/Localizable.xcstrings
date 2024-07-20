@@ -4,6 +4,33 @@
     "" : {
 
     },
+    "**1**: Get an API key - https://makersuite.google.com/app/apikey" : {
+
+    },
+    "**1**: Go to - https://platform.openai.com/account/api-keys" : {
+
+    },
+    "**1**: Join the Waitlist - https://www.anthropic.com/earlyaccess" : {
+
+    },
+    "**2**: Copy the key to clipboard" : {
+
+    },
+    "**2**: Create a new API key in the Console - https://console.anthropic.com/account/keys" : {
+
+    },
+    "**2**: Create a new secret key" : {
+
+    },
+    "**3**: Copy the key to clipboard" : {
+
+    },
+    "**3**: Enter the details below" : {
+
+    },
+    "**4**: Enter the details below" : {
+
+    },
     "%@" : {
 
     },
@@ -13,6 +40,16 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "%1$@ (%2$@)"
+          }
+        }
+      }
+    },
+    "%@ (%lld tokens)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ (%2$lld tokens)"
           }
         }
       }
@@ -50,7 +87,28 @@
     "• %@" : {
 
     },
+    "˟ Stored in your Secure Apple Keychain. NEVER sent to our servers." : {
+
+    },
+    "← Select AI Service" : {
+
+    },
+    "Active" : {
+
+    },
+    "Add Access Token" : {
+
+    },
+    "Add an AI API key in Settings" : {
+
+    },
+    "Add Another" : {
+
+    },
     "Add Item" : {
+
+    },
+    "Add Label to help you identify this key" : {
 
     },
     "Add New CV" : {
@@ -72,6 +130,12 @@
     "Added: %@" : {
 
     },
+    "AI Chat" : {
+
+    },
+    "Anthropic Claude" : {
+
+    },
     "App Clip" : {
 
     },
@@ -90,7 +154,31 @@
     "Certifications" : {
 
     },
+    "Chat Model" : {
+
+    },
+    "Claude Settings" : {
+
+    },
+    "Clear All" : {
+
+    },
+    "Connect your Anthropic Claude API Account" : {
+
+    },
+    "Connect your Google Gemini API Account" : {
+
+    },
+    "Connect your OpenAI Account" : {
+
+    },
     "Copy to Clipboard" : {
+
+    },
+    "Custom Model" : {
+
+    },
+    "CV\n" : {
 
     },
     "CV not yet loaded" : {
@@ -137,16 +225,49 @@
     "Education" : {
 
     },
+    "Enter a new message below" : {
+
+    },
+    "Enter API key" : {
+
+    },
+    "Enter custom model, e.g. gpt-3.5-turbo" : {
+
+    },
     "Enter notes" : {
 
     },
-    "Failed to decode JSON." : {
+    "Enter secret key" : {
 
     },
-    "Failed to encode JSON." : {
+    "Expires: %@" : {
 
     },
     "Failed to generate QR Code" : {
+
+    },
+    "Gemini Failed: Internal error" : {
+
+    },
+    "Gemini Failed: Invalid API Key" : {
+
+    },
+    "Gemini Failed: Unknown error" : {
+
+    },
+    "Gemini Failed: Unsupported User Location" : {
+
+    },
+    "Gemini Failed: Your prompt was blocked" : {
+
+    },
+    "Google Gemini" : {
+
+    },
+    "Google Gemini Settings" : {
+
+    },
+    "GPT-4 requires acceptance from OpenAI on limited beta. [Waitlist](https://openai.com/waitlist/gpt-4-api)" : {
 
     },
     "Highlights" : {
@@ -172,6 +293,12 @@
 
     },
     "Interests" : {
+
+    },
+    "Invalid JSON decoding." : {
+
+    },
+    "Invalid JSON encoding." : {
 
     },
     "Invalid response." : {
@@ -233,6 +360,9 @@
     "My Notes" : {
 
     },
+    "New Secret Key" : {
+
+    },
     "No CVs found" : {
       "localizations" : {
         "en-GB" : {
@@ -249,7 +379,25 @@
         }
       }
     },
+    "No messages found" : {
+
+    },
+    "No messages found and no API key added" : {
+
+    },
+    "Open AI Settings" : {
+
+    },
+    "OpenAI / ChatGPT" : {
+
+    },
     "or" : {
+
+    },
+    "Paste API key here, e.g. sk-t3sdrfggt5dfhhgfkk7ghjgfhhsd3dDHJK4da" : {
+
+    },
+    "Paste secret key here, e.g. sk-t3sdrfggt5dfhhgfkk7ghjgfhhsd3dDHJK4da" : {
 
     },
     "Projects" : {
@@ -261,10 +409,19 @@
     "References" : {
 
     },
+    "Save" : {
+
+    },
+    "Scopes: " : {
+
+    },
     "SDWebImageSwiftUI\nhttps://github.com/SDWebImage/SDWebImageSwiftUI.git" : {
 
     },
     "Select an item" : {
+
+    },
+    "Set Active" : {
 
     },
     "Settings" : {
@@ -290,6 +447,9 @@
       }
     },
     "Skills" : {
+
+    },
+    "Steps" : {
 
     },
     "Submit" : {

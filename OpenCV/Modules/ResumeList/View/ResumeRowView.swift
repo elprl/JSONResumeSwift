@@ -70,28 +70,13 @@ struct ResumeRowView: View {
                     }
                     Spacer()
                     Menu {
-                        Button {
-                            viewModel.showingQRCodeSheet = true
-                            viewModel.selectedPerson = person
-                            viewModel.url = person.resumeUrl
-                        } label: {
-                            Label("Share CV", systemImage: "square.and.arrow.up")
-                                .foregroundStyle(colorScheme == .dark ? .orange : .brown)
-                        }
-                        Button {
-                            viewModel.showingDeleteAlert = true
-                            viewModel.selectedPerson = person
-                        } label: {
-                            Label("Delete", systemImage: "trash")
-                                .foregroundStyle(colorScheme == .dark ? .orange : .brown)
-                        }
+                        optionsMenuItems
                     } label: {
                         Image(systemName: "ellipsis.circle")
                             .foregroundStyle(colorScheme == .dark ? .orange : .brown)
                     }
                     .menuOrder(.fixed)
-                    .highPriorityGesture(TapGesture())
-                    
+                    .highPriorityGesture(TapGesture())                    
                 }
             }
             .backgroundStyle(.ultraThinMaterial)
@@ -99,6 +84,9 @@ struct ResumeRowView: View {
             .padding(4)
             .shadow(radius: 4)
             .tint(.primary)
+            .contextMenu(menuItems: {
+                optionsMenuItems
+            })
         }
     }
     
@@ -106,9 +94,9 @@ struct ResumeRowView: View {
     private var navDestination: some View {
         Group {
             if let resume = viewModel.resumes.first(where: { $0.basics.name == person.name }) {
-                ResumeView(resume: resume, resumeUrl: person.resumeUrl, modelContext: modelContext)
+                ResumeView(resume: resume, person: person, modelContext: modelContext)
             } else if let jsonString = person.cachedJSON {
-                CachedResumeView(jsonString: jsonString, resumeUrl: person.resumeUrl)
+                CachedResumeView(jsonString: jsonString, person: person)
             } else {
                 Text("CV not yet loaded")
             }
@@ -121,12 +109,34 @@ struct ResumeRowView: View {
             .resizable()
             .aspectRatio(contentMode: .fit)
     }
+    
+    @ViewBuilder
+    var optionsMenuItems: some View {
+        Group {
+            Button {
+                viewModel.showingQRCodeSheet = true
+                viewModel.selectedPerson = person
+                viewModel.url = person.resumeUrl
+            } label: {
+                Label("Share CV", systemImage: "square.and.arrow.up")
+                    .foregroundStyle(colorScheme == .dark ? .orange : .brown)
+            }
+            Button {
+                viewModel.showingDeleteAlert = true
+                viewModel.selectedPerson = person
+            } label: {
+                Label("Delete", systemImage: "trash")
+                    .foregroundStyle(colorScheme == .dark ? .orange : .brown)
+            }
+        }
+    }
 }
 
 @available(iOS 18.0, *)
-#Preview {
+#Preview(traits: .samplePeopleData) {
     @Previewable @Namespace() var namespace
+    @Previewable @Query var people: [Person]
     let viewModel = ResumeListViewModel(modelContext: PreviewController.previewContainer.mainContext)
-    ResumeRowView(viewModel: viewModel, person: Person(resumeUrl: "https://registry.jsonresume.org/elprl.json"), namespace: namespace)
+    ResumeRowView(viewModel: viewModel, person: people.first ?? Person(resumeUrl: "https://registry.jsonresume.org/elprl.json"), namespace: namespace)
         .modelContainer(PreviewController.previewContainer)
 }

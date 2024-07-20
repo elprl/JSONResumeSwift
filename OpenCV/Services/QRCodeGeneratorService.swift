@@ -7,7 +7,6 @@
 import UIKit
 import CoreImage
 
-
 protocol CodeGeneratorServiceProtocol { 
     func generateCode(from string: String) -> UIImage?
 }
