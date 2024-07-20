@@ -44,9 +44,6 @@ struct ResumeView: View {
                 interests
                 references
                 projects
-                
-                Divider().padding()
-                myNotes
             }
             .padding(.horizontal)
         }
@@ -57,21 +54,14 @@ struct ResumeView: View {
                 .modelContainer(modelContext.container)
         })
         .toolbar {
-            if hasAgiKey || hasClaudeKey || hasGeminiKey {
-                ToolbarItemGroup(placement: .topBarTrailing) {
-                    Button(action: {
-                        self.viewModel.showAIChat = true
-                    }) {
-                        Label("AI Chat", systemImage: "message")
-                    }
+            ToolbarItemGroup(placement: .topBarTrailing) {
+                Button(action: {
+                    self.viewModel.showAIChat = true
+                }) {
+                    Label("AI Chat & Notes", systemImage: "message")
                 }
             }
         }
-    }
-    
-    @ViewBuilder
-    private var myNotes: some View {
-        MyNotesView(resumeUrl: person.resumeUrl)
     }
     
     @ViewBuilder

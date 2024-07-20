@@ -90,9 +90,6 @@
     "˟ Stored in your Secure Apple Keychain. NEVER sent to our servers." : {
 
     },
-    "← Select AI Service" : {
-
-    },
     "Active" : {
 
     },
@@ -127,10 +124,16 @@
         }
       }
     },
+    "Add personal note" : {
+
+    },
     "Added: %@" : {
 
     },
     "AI Chat" : {
+
+    },
+    "AI Chat & Notes" : {
 
     },
     "Anthropic Claude" : {
@@ -417,6 +420,9 @@
 
     },
     "Paste secret key here, e.g. sk-t3sdrfggt5dfhhgfkk7ghjgfhhsd3dDHJK4da" : {
+
+    },
+    "Personal Note" : {
 
     },
     "Projects" : {

@@ -55,6 +55,15 @@ enum Author: Codable {
     }
 }
 
+enum MessageType: String, Codable {
+    case note
+    case aiQuestion
+    case aiAnswer
+    case image
+    case doc
+    case emoji
+}
+
 @Model
 final class ChatMessage: ObservableObject {
     @Attribute(.unique) var messageId: String
@@ -65,6 +74,7 @@ final class ChatMessage: ObservableObject {
     var updatedAt: Date
     var parentId: String?
     var isStarred: Bool?
+    var type: MessageType
 
     init(author: Author, content: String, resumeUrl: String) {
         self.messageId = UUID().uuidString
@@ -73,6 +83,7 @@ final class ChatMessage: ObservableObject {
         self.resumeUrl = resumeUrl
         self.createdAt = Date()
         self.updatedAt = Date()
+        self.type = .note
     }
 }
 
@@ -85,6 +96,19 @@ extension ChatMessage: Identifiable, Equatable {
         switch author {
         case .user(_): return true
         default: return false
+        }
+    }
+    
+    var color: Color {
+        switch type {
+        case .note:
+            Color(red: 0.90, green: 0.94, blue: 0.63, opacity: 1.00)
+        case .aiQuestion:
+                .blue
+        case .aiAnswer:
+                .orange
+        default:
+                .blue
         }
     }
     

@@ -50,7 +50,7 @@ final class AIChatMessagesViewModel {
     var showingSettingsSheet = false
     @ObservationIgnored var scrollLockPublisher = PassthroughSubject<Bool, Never>()
     @ObservationIgnored private var cancellables: [AnyCancellable] = []
-    @ObservationIgnored private var agiService: AGIServiceProtocol
+    @ObservationIgnored private var agiService: AGIServiceProtocol?
 
     init(modelContext: ModelContext, person: Person, resume: Resume, agiService: AGIServiceProtocol = ChatGPTAPIService()) {
         self.modelContext = modelContext
@@ -73,6 +73,8 @@ final class AIChatMessagesViewModel {
             self.agiService = GeminiAPIService()
         case .claude:
             self.agiService = ClaudeAPIService()
+        case .none:
+            self.agiService = nil
         default:
             self.agiService = ChatGPTAPIService()
         }
@@ -109,13 +111,17 @@ final class AIChatMessagesViewModel {
     func onSubmitNewMessage() {
         Task {
             let message = ChatMessage(author: .user(person.resumeUrl), content: newChatText, resumeUrl: person.resumeUrl)
+            if UserDefaults.standard.selectedAGI != AGIServiceChoice.none {
+                message.type = .aiQuestion
+            }
             modelContext.insert(message)
             messages.append(message)
             Log.pres.debug("Inserted question message")
-            
-            agiContentCount = 0
-            await handleAGIStream(content: String(newChatText))
-            newChatText = ""
+            if let agiService {
+                agiContentCount = 0
+                await handleAGIStream(content: String(newChatText))
+                newChatText = ""
+            }
         }
     }
     
@@ -186,9 +192,11 @@ final class AIChatMessagesViewModel {
                 author = .openai(UserDefaults.standard.agiModel ?? "gpt-4o")
             }
             let message = ChatMessage(author: author, content: "", resumeUrl: person.resumeUrl)
+            message.type = .aiAnswer
             modelContext.insert(message)
             messages.append(message)
             Log.pres.debug("Added blank AGI message")
+            guard let agiService else { return }
             let scopes = HistoryOptions.modeFrom(hasRole: hasRoleScope, hasCode: hasFileScope, hasHistory: hasHistoryScope, hasSelection: hasSelectionScope)
             agiService.setupHistory(for: resume.description, selectedRows: Set<Int>(), scopes: scopes, messages: messages)
             

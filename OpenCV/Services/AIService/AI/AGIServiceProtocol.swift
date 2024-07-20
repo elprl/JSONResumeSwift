@@ -148,8 +148,8 @@ enum AGIServiceChoice: String {
             return "geminiIcon"
         case .customAI:
             return "brain"
-        default:
-            return "brain"
+        case .none:
+            return "note"
         }
     }
     
@@ -157,8 +157,8 @@ enum AGIServiceChoice: String {
         switch self {
         case .openai, .claude, .gemini, .customAI:
             return NSLocalizedString("Chat with \(self.defaultModel)", comment: "")
-        default:
-            return NSLocalizedString("← Select AI Service", comment: "")
+        case .none:
+            return NSLocalizedString("Add personal note", comment: "")
         }
     }
 }
