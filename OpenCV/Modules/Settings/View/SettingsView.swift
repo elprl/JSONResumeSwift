@@ -111,7 +111,7 @@ struct SettingsView: View {
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 30, height: 30)
-                    Text("Google Gemini")
+                    Text("Google Gemini (US only)")
                         .font(.body)
                         .foregroundStyle(.primary)
                     Spacer()

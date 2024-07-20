@@ -52,11 +52,10 @@ final class AIChatMessagesViewModel {
     @ObservationIgnored private var cancellables: [AnyCancellable] = []
     @ObservationIgnored private var agiService: AGIServiceProtocol?
 
-    init(modelContext: ModelContext, person: Person, resume: Resume, agiService: AGIServiceProtocol = ChatGPTAPIService()) {
+    init(modelContext: ModelContext, person: Person, resume: Resume) {
         self.modelContext = modelContext
         self.person = person
         self.resume = resume
-        self.agiService = agiService
         
         // Debounce the scroll lock updates
         scrollLockPublisher
@@ -116,11 +115,11 @@ final class AIChatMessagesViewModel {
             }
             modelContext.insert(message)
             messages.append(message)
-            Log.pres.debug("Inserted question message")
-            if let agiService {
+            newChatText = ""
+            Log.pres.debug("Inserted question/note message")
+            if agiService != nil {
                 agiContentCount = 0
                 await handleAGIStream(content: String(newChatText))
-                newChatText = ""
             }
         }
     }
