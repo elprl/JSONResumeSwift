@@ -58,7 +58,8 @@ final class ClaudeAPIService: @unchecked Sendable, AGIServiceProtocol {
         deleteHistoryList()
         var userContent = ""
         if scopes.contains(.role) {
-            userContent.append(UserDefaults.standard.agiRole ?? AGIServiceConstants.agiRole)
+            let roleContent = (UserDefaults.standard.agiRole ?? AGIServiceConstants.agiRole) + " " + AGIServiceConstants.agiOutput
+            userContent.append(roleContent)
         }
         if scopes.contains(.code) {
             userContent.append("\n" + fileContent)
