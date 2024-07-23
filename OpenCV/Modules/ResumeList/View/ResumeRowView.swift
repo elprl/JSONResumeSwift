@@ -18,12 +18,12 @@ struct ResumeRowView: View {
     
     var body: some View {
         NavigationLink {
-            if #available(iOS 18.0, *) {
+//            if #available(iOS 18.0, *) {
+//                navDestination
+//                    .navigationTransition(.zoom(sourceID: person.id, in: namespace))
+//            } else {
                 navDestination
-                    .navigationTransition(.zoom(sourceID: person.id, in: namespace))
-            } else {
-                navDestination
-            }
+//            }
         } label: {
             GroupBox {
                 HStack(spacing: 14) {
@@ -132,11 +132,11 @@ struct ResumeRowView: View {
     }
 }
 
-@available(iOS 18.0, *)
-#Preview(traits: .samplePeopleData) {
-    @Previewable @Namespace() var namespace
-    @Previewable @Query var people: [Person]
-    let viewModel = ResumeListViewModel(modelContext: PreviewController.previewContainer.mainContext)
-    ResumeRowView(viewModel: viewModel, person: people.first ?? Person(resumeUrl: "https://registry.jsonresume.org/elprl.json"), namespace: namespace)
-        .modelContainer(PreviewController.previewContainer)
-}
+//@available(iOS 18.0, *)
+//#Preview(traits: .samplePeopleData) {
+//    @Previewable @Namespace() var namespace
+//    @Previewable @Query var people: [Person]
+//    let viewModel = ResumeListViewModel(modelContext: PreviewController.previewContainer.mainContext)
+//    ResumeRowView(viewModel: viewModel, person: people.first ?? Person(resumeUrl: "https://registry.jsonresume.org/elprl.json"), namespace: namespace)
+//        .modelContainer(PreviewController.previewContainer)
+//}

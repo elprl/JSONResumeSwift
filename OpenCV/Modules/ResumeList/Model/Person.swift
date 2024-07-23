@@ -59,17 +59,17 @@ class PreviewController {
     }()
 }
 
-struct SamplePersonData: PreviewModifier {
-    static func makeSharedContext() throws -> ModelContainer {
-        return PreviewController.previewContainer
-    }
-    
-    func body(content: Content, context: ModelContainer) -> some View {
-        content.modelContainer(context)
-    }
-}
-
-@available(iOS 18.0, *)
-extension PreviewTrait where T == Preview.ViewTraits {
-    @MainActor static var samplePeopleData: Self = .modifier(SamplePersonData())
-}
+//struct SamplePersonData: PreviewModifier {
+//    static func makeSharedContext() throws -> ModelContainer {
+//        return PreviewController.previewContainer
+//    }
+//    
+//    func body(content: Content, context: ModelContainer) -> some View {
+//        content.modelContainer(context)
+//    }
+//}
+//
+//@available(iOS 18.0, *)
+//extension PreviewTrait where T == Preview.ViewTraits {
+//    @MainActor static var samplePeopleData: Self = .modifier(SamplePersonData())
+//}
