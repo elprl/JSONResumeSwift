@@ -96,9 +96,6 @@
     "Add Access Token" : {
 
     },
-    "Add an AI API key in Settings" : {
-
-    },
     "Add Another" : {
 
     },
@@ -168,6 +165,9 @@
       }
     },
     "Chat Model" : {
+
+    },
+    "Chat with (self.defaultModel)" : {
 
     },
     "Claude Settings" : {
@@ -268,6 +268,9 @@
     "Gemini Failed: Invalid API Key" : {
 
     },
+    "Gemini Failed: Response stopped early, (finishReason.rawValue)" : {
+
+    },
     "Gemini Failed: Unknown error" : {
 
     },
@@ -290,6 +293,9 @@
 
     },
     "GPT3-Tokenizer\nhttps://github.com/aespinilla/GPT3-Tokenizer" : {
+
+    },
+    "Hello world" : {
 
     },
     "Highlights" : {
@@ -404,9 +410,6 @@
     "No messages found" : {
 
     },
-    "No messages found and no API key added" : {
-
-    },
     "Open AI Settings" : {
 
     },
@@ -507,6 +510,9 @@
           }
         }
       }
+    },
+    "To chat with AI, add an AI API key in Settings" : {
+
     },
     "Version" : {
 

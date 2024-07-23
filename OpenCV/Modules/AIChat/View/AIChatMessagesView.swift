@@ -35,11 +35,11 @@ let _ = Self._printChanges()
                             self.viewModel.fetchData()
                         }
                 case .loaded(_):
-                    if #available(iOS 18.0, *) {
-                        MessageScrollView18(viewModel: viewModel)
-                    } else {
+//                    if #available(iOS 18.0, *) {
+//                        MessageScrollView18(viewModel: viewModel)
+//                    } else {
                         MessageScrollView(viewModel: viewModel)
-                    }
+//                    }
                 case .empty(_):
                     noMessages
                 case .error(let message):
@@ -102,9 +102,9 @@ let _ = Self._printChanges()
                 .contentShape(Rectangle())
             } else {
                 ContentUnavailableView(
-                    "No messages found and no API key added",
+                    "No messages found",
                     systemImage: "message",
-                    description: Text("Add an AI API key in Settings")
+                    description: Text("To chat with AI, add an AI API key in Settings")
                 )
                 .contentShape(Rectangle())
             }

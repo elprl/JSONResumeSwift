@@ -65,7 +65,7 @@ final class AIChatMessagesViewModel {
             .store(in: &cancellables)
     }
     
-    @MainActor
+//    @MainActor
     func updateAGIService(selectedAGI: AGIServiceChoice) {
         switch selectedAGI {
         case .gemini:
@@ -106,7 +106,7 @@ final class AIChatMessagesViewModel {
         return messages.map( { $0.id } )
     }
     
-    @MainActor
+//    @MainActor
     func onSubmitNewMessage() {
         Task {
             let message = ChatMessage(author: .user(person.resumeUrl), content: newChatText, resumeUrl: person.resumeUrl)

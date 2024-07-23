@@ -29,14 +29,14 @@ struct ResumeListView: View {
                     LazyVStack {
                         ForEach(filteredPeople, id: \.self) { person in
                             Group {
-                                if #available(iOS 18.0, *) {
+//                                if #available(iOS 18.0, *) {
+//                                    ResumeRowView(viewModel: viewModel, person: person, namespace: namespace)
+//                                        .transition(.move(edge: .leading))
+//                                        .matchedTransitionSource(id: person.id, in: namespace)
+//                                } else {
                                     ResumeRowView(viewModel: viewModel, person: person, namespace: namespace)
                                         .transition(.move(edge: .leading))
-                                        .matchedTransitionSource(id: person.id, in: namespace)
-                                } else {
-                                    ResumeRowView(viewModel: viewModel, person: person, namespace: namespace)
-                                        .transition(.move(edge: .leading))
-                                }
+//                                }
                             }
                         }
                     }
@@ -53,12 +53,12 @@ struct ResumeListView: View {
                     }
                 }
                 .sheet(isPresented: $viewModel.showingInputSheet) {
-                    if #available(iOS 18.0, *) {
+//                    if #available(iOS 18.0, *) {
+//                        InputFormView(viewModel: viewModel)
+//                            .presentationSizing(.form)
+//                    } else {
                         InputFormView(viewModel: viewModel)
-                            .presentationSizing(.form)
-                    } else {
-                        InputFormView(viewModel: viewModel)
-                    }
+//                    }
                 }
                 .overlay {
                     empty
