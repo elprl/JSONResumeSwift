@@ -81,6 +81,12 @@ final class GeminiSettingsViewModel: ObservableObject {
     
     func delete(at offsets: IndexSet) {
         guard var account = self.apiAccount else { return }
+        offsets.forEach { index in
+            let id = self.userTokenMetadataList[index].id
+            if isActiveAccessToken(id: id) {
+                self.keychainService[APIName.gemini.rawValue] = nil
+            }
+        }
         self.userTokenMetadataList.remove(atOffsets: offsets)
         account.tokens = self.userTokenMetadataList
         UserDefaults.standard.saveUserTokens(userId: userId, user: account)

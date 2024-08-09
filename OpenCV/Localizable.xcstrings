@@ -167,9 +167,6 @@
     "Chat Model" : {
 
     },
-    "Chat with (self.defaultModel)" : {
-
-    },
     "Claude Settings" : {
 
     },
@@ -268,9 +265,6 @@
     "Gemini Failed: Invalid API Key" : {
 
     },
-    "Gemini Failed: Response stopped early, (finishReason.rawValue)" : {
-
-    },
     "Gemini Failed: Unknown error" : {
 
     },
@@ -295,9 +289,6 @@
     "GPT3-Tokenizer\nhttps://github.com/aespinilla/GPT3-Tokenizer" : {
 
     },
-    "Hello world" : {
-
-    },
     "Highlights" : {
 
     },
@@ -318,6 +309,9 @@
       }
     },
     "https://apps.apple.com/app/id%@" : {
+
+    },
+    "Importing CV" : {
 
     },
     "Interests" : {

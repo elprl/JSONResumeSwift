@@ -12,17 +12,17 @@ struct ResumeView: View {
     @Environment(\.colorScheme) private var colorScheme
     @StateObject private var viewModel: ResumeViewModel
     private let resume: Resume
-    private let person: Person
+    private let resumeUrl: String
     private let modelContext: ModelContext
     @AppStorage(UserDefaults.Keys.hasAgiKey) var hasAgiKey: Bool = false
     @AppStorage(UserDefaults.Keys.hasClaudeKey) var hasClaudeKey: Bool = false
     @AppStorage(UserDefaults.Keys.hasGeminiKey) var hasGeminiKey: Bool = false
 
-    init(resume: Resume, person: Person, modelContext: ModelContext) {
+    init(resume: Resume, resumeUrl: String, modelContext: ModelContext) {
         self.resume = resume
-        self.person = person
+        self.resumeUrl = resumeUrl
         self.modelContext = modelContext
-        _viewModel = StateObject(wrappedValue: ResumeViewModel(resumeUrl: person.resumeUrl))
+        _viewModel = StateObject(wrappedValue: ResumeViewModel(resumeUrl: resumeUrl))
     }
     
     var body: some View {
@@ -50,7 +50,7 @@ struct ResumeView: View {
         .navigationTitle(resume.basics.name ?? "")
         .navigationBarTitleDisplayMode(.inline)
         .navigationDestination(isPresented: $viewModel.showAIChat, destination: {
-            AIChatMessagesView(modelContext: modelContext, person: person, resume: resume)
+            AIChatMessagesView(modelContext: modelContext, resumeUrl: resumeUrl, resume: resume)
                 .modelContainer(modelContext.container)
         })
         .toolbar {
@@ -167,7 +167,7 @@ struct AsyncTestView: View {
                 let config = ModelConfiguration(isStoredInMemoryOnly: true)
                 let container = try! ModelContainer(for: Person.self, configurations: config)
 
-                ResumeView(resume: resume, person: Person(resumeUrl: ""), modelContext: container.mainContext)
+                ResumeView(resume: resume, resumeUrl: "", modelContext: container.mainContext)
             }
         }
         .task {

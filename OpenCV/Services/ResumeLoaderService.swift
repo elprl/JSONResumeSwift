@@ -13,11 +13,11 @@ protocol ResumeLoaderProtocol {}
 extension ResumeLoaderProtocol {
     
     func loadSample() async -> Resume? {
-        if let jsonString = await loadJSONFromFile(fileName: "resume") {
-            print("JSON content: \(jsonString)")
+        if let jsonString = await loadJSONFromFile(fileName: "resume") { // include file in target
+            Log.itr.error("JSON content: \(jsonString)")
             return try? await decodeSample(jsonString: jsonString)
         } else {
-            print("Failed to load JSON content.")
+            Log.itr.error("Failed to load JSON content.")
         }
         return nil
     }
@@ -35,14 +35,14 @@ extension ResumeLoaderProtocol {
         catch {
             // Error handling in case the data couldn't be loaded
             // For now, only display the error on the console
-            debugPrint("Error loading \(url): \(String(describing: error))")
+            Log.itr.error("Error loading \(url): \(String(describing: error))")
             throw error
         }
     }
     
     func loadJSONFromFile(fileName: String = "sampleResume") async -> String? {
         guard let fileURL = Bundle.main.url(forResource: fileName, withExtension: "json") else {
-            print("File not found.")
+            Log.itr.error("File not found.")
             return nil
         }
         
@@ -50,7 +50,7 @@ extension ResumeLoaderProtocol {
             let data = try Data(contentsOf: fileURL)
             return String(data: data, encoding: .utf8)
         } catch {
-            print("Error reading file: \(error)")
+            Log.itr.error("Error reading file: \(error)")
             return nil
         }
     }
@@ -71,7 +71,7 @@ extension ResumeLoaderProtocol {
                 let resume = try decoder.decode(Resume.self, from: jsonData)
                 return resume
             } catch {
-                print("Error: \(error)")
+                Log.itr.error("Error: \(error)")
                 throw TDAPIError.invalidJsonDecoding
             }
         }

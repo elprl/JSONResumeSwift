@@ -16,8 +16,8 @@ struct AIChatMessagesView: View {
     @AppStorage(UserDefaults.Keys.hasClaudeKey) var hasClaudeKey: Bool = false
     @AppStorage(UserDefaults.Keys.hasGeminiKey) var hasGeminiKey: Bool = false
     
-    init(modelContext: ModelContext, person: Person, resume: Resume) {
-        _viewModel = State(initialValue: AIChatMessagesViewModel(modelContext: modelContext, person: person, resume: resume))
+    init(modelContext: ModelContext, resumeUrl: String, resume: Resume) {
+        _viewModel = State(initialValue: AIChatMessagesViewModel(modelContext: modelContext, resumeUrl: resumeUrl, resume: resume))
     }
     
     var body: some View {
@@ -56,6 +56,9 @@ let _ = Self._printChanges()
         .navigationBarTitleDisplayMode(.inline)
         .sheet(isPresented: $viewModel.showingSettingsSheet) {
             SettingsView()
+        }
+        .onDisappear {
+            viewModel.save()
         }
         .toolbar {
             ToolbarItemGroup(placement: .topBarTrailing) {
@@ -104,7 +107,7 @@ let _ = Self._printChanges()
                 ContentUnavailableView(
                     "No messages found",
                     systemImage: "message",
-                    description: Text("To chat with AI, add an AI API key in Settings")
+                    description: Text("To chat with AI, add an API key in Settings")
                 )
                 .contentShape(Rectangle())
             }
@@ -120,9 +123,8 @@ let _ = Self._printChanges()
 #if DEBUG
 
 #Preview {
-    AIChatMessagesView(modelContext: PreviewController.previewContainer.mainContext, person: Person(resumeUrl: ""), resume: Resume.mock())
+    AIChatMessagesView(modelContext: PreviewController.previewContainer.mainContext, resumeUrl: "", resume: Resume.mock())
         .modelContainer(PreviewController.previewContainer)
-        .previewLayout(.fixed(width: 320, height: 800))
 }
 
 #endif

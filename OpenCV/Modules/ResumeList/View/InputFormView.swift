@@ -139,13 +139,13 @@ struct InputFormView: View {
             do {
                 try await viewModel.addItem(urlString: viewModel.url)
             } catch {
-                print("error")
+                Log.view.error("error adding item")
             }
         }
     }
 }
 
-public struct PlaceholderStyle: ViewModifier {
+struct PlaceholderStyle: ViewModifier {
     var showPlaceHolder: Bool
     var placeholder: String
 
@@ -164,8 +164,8 @@ public struct PlaceholderStyle: ViewModifier {
     }
 }
 
-//#Preview {
-//    let viewModel = ResumeListViewModel(modelContext: PreviewController.previewContainer.mainContext)
-//    InputFormView(viewModel: viewModel)
-//        .modelContainer(PreviewController.previewContainer)
-//}
+#Preview {
+    let viewModel = ResumeListViewModel(modelContext: PreviewController.previewContainer.mainContext)
+    InputFormView(viewModel: viewModel)
+        .modelContainer(PreviewController.previewContainer)
+}

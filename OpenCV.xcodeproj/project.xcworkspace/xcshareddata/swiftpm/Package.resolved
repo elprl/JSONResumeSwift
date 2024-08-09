@@ -1,5 +1,5 @@
 {
-  "originHash" : "c1cc467bab88740ba6ca98b86d63959438d9d9ea56a14ce1ba2f61f14df0fc43",
+  "originHash" : "d1b16e9115155bdaa1b4eb58a1b6aace5355be63bda3dae99054cb5a0f77f35d",
   "pins" : [
     {
       "identity" : "codescanner",
@@ -15,8 +15,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/google-gemini/generative-ai-swift",
       "state" : {
-        "revision" : "54784005b57c2235a7669e0c12e8dafa68f0ca5f",
-        "version" : "0.5.4"
+        "revision" : "2b8f14cfd158982fe3b2c8a8582ac3af5743742f",
+        "version" : "0.5.5"
       }
     },
     {
@@ -33,8 +33,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/SDWebImage/SDWebImage.git",
       "state" : {
-        "revision" : "be0bcd7823ce56629948491f2eaeaa19979514f7",
-        "version" : "5.19.4"
+        "revision" : "5191b801aca999b704eb93f118f91468b4570571",
+        "version" : "5.19.6"
       }
     },
     {
@@ -69,8 +69,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/jamesrochabrun/SwiftAnthropic",
       "state" : {
-        "revision" : "853c539a58cc20a55d37c050b9384e96dd7826b0",
-        "version" : "1.7.0"
+        "revision" : "cea1929f50ae642ac1308e7776af51a792679a6b",
+        "version" : "1.8.1"
       }
     }
   ],

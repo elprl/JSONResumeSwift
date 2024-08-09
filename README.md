@@ -4,6 +4,12 @@ An app to show a standardised CV from the open-source JSON Resume project - http
 
 ## Install
 - Build using Xcode 16 and run. Uses Swift 6.
+- Put your mock api keys `DebugConfig.xcconfig` (don't add to git):
+```
+MOCK_OPENAI_TOKEN[config=Debug]=apikey1
+MOCK_CLAUDE_TOKEN[config=Debug]=apikey2
+MOCK_GEMINI_TOKEN[config=Debug]=apikey3
+```
 
 ### How it started
 This app started life as a test harness for Swift 6 and SwiftData explorations. 

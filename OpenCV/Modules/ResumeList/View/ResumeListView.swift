@@ -106,16 +106,22 @@ struct ResumeListView: View {
     
     @ViewBuilder
     private var empty: some View {
-        if people.isEmpty {
-            ContentUnavailableView(
-                "No CVs found",
-                systemImage: "person.badge.plus",
-                description: Text("Tap to add a new CV")
-            )
-            .contentShape(Rectangle())
-            .onTapGesture {
-                self.viewModel.state = .appeared
-                self.viewModel.showingInputSheet = true
+        VStack {
+            if people.isEmpty && !viewModel.isImporting {
+                ContentUnavailableView(
+                    "No CVs found",
+                    systemImage: "person.badge.plus",
+                    description: Text("Tap to add a new CV")
+                )
+                .contentShape(Rectangle())
+                .onTapGesture {
+                    self.viewModel.state = .appeared
+                    self.viewModel.showingInputSheet = true
+                }
+            }
+            if viewModel.isImporting {
+                Text("Importing CV")
+                ProgressView()
             }
         }
     }
