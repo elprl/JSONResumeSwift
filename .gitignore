@@ -79,7 +79,7 @@ fastlane/test_output
 iOSInjectionProject/
 
 ## User settings
-Config.xcconfig
+*.xcconfig
 
 ## Xcode Patch
 !*.xcodeproj/project.pbxproj
