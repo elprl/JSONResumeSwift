@@ -12,7 +12,7 @@ import SwiftUI
 import GPT3_Tokenizer
 
 protocol AGIServiceProtocol: TokenServiceProtocol {
-    func sendMessageStream(text: String, needsJSONResponse: Bool) async throws -> AsyncThrowingStream<String, Error>
+    func sendMessageStream(text: String, needsJSONResponse: Bool) async throws -> AsyncThrowingStream<String, any Error>
     func sendMessage(_ text: String) async throws -> String
     func generateMessages(from text: String) -> [GPTMessage]
     func setupHistory(for fileContent: String, selectedRows: Set<Int>, scopes: HistoryOptions, messages: [ChatMessage])
@@ -36,7 +36,7 @@ extension AGIServiceProtocol {
     }
 }
 
-public enum TDAPIError: LocalizedError {
+enum TDAPIError: LocalizedError {
     case invalidJsonEncoding
     case invalidJsonDecoding
     case invalidResponse

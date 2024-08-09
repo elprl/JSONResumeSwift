@@ -83,6 +83,12 @@ final class OpenAISettingsViewModel: ObservableObject {
     
     func delete(at offsets: IndexSet) {
         guard var openAIAccount = self.openAIAccount else { return }
+        offsets.forEach { index in
+            let id = self.userTokenMetadataList[index].id
+            if isActiveAccessToken(id: id) {
+                self.keychainService[APIName.openAI.rawValue] = nil
+            }
+        }
         self.userTokenMetadataList.remove(atOffsets: offsets)
         openAIAccount.tokens = self.userTokenMetadataList
         UserDefaults.standard.saveUserTokens(userId: userId, user: openAIAccount)

@@ -64,13 +64,20 @@ struct TextInputView: View {
                 .lineLimit(1...10) // reservesSpace: true)
                 .tint(.logoOrange)
                 .foregroundColor(.primary)
-            RoundButton(action: {
-                withAnimation {
-                    print("submit")
-                    self.viewModel.onSubmitNewMessage()
-                    self.isFocused = false
-                }
-            }, imageSize: 30, icon: "paperplane.fill", bgColor: .blue, isLoading: .constant(false))
+            if viewModel.isAGIResponding {
+                RoundButton(action: {
+                    withAnimation {
+                        self.viewModel.onCancelAGI()
+                    }
+                }, imageSize: 30, icon: "stop.fill", bgColor: .orange, isLoading: .constant(false))
+            } else {
+                RoundButton(action: {
+                    withAnimation {
+                        self.viewModel.onSubmitNewMessage()
+                        self.isFocused = false
+                    }
+                }, imageSize: 30, icon: "paperplane.fill", bgColor: .blue, isLoading: .constant(false))
+            }
         }
     }
     

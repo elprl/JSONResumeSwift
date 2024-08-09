@@ -90,6 +90,7 @@ struct SettingsView: View {
                         .foregroundStyle(.primary)
                     Spacer()
                 }
+                .buttonStyle(PlainButtonStyle())
             }
             
             NavigationLink(value: NavigationItem.claudeSettings) {
@@ -103,6 +104,7 @@ struct SettingsView: View {
                         .foregroundStyle(.primary)
                     Spacer()
                 }
+                .buttonStyle(PlainButtonStyle())
             }
             
             NavigationLink(value: NavigationItem.geminiSettings) {
@@ -116,14 +118,16 @@ struct SettingsView: View {
                         .foregroundStyle(.primary)
                     Spacer()
                 }
+                .buttonStyle(PlainButtonStyle())
             }
             
             NavigationLink(destination: SingleTextEditor(text: $aiViewModel.agiRole, defaultText: AGIServiceConstants.agiRole, title: "Role Setup", maxCharacters: 400)) {
                 HStack {
-                    Text("Role Setup").font(.body).lineLimit(1).foregroundColor(.primary)
+                    Text("Role Setup").font(.body).lineLimit(1).foregroundStyle(.primary)
                     Spacer()
-                    Text(aiViewModel.agiRole).font(.body).lineLimit(1).foregroundColor(.secondary)
+                    Text(aiViewModel.agiRole).font(.body).lineLimit(1).foregroundStyle(.secondary)
                 }
+                .buttonStyle(PlainButtonStyle())
             }
         }
     }

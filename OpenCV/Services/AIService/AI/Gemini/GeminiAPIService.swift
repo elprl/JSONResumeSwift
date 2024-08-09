@@ -113,14 +113,14 @@ final class GeminiAPIService: ChatGPTAPIService, @unchecked Sendable {
                 modelContents.append(content)
             }
         } catch {
-            print("Error generating messages: \(error)")
+            Log.api.error("Error generating messages: \(error)")
         }
 
         return modelContents
     }
     
-    override func sendMessageStream(text: String, needsJSONResponse: Bool = false) async throws -> AsyncThrowingStream<String, Error> {
-        return AsyncThrowingStream<String, Error> { continuation in
+    override func sendMessageStream(text: String, needsJSONResponse: Bool = false) async throws -> AsyncThrowingStream<String, any Error> {
+        return AsyncThrowingStream<String, any Error> { continuation in
             Task(priority: .userInitiated) { [weak self] in
                 guard let self = self else { return }
                 do {

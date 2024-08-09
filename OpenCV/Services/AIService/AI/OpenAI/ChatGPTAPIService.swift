@@ -143,7 +143,7 @@ class ChatGPTAPIService: @unchecked Sendable, AGIServiceProtocol {
         self.historyList.append(GPTMessage(role: GPTRole.assistant.rawValue, content: responseText))
     }
     
-    func sendMessageStream(text: String, needsJSONResponse: Bool = false) async throws -> AsyncThrowingStream<String, Error> {
+    func sendMessageStream(text: String, needsJSONResponse: Bool = false) async throws -> AsyncThrowingStream<String, any Error> {
         var urlRequest = self.urlRequest
         do {
             let httpBody = try jsonBody(text: text, needsJSONResponse: needsJSONResponse)
@@ -177,7 +177,7 @@ class ChatGPTAPIService: @unchecked Sendable, AGIServiceProtocol {
                 throw TDAPIError.badResponse(httpResponse.statusCode, errorText)
             }
             
-            return AsyncThrowingStream<String, Error> { [weak self] continuation in
+            return AsyncThrowingStream<String, any Error> { [weak self] continuation in
                 guard let self = self else {
                     continuation.finish(throwing: TDAPIError.invalidResponse)
                     return

@@ -82,7 +82,7 @@ struct ResumeRowView: View {
             .backgroundStyle(.ultraThinMaterial)
             .clipShape(RoundedRectangle(cornerRadius: 8))
             .padding(4)
-            .shadow(radius: 4)
+            .shadow(radius: 2)
             .tint(.primary)
             .contextMenu(menuItems: {
                 optionsMenuItems
@@ -94,9 +94,9 @@ struct ResumeRowView: View {
     private var navDestination: some View {
         Group {
             if let resume = viewModel.resumes.first(where: { $0.basics.name == person.name }) {
-                ResumeView(resume: resume, person: person, modelContext: modelContext)
+                ResumeView(resume: resume, resumeUrl: person.resumeUrl, modelContext: modelContext)
             } else if let jsonString = person.cachedJSON {
-                CachedResumeView(jsonString: jsonString, person: person)
+                CachedResumeView(jsonString: jsonString, resumeUrl: person.resumeUrl)
             } else {
                 Text("CV not yet loaded")
             }

@@ -111,6 +111,9 @@ struct MessageScrollView: View {
                 }
                 .animation(.default, value: viewModel.messages)
             }
+            .contentMargins(.top, 100.0, for: .scrollIndicators)
+            .contentMargins(.bottom, 120.0, for: .scrollIndicators)
+            .overlay(scrollToBottom)
             .task {
                 withAnimation {
                     outerProxy.scrollTo(Int.max, anchor: .bottom)
@@ -121,8 +124,6 @@ struct MessageScrollView: View {
                     outerProxy.scrollTo(Int.max, anchor: .bottom)
                 }
             }
-            .contentMargins(.top, 100.0, for: .scrollIndicators)
-            .contentMargins(.bottom, 120.0, for: .scrollIndicators)
             .onChange(of: self.didPressScrollToBottom) {
                 withAnimation {
                     if self.didPressScrollToBottom {
@@ -131,7 +132,6 @@ struct MessageScrollView: View {
                     }
                 }
             }
-            .overlay(scrollToBottom)
         }
     }
     
@@ -149,8 +149,8 @@ struct MessageScrollView: View {
                 .shadow(radius: 3)
                 .padding(.bottom, 130)
                 .padding(.trailing)
-                .disabled(viewModel.isScrollLockActive)
-                .opacity(viewModel.isScrollLockActive ? 0 : 1)
+//                .disabled(viewModel.isScrollLockActive)
+//                .opacity(viewModel.isScrollLockActive ? 0 : 1)
             }
         }
         .transition(.fade)
