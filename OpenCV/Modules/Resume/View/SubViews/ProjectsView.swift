@@ -20,8 +20,12 @@ struct ProjectsView: View {
                     row(index: index, element: element)
                 }
             } label: {
-                Label("Projects", systemImage: "wrench.and.screwdriver")
-                    .modifier(Heading())
+                HStack {
+                    Label("Projects", systemImage: "wrench.and.screwdriver")
+                        .modifier(Heading())
+                    Spacer()
+                    Text("\(projects.count)")
+                }
             }
             .tint(colorScheme == .dark ? .orange : .brown)
         }

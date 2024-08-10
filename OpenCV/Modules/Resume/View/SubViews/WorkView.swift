@@ -52,8 +52,12 @@ struct WorkView: View {
                     }
                 }
             } label: {
-                Label("Work Experience", systemImage: "building.2")
-                    .modifier(Heading())
+                HStack {
+                    Label("Work Experience", systemImage: "building.2")
+                        .modifier(Heading())
+                    Spacer()
+                    Text("\(works.count)")
+                }
             }
             .tint(colorScheme == .dark ? .orange : .brown)
         }

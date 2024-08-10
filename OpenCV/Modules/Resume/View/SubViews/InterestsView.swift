@@ -52,9 +52,13 @@ struct InterestsView: View {
                     .shadow(radius: 4)
                 }
             } label: {
-                Label("Interests", systemImage: "heart")
-                    .modifier(Heading())
-            }  
+                HStack {
+                    Label("Interests", systemImage: "heart")
+                        .modifier(Heading())
+                    Spacer()
+                    Text("\(interests.count)")
+                }
+            }
             .tint(colorScheme == .dark ? .orange : .brown)
         }
         .backgroundStyle(.ultraThinMaterial)

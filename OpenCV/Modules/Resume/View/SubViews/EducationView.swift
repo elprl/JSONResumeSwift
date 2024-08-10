@@ -75,8 +75,12 @@ struct EducationView: View {
                     .shadow(radius: 4)
                 }
             } label: {
-                Label("Education", systemImage: "graduationcap")
-                    .modifier(Heading())
+                HStack {
+                    Label("Education", systemImage: "graduationcap")
+                        .modifier(Heading())
+                    Spacer()
+                    Text("\(educations.count)")
+                }
             }
             .tint(colorScheme == .dark ? .orange : .brown)
         }
