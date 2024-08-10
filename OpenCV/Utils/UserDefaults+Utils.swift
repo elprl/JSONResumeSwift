@@ -48,6 +48,9 @@ extension UserDefaults {
         static let repoSortMode = "repoSortMode"
         static let repoFilterMode = "repoFilterMode"
         static let selectedAGI = "selectedAGI"
+        static let hasScopedRole = "hasScopedRole"
+        static let hasScopedCV = "hasScopedCV"
+        static let hasScopedHistory = "hasScopedHistory"
     }
     
     func getUserTokens(userId: String) -> UserAPIAccounts? {
@@ -297,6 +300,33 @@ extension UserDefaults {
         }
         set {
             setValue(newValue, forKey: Keys.hasLoadedTags)
+        }
+    }
+    
+    var hasScopedRole: Bool? {
+        get {
+            return bool(forKey: Keys.hasScopedRole)
+        }
+        set {
+            setValue(newValue, forKey: Keys.hasScopedRole)
+        }
+    }
+    
+    var hasScopedCV: Bool? {
+        get {
+            return bool(forKey: Keys.hasScopedCV)
+        }
+        set {
+            setValue(newValue, forKey: Keys.hasScopedCV)
+        }
+    }
+    
+    var hasScopedHistory: Bool? {
+        get {
+            return bool(forKey: Keys.hasScopedHistory)
+        }
+        set {
+            setValue(newValue, forKey: Keys.hasScopedHistory)
         }
     }
 }
