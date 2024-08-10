@@ -90,6 +90,9 @@
         }
       }
     },
+    "%lld" : {
+
+    },
     "• %@" : {
 
     },
@@ -149,6 +152,9 @@
 
     },
     "Automatic" : {
+
+    },
+    "Average Job Duration" : {
 
     },
     "Awards" : {
@@ -492,6 +498,9 @@
     "Skills" : {
 
     },
+    "Stats Overview" : {
+
+    },
     "Steps" : {
 
     },
@@ -522,6 +531,9 @@
           }
         }
       }
+    },
+    "Total Experience" : {
+
     },
     "Version" : {
 

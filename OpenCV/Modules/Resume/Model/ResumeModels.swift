@@ -812,4 +812,14 @@ extension PeriodProtocol {
         
         return "Present"
     }
+    
+    var startDateTime: Date? {
+        guard let startDate = startDate else { return nil }
+        return date(from: startDate)
+    }
+    
+    var endDateTime: Date? {
+        guard let endDate = endDate else { return nil }
+        return date(from: endDate)
+    }
 }

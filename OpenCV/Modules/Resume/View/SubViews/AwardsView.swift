@@ -41,9 +41,13 @@ struct AwardsView: View {
                     .shadow(radius: 4)
                 }
             } label: {
-                Label("Awards", systemImage: "trophy")
-                    .modifier(Heading())
-            } 
+                HStack {
+                    Label("Awards", systemImage: "trophy")
+                        .modifier(Heading())
+                    Spacer()
+                    Text("\(awards.count)")
+                }
+            }
             .tint(colorScheme == .dark ? .orange : .brown)
         }
         .backgroundStyle(.ultraThinMaterial)

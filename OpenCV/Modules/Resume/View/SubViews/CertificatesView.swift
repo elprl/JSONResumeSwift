@@ -55,9 +55,13 @@ struct CertificatesView: View {
                     .shadow(radius: 4)
                 }
             } label: {
-                Label("Certifications", systemImage: "rosette")
-                    .modifier(Heading())
-            }  
+                HStack {
+                    Label("Certifications", systemImage: "rosette")
+                        .modifier(Heading())
+                    Spacer()
+                    Text("\(certificates.count)")
+                }
+            }
             .tint(colorScheme == .dark ? .orange : .brown)
         }
         .backgroundStyle(.ultraThinMaterial)

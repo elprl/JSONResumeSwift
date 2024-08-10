@@ -34,8 +34,12 @@ struct LanguagesView: View {
                     .shadow(radius: 4)
                 }
             } label: {
-                Label("Languages", systemImage: "speaker.wave.2.bubble")
-                    .modifier(Heading())
+                HStack {
+                    Label("Languages", systemImage: "speaker.wave.2.bubble")
+                        .modifier(Heading())
+                    Spacer()
+                    Text("\(languages.count)")
+                }
             }
             .tint(colorScheme == .dark ? .orange : .brown)
         }

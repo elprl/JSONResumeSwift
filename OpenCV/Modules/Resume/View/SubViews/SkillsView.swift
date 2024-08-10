@@ -57,9 +57,13 @@ struct SkillsView: View {
                     .shadow(radius: 4)
                 }
             } label: {
-                Label("Skills", systemImage: "star")
-                    .modifier(Heading())
-            } 
+                HStack {
+                    Label("Skills", systemImage: "star")
+                        .modifier(Heading())
+                    Spacer()
+                    Text("\(skills.count)")
+                }
+            }
             .tint(colorScheme == .dark ? .orange : .brown)
         }
         .backgroundStyle(.ultraThinMaterial)

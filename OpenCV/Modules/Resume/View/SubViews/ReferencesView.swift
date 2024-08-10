@@ -36,8 +36,12 @@ struct ReferencesView: View {
                     .shadow(radius: 4)
                 }
             } label: {
-                Label("References", systemImage: "person.badge.shield.checkmark")
-                    .modifier(Heading())
+                HStack {
+                    Label("References", systemImage: "person.badge.shield.checkmark")
+                        .modifier(Heading())
+                    Spacer()
+                    Text("\(references.count)")
+                }
             }
             .tint(colorScheme == .dark ? .orange : .brown)
         }

@@ -20,9 +20,13 @@ struct VolunteerView: View {
                     row(index: index, element: element)
                 }
             } label: {
-                Label("Volunteer Experience", systemImage: "figure.2.arms.open")
-                    .modifier(Heading())
-            } 
+                HStack {
+                    Label("Volunteer Experience", systemImage: "figure.2.arms.open")
+                        .modifier(Heading())
+                    Spacer()
+                    Text("\(vols.count)")
+                }
+            }
             .tint(colorScheme == .dark ? .orange : .brown)
         }
         .backgroundStyle(.ultraThinMaterial)

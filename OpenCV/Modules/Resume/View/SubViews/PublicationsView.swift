@@ -59,9 +59,13 @@ struct PublicationsView: View {
                     .shadow(radius: 4)
                 }
             } label: {
-                Label("Publications", systemImage: "text.book.closed")
-                    .modifier(Heading())
-            }  
+                HStack {
+                    Label("Publications", systemImage: "text.book.closed")
+                        .modifier(Heading())
+                    Spacer()
+                    Text("\(publications.count)")
+                }
+            }
             .tint(colorScheme == .dark ? .orange : .brown)
         }
         .backgroundStyle(.ultraThinMaterial)
