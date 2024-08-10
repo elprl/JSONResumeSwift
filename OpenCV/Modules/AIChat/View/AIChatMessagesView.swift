@@ -100,14 +100,14 @@ let _ = Self._printChanges()
                 ContentUnavailableView(
                     "No messages found",
                     systemImage: "message",
-                    description: Text("Enter a new message below")
+                    description: Text("Enter a new message or note below")
                 )
                 .contentShape(Rectangle())
             } else {
                 ContentUnavailableView(
                     "No messages found",
                     systemImage: "message",
-                    description: Text("To chat with AI, add an API key in Settings")
+                    description: Text("Enter a new note below.\nTo chat with AI, add an API key in Settings")
                 )
                 .contentShape(Rectangle())
             }

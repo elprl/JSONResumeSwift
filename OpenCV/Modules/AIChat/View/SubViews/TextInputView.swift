@@ -13,7 +13,10 @@ struct TextInputView: View {
     @AppStorage(UserDefaults.Keys.hasClaudeKey) var hasClaudeKey: Bool = false
     @AppStorage(UserDefaults.Keys.hasGeminiKey) var hasGeminiKey: Bool = false
     @AppStorage(UserDefaults.Keys.selectedAGI) var selectedAGI: AGIServiceChoice = .none
-
+    @AppStorage(UserDefaults.Keys.hasScopedRole) var hasScopedRole: Bool = true
+    @AppStorage(UserDefaults.Keys.hasScopedCV) var hasScopedCV: Bool = true
+    @AppStorage(UserDefaults.Keys.hasScopedHistory) var hasScopedHistory: Bool = true
+    
     var body: some View {
         VStack {
             Spacer()
@@ -36,9 +39,9 @@ struct TextInputView: View {
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack {
                     Text("Scopes: ")
-                    ToggleButton(title: "role", isOn: $viewModel.hasRoleScope, onColor: .blue) {}
-                    ToggleButton(title: "CV", isOn: $viewModel.hasFileScope, onColor: .blue) {}
-                    ToggleButton(title: "history", isOn: $viewModel.hasHistoryScope, onColor: .blue) {}
+                    ToggleButton(title: "role", isOn: $hasScopedRole, onColor: .blue) {}
+                    ToggleButton(title: "CV", isOn: $hasScopedCV, onColor: .blue) {}
+                    ToggleButton(title: "history", isOn: $hasScopedHistory, onColor: .blue) {}
                     Spacer()
                 }
             }

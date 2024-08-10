@@ -123,7 +123,7 @@ final class GeminiSettingsViewModel: ObservableObject {
             return false
         }
         
-        if token.count < 30 || token.count > 70 {
+        if token.count < 30 || token.count > 140 {
             errorMessage = "Token has an invalid length"
             return false
         }

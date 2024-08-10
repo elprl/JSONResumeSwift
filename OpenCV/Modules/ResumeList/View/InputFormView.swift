@@ -165,7 +165,9 @@ struct PlaceholderStyle: ViewModifier {
 }
 
 #Preview {
-    let viewModel = ResumeListViewModel(modelContext: PreviewController.previewContainer.mainContext)
-    InputFormView(viewModel: viewModel)
-        .modelContainer(PreviewController.previewContainer)
+    ZStack {
+        let viewModel = ResumeListViewModel(modelContext: PreviewController.previewContainer.mainContext)
+        InputFormView(viewModel: viewModel)
+            .modelContainer(PreviewController.previewContainer)
+    }
 }

@@ -29,22 +29,6 @@ final class AIChatMessagesViewModel {
     var agiContentCount: Int = 0
     var isAGIResponding: Bool = false
     var isScrollLockActive: Bool = true
-    var hasRoleScope: Bool = true
-    var hasSelectionScope: Bool = false {
-        didSet {
-            if hasSelectionScope && hasFileScope {
-                self.hasFileScope = false
-            }
-        }
-    }
-    var hasFileScope: Bool = true {
-        didSet {
-            if hasSelectionScope && hasFileScope {
-                self.hasSelectionScope = false
-            }
-        }
-    }
-    var hasHistoryScope: Bool = true
     var modelContext: ModelContext
     var resumeUrl: String
     var resume: Resume
@@ -65,6 +49,10 @@ final class AIChatMessagesViewModel {
             .removeDuplicates()
             .assign(to: \.isScrollLockActive, on: self)
             .store(in: &cancellables)
+        
+        if let selectedAGI = UserDefaults.standard.selectedAGI {
+            updateAGIService(selectedAGI: selectedAGI)
+        }
     }
     
 //    @MainActor
@@ -207,7 +195,10 @@ final class AIChatMessagesViewModel {
             messages.append(message)
             Log.pres.debug("Added blank AGI message")
             guard let agiService else { return }
-            let scopes = HistoryOptions.modeFrom(hasRole: hasRoleScope, hasCode: hasFileScope, hasHistory: hasHistoryScope, hasSelection: hasSelectionScope)
+            let hasScopedRole = UserDefaults.standard.hasScopedRole ?? true
+            let hasScopedCV = UserDefaults.standard.hasScopedCV ?? true
+            let hasScopedHistory = UserDefaults.standard.hasScopedHistory ?? true
+            let scopes = HistoryOptions.modeFrom(hasRole: hasScopedRole, hasCode: hasScopedCV, hasHistory: hasScopedHistory, hasSelection: false)
             agiService.setupHistory(for: resume.description, selectedRows: Set<Int>(), scopes: scopes, messages: messages)
             
             do {

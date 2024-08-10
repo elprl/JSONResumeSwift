@@ -4,10 +4,13 @@
     "" : {
 
     },
+    "* Stored in your Secure Apple Keychain. NEVER sent to our servers." : {
+
+    },
     "**1**: Get an API key - https://makersuite.google.com/app/apikey" : {
 
     },
-    "**1**: Go to - https://platform.openai.com/account/api-keys" : {
+    "**1**: Go to - https://platform.openai.com/api-keys" : {
 
     },
     "**1**: Join the Waitlist - https://www.anthropic.com/earlyaccess" : {
@@ -19,7 +22,7 @@
     "**2**: Create a new API key in the Console - https://console.anthropic.com/account/keys" : {
 
     },
-    "**2**: Create a new secret key" : {
+    "**2**: Create a new secret key. (Permissions All or [Read /v1/models, Write /v1/chat/completions])" : {
 
     },
     "**3**: Copy the key to clipboard" : {
@@ -29,6 +32,9 @@
 
     },
     "**4**: Enter the details below" : {
+
+    },
+    "**4**: Paste the key below and add a label" : {
 
     },
     "%@" : {
@@ -167,6 +173,9 @@
     "Chat Model" : {
 
     },
+    "Chat with (self.defaultModel)" : {
+
+    },
     "Claude Settings" : {
 
     },
@@ -238,7 +247,10 @@
     "Education" : {
 
     },
-    "Enter a new message below" : {
+    "Enter a new message or note below" : {
+
+    },
+    "Enter a new note below.\nTo chat with AI, add an API key in Settings" : {
 
     },
     "Enter API key" : {
@@ -265,6 +277,9 @@
     "Gemini Failed: Invalid API Key" : {
 
     },
+    "Gemini Failed: Response stopped early, (finishReason.rawValue)" : {
+
+    },
     "Gemini Failed: Unknown error" : {
 
     },
@@ -287,6 +302,9 @@
 
     },
     "GPT3-Tokenizer\nhttps://github.com/aespinilla/GPT3-Tokenizer" : {
+
+    },
+    "Hello world" : {
 
     },
     "Highlights" : {
@@ -504,9 +522,6 @@
           }
         }
       }
-    },
-    "To chat with AI, add an AI API key in Settings" : {
-
     },
     "Version" : {
 
