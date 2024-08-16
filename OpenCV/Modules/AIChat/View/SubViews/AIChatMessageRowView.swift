@@ -36,10 +36,11 @@ let _ = Self._printChanges()
     @ViewBuilder
     var header: some View {
         HStack(alignment: .center) {
-            Image(systemName: message.author.image)
+            Image(message.author.image)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
-                .frame(width: 30, height: 30)
+                .frame(width: 24, height: 24)
+                .environment(\.colorScheme, .light)
             Text(message.author.displayName)
                 .lineLimit(1)
                 .foregroundStyle(message.type == .aiQuestion ? .white : .black)
