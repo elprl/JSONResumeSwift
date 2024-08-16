@@ -36,7 +36,7 @@ let _ = Self._printChanges()
     @ViewBuilder
     var header: some View {
         HStack(alignment: .center) {
-            Image(message.author.image)
+            Image(systemName: message.author.image)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 30, height: 30)

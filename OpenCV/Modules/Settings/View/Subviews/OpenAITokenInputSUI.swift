@@ -7,7 +7,6 @@
 //
 
 import SwiftUI
-import SDWebImageSwiftUI
 
 struct OpenAITokenInputSUI: View {
     @ObservedObject var viewModel: OpenAISettingsViewModel
@@ -23,7 +22,7 @@ struct OpenAITokenInputSUI: View {
                         .bold()
                         .foregroundStyle(.primary)
                 }, icon: {
-                    WebImage(url: URL(string: "https://chat.openai.com/favicon-32x32.png"))
+                    Image(AGIServiceChoice.openai.imageKey)
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 30, height: 30)
@@ -73,6 +72,15 @@ struct OpenAITokenInputSUI: View {
                         .font(.subheadline)
                         .foregroundColor(.red)
                         .listRowSeparator(.hidden)
+                }
+                .listRowSeparator(.hidden)
+                .listRowBackground(Color.clear)                
+                
+                Section {
+                    Text("Powered by ChatGPT")
+                        .font(.headline)
+                        .foregroundStyle(.secondary)
+                        .frame(maxWidth: .infinity, alignment: .center)
                 }
                 .listRowSeparator(.hidden)
                 .listRowBackground(Color.clear)

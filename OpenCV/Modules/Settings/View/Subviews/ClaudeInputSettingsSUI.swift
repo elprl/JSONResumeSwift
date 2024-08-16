@@ -7,7 +7,6 @@
 //
 
 import SwiftUI
-import SDWebImageSwiftUI
 
 struct ClaudeInputSettingsSUI: View {
     @ObservedObject var viewModel: ClaudeSettingsViewModel
@@ -23,7 +22,7 @@ struct ClaudeInputSettingsSUI: View {
                         .bold()
                         .foregroundColor(.primary)
                 }, icon: {
-                    WebImage(url: URL(string: "https://www.anthropic.com/favicon.ico"))
+                    Image(AGIServiceChoice.claude.imageKey)
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 30, height: 30)
@@ -31,28 +30,23 @@ struct ClaudeInputSettingsSUI: View {
                 .listRowSeparator(.hidden)
                 .listRowBackground(Color.clear)
                 Section(header: Text("Steps")) {
-                    Button {
-                        openURL(URL(string: "https://makersuite.google.com/waitlist")!)
-                    } label: {
-                        Text("**1**: Join the Waitlist - https://www.anthropic.com/earlyaccess")
+                    VStack(alignment: .leading, spacing: 6) {
+                        Text("**1**: Create Anthropic account - https://www.anthropic.com/api")
                             .font(.subheadline)
                             .foregroundColor(.secondary)
                             .tint(.orange)
+                        Text("**2**: Create a new API key in the Console - https://console.anthropic.com/account/keys")
+                            .font(.subheadline)
+                            .foregroundColor(.secondary)
+                            .tint(.orange)
+                        Text("**3**: Copy the key to clipboard")
+                            .font(.subheadline)
+                            .foregroundColor(.secondary)
+                        Text("**4**: Enter the details below")
+                            .font(.subheadline)
+                            .foregroundColor(.secondary)
                     }
                     .listRowSeparator(.hidden)
-                    Text("**2**: Create a new API key in the Console - https://console.anthropic.com/account/keys")
-                        .font(.subheadline)
-                        .foregroundColor(.secondary)
-                        .tint(.orange)
-                        .listRowSeparator(.hidden)
-                    Text("**3**: Copy the key to clipboard")
-                        .font(.subheadline)
-                        .foregroundColor(.secondary)
-                        .listRowSeparator(.hidden)
-                    Text("**4**: Enter the details below")
-                        .font(.subheadline)
-                        .foregroundColor(.secondary)
-                        .listRowSeparator(.hidden)
                 }
                 .listRowSeparator(.hidden)
                 .listRowBackground(Color.clear)
@@ -74,6 +68,16 @@ struct ClaudeInputSettingsSUI: View {
                         .font(.subheadline)
                         .foregroundColor(.red)
                         .listRowSeparator(.hidden)
+                }
+                .listRowSeparator(.hidden)
+                .listRowBackground(Color.clear)
+                                
+                Section {
+                    Image("claudePoweredBy")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(height: 25, alignment: .center)
+                        .frame(maxWidth: .infinity)
                 }
                 .listRowSeparator(.hidden)
                 .listRowBackground(Color.clear)

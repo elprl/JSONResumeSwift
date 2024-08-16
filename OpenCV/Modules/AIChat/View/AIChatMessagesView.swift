@@ -7,7 +7,6 @@
 //
 
 import SwiftUI
-import SDWebImageSwiftUI
 import SwiftData
 
 struct AIChatMessagesView: View {

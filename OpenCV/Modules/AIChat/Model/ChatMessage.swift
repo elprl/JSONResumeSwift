@@ -44,11 +44,11 @@ enum Author: Codable {
     var image: String {
         switch self {
         case .gemini(_):
-            return "geminiIcon"
+            return "sparkle"
         case .openai(_):
-            return "openaiIcon"
+            return "atom"
         case .claude(_):
-            return "claudeIcon"
+            return "staroflife.fill"
         case .user(_):
             return "brain"
         }
