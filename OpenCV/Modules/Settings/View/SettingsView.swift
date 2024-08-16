@@ -81,27 +81,25 @@ struct SettingsView: View {
         Section(header: SectionHeaderBlock(title: "AI SETUP", description: "Setup Integrations with AI Models")) {
             NavigationLink(value: NavigationItem.openAISettings) {
                 HStack {
-                    WebImage(url: URL(string: "https://chat.openai.com/favicon-32x32.png"))
+                    Image("openai-lockup")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                        .frame(width: 30, height: 30)
-                    Text("OpenAI / ChatGPT")
-                        .font(.body)
-                        .foregroundStyle(.primary)
+                        .frame(width: 200, height: 25, alignment: .leading)
                     Spacer()
                 }
                 .buttonStyle(PlainButtonStyle())
             }
             
             NavigationLink(value: NavigationItem.claudeSettings) {
-                HStack {
-                    WebImage(url: URL(string: "https://www.anthropic.com/favicon.ico"))
+                HStack(alignment: .center, spacing: 6) {
+                    Image("claudeSpark")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                        .frame(width: 30, height: 30)
-                    Text("Anthropic Claude")
-                        .font(.body)
-                        .foregroundStyle(.primary)
+                        .frame(width: 25, height: 25, alignment: .leading)
+                    Image("claudeWordmark")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 200, height: 20, alignment: .leading)
                     Spacer()
                 }
                 .buttonStyle(PlainButtonStyle())
@@ -109,13 +107,10 @@ struct SettingsView: View {
             
             NavigationLink(value: NavigationItem.geminiSettings) {
                 HStack {
-                    WebImage(url: URL(string: "https://ai.google.dev/static/docs/images/icon_480.png"))
+                    Image("geminiLogo")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                        .frame(width: 30, height: 30)
-                    Text("Google Gemini (US only)")
-                        .font(.body)
-                        .foregroundStyle(.primary)
+                        .frame(width: 200, height: 25, alignment: .leading)
                     Spacer()
                 }
                 .buttonStyle(PlainButtonStyle())

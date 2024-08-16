@@ -39,9 +39,9 @@ struct TextInputView: View {
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack {
                     Text("Scopes: ")
-                    ToggleButton(title: "role", isOn: $hasScopedRole, onColor: .blue) {}
-                    ToggleButton(title: "CV", isOn: $hasScopedCV, onColor: .blue) {}
-                    ToggleButton(title: "history", isOn: $hasScopedHistory, onColor: .blue) {}
+                    ToggleButton(title: "role", isOn: $hasScopedRole, onColor: .orange, onTextColor: .black) {}
+                    ToggleButton(title: "CV", isOn: $hasScopedCV, onColor: .orange, onTextColor: .black) {}
+                    ToggleButton(title: "history", isOn: $hasScopedHistory, onColor: .orange, onTextColor: .black) {}
                     Spacer()
                 }
             }
@@ -133,7 +133,7 @@ struct TextInputView: View {
                 Image(selectedAGI.imageKey)
                     .resizable()
                     .scaledToFit()
-                    .foregroundStyle(.black)
+                    .foregroundStyle(.orange)
                     .padding(4)
             }
             .frame(width: 30, height: 30)

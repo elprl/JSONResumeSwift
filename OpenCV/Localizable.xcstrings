@@ -7,13 +7,13 @@
     "* Stored in your Secure Apple Keychain. NEVER sent to our servers." : {
 
     },
+    "**1**: Create Anthropic account - https://www.anthropic.com/api" : {
+
+    },
     "**1**: Get an API key - https://makersuite.google.com/app/apikey" : {
 
     },
     "**1**: Go to - https://platform.openai.com/api-keys" : {
-
-    },
-    "**1**: Join the Waitlist - https://www.anthropic.com/earlyaccess" : {
 
     },
     "**2**: Copy the key to clipboard" : {
@@ -140,9 +140,6 @@
 
     },
     "AI Chat & Notes" : {
-
-    },
-    "Anthropic Claude" : {
 
     },
     "App Clip" : {
@@ -298,9 +295,6 @@
     "generative-ai-swift\nhttps://github.com/google-gemini/generative-ai-swift" : {
 
     },
-    "Google Gemini (US only)" : {
-
-    },
     "Google Gemini Settings" : {
 
     },
@@ -431,9 +425,6 @@
     "Open AI Settings" : {
 
     },
-    "OpenAI / ChatGPT" : {
-
-    },
     "or" : {
 
     },
@@ -444,6 +435,12 @@
 
     },
     "Personal Note" : {
+
+    },
+    "Powered by ChatGPT" : {
+
+    },
+    "Powered by Gemini" : {
 
     },
     "Projects" : {

@@ -141,13 +141,28 @@ enum AGIServiceChoice: String {
     var imageKey: String {
         switch self {
         case .openai:
-            return "openaiIcon"
+            return "openai-logomark"
         case .claude:
-            return "claudeIcon"
+            return "claudeSpark"
         case .gemini:
             return "geminiIcon"
         case .customAI:
-            return "brain"
+            return "brain.head.profile"
+        case .none:
+            return "note"
+        }
+    }
+    
+    var systemImageKey: String {
+        switch self {
+        case .openai:
+            return "atom"
+        case .claude:
+            return "staroflife.fill"
+        case .gemini:
+            return "sparkle"
+        case .customAI:
+            return "brain.head.profile"
         case .none:
             return "note"
         }
