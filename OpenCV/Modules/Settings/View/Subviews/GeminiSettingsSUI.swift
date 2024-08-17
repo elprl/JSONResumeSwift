@@ -63,6 +63,12 @@ struct GeminiSettingsSUI: View {
                             .frame(alignment: .trailing)
                     }
                 }
+                
+                Text("*Gemini API free tier is currently unavailable in UK. Enable billing on your project in Google AI Studio.")
+                    .font(.caption)
+                    .foregroundColor(.secondary)
+                    .tint(.orange)
+                    .listRowSeparator(.hidden)
             }
         }
         .scrollContentBackground(.hidden)
