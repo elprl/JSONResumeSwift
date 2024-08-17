@@ -142,7 +142,7 @@ final class GeminiAPIService: ChatGPTAPIService, @unchecked Sendable {
                     switch error {
                     case let GenerateContentError.internalError(underlying: underlyingError):
                         Log.api.error("Gemini Failed: underlying error: \(underlyingError.localizedDescription)")
-                        errorMessage = NSLocalizedString("Gemini Failed: Internal error", comment: "")
+                        errorMessage = NSLocalizedString("Gemini Failed: Internal error. Check billing & availability in your country.", comment: "")
                     case let GenerateContentError.promptBlocked(response: generateContentResponse):
                         Log.api.error("Gemini Failed: promptBlocked error: \(generateContentResponse.text ?? "")")
                         errorMessage = NSLocalizedString("Gemini Failed: Your prompt was blocked", comment: "")
