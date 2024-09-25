@@ -37,7 +37,7 @@ final class ClaudeAPIService: @unchecked Sendable, AGIServiceProtocol {
         #endif
         self.apiKey = prepToken
         if let key = self.apiKey {
-            self.service = AnthropicServiceFactory.service(apiKey: key)
+            self.service = AnthropicServiceFactory.service(apiKey: key, betaHeaders: nil)
         }
         setIsActive()
     }
