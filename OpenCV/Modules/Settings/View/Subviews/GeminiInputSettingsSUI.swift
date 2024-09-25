@@ -8,7 +8,6 @@
 
 import Foundation
 import SwiftUI
-import SDWebImageSwiftUI
 
 struct GeminiInputSettingsSUI: View {
     @ObservedObject var viewModel: GeminiSettingsViewModel
@@ -24,7 +23,7 @@ struct GeminiInputSettingsSUI: View {
                         .bold()
                         .foregroundColor(.primary)
                 }, icon: {
-                    WebImage(url: URL(string: "https://ai.google.dev/static/docs/images/icon_480.png"))
+                    Image(AGIServiceChoice.gemini.imageKey)
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 30, height: 30)
@@ -70,6 +69,15 @@ struct GeminiInputSettingsSUI: View {
                         .font(.subheadline)
                         .foregroundColor(.red)
                         .listRowSeparator(.hidden)
+                }
+                .listRowSeparator(.hidden)
+                .listRowBackground(Color.clear)
+                
+                Section {
+                    Text("Powered by Gemini")
+                        .font(.headline)
+                        .foregroundStyle(.secondary)
+                        .frame(maxWidth: .infinity, alignment: .center)
                 }
                 .listRowSeparator(.hidden)
                 .listRowBackground(Color.clear)

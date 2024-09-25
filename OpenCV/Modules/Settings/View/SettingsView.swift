@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import SDWebImageSwiftUI
 
 enum NavigationItem {
     case openAISettings
@@ -81,49 +80,48 @@ struct SettingsView: View {
         Section(header: SectionHeaderBlock(title: "AI SETUP", description: "Setup Integrations with AI Models")) {
             NavigationLink(value: NavigationItem.openAISettings) {
                 HStack {
-                    WebImage(url: URL(string: "https://chat.openai.com/favicon-32x32.png"))
+                    Image("openai-lockup")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                        .frame(width: 30, height: 30)
-                    Text("OpenAI / ChatGPT")
-                        .font(.body)
-                        .foregroundStyle(.primary)
+                        .frame(width: 200, height: 25, alignment: .leading)
                     Spacer()
                 }
+                .buttonStyle(PlainButtonStyle())
             }
             
             NavigationLink(value: NavigationItem.claudeSettings) {
-                HStack {
-                    WebImage(url: URL(string: "https://www.anthropic.com/favicon.ico"))
+                HStack(alignment: .center, spacing: 6) {
+                    Image("claudeSpark")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                        .frame(width: 30, height: 30)
-                    Text("Anthropic Claude")
-                        .font(.body)
-                        .foregroundStyle(.primary)
+                        .frame(width: 25, height: 25, alignment: .leading)
+                    Image("claudeWordmark")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 200, height: 20, alignment: .leading)
                     Spacer()
                 }
+                .buttonStyle(PlainButtonStyle())
             }
             
             NavigationLink(value: NavigationItem.geminiSettings) {
                 HStack {
-                    WebImage(url: URL(string: "https://ai.google.dev/static/docs/images/icon_480.png"))
+                    Image("geminiLogo")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                        .frame(width: 30, height: 30)
-                    Text("Google Gemini (US only)")
-                        .font(.body)
-                        .foregroundStyle(.primary)
+                        .frame(width: 200, height: 25, alignment: .leading)
                     Spacer()
                 }
+                .buttonStyle(PlainButtonStyle())
             }
             
             NavigationLink(destination: SingleTextEditor(text: $aiViewModel.agiRole, defaultText: AGIServiceConstants.agiRole, title: "Role Setup", maxCharacters: 400)) {
                 HStack {
-                    Text("Role Setup").font(.body).lineLimit(1).foregroundColor(.primary)
+                    Text("Role Setup").font(.body).lineLimit(1).foregroundStyle(.primary)
                     Spacer()
-                    Text(aiViewModel.agiRole).font(.body).lineLimit(1).foregroundColor(.secondary)
+                    Text(aiViewModel.agiRole).font(.body).lineLimit(1).foregroundStyle(.secondary)
                 }
+                .buttonStyle(PlainButtonStyle())
             }
         }
     }
@@ -134,7 +132,7 @@ struct SettingsView: View {
             NavigationLink("Licenses & Thanks") {
                 List {
                     Text("JSON Resume\nhttps://github.com/jsonresume")
-                    Text("SDWebImageSwiftUI\nhttps://github.com/SDWebImage/SDWebImageSwiftUI.git")
+                    Text("Nuke\nhttps://github.com/kean/Nuke")
                     Text("generative-ai-swift\nhttps://github.com/google-gemini/generative-ai-swift")
                     Text("GPT3-Tokenizer\nhttps://github.com/aespinilla/GPT3-Tokenizer")
                     Text("SwiftAnthropic\nhttps://github.com/jamesrochabrun/SwiftAnthropic")

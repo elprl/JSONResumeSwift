@@ -35,21 +35,21 @@ struct AwardsView: View {
                         }
                         .frame(maxWidth: .infinity, alignment: .leading)
                     }
-                    .backgroundStyle(.ultraThinMaterial)
-                    .clipShape(RoundedRectangle(cornerRadius: 8))
+                    .groupBoxStyle(GlassifyGroupBoxStyle(lightStartPoint: .bottomLeading, lightEndPoint: .topTrailing, lightColor: .yellow))
                     .padding(4)
-                    .shadow(radius: 4)
                 }
             } label: {
-                Label("Awards", systemImage: "trophy")
-                    .modifier(Heading())
-            } 
+                HStack {
+                    Label("Awards", systemImage: "trophy")
+                        .modifier(Heading())
+                    Spacer()
+                    Text("\(awards.count)")
+                }
+            }
             .tint(colorScheme == .dark ? .orange : .brown)
         }
-        .backgroundStyle(.ultraThinMaterial)
-        .clipShape(RoundedRectangle(cornerRadius: 8))
+        .groupBoxStyle(GlassifyGroupBoxStyle(lightStartPoint: .bottomLeading, lightEndPoint: .topTrailing, lightColor: .yellow))
         .padding(.horizontal, 4)
-        .shadow(radius: 4)
     }
 }
 

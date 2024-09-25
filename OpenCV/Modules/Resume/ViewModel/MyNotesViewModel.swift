@@ -23,9 +23,9 @@ final class MyNotesViewModel: ObservableObject {
             .removeDuplicates()
             .receive(on: RunLoop.main)
             .sink(receiveCompletion: { _ in
-                print("note receiveCompletion")
+                Log.pres.debug("note receiveCompletion")
             }, receiveValue: { newNote in
-                print("note receiveValue \(newNote)")
+                Log.pres.debug("note receiveValue \(newNote)")
                 self.saveNote(note: newNote)
             })
     }

@@ -59,20 +59,17 @@ struct SingleTextEditor: View {
     }
 }
 
-#Preview {
-    Group {
-        SingleTextEditor(text: .constant("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."), defaultText: "")
-            .previewLayout(PreviewLayout.sizeThatFits)
-            .padding()
-            .background(Color(.systemBackground))
-            .environment(\.colorScheme, .light)
-            .previewDisplayName("Light Mode")
-        
-        SingleTextEditor(text: .constant("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."), defaultText: "")
-            .previewLayout(PreviewLayout.sizeThatFits)
-            .padding()
-            .background(Color(.systemBackground))
-            .environment(\.colorScheme, .dark)
-            .previewDisplayName("Dark Mode")
-    }
+#Preview("Light Mode", traits: .sizeThatFitsLayout) {
+    SingleTextEditor(text: .constant("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."), defaultText: "")
+        .padding()
+        .background(Color(.systemBackground))
+        .environment(\.colorScheme, .light)
+    
+}
+
+#Preview("Dark Mode", traits: .sizeThatFitsLayout) {
+    SingleTextEditor(text: .constant("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."), defaultText: "")
+        .padding()
+        .background(Color(.systemBackground))
+        .environment(\.colorScheme, .dark)
 }

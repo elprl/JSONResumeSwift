@@ -62,14 +62,6 @@ struct OpenAISettingsSUI: View {
                             .frame(alignment: .trailing)
                     }
                 }
-                HStack {
-                    Spacer()
-                    Text("GPT-4 requires acceptance from OpenAI on limited beta. [Waitlist](https://openai.com/waitlist/gpt-4-api)")
-                        .font(.caption)
-                        .foregroundColor(.secondary)
-                        .tint(.orange)
-                }
-                .listRowSeparator(.hidden)
             }
         }
         .scrollContentBackground(.hidden)

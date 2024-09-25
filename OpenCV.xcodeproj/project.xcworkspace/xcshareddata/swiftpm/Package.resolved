@@ -1,5 +1,5 @@
 {
-  "originHash" : "c1cc467bab88740ba6ca98b86d63959438d9d9ea56a14ce1ba2f61f14df0fc43",
+  "originHash" : "7105d35642aa16bfc2cb8e22ed878d34c8c8045e797b67c9c5c52c92cb755d80",
   "pins" : [
     {
       "identity" : "codescanner",
@@ -15,8 +15,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/google-gemini/generative-ai-swift",
       "state" : {
-        "revision" : "54784005b57c2235a7669e0c12e8dafa68f0ca5f",
-        "version" : "0.5.4"
+        "revision" : "2b8f14cfd158982fe3b2c8a8582ac3af5743742f",
+        "version" : "0.5.5"
       }
     },
     {
@@ -29,21 +29,12 @@
       }
     },
     {
-      "identity" : "sdwebimage",
+      "identity" : "nuke",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/SDWebImage/SDWebImage.git",
+      "location" : "https://github.com/kean/Nuke",
       "state" : {
-        "revision" : "be0bcd7823ce56629948491f2eaeaa19979514f7",
-        "version" : "5.19.4"
-      }
-    },
-    {
-      "identity" : "sdwebimageswiftui",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/SDWebImage/SDWebImageSwiftUI.git",
-      "state" : {
-        "revision" : "5d462f7530677ae0c2b9510c26383aa25ba48751",
-        "version" : "3.1.1"
+        "revision" : "0ead44350d2737db384908569c012fe67c421e4d",
+        "version" : "12.8.0"
       }
     },
     {
@@ -69,8 +60,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/jamesrochabrun/SwiftAnthropic",
       "state" : {
-        "revision" : "853c539a58cc20a55d37c050b9384e96dd7826b0",
-        "version" : "1.7.0"
+        "revision" : "cea1929f50ae642ac1308e7776af51a792679a6b",
+        "version" : "1.8.1"
       }
     }
   ],

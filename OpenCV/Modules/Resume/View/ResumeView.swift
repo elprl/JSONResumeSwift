@@ -11,18 +11,14 @@ import SwiftData
 struct ResumeView: View {
     @Environment(\.colorScheme) private var colorScheme
     @StateObject private var viewModel: ResumeViewModel
-    private let resume: Resume
-    private let person: Person
     private let modelContext: ModelContext
     @AppStorage(UserDefaults.Keys.hasAgiKey) var hasAgiKey: Bool = false
     @AppStorage(UserDefaults.Keys.hasClaudeKey) var hasClaudeKey: Bool = false
     @AppStorage(UserDefaults.Keys.hasGeminiKey) var hasGeminiKey: Bool = false
 
-    init(resume: Resume, person: Person, modelContext: ModelContext) {
-        self.resume = resume
-        self.person = person
+    init(resume: Resume, resumeUrl: String, modelContext: ModelContext) {
         self.modelContext = modelContext
-        _viewModel = StateObject(wrappedValue: ResumeViewModel(resumeUrl: person.resumeUrl))
+        _viewModel = StateObject(wrappedValue: ResumeViewModel(resumeUrl: resumeUrl, resume: resume))
     }
     
     var body: some View {
@@ -33,6 +29,7 @@ struct ResumeView: View {
 
             ScrollView(showsIndicators: false) {
                 basics
+                stats
                 work
                 volunteer
                 education
@@ -47,10 +44,10 @@ struct ResumeView: View {
             }
             .padding(.horizontal)
         }
-        .navigationTitle(resume.basics.name ?? "")
+        .navigationTitle(viewModel.resume.basics.name ?? "")
         .navigationBarTitleDisplayMode(.inline)
         .navigationDestination(isPresented: $viewModel.showAIChat, destination: {
-            AIChatMessagesView(modelContext: modelContext, person: person, resume: resume)
+            AIChatMessagesView(modelContext: modelContext, resumeUrl: viewModel.resumeUrl, resume: viewModel.resume)
                 .modelContainer(modelContext.container)
         })
         .toolbar {
@@ -66,12 +63,18 @@ struct ResumeView: View {
     
     @ViewBuilder
     private var basics: some View {
-        BasicsView(basics: resume.basics)
+        BasicsView(basics: viewModel.resume.basics)
+    }
+    
+    @ViewBuilder
+    private var stats: some View {
+        StatsView(viewModel: viewModel)
+            .padding(.top)
     }
     
     @ViewBuilder
     private var work: some View {
-        if let works = resume.work {
+        if let works = viewModel.resume.work {
             WorkView(works: works)
                 .padding(.top)
         }
@@ -79,7 +82,7 @@ struct ResumeView: View {
     
     @ViewBuilder
     private var volunteer: some View {
-        if let vols = resume.volunteer {
+        if let vols = viewModel.resume.volunteer {
             VolunteerView(vols: vols)
                 .padding(.top)
         }
@@ -87,7 +90,7 @@ struct ResumeView: View {
     
     @ViewBuilder
     private var education: some View {
-        if let edus = resume.education {
+        if let edus = viewModel.resume.education {
             EducationView(educations: edus)
                 .padding(.top)
         }
@@ -95,7 +98,7 @@ struct ResumeView: View {
     
     @ViewBuilder
     private var awards: some View {
-        if let awards = resume.awards {
+        if let awards = viewModel.resume.awards {
             AwardsView(awards: awards)
                 .padding(.top)
         }
@@ -103,7 +106,7 @@ struct ResumeView: View {
     
     @ViewBuilder
     private var certificates: some View {
-        if let certificates = resume.certificates {
+        if let certificates = viewModel.resume.certificates {
             CertificatesView(certificates: certificates)
                 .padding(.top)
        }
@@ -111,7 +114,7 @@ struct ResumeView: View {
     
     @ViewBuilder
     private var publications: some View {
-        if let publications = resume.publications {
+        if let publications = viewModel.resume.publications {
             PublicationsView(publications: publications)
                 .padding(.top)
        }
@@ -119,7 +122,7 @@ struct ResumeView: View {
     
     @ViewBuilder
     private var skills: some View {
-        if let skills = resume.skills {
+        if let skills = viewModel.resume.skills {
             SkillsView(skills: skills)
                 .padding(.top)
         }
@@ -127,7 +130,7 @@ struct ResumeView: View {
     
     @ViewBuilder
     private var languages: some View {
-        if let languages = resume.languages {
+        if let languages = viewModel.resume.languages {
             LanguagesView(languages: languages)
                 .padding(.top)
        }
@@ -135,7 +138,7 @@ struct ResumeView: View {
     
     @ViewBuilder
     private var interests: some View {
-        if let interests = resume.interests {
+        if let interests = viewModel.resume.interests {
             InterestsView(interests: interests)
                 .padding(.top)
        }
@@ -143,7 +146,7 @@ struct ResumeView: View {
     
     @ViewBuilder
     private var references: some View {
-        if let references = resume.references {
+        if let references = viewModel.resume.references {
             ReferencesView(references: references)
                 .padding(.top)
         }
@@ -151,7 +154,7 @@ struct ResumeView: View {
     
     @ViewBuilder
     private var projects: some View {
-        if let projects = resume.projects {
+        if let projects = viewModel.resume.projects {
             ProjectsView(projects: projects)
                 .padding(.top)
        }
@@ -167,7 +170,7 @@ struct AsyncTestView: View {
                 let config = ModelConfiguration(isStoredInMemoryOnly: true)
                 let container = try! ModelContainer(for: Person.self, configurations: config)
 
-                ResumeView(resume: resume, person: Person(resumeUrl: ""), modelContext: container.mainContext)
+                ResumeView(resume: resume, resumeUrl: "", modelContext: container.mainContext)
             }
         }
         .task {

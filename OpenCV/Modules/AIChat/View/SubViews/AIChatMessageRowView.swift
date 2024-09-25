@@ -39,7 +39,8 @@ let _ = Self._printChanges()
             Image(message.author.image)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
-                .frame(width: 30, height: 30)
+                .frame(width: 24, height: 24)
+                .environment(\.colorScheme, .light)
             Text(message.author.displayName)
                 .lineLimit(1)
                 .foregroundStyle(message.type == .aiQuestion ? .white : .black)
@@ -129,30 +130,30 @@ let _ = Self._printChanges()
     }
 }
 
-#if DEBUG
-
-#Preview {
-    @Previewable @State var message1: ChatMessage = ChatMessage(author: .user("Paul"), content: "Hello worlds", resumeUrl: "")
-    @Previewable @State var message2: ChatMessage = ChatMessage(author: .gemini("Gemini 1.5"), content: "Hello worlds", resumeUrl: "")
-    @Previewable @State var message3: ChatMessage = ChatMessage(author: .claude("Claude 2"), content: "Addressing these challenges requires careful planning, engineering, and collaboration with relevant stakeholders to ensure successful implementation of solar panels in car parks while maximizing their benefits.", resumeUrl: "")
-    @Previewable @State var message4: ChatMessage = ChatMessage(author: .openai("ChatGPT 4"), content: "Hello worlds", resumeUrl: "")
-    
-    ScrollView {
-        LazyVStack {
-            
-            AIChatMessageRowView(viewModel: AIChatMessagesViewModel(modelContext: PreviewController.previewContainer.mainContext, person: Person(resumeUrl: ""), resume: Resume.mock()), message: message1)
-                .padding()
-            
-            AIChatMessageRowView(viewModel: AIChatMessagesViewModel(modelContext: PreviewController.previewContainer.mainContext, person: Person(resumeUrl: ""), resume: Resume.mock()), message: message2)
-                .padding()
-            
-            AIChatMessageRowView(viewModel: AIChatMessagesViewModel(modelContext: PreviewController.previewContainer.mainContext, person: Person(resumeUrl: ""), resume: Resume.mock()), message: message3)
-                .padding()
-            
-            AIChatMessageRowView(viewModel: AIChatMessagesViewModel(modelContext: PreviewController.previewContainer.mainContext, person: Person(resumeUrl: ""), resume: Resume.mock()), message: message4)
-                .padding()
-        }
-    }
-    .modelContainer(PreviewController.previewContainer)
-}
-#endif
+//#if DEBUG
+//
+//#Preview {
+//    @Previewable @State var message1: ChatMessage = ChatMessage(author: .user("Paul"), content: "Hello worlds", resumeUrl: "")
+//    @Previewable @State var message2: ChatMessage = ChatMessage(author: .gemini("Gemini 1.5"), content: "Hello worlds", resumeUrl: "")
+//    @Previewable @State var message3: ChatMessage = ChatMessage(author: .claude("Claude 2"), content: "Addressing these challenges requires careful planning, engineering, and collaboration with relevant stakeholders to ensure successful implementation of solar panels in car parks while maximizing their benefits.", resumeUrl: "")
+//    @Previewable @State var message4: ChatMessage = ChatMessage(author: .openai("ChatGPT 4"), content: "Hello worlds", resumeUrl: "")
+//    
+//    ScrollView {
+//        LazyVStack {
+//            
+//            AIChatMessageRowView(viewModel: AIChatMessagesViewModel(modelContext: PreviewController.previewContainer.mainContext, person: Person(resumeUrl: ""), resume: Resume.mock()), message: message1)
+//                .padding()
+//            
+//            AIChatMessageRowView(viewModel: AIChatMessagesViewModel(modelContext: PreviewController.previewContainer.mainContext, person: Person(resumeUrl: ""), resume: Resume.mock()), message: message2)
+//                .padding()
+//            
+//            AIChatMessageRowView(viewModel: AIChatMessagesViewModel(modelContext: PreviewController.previewContainer.mainContext, person: Person(resumeUrl: ""), resume: Resume.mock()), message: message3)
+//                .padding()
+//            
+//            AIChatMessageRowView(viewModel: AIChatMessagesViewModel(modelContext: PreviewController.previewContainer.mainContext, person: Person(resumeUrl: ""), resume: Resume.mock()), message: message4)
+//                .padding()
+//        }
+//    }
+//    .modelContainer(PreviewController.previewContainer)
+//}
+//#endif

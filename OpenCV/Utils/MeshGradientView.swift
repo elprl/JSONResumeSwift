@@ -18,15 +18,15 @@ struct MeshGradientView: View {
                 ], colors: [
                     .logoRed, .logoGreen, .indigo,
                     .logoOrange, .logoGreen, .logoBlue,
-                    .yellow, .logoOrange, .mint
+                    .yellow, .yellow.opacity(0.7), .mint
                 ], background: .black.opacity(0.7))
                 .ignoresSafeArea()
             } else {
                 // Fallback on earlier versions
                 LinearGradient(colors: [
-                    .logoRed, .logoGreen,
-                    .logoOrange, .logoBlue,
-                ], startPoint: .top, endPoint: .bottom)
+                    .mint, .logoGreen,
+                    .logoOrange, .yellow,
+                ], startPoint: .topTrailing, endPoint: .bottomLeading)
                 .ignoresSafeArea()
             }
         }

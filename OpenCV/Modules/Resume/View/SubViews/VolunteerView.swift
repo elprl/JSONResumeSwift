@@ -20,15 +20,17 @@ struct VolunteerView: View {
                     row(index: index, element: element)
                 }
             } label: {
-                Label("Volunteer Experience", systemImage: "figure.2.arms.open")
-                    .modifier(Heading())
-            } 
+                HStack {
+                    Label("Volunteer Experience", systemImage: "figure.2.arms.open")
+                        .modifier(Heading())
+                    Spacer()
+                    Text("\(vols.count)")
+                }
+            }
             .tint(colorScheme == .dark ? .orange : .brown)
         }
-        .backgroundStyle(.ultraThinMaterial)
-        .clipShape(RoundedRectangle(cornerRadius: 8))
+        .groupBoxStyle(GlassifyGroupBoxStyle(lightStartPoint: .bottomLeading, lightEndPoint: .topTrailing, lightColor: .yellow))
         .padding(.horizontal, 4)
-        .shadow(radius: 4)
     }
     
     private func row(index: Int, element: Volunteer) -> some View {

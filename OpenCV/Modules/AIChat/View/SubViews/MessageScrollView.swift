@@ -8,6 +8,7 @@ import SwiftUI
 
 @available(iOS 18.0, *)
 struct MessageScrollView18: View {
+    @Environment(\.horizontalSizeClass) private var horizontalSizeClass
     @State private var scrollPosition = ScrollPosition(idType: ChatMessage.ID.self)
     var viewModel: AIChatMessagesViewModel
     
@@ -22,7 +23,7 @@ struct MessageScrollView18: View {
                         }
                     }, label: {
                         AIChatMessageRowView(viewModel: viewModel, message: message)
-                            .padding(.horizontal)
+                            .padding(.horizontal, horizonPadding)
                             .padding(.bottom, 8)
                             .id(message.id)
                     })
@@ -83,9 +84,18 @@ struct MessageScrollView18: View {
         Color.clear
             .frame(width: 0, height: 380, alignment: .bottom)
     }
+    
+    private var horizonPadding: CGFloat {
+        if horizontalSizeClass == .regular {
+            return 48
+        } else {
+            return 16
+        }
+    }
 }
 
 struct MessageScrollView: View {
+    @Environment(\.horizontalSizeClass) private var horizontalSizeClass
     var viewModel: AIChatMessagesViewModel
     @State private var didPressScrollToBottom: Bool = false
 
@@ -101,15 +111,19 @@ struct MessageScrollView: View {
                             }
                         }, label: {
                             AIChatMessageRowView(viewModel: viewModel, message: message)
-                                .padding(.horizontal)
+                                .padding(.horizontal, horizonPadding)
                                 .padding(.bottom, 8)
-                                .id(message.id)
                         })
                         .transition(.slide)
+                        .id(message.id)
                     }
                     bottomPadding
                 }
+                .animation(.default, value: viewModel.messages)
             }
+            .contentMargins(.top, 100.0, for: .scrollIndicators)
+            .contentMargins(.bottom, 120.0, for: .scrollIndicators)
+            .overlay(scrollToBottom)
             .task {
                 withAnimation {
                     outerProxy.scrollTo(Int.max, anchor: .bottom)
@@ -120,8 +134,6 @@ struct MessageScrollView: View {
                     outerProxy.scrollTo(Int.max, anchor: .bottom)
                 }
             }
-            .contentMargins(.top, 100.0, for: .scrollIndicators)
-            .contentMargins(.bottom, 120.0, for: .scrollIndicators)
             .onChange(of: self.didPressScrollToBottom) {
                 withAnimation {
                     if self.didPressScrollToBottom {
@@ -130,7 +142,6 @@ struct MessageScrollView: View {
                     }
                 }
             }
-            .overlay(scrollToBottom)
         }
     }
     
@@ -148,11 +159,11 @@ struct MessageScrollView: View {
                 .shadow(radius: 3)
                 .padding(.bottom, 130)
                 .padding(.trailing)
-                .disabled(viewModel.isScrollLockActive)
-                .opacity(viewModel.isScrollLockActive ? 0 : 1)
+//                .disabled(viewModel.isScrollLockActive)
+//                .opacity(viewModel.isScrollLockActive ? 0 : 1)
             }
         }
-        .transition(.fade)
+        .transition(.opacity)
     }
     
     @ViewBuilder
@@ -167,5 +178,13 @@ struct MessageScrollView: View {
         Color.clear
             .frame(width: 0, height: 380, alignment: .bottom)
             .id(Int.max)
+    }
+    
+    private var horizonPadding: CGFloat {
+        if horizontalSizeClass == .regular {
+            return 48
+        } else {
+            return 16
+        }
     }
 }

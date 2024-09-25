@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import SDWebImageSwiftUI
+import NukeUI
 
 struct BasicsView: View {
     @Environment(\.colorScheme) private var colorScheme
@@ -15,14 +15,17 @@ struct BasicsView: View {
     var body: some View {
         GroupBox {
             HStack(alignment: .center, spacing: 2) {
-                WebImage(url: URL(string: basics.image ?? "")) { image in
-                    image.resizable()
-                } placeholder: {
-                    placeholderImage
+                LazyImage(url: URL(string: basics.image ?? "")) { state in
+                    if let image = state.image {
+                        image.resizable().aspectRatio(contentMode: .fit)
+                    } else if state.error != nil {
+                        Image(systemName: "exclamationmark.triangle.fill") // Indicates an error
+                    } else {
+                        placeholderImage // Acts as a placeholder
+                    }
                 }
-                .indicator(.activity) // Activity Indicator
-                .transition(.fade(duration: 0.5)) // Fade Transition with duration
-                .scaledToFit()
+                .transition(.opacity)
+                .animation(.easeInOut, value: basics.image)
                 .frame(width: 70, height: 70)
                 .clipShape(Circle())
                 .shadow(radius: 4)
@@ -66,10 +69,8 @@ struct BasicsView: View {
                 .tint(colorScheme == .dark ? .orange : .brown)
             }
         }
-        .backgroundStyle(.ultraThinMaterial)
-        .clipShape(RoundedRectangle(cornerRadius: 8))
+        .groupBoxStyle(GlassifyGroupBoxStyle(lightStartPoint: .bottomLeading, lightEndPoint: .topTrailing, lightColor: .yellow))
         .padding(.horizontal, 4)
-        .shadow(radius: 4)
         .padding(.top)
         
         summary
@@ -89,21 +90,17 @@ struct BasicsView: View {
                         .lineSpacing(1.5)
                         .frame(maxWidth: .infinity, alignment: .leading)
                 }
-                .backgroundStyle(.ultraThinMaterial)
-                .clipShape(RoundedRectangle(cornerRadius: 8))
+                .groupBoxStyle(GlassifyGroupBoxStyle(lightStartPoint: .bottomLeading, lightEndPoint: .topTrailing, lightColor: .yellow))
                 .padding(4)
-                .shadow(radius: 4)
             } label: {
                 Label("Summary", systemImage: "person")
                     .modifier(Heading())
             }
             .tint(colorScheme == .dark ? .orange : .brown)
         }
+        .groupBoxStyle(GlassifyGroupBoxStyle(lightStartPoint: .bottomLeading, lightEndPoint: .topTrailing, lightColor: .yellow))
         .padding(.top)
-        .backgroundStyle(.ultraThinMaterial)
-        .clipShape(RoundedRectangle(cornerRadius: 8))
         .padding(.horizontal, 4)
-        .shadow(radius: 4)
     }
     
     @ViewBuilder

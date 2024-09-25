@@ -33,6 +33,7 @@ final class ResumeListViewModel: ObservableObject {
     @Published var scannedCode: String = ""
     @Published var selectedPerson: Person?
     @Published var searchString: String = ""
+    @Published var isImporting: Bool = false
 }
 
 extension ResumeListViewModel {
@@ -79,7 +80,7 @@ extension ResumeListViewModel {
             try modelContext.save() // Ensure changes are saved to the context
         } catch {
             // Handle error appropriately
-            print("Failed to save context: \(error)")
+            Log.pres.error("Failed to save context: \(error)")
         }
     }
     
@@ -106,6 +107,7 @@ extension ResumeListViewModel {
     
     @MainActor
     func handleUserActivity(_ userActivity: NSUserActivity) {
+        isImporting = true
         guard
             let incomingURL = userActivity.webpageURL,
             let components = URLComponents(
@@ -113,15 +115,24 @@ extension ResumeListViewModel {
                 resolvingAgainstBaseURL: true),
             let queryItems = components.queryItems
         else {
+            isImporting = false
             return
         }
         
         guard let url = queryItems.first(where: { $0.name == "url" })?.value?.fromBase64 else {
+            isImporting = false
             return
         }
-        print("App Clip URL: \(url)")
+        Log.pres.debug("App Clip URL: \(url)")
         self.url = url
-        self.showingInputSheet = true
+        Task { @MainActor in
+            do {
+                try await addItem(urlString: url)
+            } catch {
+                Log.pres.error("Error adding item: \(error.localizedDescription)")
+            }
+            isImporting = false
+        }        
     }
     
     @MainActor

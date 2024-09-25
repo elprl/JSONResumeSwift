@@ -34,9 +34,11 @@ struct EducationView: View {
                                     }
                                 }
                             }
-                            Text("\(element.area ?? "") (\(element.score ?? ""))")
-                                .font(.subheadline)
-                                .foregroundStyle(.primary)
+                            if !score(for: element).isEmpty {
+                                Text(score(for: element))
+                                    .font(.subheadline)
+                                    .foregroundStyle(.primary)
+                            }
                             if !(element.studyType ?? "").isEmpty {
                                 Text(element.studyType ?? "")
                                     .font(.subheadline)
@@ -69,21 +71,32 @@ struct EducationView: View {
                         }
                         .frame(maxWidth: .infinity, alignment: .leading)
                     }
-                    .backgroundStyle(.ultraThinMaterial)
-                    .clipShape(RoundedRectangle(cornerRadius: 8))
+                    .groupBoxStyle(GlassifyGroupBoxStyle(lightStartPoint: .bottomLeading, lightEndPoint: .topTrailing, lightColor: .yellow))
                     .padding(4)
-                    .shadow(radius: 4)
                 }
             } label: {
-                Label("Education", systemImage: "graduationcap")
-                    .modifier(Heading())
+                HStack {
+                    Label("Education", systemImage: "graduationcap")
+                        .modifier(Heading())
+                    Spacer()
+                    Text("\(educations.count)")
+                }
             }
             .tint(colorScheme == .dark ? .orange : .brown)
         }
-        .backgroundStyle(.ultraThinMaterial)
-        .clipShape(RoundedRectangle(cornerRadius: 8))
+        .groupBoxStyle(GlassifyGroupBoxStyle(lightStartPoint: .bottomLeading, lightEndPoint: .topTrailing, lightColor: .yellow))
         .padding(.horizontal, 4)
-        .shadow(radius: 4)
+    }
+    
+    private func score(for education: Education) -> String {
+        var text = ""
+        if let area = education.area, !area.isEmpty {
+            text.append(area)
+        }
+        if let score = education.score, !score.isEmpty {
+            text.append(" (\(score))")
+        }
+        return text
     }
 }
 

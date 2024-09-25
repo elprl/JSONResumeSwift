@@ -46,9 +46,9 @@ enum Author: Codable {
         case .gemini(_):
             return "geminiIcon"
         case .openai(_):
-            return "openaiIcon"
+            return "openai-logomark"
         case .claude(_):
-            return "claudeIcon"
+            return "claudeSpark"
         case .user(_):
             return "brain"
         }

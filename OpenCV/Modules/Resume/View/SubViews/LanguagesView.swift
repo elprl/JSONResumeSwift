@@ -28,21 +28,21 @@ struct LanguagesView: View {
                                 .foregroundStyle(.secondary)
                         }
                     }
-                    .backgroundStyle(.ultraThinMaterial)
-                    .clipShape(RoundedRectangle(cornerRadius: 8))
+                    .groupBoxStyle(GlassifyGroupBoxStyle(lightStartPoint: .bottomLeading, lightEndPoint: .topTrailing, lightColor: .yellow))
                     .padding(4)
-                    .shadow(radius: 4)
                 }
             } label: {
-                Label("Languages", systemImage: "speaker.wave.2.bubble")
-                    .modifier(Heading())
+                HStack {
+                    Label("Languages", systemImage: "speaker.wave.2.bubble")
+                        .modifier(Heading())
+                    Spacer()
+                    Text("\(languages.count)")
+                }
             }
             .tint(colorScheme == .dark ? .orange : .brown)
         }
-        .backgroundStyle(.ultraThinMaterial)
-        .clipShape(RoundedRectangle(cornerRadius: 8))
+        .groupBoxStyle(GlassifyGroupBoxStyle(lightStartPoint: .bottomLeading, lightEndPoint: .topTrailing, lightColor: .yellow))
         .padding(.horizontal, 4)
-        .shadow(radius: 4)
     }
 }
 

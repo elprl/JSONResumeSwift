@@ -46,21 +46,21 @@ struct InterestsView: View {
                             }
                         }
                     }
-                    .backgroundStyle(.ultraThinMaterial)
-                    .clipShape(RoundedRectangle(cornerRadius: 8))
+                    .groupBoxStyle(GlassifyGroupBoxStyle(lightStartPoint: .bottomLeading, lightEndPoint: .topTrailing, lightColor: .yellow))
                     .padding(4)
-                    .shadow(radius: 4)
                 }
             } label: {
-                Label("Interests", systemImage: "heart")
-                    .modifier(Heading())
-            }  
+                HStack {
+                    Label("Interests", systemImage: "heart")
+                        .modifier(Heading())
+                    Spacer()
+                    Text("\(interests.count)")
+                }
+            }
             .tint(colorScheme == .dark ? .orange : .brown)
         }
-        .backgroundStyle(.ultraThinMaterial)
-        .clipShape(RoundedRectangle(cornerRadius: 8))
+        .groupBoxStyle(GlassifyGroupBoxStyle(lightStartPoint: .bottomLeading, lightEndPoint: .topTrailing, lightColor: .yellow))
         .padding(.horizontal, 4)
-        .shadow(radius: 4)
     }
 }
 

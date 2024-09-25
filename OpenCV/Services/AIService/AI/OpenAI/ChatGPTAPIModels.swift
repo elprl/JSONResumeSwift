@@ -38,6 +38,8 @@ extension GPTModel: Hashable, Identifiable, Codable {
     static var allCases: [GPTModel] {
         return [
             .custom(model: "CUSTOM", tokens: 128000),
+            .gpt4(model: "o1-preview", tokens: 128000),
+            .gpt4(model: "o1-mini", tokens: 128000),
             .gpt4(model: "gpt-4o", tokens: 128000),
             .gpt4(model: "gpt-4o-turbo", tokens: 128000),
             .gpt4(model: "gpt-4o-mini", tokens: 128000),

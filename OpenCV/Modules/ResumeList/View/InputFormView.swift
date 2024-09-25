@@ -22,10 +22,8 @@ struct InputFormView: View {
                     input
                     submit
                 }
-                .backgroundStyle(.ultraThinMaterial)
-                .clipShape(RoundedRectangle(cornerRadius: 8))
+                .groupBoxStyle(GlassifyGroupBoxStyle(lightStartPoint: .bottomLeading, lightEndPoint: .topTrailing, lightColor: .yellow))
                 .padding(4)
-                .shadow(radius: 4)
                 .tint(colorScheme == .dark ? .orange : .brown)
                 .padding()
                 Spacer()
@@ -33,13 +31,23 @@ struct InputFormView: View {
             .background(MeshGradientView().opacity(0.3).ignoresSafeArea())
             .navigationTitle("Add New CV")
             .toolbar {
-                ToolbarItemGroup(placement: .topBarTrailing) {
+                ToolbarItem(placement: .topBarLeading) {
                     Button(role: .cancel, action: {
                         self.dismiss()
                     }, label: {
                         Text("Cancel")
                     })
                     .tint(colorScheme == .dark ? .orange : .brown)
+                }
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button(action: {
+                        addItem()
+                    }, label: {
+                        Text("Add")
+                            .bold()
+                    })
+                    .tint(colorScheme == .dark ? .orange : .brown)
+                    .disabled(!viewModel.isValidUrl)
                 }
             }
             .onReceive(viewModel.$state) { state in
@@ -72,7 +80,7 @@ struct InputFormView: View {
                     .textInputAutocapitalization(.never)
                     .disableAutocorrection(true)
                     .modifier(PlaceholderStyle(showPlaceHolder: viewModel.url.isEmpty,
-                                               placeholder: "Enter a URL to CV \n(e.g. https://registry.jsonresume.org/elprl.json)"))
+                                               placeholder: "Enter a URL to CV \n(e.g. https://registry.jsonresume.org/<ANY USERNAME>.json)"))
                 Spacer()
                 VStack {
                     Button {
@@ -91,10 +99,8 @@ struct InputFormView: View {
                 }
             }
         }
-        .backgroundStyle(.ultraThinMaterial)
-        .clipShape(RoundedRectangle(cornerRadius: 8))
+        .groupBoxStyle(GlassifyGroupBoxStyle(lightStartPoint: .bottomLeading, lightEndPoint: .topTrailing, lightColor: .yellow))
         .padding(4)
-        .shadow(radius: 4)
         .tint(colorScheme == .dark ? .orange : .brown)
     }
     
@@ -105,9 +111,9 @@ struct InputFormView: View {
             Button {
                 addItem()
             } label: {
-                Text("Submit")
+                Text("Add")
+                    .frame(maxWidth: .infinity)
                     .tint(colorScheme == .dark ? .black : .white)
-                    .padding(.horizontal)
                     .padding(.vertical, 4)
             }
             .disabled(!viewModel.isValidUrl)
@@ -116,7 +122,8 @@ struct InputFormView: View {
                     .shadow(radius: 4)
                     .opacity(viewModel.isValidUrl ? 1.0 : 0.3)
             }
-            .padding()
+            .padding(.horizontal, 4)
+            .padding(.vertical)
         case .loading:
             ProgressView()
         case .loaded(_):
@@ -139,13 +146,13 @@ struct InputFormView: View {
             do {
                 try await viewModel.addItem(urlString: viewModel.url)
             } catch {
-                print("error")
+                Log.view.error("error adding item")
             }
         }
     }
 }
 
-public struct PlaceholderStyle: ViewModifier {
+struct PlaceholderStyle: ViewModifier {
     var showPlaceHolder: Bool
     var placeholder: String
 
@@ -165,7 +172,9 @@ public struct PlaceholderStyle: ViewModifier {
 }
 
 #Preview {
-    let viewModel = ResumeListViewModel(modelContext: PreviewController.previewContainer.mainContext)
-    InputFormView(viewModel: viewModel)
-        .modelContainer(PreviewController.previewContainer)
+    ZStack {
+        let viewModel = ResumeListViewModel(modelContext: PreviewController.previewContainer.mainContext)
+        InputFormView(viewModel: viewModel)
+            .modelContainer(PreviewController.previewContainer)
+    }
 }

@@ -7,7 +7,7 @@
 
 import SwiftUI
 import SwiftData
-import SDWebImageSwiftUI
+import NukeUI
 
 struct ResumeRowView: View {
     @Environment(\.modelContext) private var modelContext
@@ -28,14 +28,17 @@ struct ResumeRowView: View {
             GroupBox {
                 HStack(spacing: 14) {
                     if let imageUrl = person.image {
-                        WebImage(url: URL(string: imageUrl)) { image in
-                            image.resizable()
-                        } placeholder: {
-                            placeholderImage
+                        LazyImage(url: URL(string: imageUrl)) { state in
+                            if let image = state.image {
+                                image.resizable().aspectRatio(contentMode: .fit)
+                            } else if state.error != nil {
+                                Image(systemName: "exclamationmark.triangle.fill") // Indicates an error
+                            } else {
+                                placeholderImage // Acts as a placeholder
+                            }
                         }
-                        .indicator(.activity) // Activity Indicator
-                        .transition(.fade(duration: 0.6)) // Fade Transition with duration
-                        .scaledToFit()
+                        .transition(.opacity)
+                        .animation(.easeInOut, value: person.image)
                         .frame(width: 54, height: 54)
                         .clipShape(Circle())
                         .shadow(radius: 4)
@@ -76,17 +79,16 @@ struct ResumeRowView: View {
                             .foregroundStyle(colorScheme == .dark ? .orange : .brown)
                     }
                     .menuOrder(.fixed)
-                    .highPriorityGesture(TapGesture())                    
+                    .highPriorityGesture(TapGesture())
                 }
             }
-            .backgroundStyle(.ultraThinMaterial)
-            .clipShape(RoundedRectangle(cornerRadius: 8))
+            .groupBoxStyle(GlassifyGroupBoxStyle(lightStartPoint: .bottomLeading, lightEndPoint: .topTrailing, lightColor: .yellow))
             .padding(4)
-            .shadow(radius: 4)
             .tint(.primary)
             .contextMenu(menuItems: {
                 optionsMenuItems
             })
+            .buttonStyle(.plain)
         }
     }
     
@@ -94,9 +96,9 @@ struct ResumeRowView: View {
     private var navDestination: some View {
         Group {
             if let resume = viewModel.resumes.first(where: { $0.basics.name == person.name }) {
-                ResumeView(resume: resume, person: person, modelContext: modelContext)
+                ResumeView(resume: resume, resumeUrl: person.resumeUrl, modelContext: modelContext)
             } else if let jsonString = person.cachedJSON {
-                CachedResumeView(jsonString: jsonString, person: person)
+                CachedResumeView(jsonString: jsonString, resumeUrl: person.resumeUrl)
             } else {
                 Text("CV not yet loaded")
             }

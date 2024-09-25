@@ -10,6 +10,7 @@ import Foundation
 import Combine
 import SwiftUI
 import SwiftData
+import SwiftAnthropic
 
 @Observable
 final class AIChatMessagesViewModel {
@@ -28,33 +29,18 @@ final class AIChatMessagesViewModel {
     var agiContentCount: Int = 0
     var isAGIResponding: Bool = false
     var isScrollLockActive: Bool = true
-    var hasRoleScope: Bool = true
-    var hasSelectionScope: Bool = false {
-        didSet {
-            if hasSelectionScope && hasFileScope {
-                self.hasFileScope = false
-            }
-        }
-    }
-    var hasFileScope: Bool = true {
-        didSet {
-            if hasSelectionScope && hasFileScope {
-                self.hasSelectionScope = false
-            }
-        }
-    }
-    var hasHistoryScope: Bool = true
     var modelContext: ModelContext
-    var person: Person
+    var resumeUrl: String
     var resume: Resume
     var showingSettingsSheet = false
     @ObservationIgnored var scrollLockPublisher = PassthroughSubject<Bool, Never>()
     @ObservationIgnored private var cancellables: [AnyCancellable] = []
-    @ObservationIgnored private var agiService: AGIServiceProtocol?
+    @ObservationIgnored private var agiService: (any AGIServiceProtocol)?
+    @ObservationIgnored private var agiTask: Task<(), Never>?
 
-    init(modelContext: ModelContext, person: Person, resume: Resume) {
+    init(modelContext: ModelContext, resumeUrl: String, resume: Resume) {
         self.modelContext = modelContext
-        self.person = person
+        self.resumeUrl = resumeUrl
         self.resume = resume
         
         // Debounce the scroll lock updates
@@ -63,9 +49,13 @@ final class AIChatMessagesViewModel {
             .removeDuplicates()
             .assign(to: \.isScrollLockActive, on: self)
             .store(in: &cancellables)
+        
+        if let selectedAGI = UserDefaults.standard.selectedAGI {
+            updateAGIService(selectedAGI: selectedAGI)
+        }
     }
     
-    @MainActor
+//    @MainActor
     func updateAGIService(selectedAGI: AGIServiceChoice) {
         switch selectedAGI {
         case .gemini:
@@ -89,7 +79,7 @@ final class AIChatMessagesViewModel {
                 }
                 self.messages = fetchedMessages
             } catch {
-                print("Fetch failed")
+                Log.pres.error("Fetch failed: \(error.localizedDescription)")
                 self.state = .error(error.localizedDescription)
             }
         }
@@ -97,7 +87,7 @@ final class AIChatMessagesViewModel {
     
     /// background fetch
     func performBackgroundQuery() async throws -> [PersistentIdentifier] {
-        let resumeUrl: String = person.resumeUrl
+        let resumeUrl: String = resumeUrl
         let descriptor = FetchDescriptor<ChatMessage>(
             predicate: #Predicate { $0.resumeUrl == resumeUrl },
             sortBy: [SortDescriptor(\.updatedAt)]
@@ -106,22 +96,29 @@ final class AIChatMessagesViewModel {
         return messages.map( { $0.id } )
     }
     
-    @MainActor
+//    @MainActor
     func onSubmitNewMessage() {
         Task {
-            let message = ChatMessage(author: .user(person.resumeUrl), content: newChatText, resumeUrl: person.resumeUrl)
+            let message = ChatMessage(author: .user(resumeUrl), content: newChatText, resumeUrl: resumeUrl)
             if UserDefaults.standard.selectedAGI != AGIServiceChoice.none {
                 message.type = .aiQuestion
             }
             modelContext.insert(message)
             messages.append(message)
+            let contentCopy = String(newChatText)
             newChatText = ""
             Log.pres.debug("Inserted question/note message")
             if agiService != nil {
                 agiContentCount = 0
-                await handleAGIStream(content: String(newChatText))
+                await handleAGIStream(content: contentCopy)
             }
         }
+    }
+    
+    func onCancelAGI() {
+        self.isAGIResponding = false
+        agiTask?.cancel()
+        agiTask = nil
     }
     
     @MainActor
@@ -134,7 +131,7 @@ final class AIChatMessagesViewModel {
     @MainActor
     func deleteAllMessages() {
         do {
-            let resumeUrl: String = person.resumeUrl
+            let resumeUrl: String = resumeUrl
             try modelContext.delete(model: ChatMessage.self, where: #Predicate { $0.resumeUrl == resumeUrl })
             Log.pres.debug("deleted all schools.")
         } catch {
@@ -163,7 +160,7 @@ final class AIChatMessagesViewModel {
         return true
     }
     
-    private func save() {
+    func save() {
         do {
             try modelContext.save() // Ensure changes are saved to the context
             Log.pres.debug("Saved data context")
@@ -179,7 +176,9 @@ final class AIChatMessagesViewModel {
     
     @MainActor
     private func handleAGIStream(content: String) async {
-        Task {
+        self.isAGIResponding = true
+        agiTask?.cancel()
+        agiTask = Task {
             var author = Author.openai(UserDefaults.standard.agiModel ?? "gpt-4o")
             let currentSelectedAGI = UserDefaults.standard.selectedAGI ?? .none
             switch currentSelectedAGI {
@@ -190,13 +189,16 @@ final class AIChatMessagesViewModel {
             default:
                 author = .openai(UserDefaults.standard.agiModel ?? "gpt-4o")
             }
-            let message = ChatMessage(author: author, content: "", resumeUrl: person.resumeUrl)
+            let message = ChatMessage(author: author, content: "", resumeUrl: resumeUrl)
             message.type = .aiAnswer
             modelContext.insert(message)
             messages.append(message)
             Log.pres.debug("Added blank AGI message")
             guard let agiService else { return }
-            let scopes = HistoryOptions.modeFrom(hasRole: hasRoleScope, hasCode: hasFileScope, hasHistory: hasHistoryScope, hasSelection: hasSelectionScope)
+            let hasScopedRole = UserDefaults.standard.hasScopedRole ?? true
+            let hasScopedCV = UserDefaults.standard.hasScopedCV ?? true
+            let hasScopedHistory = UserDefaults.standard.hasScopedHistory ?? true
+            let scopes = HistoryOptions.modeFrom(hasRole: hasScopedRole, hasCode: hasScopedCV, hasHistory: hasScopedHistory, hasSelection: false)
             agiService.setupHistory(for: resume.description, selectedRows: Set<Int>(), scopes: scopes, messages: messages)
             
             do {
@@ -206,12 +208,24 @@ final class AIChatMessagesViewModel {
                     streamText += text
                     message.content = streamText
                     self.agiContentCount = streamText.count
+                    if Task.isCancelled {
+                        self.isAGIResponding = false
+                        return
+                    }
                 }
+                self.isAGIResponding = false
+            } catch let error as APIError {
+                Log.pres.error("Error thrown with message stream: \(error.displayDescription)")
+                message.content = error.displayDescription
+                self.isAGIResponding = false
+                return
             } catch {
                 Log.pres.error("Error thrown with message stream: \(error.localizedDescription)")
                 message.content = error.localizedDescription
+                self.isAGIResponding = false
                 return
             }
         }
+        await agiTask?.value
     }
 }

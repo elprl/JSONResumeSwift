@@ -53,21 +53,21 @@ struct PublicationsView: View {
                         }
                         .frame(maxWidth: .infinity, alignment: .leading)
                     }
-                    .backgroundStyle(.ultraThinMaterial)
-                    .clipShape(RoundedRectangle(cornerRadius: 8))
+                    .groupBoxStyle(GlassifyGroupBoxStyle(lightStartPoint: .bottomLeading, lightEndPoint: .topTrailing, lightColor: .yellow))
                     .padding(4)
-                    .shadow(radius: 4)
                 }
             } label: {
-                Label("Publications", systemImage: "text.book.closed")
-                    .modifier(Heading())
-            }  
+                HStack {
+                    Label("Publications", systemImage: "text.book.closed")
+                        .modifier(Heading())
+                    Spacer()
+                    Text("\(publications.count)")
+                }
+            }
             .tint(colorScheme == .dark ? .orange : .brown)
         }
-        .backgroundStyle(.ultraThinMaterial)
-        .clipShape(RoundedRectangle(cornerRadius: 8))
+        .groupBoxStyle(GlassifyGroupBoxStyle(lightStartPoint: .bottomLeading, lightEndPoint: .topTrailing, lightColor: .yellow))
         .padding(.horizontal, 4)
-        .shadow(radius: 4)
     }
 }
 

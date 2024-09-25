@@ -4,13 +4,16 @@
     "" : {
 
     },
+    "* Stored in your Secure Apple Keychain. NEVER sent to our servers." : {
+
+    },
+    "**1**: Create Anthropic account - https://www.anthropic.com/api" : {
+
+    },
     "**1**: Get an API key - https://makersuite.google.com/app/apikey" : {
 
     },
-    "**1**: Go to - https://platform.openai.com/account/api-keys" : {
-
-    },
-    "**1**: Join the Waitlist - https://www.anthropic.com/earlyaccess" : {
+    "**1**: Go to - https://platform.openai.com/api-keys" : {
 
     },
     "**2**: Copy the key to clipboard" : {
@@ -19,7 +22,7 @@
     "**2**: Create a new API key in the Console - https://console.anthropic.com/account/keys" : {
 
     },
-    "**2**: Create a new secret key" : {
+    "**2**: Create a new secret key. (Permissions All or [Read /v1/models, Write /v1/chat/completions])" : {
 
     },
     "**3**: Copy the key to clipboard" : {
@@ -31,18 +34,14 @@
     "**4**: Enter the details below" : {
 
     },
-    "%@" : {
+    "**4**: Paste the key below and add a label" : {
 
     },
-    "%@ (%@)" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "%1$@ (%2$@)"
-          }
-        }
-      }
+    "*Gemini API free tier is currently unavailable in UK. Enable billing on your project in Google AI Studio." : {
+
+    },
+    "%@" : {
+
     },
     "%@ (%lld tokens)" : {
       "localizations" : {
@@ -84,6 +83,9 @@
         }
       }
     },
+    "%lld" : {
+
+    },
     "• %@" : {
 
     },
@@ -93,10 +95,10 @@
     "Active" : {
 
     },
-    "Add Access Token" : {
+    "Add" : {
 
     },
-    "Add an AI API key in Settings" : {
+    "Add Access Token" : {
 
     },
     "Add Another" : {
@@ -136,9 +138,6 @@
     "AI Chat & Notes" : {
 
     },
-    "Anthropic Claude" : {
-
-    },
     "App Clip" : {
 
     },
@@ -146,6 +145,9 @@
 
     },
     "Automatic" : {
+
+    },
+    "Average Job Duration" : {
 
     },
     "Awards" : {
@@ -241,7 +243,10 @@
     "Education" : {
 
     },
-    "Enter a new message below" : {
+    "Enter a new message or note below" : {
+
+    },
+    "Enter a new note below.\nTo chat with AI, add an API key in Settings" : {
 
     },
     "Enter API key" : {
@@ -262,7 +267,7 @@
     "Failed to generate QR Code" : {
 
     },
-    "Gemini Failed: Internal error" : {
+    "Gemini Failed: Internal error. Check billing & availability in your country." : {
 
     },
     "Gemini Failed: Invalid API Key" : {
@@ -280,13 +285,7 @@
     "generative-ai-swift\nhttps://github.com/google-gemini/generative-ai-swift" : {
 
     },
-    "Google Gemini (US only)" : {
-
-    },
     "Google Gemini Settings" : {
-
-    },
-    "GPT-4 requires acceptance from OpenAI on limited beta. [Waitlist](https://openai.com/waitlist/gpt-4-api)" : {
 
     },
     "GPT3-Tokenizer\nhttps://github.com/aespinilla/GPT3-Tokenizer" : {
@@ -312,6 +311,9 @@
       }
     },
     "https://apps.apple.com/app/id%@" : {
+
+    },
+    "Importing CV" : {
 
     },
     "Interests" : {
@@ -404,13 +406,7 @@
     "No messages found" : {
 
     },
-    "No messages found and no API key added" : {
-
-    },
     "Open AI Settings" : {
-
-    },
-    "OpenAI / ChatGPT" : {
 
     },
     "or" : {
@@ -423,6 +419,12 @@
 
     },
     "Personal Note" : {
+
+    },
+    "Powered by ChatGPT" : {
+
+    },
+    "Powered by Gemini" : {
 
     },
     "Projects" : {
@@ -477,10 +479,10 @@
     "Skills" : {
 
     },
-    "Steps" : {
+    "Stats Overview" : {
 
     },
-    "Submit" : {
+    "Steps" : {
 
     },
     "Summary" : {
@@ -507,6 +509,9 @@
           }
         }
       }
+    },
+    "Total Experience" : {
+
     },
     "Version" : {
 

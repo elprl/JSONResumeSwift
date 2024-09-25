@@ -13,7 +13,10 @@ struct TextInputView: View {
     @AppStorage(UserDefaults.Keys.hasClaudeKey) var hasClaudeKey: Bool = false
     @AppStorage(UserDefaults.Keys.hasGeminiKey) var hasGeminiKey: Bool = false
     @AppStorage(UserDefaults.Keys.selectedAGI) var selectedAGI: AGIServiceChoice = .none
-
+    @AppStorage(UserDefaults.Keys.hasScopedRole) var hasScopedRole: Bool = true
+    @AppStorage(UserDefaults.Keys.hasScopedCV) var hasScopedCV: Bool = true
+    @AppStorage(UserDefaults.Keys.hasScopedHistory) var hasScopedHistory: Bool = true
+    
     var body: some View {
         VStack {
             Spacer()
@@ -36,9 +39,9 @@ struct TextInputView: View {
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack {
                     Text("Scopes: ")
-                    ToggleButton(title: "role", isOn: $viewModel.hasRoleScope, onColor: .blue) {}
-                    ToggleButton(title: "CV", isOn: $viewModel.hasFileScope, onColor: .blue) {}
-                    ToggleButton(title: "history", isOn: $viewModel.hasHistoryScope, onColor: .blue) {}
+                    ToggleButton(title: "role", isOn: $hasScopedRole, onColor: .orange, onTextColor: .black) {}
+                    ToggleButton(title: "CV", isOn: $hasScopedCV, onColor: .orange, onTextColor: .black) {}
+                    ToggleButton(title: "history", isOn: $hasScopedHistory, onColor: .orange, onTextColor: .black) {}
                     Spacer()
                 }
             }
@@ -64,13 +67,20 @@ struct TextInputView: View {
                 .lineLimit(1...10) // reservesSpace: true)
                 .tint(.logoOrange)
                 .foregroundColor(.primary)
-            RoundButton(action: {
-                withAnimation {
-                    print("submit")
-                    self.viewModel.onSubmitNewMessage()
-                    self.isFocused = false
-                }
-            }, imageSize: 30, icon: "paperplane.fill", bgColor: .blue, isLoading: .constant(false))
+            if viewModel.isAGIResponding {
+                RoundButton(action: {
+                    withAnimation {
+                        self.viewModel.onCancelAGI()
+                    }
+                }, imageSize: 30, icon: "stop.fill", bgColor: .orange, isLoading: .constant(false))
+            } else {
+                RoundButton(action: {
+                    withAnimation {
+                        self.viewModel.onSubmitNewMessage()
+                        self.isFocused = false
+                    }
+                }, imageSize: 30, icon: "paperplane.fill", bgColor: .blue, isLoading: .constant(false))
+            }
         }
     }
     
@@ -123,7 +133,7 @@ struct TextInputView: View {
                 Image(selectedAGI.imageKey)
                     .resizable()
                     .scaledToFit()
-                    .foregroundStyle(.black)
+                    .foregroundStyle(.orange)
                     .padding(4)
             }
             .frame(width: 30, height: 30)

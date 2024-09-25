@@ -11,7 +11,7 @@ import Foundation
 
 final class ClaudeAPIService: @unchecked Sendable, AGIServiceProtocol {
     let keychainService = KeychainService()
-    private var service: AnthropicService?
+    private var service: (any AnthropicService)?
     private var apiKey: String?
     private var historyList = [GPTMessage]()
     private var model: String {
@@ -141,8 +141,8 @@ final class ClaudeAPIService: @unchecked Sendable, AGIServiceProtocol {
     }
     
     @MainActor
-    func sendMessageStream(text: String, needsJSONResponse: Bool = false) async throws -> AsyncThrowingStream<String, Error> {
-        return AsyncThrowingStream<String, Error> { continuation in
+    func sendMessageStream(text: String, needsJSONResponse: Bool = false) async throws -> AsyncThrowingStream<String, any Error> {
+        return AsyncThrowingStream<String, any Error> { continuation in
             Task(priority: .userInitiated) { [weak self] in
                 guard let self else { return }
                 do {
@@ -157,6 +157,9 @@ final class ClaudeAPIService: @unchecked Sendable, AGIServiceProtocol {
                         }
                     
                     continuation.finish()
+                } catch let error as APIError {
+                    Log.agi.error("AGI stream error: \(error.displayDescription)")
+                    continuation.finish(throwing: error)
                 } catch {
                     Log.agi.error("AGI stream error: \(error.localizedDescription)")
                     continuation.finish(throwing: error)
