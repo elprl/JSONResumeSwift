@@ -29,10 +29,8 @@ struct ProjectsView: View {
             }
             .tint(colorScheme == .dark ? .orange : .brown)
         }
-        .backgroundStyle(.ultraThinMaterial)
-        .clipShape(RoundedRectangle(cornerRadius: 8))
+        .groupBoxStyle(GlassifyGroupBoxStyle(lightStartPoint: .bottomLeading, lightEndPoint: .topTrailing, lightColor: .yellow))
         .padding(.horizontal, 4)
-        .shadow(radius: 4)
     }
     
     private func row(index: Int, element: Project) -> some View {
@@ -83,22 +81,20 @@ struct ProjectsView: View {
                     .padding(.top, -8)
                 }
             }
-            .backgroundStyle(.ultraThinMaterial)
-            .clipShape(RoundedRectangle(cornerRadius: 8))
+            .groupBoxStyle(GlassifyGroupBoxStyle(lightStartPoint: .bottomLeading, lightEndPoint: .topTrailing, lightColor: .yellow))
             .padding(4)
-            .shadow(radius: 4)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
-        .padding(.leading, 40)
+        .padding(.leading, 28)
         .padding(.vertical, 4)
         .overlay {
             HStack(spacing: 0) {
-                VStack(alignment: .center, spacing: 4) {
+                VStack(alignment: .center, spacing: 8) {
                     Rectangle()
                         .frame(width: 1)
                         .opacity(index == 0 ? 0 : 1)
                     Circle()
-                        .frame(width: 5, height: 5)
+                        .frame(width: 6, height: 6)
                     Rectangle()
                         .frame(width: 1)
                         .opacity(index == (projects.count - 1) ? 0 : 1)
@@ -106,7 +102,7 @@ struct ProjectsView: View {
                 .foregroundStyle(colorScheme == .dark ? .orange : .brown)
                 Spacer()
             }
-            .padding(.leading, 10)
+            .padding(.leading, 4)
             .padding(.vertical, -4)
         }
     }

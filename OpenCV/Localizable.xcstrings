@@ -37,18 +37,11 @@
     "**4**: Paste the key below and add a label" : {
 
     },
-    "%@" : {
+    "*Gemini API free tier is currently unavailable in UK. Enable billing on your project in Google AI Studio." : {
 
     },
-    "%@ (%@)" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "%1$@ (%2$@)"
-          }
-        }
-      }
+    "%@" : {
+
     },
     "%@ (%lld tokens)" : {
       "localizations" : {
@@ -179,9 +172,6 @@
     "Chat Model" : {
 
     },
-    "Chat with (self.defaultModel)" : {
-
-    },
     "Claude Settings" : {
 
     },
@@ -277,13 +267,10 @@
     "Failed to generate QR Code" : {
 
     },
-    "Gemini Failed: Internal error" : {
+    "Gemini Failed: Internal error. Check billing & availability in your country." : {
 
     },
     "Gemini Failed: Invalid API Key" : {
-
-    },
-    "Gemini Failed: Response stopped early, (finishReason.rawValue)" : {
 
     },
     "Gemini Failed: Unknown error" : {
@@ -301,13 +288,7 @@
     "Google Gemini Settings" : {
 
     },
-    "GPT-4 requires acceptance from OpenAI on limited beta. [Waitlist](https://openai.com/waitlist/gpt-4-api)" : {
-
-    },
     "GPT3-Tokenizer\nhttps://github.com/aespinilla/GPT3-Tokenizer" : {
-
-    },
-    "Hello world" : {
 
     },
     "Highlights" : {

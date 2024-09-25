@@ -7,7 +7,7 @@
 
 import SwiftUI
 import SwiftData
-import SDWebImageSwiftUI
+import NukeUI
 
 struct ResumeRowView: View {
     @Environment(\.modelContext) private var modelContext
@@ -18,24 +18,27 @@ struct ResumeRowView: View {
     
     var body: some View {
         NavigationLink {
-//            if #available(iOS 18.0, *) {
-//                navDestination
-//                    .navigationTransition(.zoom(sourceID: person.id, in: namespace))
-//            } else {
+            if #available(iOS 18.0, *) {
                 navDestination
-//            }
+                    .navigationTransition(.zoom(sourceID: person.id, in: namespace))
+            } else {
+                navDestination
+            }
         } label: {
             GroupBox {
                 HStack(spacing: 14) {
                     if let imageUrl = person.image {
-                        WebImage(url: URL(string: imageUrl)) { image in
-                            image.resizable()
-                        } placeholder: {
-                            placeholderImage
+                        LazyImage(url: URL(string: imageUrl)) { state in
+                            if let image = state.image {
+                                image.resizable().aspectRatio(contentMode: .fit)
+                            } else if state.error != nil {
+                                Image(systemName: "exclamationmark.triangle.fill") // Indicates an error
+                            } else {
+                                placeholderImage // Acts as a placeholder
+                            }
                         }
-                        .indicator(.activity) // Activity Indicator
-                        .transition(.fade(duration: 0.6)) // Fade Transition with duration
-                        .scaledToFit()
+                        .transition(.opacity)
+                        .animation(.easeInOut, value: person.image)
                         .frame(width: 54, height: 54)
                         .clipShape(Circle())
                         .shadow(radius: 4)
@@ -76,17 +79,16 @@ struct ResumeRowView: View {
                             .foregroundStyle(colorScheme == .dark ? .orange : .brown)
                     }
                     .menuOrder(.fixed)
-                    .highPriorityGesture(TapGesture())                    
+                    .highPriorityGesture(TapGesture())
                 }
             }
-            .backgroundStyle(.ultraThinMaterial)
-            .clipShape(RoundedRectangle(cornerRadius: 8))
+            .groupBoxStyle(GlassifyGroupBoxStyle(lightStartPoint: .bottomLeading, lightEndPoint: .topTrailing, lightColor: .yellow))
             .padding(4)
-            .shadow(radius: 2)
             .tint(.primary)
             .contextMenu(menuItems: {
                 optionsMenuItems
             })
+            .buttonStyle(.plain)
         }
     }
     
@@ -132,11 +134,11 @@ struct ResumeRowView: View {
     }
 }
 
-//@available(iOS 18.0, *)
-//#Preview(traits: .samplePeopleData) {
-//    @Previewable @Namespace() var namespace
-//    @Previewable @Query var people: [Person]
-//    let viewModel = ResumeListViewModel(modelContext: PreviewController.previewContainer.mainContext)
-//    ResumeRowView(viewModel: viewModel, person: people.first ?? Person(resumeUrl: "https://registry.jsonresume.org/elprl.json"), namespace: namespace)
-//        .modelContainer(PreviewController.previewContainer)
-//}
+@available(iOS 18.0, *)
+#Preview(traits: .samplePeopleData) {
+    @Previewable @Namespace() var namespace
+    @Previewable @Query var people: [Person]
+    let viewModel = ResumeListViewModel(modelContext: PreviewController.previewContainer.mainContext)
+    ResumeRowView(viewModel: viewModel, person: people.first ?? Person(resumeUrl: "https://registry.jsonresume.org/elprl.json"), namespace: namespace)
+        .modelContainer(PreviewController.previewContainer)
+}

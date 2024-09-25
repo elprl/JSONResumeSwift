@@ -22,10 +22,8 @@ struct InputFormView: View {
                     input
                     submit
                 }
-                .backgroundStyle(.ultraThinMaterial)
-                .clipShape(RoundedRectangle(cornerRadius: 8))
+                .groupBoxStyle(GlassifyGroupBoxStyle(lightStartPoint: .bottomLeading, lightEndPoint: .topTrailing, lightColor: .yellow))
                 .padding(4)
-                .shadow(radius: 4)
                 .tint(colorScheme == .dark ? .orange : .brown)
                 .padding()
                 Spacer()
@@ -101,10 +99,8 @@ struct InputFormView: View {
                 }
             }
         }
-        .backgroundStyle(.ultraThinMaterial)
-        .clipShape(RoundedRectangle(cornerRadius: 8))
+        .groupBoxStyle(GlassifyGroupBoxStyle(lightStartPoint: .bottomLeading, lightEndPoint: .topTrailing, lightColor: .yellow))
         .padding(4)
-        .shadow(radius: 4)
         .tint(colorScheme == .dark ? .orange : .brown)
     }
     

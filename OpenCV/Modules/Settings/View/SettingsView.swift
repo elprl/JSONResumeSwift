@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import SDWebImageSwiftUI
 
 enum NavigationItem {
     case openAISettings
@@ -133,7 +132,7 @@ struct SettingsView: View {
             NavigationLink("Licenses & Thanks") {
                 List {
                     Text("JSON Resume\nhttps://github.com/jsonresume")
-                    Text("SDWebImageSwiftUI\nhttps://github.com/SDWebImage/SDWebImageSwiftUI.git")
+                    Text("Nuke\nhttps://github.com/kean/Nuke")
                     Text("generative-ai-swift\nhttps://github.com/google-gemini/generative-ai-swift")
                     Text("GPT3-Tokenizer\nhttps://github.com/aespinilla/GPT3-Tokenizer")
                     Text("SwiftAnthropic\nhttps://github.com/jamesrochabrun/SwiftAnthropic")

@@ -15,7 +15,7 @@ struct SkillsView: View {
         GroupBox {
             DisclosureGroup {
                 Rectangle().frame(width: 0, height: 0).padding(.top)
-
+                
                 ForEach(skills) { element in
                     GroupBox {
                         VStack(alignment: .leading) {
@@ -51,10 +51,8 @@ struct SkillsView: View {
                             .scrollTargetBehavior(.paging)
                         }
                     }
-                    .backgroundStyle(.ultraThinMaterial)
-                    .clipShape(RoundedRectangle(cornerRadius: 8))
+                    .groupBoxStyle(GlassifyGroupBoxStyle(lightStartPoint: .bottomLeading, lightEndPoint: .topTrailing, lightColor: .yellow))
                     .padding(4)
-                    .shadow(radius: 4)
                 }
             } label: {
                 HStack {
@@ -66,10 +64,8 @@ struct SkillsView: View {
             }
             .tint(colorScheme == .dark ? .orange : .brown)
         }
-        .backgroundStyle(.ultraThinMaterial)
-        .clipShape(RoundedRectangle(cornerRadius: 8))
+        .groupBoxStyle(GlassifyGroupBoxStyle(lightStartPoint: .bottomLeading, lightEndPoint: .topTrailing, lightColor: .yellow))
         .padding(.horizontal, 4)
-        .shadow(radius: 4)
     }
 }
 

@@ -1,5 +1,5 @@
 {
-  "originHash" : "d1b16e9115155bdaa1b4eb58a1b6aace5355be63bda3dae99054cb5a0f77f35d",
+  "originHash" : "7105d35642aa16bfc2cb8e22ed878d34c8c8045e797b67c9c5c52c92cb755d80",
   "pins" : [
     {
       "identity" : "codescanner",
@@ -29,21 +29,12 @@
       }
     },
     {
-      "identity" : "sdwebimage",
+      "identity" : "nuke",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/SDWebImage/SDWebImage.git",
+      "location" : "https://github.com/kean/Nuke",
       "state" : {
-        "revision" : "5191b801aca999b704eb93f118f91468b4570571",
-        "version" : "5.19.6"
-      }
-    },
-    {
-      "identity" : "sdwebimageswiftui",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/SDWebImage/SDWebImageSwiftUI.git",
-      "state" : {
-        "revision" : "5d462f7530677ae0c2b9510c26383aa25ba48751",
-        "version" : "3.1.1"
+        "revision" : "0ead44350d2737db384908569c012fe67c421e4d",
+        "version" : "12.8.0"
       }
     },
     {
