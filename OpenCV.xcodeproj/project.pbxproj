@@ -64,7 +64,6 @@
 		E128B7A32C3AC5B000248AA7 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = E128B7A22C3AC5B000248AA7 /* Localizable.xcstrings */; };
 		E128B7A42C3AC5B000248AA7 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = E128B7A22C3AC5B000248AA7 /* Localizable.xcstrings */; };
 		E13829902C337588000DA139 /* ResumeRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E138298F2C337588000DA139 /* ResumeRowView.swift */; };
-		E13829952C343C22000DA139 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = E13829942C343C22000DA139 /* SDWebImageSwiftUI */; };
 		E13829972C347729000DA139 /* InputFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13829962C347729000DA139 /* InputFormView.swift */; };
 		E138299B2C34A186000DA139 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = E138299A2C34A184000DA139 /* Note.swift */; };
 		E1526D852C38571D00D88453 /* WorkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F4872B2C2F96A800031976 /* WorkView.swift */; };
@@ -97,7 +96,6 @@
 		E1526DA02C38571D00D88453 /* SkillsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F487292C2F962600031976 /* SkillsView.swift */; };
 		E1526DA12C38571D00D88453 /* PublicationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AD86292C31B2B1008F38A3 /* PublicationsView.swift */; };
 		E1526DA22C38571D00D88453 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1908B532C2F4F2C002C8F5F /* Assets.xcassets */; };
-		E1526DA42C38576100D88453 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = E1526DA32C38576100D88453 /* SDWebImageSwiftUI */; };
 		E1526DA62C38576100D88453 /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = E1526DA52C38576100D88453 /* CodeScanner */; };
 		E1526DAB2C3987C900D88453 /* String+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1526DAA2C3987C400D88453 /* String+Utils.swift */; };
 		E1526DAC2C3987C900D88453 /* String+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1526DAA2C3987C400D88453 /* String+Utils.swift */; };
@@ -153,6 +151,10 @@
 		E1BDB6B02C4C16D400914DE9 /* TextInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BDB6AE2C4C16CC00914DE9 /* TextInputView.swift */; };
 		E1BDB6B22C4C16F600914DE9 /* MessageScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BDB6B12C4C16EE00914DE9 /* MessageScrollView.swift */; };
 		E1BDB6B32C4C16F600914DE9 /* MessageScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BDB6B12C4C16EE00914DE9 /* MessageScrollView.swift */; };
+		E1E210BC2CA436DE005F5DAD /* Glassify.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E210BB2CA436DE005F5DAD /* Glassify.swift */; };
+		E1E210BD2CA436DE005F5DAD /* Glassify.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E210BB2CA436DE005F5DAD /* Glassify.swift */; };
+		E1E210C02CA441D1005F5DAD /* NukeUI in Frameworks */ = {isa = PBXBuildFile; productRef = E1E210BF2CA441D1005F5DAD /* NukeUI */; };
+		E1E210C22CA443E3005F5DAD /* NukeUI in Frameworks */ = {isa = PBXBuildFile; productRef = E1E210C12CA443E3005F5DAD /* NukeUI */; };
 		E1E8457A2C35A9D60065489C /* MyNotesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E845792C35A9D60065489C /* MyNotesView.swift */; };
 		E1E8457C2C35AE730065489C /* MyNotesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E8457B2C35AE690065489C /* MyNotesViewModel.swift */; };
 		E1E8457F2C35B8280065489C /* ResumeLoaderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E8457E2C35B81C0065489C /* ResumeLoaderService.swift */; };
@@ -315,6 +317,7 @@
 		E1BDB6AB2C4C062700914DE9 /* SingleTextEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleTextEditorView.swift; sourceTree = "<group>"; };
 		E1BDB6AE2C4C16CC00914DE9 /* TextInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInputView.swift; sourceTree = "<group>"; };
 		E1BDB6B12C4C16EE00914DE9 /* MessageScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageScrollView.swift; sourceTree = "<group>"; };
+		E1E210BB2CA436DE005F5DAD /* Glassify.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Glassify.swift; sourceTree = "<group>"; };
 		E1E845792C35A9D60065489C /* MyNotesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyNotesView.swift; sourceTree = "<group>"; };
 		E1E8457B2C35AE690065489C /* MyNotesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyNotesViewModel.swift; sourceTree = "<group>"; };
 		E1E8457E2C35B81C0065489C /* ResumeLoaderService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResumeLoaderService.swift; sourceTree = "<group>"; };
@@ -339,8 +342,8 @@
 				E10CC77B2C46F3E000CC34B1 /* GoogleGenerativeAI in Frameworks */,
 				E10CC7772C46F3E000CC34B1 /* Markdown in Frameworks */,
 				E1526DA62C38576100D88453 /* CodeScanner in Frameworks */,
+				E1E210C22CA443E3005F5DAD /* NukeUI in Frameworks */,
 				E10CC77D2C46F3E000CC34B1 /* GPT3 Tokenizer in Frameworks */,
-				E1526DA42C38576100D88453 /* SDWebImageSwiftUI in Frameworks */,
 				E10CC7792C46F3E000CC34B1 /* SwiftAnthropic in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -364,10 +367,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				E10CC7552C46EA1A00CC34B1 /* GoogleGenerativeAI in Frameworks */,
+				E1E210C02CA441D1005F5DAD /* NukeUI in Frameworks */,
 				E10CC72A2C46C6A800CC34B1 /* Markdown in Frameworks */,
 				E152C6CF2C375739000949AB /* CodeScanner in Frameworks */,
 				E10CC76A2C46ED7D00CC34B1 /* GPT3 Tokenizer in Frameworks */,
-				E13829952C343C22000DA139 /* SDWebImageSwiftUI in Frameworks */,
 				E10CC7522C46E9C000CC34B1 /* SwiftAnthropic in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -775,6 +778,7 @@
 			isa = PBXGroup;
 			children = (
 				E10CC75D2C46EB5100CC34B1 /* OSLog+Utils.swift */,
+				E1E210BB2CA436DE005F5DAD /* Glassify.swift */,
 				E1526DAA2C3987C400D88453 /* String+Utils.swift */,
 				E1FCACA52C4700B900D1A76E /* Date+Utils.swift */,
 				E1AD86112C30B099008F38A3 /* MeshGradientView.swift */,
@@ -885,12 +889,12 @@
 			);
 			name = OpenCVAppClip;
 			packageProductDependencies = (
-				E1526DA32C38576100D88453 /* SDWebImageSwiftUI */,
 				E1526DA52C38576100D88453 /* CodeScanner */,
 				E10CC7762C46F3E000CC34B1 /* Markdown */,
 				E10CC7782C46F3E000CC34B1 /* SwiftAnthropic */,
 				E10CC77A2C46F3E000CC34B1 /* GoogleGenerativeAI */,
 				E10CC77C2C46F3E000CC34B1 /* GPT3 Tokenizer */,
+				E1E210C12CA443E3005F5DAD /* NukeUI */,
 			);
 			productName = OpenCVAppClip;
 			productReference = E106A16F2C379932009C2D92 /* OpenCVAppClip.app */;
@@ -948,12 +952,12 @@
 			);
 			name = OpenCV;
 			packageProductDependencies = (
-				E13829942C343C22000DA139 /* SDWebImageSwiftUI */,
 				E152C6CE2C375739000949AB /* CodeScanner */,
 				E10CC7292C46C6A800CC34B1 /* Markdown */,
 				E10CC7512C46E9C000CC34B1 /* SwiftAnthropic */,
 				E10CC7542C46EA1A00CC34B1 /* GoogleGenerativeAI */,
 				E10CC7692C46ED7D00CC34B1 /* GPT3 Tokenizer */,
+				E1E210BF2CA441D1005F5DAD /* NukeUI */,
 			);
 			productName = OpenCV;
 			productReference = E1908B4A2C2F4F2A002C8F5F /* JSON CV.app */;
@@ -1041,12 +1045,12 @@
 			);
 			mainGroup = E1908B412C2F4F2A002C8F5F;
 			packageReferences = (
-				E13829932C343C22000DA139 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
 				E152C6CD2C375739000949AB /* XCRemoteSwiftPackageReference "CodeScanner" */,
 				E10CC7282C46C6A800CC34B1 /* XCRemoteSwiftPackageReference "swift-markdown" */,
 				E10CC7502C46E9C000CC34B1 /* XCRemoteSwiftPackageReference "SwiftAnthropic" */,
 				E10CC7532C46EA1A00CC34B1 /* XCRemoteSwiftPackageReference "generative-ai-swift" */,
 				E10CC7682C46ED7D00CC34B1 /* XCRemoteSwiftPackageReference "GPT3-Tokenizer" */,
+				E1E210BE2CA441D1005F5DAD /* XCRemoteSwiftPackageReference "Nuke" */,
 			);
 			productRefGroup = E1908B4B2C2F4F2A002C8F5F /* Products */;
 			projectDirPath = "";
@@ -1149,6 +1153,7 @@
 				E10CC7702C46F18000CC34B1 /* GeminiAPIModels.swift in Sources */,
 				E10CC7712C46F18000CC34B1 /* AGIServiceProtocol.swift in Sources */,
 				E10CC7722C46F18000CC34B1 /* OpenSourceLLMAPIService.swift in Sources */,
+				E1E210BD2CA436DE005F5DAD /* Glassify.swift in Sources */,
 				E10CC7732C46F18000CC34B1 /* ChatGPTAPIModels.swift in Sources */,
 				E10CC7742C46F18000CC34B1 /* ClaudeAPIService.swift in Sources */,
 				E10CC7752C46F18000CC34B1 /* ClaudeAPIModels.swift in Sources */,
@@ -1222,6 +1227,7 @@
 				E1F4872C2C2F96B100031976 /* WorkView.swift in Sources */,
 				E1F4872A2C2F962B00031976 /* SkillsView.swift in Sources */,
 				E1AD862A2C31B2B1008F38A3 /* PublicationsView.swift in Sources */,
+				E1E210BC2CA436DE005F5DAD /* Glassify.swift in Sources */,
 				E1591A0E2C49E435001C6994 /* GeminiSettingsViewModel.swift in Sources */,
 				E1591A0F2C49E435001C6994 /* OpenAISettingsViewModel.swift in Sources */,
 				E1591A102C49E435001C6994 /* ClaudeSettingsViewModel.swift in Sources */,
@@ -1872,20 +1878,20 @@
 				minimumVersion = 0.1.2;
 			};
 		};
-		E13829932C343C22000DA139 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 3.1.1;
-			};
-		};
 		E152C6CD2C375739000949AB /* XCRemoteSwiftPackageReference "CodeScanner" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/twostraws/CodeScanner";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 2.5.0;
+			};
+		};
+		E1E210BE2CA441D1005F5DAD /* XCRemoteSwiftPackageReference "Nuke" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kean/Nuke";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 12.8.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -1931,16 +1937,6 @@
 			package = E10CC7682C46ED7D00CC34B1 /* XCRemoteSwiftPackageReference "GPT3-Tokenizer" */;
 			productName = "GPT3 Tokenizer";
 		};
-		E13829942C343C22000DA139 /* SDWebImageSwiftUI */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = E13829932C343C22000DA139 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
-			productName = SDWebImageSwiftUI;
-		};
-		E1526DA32C38576100D88453 /* SDWebImageSwiftUI */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = E13829932C343C22000DA139 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
-			productName = SDWebImageSwiftUI;
-		};
 		E1526DA52C38576100D88453 /* CodeScanner */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = E152C6CD2C375739000949AB /* XCRemoteSwiftPackageReference "CodeScanner" */;
@@ -1950,6 +1946,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = E152C6CD2C375739000949AB /* XCRemoteSwiftPackageReference "CodeScanner" */;
 			productName = CodeScanner;
+		};
+		E1E210BF2CA441D1005F5DAD /* NukeUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E1E210BE2CA441D1005F5DAD /* XCRemoteSwiftPackageReference "Nuke" */;
+			productName = NukeUI;
+		};
+		E1E210C12CA443E3005F5DAD /* NukeUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E1E210BE2CA441D1005F5DAD /* XCRemoteSwiftPackageReference "Nuke" */;
+			productName = NukeUI;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
