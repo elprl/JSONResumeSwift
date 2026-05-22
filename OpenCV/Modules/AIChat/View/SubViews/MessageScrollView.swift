@@ -5,6 +5,7 @@
 //  Created by Paul Leo on 20/07/2024.
 //
 import SwiftUI
+import Combine
 
 @available(iOS 18.0, *)
 struct MessageScrollView18: View {

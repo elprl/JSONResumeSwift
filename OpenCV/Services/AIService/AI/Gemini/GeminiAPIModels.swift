@@ -32,7 +32,7 @@ enum GeminiModel {
  
 extension GeminiModel: Hashable, Identifiable, Codable {    
     static var `default`: GeminiModel {
-        return .geminiPro(model: "gemini-1.5-pro-latest", tokens: 30720)
+        return .geminiPro(model: "gemini-1.5-pro-latest", tokens: 1048576)
     }
     
     static var allCases: [GeminiModel] {

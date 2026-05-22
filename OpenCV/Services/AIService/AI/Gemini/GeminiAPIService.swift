@@ -7,12 +7,13 @@
 //
 
 import Foundation
-import GoogleGenerativeAI
+import FirebaseAILogic
+import OSLog
 
 final class GeminiAPIService: ChatGPTAPIService, @unchecked Sendable {
     private var geminiClient: GenerativeModel?
     override var model: String {
-        let modelString = UserDefaults.standard.geminiModel ?? "gemini-pro"
+        let modelString = UserDefaults.standard.geminiModel ?? "gemini-3.5-flash"
         return modelString
     }
     override var urlRequest: URLRequest {
@@ -51,7 +52,13 @@ final class GeminiAPIService: ChatGPTAPIService, @unchecked Sendable {
     
     override func setIsActive() {
         if let key = self.apiKey, !key.isEmpty {
-            self.geminiClient = GenerativeModel(name: model, apiKey: key)
+            // Initialize the Gemini Developer API backend service
+            let ai = FirebaseAI.firebaseAI(backend: .googleAI())
+
+            // Create a `GenerativeModel` instance with a model that supports your use case
+            let client = ai.generativeModel(modelName: model)
+
+            self.geminiClient = client
             if !(UserDefaults.standard.hasGeminiKey ?? false) {
                 UserDefaults.standard.hasGeminiKey = true
             }
@@ -87,45 +94,46 @@ final class GeminiAPIService: ChatGPTAPIService, @unchecked Sendable {
             prevMessage
         ]
         
-        do {
-            // gemini annoyingly only allows alternating between model and user
-            for message in generateMessages(from: text) {
-                var content = try ModelContent(role: GeminiRole.convertRole(message.role), message.content)
-                if prevMessage.role == content.role {
-                    content = try ModelContent(role: GeminiRole.convertRole(message.role), prevMessage.parts + [message.content])
-                    if let index = modelContents.firstIndex(of: prevMessage) {
-                        modelContents[index] = content
-                    }
-                } else {
-                    modelContents.append(content)
-                }
-                prevMessage = content
-            }
-            
-            // add the prompt
-            var content = try ModelContent(role: GeminiRole.user.rawValue, text)
-            if prevMessage.role == GeminiRole.user.rawValue {
-                content = try ModelContent(role: GeminiRole.user.rawValue, prevMessage.parts + [text])
+        // gemini annoyingly only allows alternating between model and user
+        for message in generateMessages(from: text) {
+            let role = GeminiRole.convertRole(message.role)
+            var content = ModelContent(role: role, parts: message.content)
+            if prevMessage.role == content.role {
+                let mergedText = Self.mergedText(from: prevMessage, appending: message.content)
+                content = ModelContent(role: role, parts: mergedText)
                 if let index = modelContents.firstIndex(of: prevMessage) {
                     modelContents[index] = content
                 }
             } else {
                 modelContents.append(content)
             }
-        } catch {
-            Log.api.error("Error generating messages: \(error)")
+            prevMessage = content
+        }
+        
+        // add the prompt
+        var content = ModelContent(role: GeminiRole.user.rawValue, parts: text)
+        if prevMessage.role == GeminiRole.user.rawValue {
+            let mergedText = Self.mergedText(from: prevMessage, appending: text)
+            content = ModelContent(role: GeminiRole.user.rawValue, parts: mergedText)
+            if let index = modelContents.firstIndex(of: prevMessage) {
+                modelContents[index] = content
+            }
+        } else {
+            modelContents.append(content)
         }
 
         return modelContents
     }
     
     override func sendMessageStream(text: String, needsJSONResponse: Bool = false) async throws -> AsyncThrowingStream<String, any Error> {
-        return AsyncThrowingStream<String, any Error> { continuation in
+        return AsyncThrowingStream<String, any Error>(bufferingPolicy: .unbounded) { continuation in
             Task(priority: .userInitiated) { [weak self] in
                 guard let self = self else { return }
                 do {
                     let messages: [ModelContent] = generateGeminiMessages(text: text)
-                    guard let outputContentStream = geminiClient?.generateContentStream(messages) else { throw TDAPIError.invalidResponse }
+                    guard let outputContentStream = try geminiClient?.generateContentStream(messages) else {
+                        throw TDAPIError.invalidResponse
+                    }
                     var outputText: String = ""
                     
                     // stream response
@@ -138,32 +146,44 @@ final class GeminiAPIService: ChatGPTAPIService, @unchecked Sendable {
                     Log.api.debug("outputText: \(outputText)")
                     continuation.finish()
                 } catch {
-                    var errorMessage: String = ""
-                    switch error {
-                    case let GenerateContentError.internalError(underlying: underlyingError):
-                        Log.api.error("Gemini Failed: underlying error: \(underlyingError.localizedDescription)")
-                        errorMessage = NSLocalizedString("Gemini Failed: Internal error. Check billing & availability in your country.", comment: "")
-                    case let GenerateContentError.promptBlocked(response: generateContentResponse):
-                        Log.api.error("Gemini Failed: promptBlocked error: \(generateContentResponse.text ?? "")")
-                        errorMessage = NSLocalizedString("Gemini Failed: Your prompt was blocked", comment: "")
-                    case let GenerateContentError.responseStoppedEarly(reason: finishReason, response: generateContentResponse):
-                        Log.api.error("Gemini Failed: responseStoppedEarly error: \(generateContentResponse.text ?? "")")
-                        errorMessage = NSLocalizedString("Gemini Failed: Response stopped early, \(finishReason.rawValue)", comment: "")
-                    case GenerateContentError.invalidAPIKey:
-                        errorMessage = NSLocalizedString("Gemini Failed: Invalid API Key", comment: "")
-                    case GenerateContentError.unsupportedUserLocation:
-                        errorMessage = NSLocalizedString("Gemini Failed: Unsupported User Location", comment: "")
-                    default:
-                        errorMessage = NSLocalizedString("Gemini Failed: Unknown error", comment: "")
-                    }
+                    let errorMessage = Self.errorMessage(for: error)
                     Log.api.error("Error decoding gemini stream: \(errorMessage)")
                     continuation.finish(throwing: TDAPIError.streamError(errorMessage))
                 }
             }
         }
     }
+    
+    private static func mergedText(from content: ModelContent, appending text: String) -> String {
+        let existingText = content.parts.compactMap { $0 as? TextPart }.map(\.text).joined()
+        guard !existingText.isEmpty else { return text }
+        return existingText + "\n" + text
+    }
+    
+    private static func errorMessage(for error: any Error) -> String {
+        switch error {
+        case let GenerateContentError.internalError(underlying: underlyingError):
+            Log.api.error("Gemini Failed: underlying error: \(underlyingError.localizedDescription)")
+            return NSLocalizedString("Gemini Failed: Internal error. Check billing & availability in your country.", comment: "")
+        case let GenerateContentError.promptBlocked(response: generateContentResponse):
+            Log.api.error("Gemini Failed: promptBlocked error: \(generateContentResponse.text ?? "")")
+            return NSLocalizedString("Gemini Failed: Your prompt was blocked", comment: "")
+        case let GenerateContentError.responseStoppedEarly(reason: finishReason, response: generateContentResponse):
+            Log.api.error("Gemini Failed: responseStoppedEarly error: \(generateContentResponse.text ?? "")")
+            return NSLocalizedString("Gemini Failed: Response stopped early, \(finishReason.rawValue)", comment: "")
+        case let GenerateContentError.promptImageContentError(underlying: underlyingError):
+            Log.api.error("Gemini Failed: prompt image error: \(underlyingError.localizedDescription)")
+            return NSLocalizedString("Gemini Failed: Invalid prompt content", comment: "")
+        default:
+            return NSLocalizedString("Gemini Failed: Unknown error", comment: "")
+        }
+    }
 }
 
 extension Array where Element == ModelContent {
-    var contentCount: Int { reduce(0, { $0 + ($1.parts.first?.text?.count ?? 0) })}
+    var contentCount: Int {
+        reduce(0) { count, content in
+            count + content.parts.compactMap { $0 as? TextPart }.map(\.text.count).reduce(0, +)
+        }
+    }
 }

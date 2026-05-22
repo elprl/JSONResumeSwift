@@ -11,7 +11,9 @@ import Combine
 import SwiftUI
 import SwiftData
 import SwiftAnthropic
+import OSLog
 
+@MainActor
 @Observable
 final class AIChatMessagesViewModel {
     var messages: [ChatMessage] = [] {

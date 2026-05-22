@@ -7,9 +7,23 @@
 
 import SwiftUI
 import SwiftData
+import FirebaseCore
+
+/// Application delegate responsible for early SDK bootstrap (Supabase client) before SwiftUI attaches.
+class AppDelegate: NSObject, UIApplicationDelegate {
+    
+    /// Ensures the FactoryKit Supabase client initializes once at launch so later views share a single client.
+    func application(_ application: UIApplication,
+                     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+        FirebaseApp.configure()
+        return true
+    }
+
+}
 
 @main
 struct OpenCVApp: App {
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
             Person.self, ChatMessage.self
