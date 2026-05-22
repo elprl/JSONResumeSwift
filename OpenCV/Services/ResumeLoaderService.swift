@@ -5,6 +5,7 @@
 //  Created by Paul Leo on 03/07/2024.
 //
 import Foundation
+import OSLog
 
 struct ResumeLoaderService: ResumeLoaderProtocol {}
 

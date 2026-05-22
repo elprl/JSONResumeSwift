@@ -8,6 +8,7 @@
 import SwiftUI
 import SwiftData
 import CodeScanner
+import AVFoundation
 
 struct ResumeListView: View {
     @Query(sort: \Person.createdAt, order: .reverse) private var people: [Person]

@@ -25,7 +25,12 @@ DerivedData/
 !default.mode2v3
 *.perspectivev3
 !default.perspectivev3
+# User-specific Xcode data
 xcuserdata/
+*.xcuserstate
+
+# Keep shared schemes
+!xcshareddata/xcschemes/
 
 ## Other
 *.moved-aside
@@ -70,6 +75,7 @@ Dependencies/
 fastlane/report.xml
 fastlane/Preview.html
 fastlane/screenshots/**/*.png
+fastlane/screenshots/**/*.html
 fastlane/test_output
 
 # Code Injection
@@ -94,3 +100,15 @@ reports/
 
 # Firebase
 *-debug.log
+
+# Ignore all env files
+.env*
+*.p8
+
+# But allow the example file
+!.env.example
+
+.xcodebuildmcp/
+.derived*
+
+GoogleService-Info*.plist

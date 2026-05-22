@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import OSLog
 
 class ChatGPTAPIService: @unchecked Sendable, AGIServiceProtocol {
     let keychainService = KeychainService()

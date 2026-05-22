@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SwiftData
+import OSLog
 
 struct InputFormView: View {
     @Environment(\.colorScheme) private var colorScheme
