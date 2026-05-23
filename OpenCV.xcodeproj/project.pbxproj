@@ -16,9 +16,7 @@
 		E106A1912C379933009C2D92 /* OpenCVAppClipUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E106A1902C379933009C2D92 /* OpenCVAppClipUITests.swift */; };
 		E106A1932C379933009C2D92 /* OpenCVAppClipUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E106A1922C379933009C2D92 /* OpenCVAppClipUITestsLaunchTests.swift */; };
 		E106A1962C379933009C2D92 /* OpenCVAppClip.app in Embed App Clips */ = {isa = PBXBuildFile; fileRef = E106A16F2C379932009C2D92 /* OpenCVAppClip.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		E10CC71E2C46C10E00CC34B1 /* AIChatMessageRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10CC71D2C46C10E00CC34B1 /* AIChatMessageRowView.swift */; };
 		E10CC71F2C46C10E00CC34B1 /* AIChatMessagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10CC71C2C46C10E00CC34B1 /* AIChatMessagesView.swift */; };
-		E10CC7202C46C10E00CC34B1 /* AIChatMessageRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10CC71D2C46C10E00CC34B1 /* AIChatMessageRowView.swift */; };
 		E10CC7212C46C10E00CC34B1 /* AIChatMessagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10CC71C2C46C10E00CC34B1 /* AIChatMessagesView.swift */; };
 		E10CC7232C46C11300CC34B1 /* AIChatMessagesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10CC7222C46C11300CC34B1 /* AIChatMessagesViewModel.swift */; };
 		E10CC7242C46C11300CC34B1 /* AIChatMessagesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10CC7222C46C11300CC34B1 /* AIChatMessagesViewModel.swift */; };
@@ -145,8 +143,6 @@
 		E1AD863D2C32229D008F38A3 /* CachedResumeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AD863C2C32229D008F38A3 /* CachedResumeView.swift */; };
 		E1BDB6AC2C4C063700914DE9 /* SingleTextEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BDB6AB2C4C062700914DE9 /* SingleTextEditorView.swift */; };
 		E1BDB6AD2C4C063700914DE9 /* SingleTextEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BDB6AB2C4C062700914DE9 /* SingleTextEditorView.swift */; };
-		E1BDB6AF2C4C16D400914DE9 /* TextInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BDB6AE2C4C16CC00914DE9 /* TextInputView.swift */; };
-		E1BDB6B02C4C16D400914DE9 /* TextInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BDB6AE2C4C16CC00914DE9 /* TextInputView.swift */; };
 		E1BDB6B22C4C16F600914DE9 /* MessageScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BDB6B12C4C16EE00914DE9 /* MessageScrollView.swift */; };
 		E1BDB6B32C4C16F600914DE9 /* MessageScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BDB6B12C4C16EE00914DE9 /* MessageScrollView.swift */; };
 		E1CF5ABE2FBF54240048C655 /* FirebaseAILogic in Frameworks */ = {isa = PBXBuildFile; productRef = E1CF5ABD2FBF54240048C655 /* FirebaseAILogic */; };
@@ -159,6 +155,7 @@
 		E1CF5E3C2FBF5EAA0048C655 /* FirebaseAI in Frameworks */ = {isa = PBXBuildFile; productRef = E1CF5AC52FBF58920048C655 /* FirebaseAI */; };
 		E1CF5E3D2FBF5EAA0048C655 /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = E1CF5AC92FBF58920048C655 /* FirebaseCore */; };
 		E1CF5E3F2FC0B26C0048C655 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E1CF5E3E2FC0B26C0048C655 /* GoogleService-Info.plist */; };
+		E1CF5E422FC1F7960048C655 /* ExyteChat in Frameworks */ = {isa = PBXBuildFile; productRef = E1CF5E412FC1F7960048C655 /* ExyteChat */; };
 		E1E210BC2CA436DE005F5DAD /* Glassify.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E210BB2CA436DE005F5DAD /* Glassify.swift */; };
 		E1E210BD2CA436DE005F5DAD /* Glassify.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E210BB2CA436DE005F5DAD /* Glassify.swift */; };
 		E1E210C02CA441D1005F5DAD /* NukeUI in Frameworks */ = {isa = PBXBuildFile; productRef = E1E210BF2CA441D1005F5DAD /* NukeUI */; };
@@ -179,6 +176,13 @@
 		E1FCACA72C4700B900D1A76E /* Date+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FCACA52C4700B900D1A76E /* Date+Utils.swift */; };
 		E1FCACA92C47030D00D1A76E /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FCACA82C47030D00D1A76E /* Card.swift */; };
 		E1FCACAA2C47030D00D1A76E /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FCACA82C47030D00D1A76E /* Card.swift */; };
+		E2A100012FC2000000000001 /* ChatMessage+ExyteChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A100002FC2000000000001 /* ChatMessage+ExyteChat.swift */; };
+		E2A100012FC2000000000002 /* ChatMessage+ExyteChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A100002FC2000000000001 /* ChatMessage+ExyteChat.swift */; };
+		E2A100022FC2000000000001 /* AIChatExyteMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A100002FC2000000000003 /* AIChatExyteMessageCell.swift */; };
+		E2A100022FC2000000000002 /* AIChatExyteMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A100002FC2000000000003 /* AIChatExyteMessageCell.swift */; };
+		E2A100032FC2000000000001 /* AIChatInputBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A100002FC2000000000002 /* AIChatInputBar.swift */; };
+		E2A100032FC2000000000002 /* AIChatInputBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A100002FC2000000000002 /* AIChatInputBar.swift */; };
+		E2A100042FC2000000000001 /* ExyteChat in Frameworks */ = {isa = PBXBuildFile; productRef = E1CF5E412FC1F7960048C655 /* ExyteChat */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -248,7 +252,6 @@
 		E106A1902C379933009C2D92 /* OpenCVAppClipUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenCVAppClipUITests.swift; sourceTree = "<group>"; };
 		E106A1922C379933009C2D92 /* OpenCVAppClipUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenCVAppClipUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		E10CC71C2C46C10E00CC34B1 /* AIChatMessagesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIChatMessagesView.swift; sourceTree = "<group>"; };
-		E10CC71D2C46C10E00CC34B1 /* AIChatMessageRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIChatMessageRowView.swift; sourceTree = "<group>"; };
 		E10CC7222C46C11300CC34B1 /* AIChatMessagesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIChatMessagesViewModel.swift; sourceTree = "<group>"; };
 		E10CC7252C46C19600CC34B1 /* ChatMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessage.swift; sourceTree = "<group>"; };
 		E10CC7302C46E93E00CC34B1 /* AGIServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AGIServiceProtocol.swift; sourceTree = "<group>"; };
@@ -323,7 +326,6 @@
 		E1AD863A2C31D6BE008F38A3 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		E1AD863C2C32229D008F38A3 /* CachedResumeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachedResumeView.swift; sourceTree = "<group>"; };
 		E1BDB6AB2C4C062700914DE9 /* SingleTextEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleTextEditorView.swift; sourceTree = "<group>"; };
-		E1BDB6AE2C4C16CC00914DE9 /* TextInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInputView.swift; sourceTree = "<group>"; };
 		E1BDB6B12C4C16EE00914DE9 /* MessageScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageScrollView.swift; sourceTree = "<group>"; };
 		E1CF5E3E2FC0B26C0048C655 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E1E210BB2CA436DE005F5DAD /* Glassify.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Glassify.swift; sourceTree = "<group>"; };
@@ -341,6 +343,9 @@
 		E1F4872B2C2F96A800031976 /* WorkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkView.swift; sourceTree = "<group>"; };
 		E1FCACA52C4700B900D1A76E /* Date+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Utils.swift"; sourceTree = "<group>"; };
 		E1FCACA82C47030D00D1A76E /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		E2A100002FC2000000000001 /* ChatMessage+ExyteChat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChatMessage+ExyteChat.swift"; sourceTree = "<group>"; };
+		E2A100002FC2000000000002 /* AIChatInputBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIChatInputBar.swift; sourceTree = "<group>"; };
+		E2A100002FC2000000000003 /* AIChatExyteMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIChatExyteMessageCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -354,6 +359,7 @@
 				E10CC7772C46F3E000CC34B1 /* Markdown in Frameworks */,
 				E1526DA62C38576100D88453 /* CodeScanner in Frameworks */,
 				E1E210C22CA443E3005F5DAD /* NukeUI in Frameworks */,
+				E2A100042FC2000000000001 /* ExyteChat in Frameworks */,
 				E10CC77D2C46F3E000CC34B1 /* GPT3 Tokenizer in Frameworks */,
 				E10CC7792C46F3E000CC34B1 /* SwiftAnthropic in Frameworks */,
 			);
@@ -385,6 +391,7 @@
 				E1E210C02CA441D1005F5DAD /* NukeUI in Frameworks */,
 				E10CC72A2C46C6A800CC34B1 /* Markdown in Frameworks */,
 				E152C6CF2C375739000949AB /* CodeScanner in Frameworks */,
+				E1CF5E422FC1F7960048C655 /* ExyteChat in Frameworks */,
 				E10CC76A2C46ED7D00CC34B1 /* GPT3 Tokenizer in Frameworks */,
 				E10CC7522C46E9C000CC34B1 /* SwiftAnthropic in Frameworks */,
 				E1CF5ACA2FBF58920048C655 /* FirebaseCore in Frameworks */,
@@ -461,6 +468,7 @@
 			isa = PBXGroup;
 			children = (
 				E10CC7252C46C19600CC34B1 /* ChatMessage.swift */,
+				E2A100002FC2000000000001 /* ChatMessage+ExyteChat.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -486,8 +494,8 @@
 			isa = PBXGroup;
 			children = (
 				E1BDB6B12C4C16EE00914DE9 /* MessageScrollView.swift */,
-				E10CC71D2C46C10E00CC34B1 /* AIChatMessageRowView.swift */,
-				E1BDB6AE2C4C16CC00914DE9 /* TextInputView.swift */,
+				E2A100002FC2000000000003 /* AIChatExyteMessageCell.swift */,
+				E2A100002FC2000000000002 /* AIChatInputBar.swift */,
 				E1FCACA82C47030D00D1A76E /* Card.swift */,
 			);
 			path = SubViews;
@@ -914,6 +922,7 @@
 				E1CF5ABD2FBF54240048C655 /* FirebaseAILogic */,
 				E1CF5AC52FBF58920048C655 /* FirebaseAI */,
 				E1CF5AC92FBF58920048C655 /* FirebaseCore */,
+				E1CF5E412FC1F7960048C655 /* ExyteChat */,
 			);
 			productName = OpenCVAppClip;
 			productReference = E106A16F2C379932009C2D92 /* OpenCVAppClip.app */;
@@ -979,6 +988,7 @@
 				E1CF5ABD2FBF54240048C655 /* FirebaseAILogic */,
 				E1CF5AC52FBF58920048C655 /* FirebaseAI */,
 				E1CF5AC92FBF58920048C655 /* FirebaseCore */,
+				E1CF5E412FC1F7960048C655 /* ExyteChat */,
 			);
 			productName = OpenCV;
 			productReference = E1908B4A2C2F4F2A002C8F5F /* JSON CV.app */;
@@ -1072,6 +1082,7 @@
 				E10CC7682C46ED7D00CC34B1 /* XCRemoteSwiftPackageReference "GPT3-Tokenizer" */,
 				E1E210BE2CA441D1005F5DAD /* XCRemoteSwiftPackageReference "Nuke" */,
 				E1CF5ABC2FBF54240048C655 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				E1CF5E402FC1F7960048C655 /* XCRemoteSwiftPackageReference "Chat" */,
 			);
 			productRefGroup = E1908B4B2C2F4F2A002C8F5F /* Products */;
 			projectDirPath = "";
@@ -1156,9 +1167,11 @@
 				E1526D8B2C38571D00D88453 /* ProjectsView.swift in Sources */,
 				E1526D8C2C38571D00D88453 /* CertificatesView.swift in Sources */,
 				E15919EF2C4956F2001C6994 /* DataService.swift in Sources */,
+				E2A100032FC2000000000002 /* AIChatInputBar.swift in Sources */,
 				E1526D8D2C38571D00D88453 /* QRCodeGeneratorService.swift in Sources */,
 				E1EF60362C67E15400811541 /* StatsView.swift in Sources */,
 				E10CC7242C46C11300CC34B1 /* AIChatMessagesViewModel.swift in Sources */,
+				E2A100022FC2000000000002 /* AIChatExyteMessageCell.swift in Sources */,
 				E1526D8E2C38571D00D88453 /* SettingsView.swift in Sources */,
 				E1526DAC2C3987C900D88453 /* String+Utils.swift in Sources */,
 				E1526D8F2C38571D00D88453 /* ReferencesView.swift in Sources */,
@@ -1184,13 +1197,11 @@
 				E1526D942C38571D00D88453 /* AwardsView.swift in Sources */,
 				E1526D952C38571D00D88453 /* ResumeView.swift in Sources */,
 				E1526D962C38571D00D88453 /* MeshGradientView.swift in Sources */,
-				E1BDB6AF2C4C16D400914DE9 /* TextInputView.swift in Sources */,
 				E1526D972C38571D00D88453 /* Person.swift in Sources */,
 				E1526D982C38571D00D88453 /* SwiftUI+Utils.swift in Sources */,
 				E1526D992C38571D00D88453 /* MyNotesViewModel.swift in Sources */,
 				E1526D9A2C38571D00D88453 /* CachedResumeView.swift in Sources */,
 				E1526D9B2C38571D00D88453 /* EducationView.swift in Sources */,
-				E10CC7202C46C10E00CC34B1 /* AIChatMessageRowView.swift in Sources */,
 				E10CC7212C46C10E00CC34B1 /* AIChatMessagesView.swift in Sources */,
 				E1526D9C2C38571D00D88453 /* MyNotesView.swift in Sources */,
 				E1526D9D2C38571D00D88453 /* LanguagesView.swift in Sources */,
@@ -1213,6 +1224,7 @@
 				E106A1722C379932009C2D92 /* OpenCVAppClipApp.swift in Sources */,
 				E10CC75F2C46EB5100CC34B1 /* OSLog+Utils.swift in Sources */,
 				E1BDB6AC2C4C063700914DE9 /* SingleTextEditorView.swift in Sources */,
+				E2A100012FC2000000000002 /* ChatMessage+ExyteChat.swift in Sources */,
 				E10CC7272C46C19B00CC34B1 /* ChatMessage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1246,6 +1258,7 @@
 				E1908B7C2C2F5EFC002C8F5F /* ResumeModels.swift in Sources */,
 				E1BDB6B22C4C16F600914DE9 /* MessageScrollView.swift in Sources */,
 				E1AD86282C31AECD008F38A3 /* CertificatesView.swift in Sources */,
+				E2A100032FC2000000000001 /* AIChatInputBar.swift in Sources */,
 				E1F4872C2C2F96B100031976 /* WorkView.swift in Sources */,
 				E1F4872A2C2F962B00031976 /* SkillsView.swift in Sources */,
 				E1AD862A2C31B2B1008F38A3 /* PublicationsView.swift in Sources */,
@@ -1288,8 +1301,8 @@
 				E10CC74C2C46E93E00CC34B1 /* AGIServiceProtocol.swift in Sources */,
 				E10CC74D2C46E93E00CC34B1 /* ClaudeAPIService.swift in Sources */,
 				E10CC74E2C46E93E00CC34B1 /* ChatGPTAPIModels.swift in Sources */,
+				E2A100022FC2000000000001 /* AIChatExyteMessageCell.swift in Sources */,
 				E1AD862C2C31BA62008F38A3 /* InterestsView.swift in Sources */,
-				E10CC71E2C46C10E00CC34B1 /* AIChatMessageRowView.swift in Sources */,
 				E10CC71F2C46C10E00CC34B1 /* AIChatMessagesView.swift in Sources */,
 				E1FCACA62C4700B900D1A76E /* Date+Utils.swift in Sources */,
 				E1E845852C35C0A00065489C /* SettingsView.swift in Sources */,
@@ -1304,7 +1317,7 @@
 				E1BDB6AD2C4C063700914DE9 /* SingleTextEditorView.swift in Sources */,
 				E1AD86392C31D67A008F38A3 /* ResumeListViewModel.swift in Sources */,
 				E1AD862E2C31BA84008F38A3 /* ReferencesView.swift in Sources */,
-				E1BDB6B02C4C16D400914DE9 /* TextInputView.swift in Sources */,
+				E2A100012FC2000000000001 /* ChatMessage+ExyteChat.swift in Sources */,
 				E10CC7262C46C19B00CC34B1 /* ChatMessage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1366,7 +1379,7 @@
 				CODE_SIGN_ENTITLEMENTS = OpenCVAppClip/OpenCVAppClip.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 122;
+				CURRENT_PROJECT_VERSION = 127;
 				DEVELOPMENT_ASSET_PATHS = "\"OpenCVAppClip/Preview Content\"";
 				DEVELOPMENT_TEAM = WY258SLJLV;
 				ENABLE_PREVIEWS = YES;
@@ -1379,12 +1392,12 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.4;
+				MARKETING_VERSION = 1.0.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tapdigital.OpenCV.Clip;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1402,7 +1415,7 @@
 				CODE_SIGN_ENTITLEMENTS = OpenCVAppClip/OpenCVAppClip.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 122;
+				CURRENT_PROJECT_VERSION = 127;
 				DEVELOPMENT_ASSET_PATHS = "\"OpenCVAppClip/Preview Content\"";
 				DEVELOPMENT_TEAM = WY258SLJLV;
 				ENABLE_PREVIEWS = YES;
@@ -1415,12 +1428,12 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.4;
+				MARKETING_VERSION = 1.0.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tapdigital.OpenCV.Clip;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1435,7 +1448,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 127;
 				DEVELOPMENT_TEAM = WY258SLJLV;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
@@ -1454,7 +1467,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 127;
 				DEVELOPMENT_TEAM = WY258SLJLV;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
@@ -1472,7 +1485,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 127;
 				DEVELOPMENT_TEAM = WY258SLJLV;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
@@ -1489,7 +1502,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 127;
 				DEVELOPMENT_TEAM = WY258SLJLV;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
@@ -1653,7 +1666,7 @@
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 122;
+				CURRENT_PROJECT_VERSION = 127;
 				DEVELOPMENT_ASSET_PATHS = "\"OpenCV/Preview Content\"";
 				DEVELOPMENT_TEAM = WY258SLJLV;
 				ENABLE_PREVIEWS = YES;
@@ -1666,12 +1679,12 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.4;
+				MARKETING_VERSION = 1.0.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tapdigital.OpenCV;
 				PRODUCT_MODULE_NAME = OpenCV;
 				PRODUCT_NAME = "JSON CV";
@@ -1704,7 +1717,7 @@
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 122;
+				CURRENT_PROJECT_VERSION = 127;
 				DEVELOPMENT_ASSET_PATHS = "\"OpenCV/Preview Content\"";
 				DEVELOPMENT_TEAM = WY258SLJLV;
 				ENABLE_PREVIEWS = YES;
@@ -1717,12 +1730,12 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.4;
+				MARKETING_VERSION = 1.0.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tapdigital.OpenCV;
 				PRODUCT_MODULE_NAME = OpenCV;
 				PRODUCT_NAME = "JSON CV";
@@ -1752,7 +1765,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 127;
 				DEVELOPMENT_TEAM = WY258SLJLV;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
@@ -1771,7 +1784,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 127;
 				DEVELOPMENT_TEAM = WY258SLJLV;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
@@ -1789,7 +1802,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 127;
 				DEVELOPMENT_TEAM = WY258SLJLV;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
@@ -1806,7 +1819,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 127;
 				DEVELOPMENT_TEAM = WY258SLJLV;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
@@ -1928,6 +1941,14 @@
 				minimumVersion = 12.13.0;
 			};
 		};
+		E1CF5E402FC1F7960048C655 /* XCRemoteSwiftPackageReference "Chat" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/exyte/Chat";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 		E1E210BE2CA441D1005F5DAD /* XCRemoteSwiftPackageReference "Nuke" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/kean/Nuke";
@@ -1993,6 +2014,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = E1CF5ABC2FBF54240048C655 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseCore;
+		};
+		E1CF5E412FC1F7960048C655 /* ExyteChat */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E1CF5E402FC1F7960048C655 /* XCRemoteSwiftPackageReference "Chat" */;
+			productName = ExyteChat;
 		};
 		E1E210BF2CA441D1005F5DAD /* NukeUI */ = {
 			isa = XCSwiftPackageProductDependency;

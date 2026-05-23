@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Combine
 import SwiftUI
 import SwiftData
 import SwiftAnthropic
@@ -27,16 +26,12 @@ final class AIChatMessagesViewModel {
     }
     var state: LoadingViewState<[ChatMessage]> = .appeared
     var newChatText: String = ""
-    var selectedMessageId: String?
     var agiContentCount: Int = 0
     var isAGIResponding: Bool = false
-    var isScrollLockActive: Bool = true
     var modelContext: ModelContext
     var resumeUrl: String
     var resume: Resume
     var showingSettingsSheet = false
-    @ObservationIgnored var scrollLockPublisher = PassthroughSubject<Bool, Never>()
-    @ObservationIgnored private var cancellables: [AnyCancellable] = []
     @ObservationIgnored private var agiService: (any AGIServiceProtocol)?
     @ObservationIgnored private var agiTask: Task<(), Never>?
 
@@ -44,14 +39,7 @@ final class AIChatMessagesViewModel {
         self.modelContext = modelContext
         self.resumeUrl = resumeUrl
         self.resume = resume
-        
-        // Debounce the scroll lock updates
-        scrollLockPublisher
-            .debounce(for: .milliseconds(300), scheduler: RunLoop.main)
-            .removeDuplicates()
-            .assign(to: \.isScrollLockActive, on: self)
-            .store(in: &cancellables)
-        
+
         if let selectedAGI = UserDefaults.standard.selectedAGI {
             updateAGIService(selectedAGI: selectedAGI)
         }
@@ -100,19 +88,25 @@ final class AIChatMessagesViewModel {
     
 //    @MainActor
     func onSubmitNewMessage() {
+        send(text: newChatText)
+    }
+
+    func send(text: String) {
+        let trimmedText = text.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !trimmedText.isEmpty else { return }
+
         Task {
-            let message = ChatMessage(author: .user(resumeUrl), content: newChatText, resumeUrl: resumeUrl)
+            let message = ChatMessage(author: .user(resumeUrl), content: trimmedText, resumeUrl: resumeUrl)
             if UserDefaults.standard.selectedAGI != AGIServiceChoice.none {
                 message.type = .aiQuestion
             }
             modelContext.insert(message)
             messages.append(message)
-            let contentCopy = String(newChatText)
             newChatText = ""
             Log.pres.debug("Inserted question/note message")
             if agiService != nil {
                 agiContentCount = 0
-                await handleAGIStream(content: contentCopy)
+                await handleAGIStream(content: trimmedText)
             }
         }
     }
@@ -144,22 +138,6 @@ final class AIChatMessagesViewModel {
     
     func onTap(message: ChatMessage) {
 
-    }
-    
-    func onTapScrollToBottom() {
-        self.isScrollLockActive = true
-    }
-    
-    func onUpKeyPressed() {
-
-    }
-    
-    private var isValidMessage: Bool {
-        if newChatText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty { return false }
-        if newChatText.trimmingCharacters(in: .whitespacesAndNewlines).count > 280 { // twitter char limit
-            return false
-        }
-        return true
     }
     
     func save() {

@@ -139,6 +139,11 @@ struct ResumeRowView: View {
     @Previewable @Namespace() var namespace
     @Previewable @Query var people: [Person]
     let viewModel = ResumeListViewModel(modelContext: PreviewController.previewContainer.mainContext)
-    ResumeRowView(viewModel: viewModel, person: people.first ?? Person(resumeUrl: "https://registry.jsonresume.org/elprl.json"), namespace: namespace)
+    VStack(spacing: 16) {
+        ResumeRowView(viewModel: viewModel, person: people.first ?? Person(resumeUrl: "https://registry.jsonresume.org/elprl.json"), namespace: namespace)
+        
+        ResumeRowView(viewModel: viewModel, person: people.first ?? Person(resumeUrl: "https://registry.jsonresume.org/elprl.json"), namespace: namespace)
+    }
+    .padding()
         .modelContainer(PreviewController.previewContainer)
 }

@@ -62,11 +62,7 @@ struct Glassify: GlassifiableViewModifier, ViewModifier {
     
     func body(content: Content) -> some View {
         content
-            .background {
-                RoundedRectangle(cornerRadius: cornerRadius)
-                    .fill(Material.ultraThinMaterial)
-                    .shadow(color: Color.black.opacity(0.2), radius: 2, x: shadowOffsetX, y: shadowOffsetY)
-            }
+            .glassyEffect(.regular, in: RoundedRectangle(cornerRadius: cornerRadius))
             .overlay {
                 RoundedRectangle(cornerRadius: cornerRadius)
                     .stroke(LinearGradient(colors: gradientColors,
@@ -104,11 +100,7 @@ struct GlassifyGroupBoxStyle: GlassifiableViewModifier, GroupBoxStyle {
             configuration.content
         }
         .padding()
-        .background {
-            RoundedRectangle(cornerRadius: cornerRadius)
-                .fill(Material.ultraThinMaterial)
-                .shadow(color: Color.black.opacity(0.2), radius: 2, x: shadowOffsetX, y: shadowOffsetY)
-        }
+        .glassyEffect(.clear, in: RoundedRectangle(cornerRadius: cornerRadius))
         .overlay {
             RoundedRectangle(cornerRadius: cornerRadius)
                 .stroke(LinearGradient(colors: gradientColors,

@@ -9,6 +9,13 @@
 
 ## For Daily Development
 
+### Release Workflow
+
+- Use `bundle exec fastlane ios public_beta` as the canonical TestFlight release lane.
+- The `bump` lane resolves the next build number as `max(version-scoped TestFlight build, committed xcodeproj build) + 1`, then commits the `OpenCV.xcodeproj` build-number change before the archive is built.
+- Keep the release working tree clean before running `public_beta`; the lane then badges icons, builds, uploads to TestFlight, creates the git tag/GitHub release, and sends Slack.
+- If App Store Connect rejects an upload because a bundle version already exists, rerun the lane after the previous upload appears in TestFlight so `bump` can read the newer build number.
+
 ### Overview
 
 - iOS 26 SwiftUI app targeting iPhone, iPad, macOS (Designed for iPad)

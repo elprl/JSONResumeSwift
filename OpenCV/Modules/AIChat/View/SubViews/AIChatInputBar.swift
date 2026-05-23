@@ -1,13 +1,17 @@
 //
-//  TextInputView.swift
+//  AIChatInputBar.swift
 //  OpenCV
 //
-//  Created by Paul Leo on 20/07/2024.
+//  Created by Cursor on 23/05/2026.
 //
+
+import ExyteChat
 import SwiftUI
 
-struct TextInputView: View {
-    @State var viewModel: AIChatMessagesViewModel
+struct AIChatInputBar: View {
+    let params: InputViewBuilderParameters
+    var viewModel: AIChatMessagesViewModel
+
     @FocusState private var isFocused: Bool
     @AppStorage(UserDefaults.Keys.hasAgiKey) var hasAgiKey: Bool = false
     @AppStorage(UserDefaults.Keys.hasClaudeKey) var hasClaudeKey: Bool = false
@@ -16,25 +20,34 @@ struct TextInputView: View {
     @AppStorage(UserDefaults.Keys.hasScopedRole) var hasScopedRole: Bool = true
     @AppStorage(UserDefaults.Keys.hasScopedCV) var hasScopedCV: Bool = true
     @AppStorage(UserDefaults.Keys.hasScopedHistory) var hasScopedHistory: Bool = true
-    
+
+    private var canSend: Bool {
+        !params.text.wrappedValue.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty && inputViewStateAllowsSending
+    }
+
+    private var inputViewStateAllowsSending: Bool {
+        switch params.inputViewState {
+        case .hasTextOrMedia, .hasRecording, .isRecordingTap, .playingRecording, .pausedRecording:
+            true
+        default:
+            false
+        }
+    }
+
     var body: some View {
         VStack {
-            Spacer()
-            VStack {
-                scope
-                    .padding(.horizontal)
-                input
-                    .padding(.horizontal)
-            }
-            .padding(.top, 12)
-            .padding(.bottom, isFocused ? 12 : 32)
-            .background(.ultraThinMaterial)
+            scope
+                .padding(.horizontal)
+            input
+                .padding(.horizontal)
         }
-        .zIndex(1)
+        .padding(.top, 12)
+        .padding(.bottom, isFocused ? 12 : 32)
+        .background(.ultraThinMaterial)
     }
-    
+
     @ViewBuilder
-    var scope: some View {
+    private var scope: some View {
         if selectedAGI != .none {
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack {
@@ -48,79 +61,81 @@ struct TextInputView: View {
             .padding(.bottom, 2)
         }
     }
-    
+
     @ViewBuilder
-    var input: some View {
+    private var input: some View {
         HStack(alignment: .center, spacing: 6) {
             commentButton
-            TextField(selectedAGI.placeholder, text: $viewModel.newChatText, axis: .vertical)
+            TextField(selectedAGI.placeholder, text: params.text, axis: .vertical)
                 .font(.body)
                 .textFieldStyle(.roundedBorder)
                 .disableAutocorrection(true)
                 .keyboardType(.asciiCapable)
                 .focused($isFocused)
                 .onSubmit {
-                    self.viewModel.newChatText.append("\n")
-                    self.isFocused = true
+                    params.text.wrappedValue.append("\n")
+                    isFocused = true
                 }
                 .submitLabel(.return)
-                .lineLimit(1...10) // reservesSpace: true)
+                .lineLimit(1...10)
                 .tint(.logoOrange)
-                .foregroundColor(.primary)
+                .foregroundStyle(.primary)
             if viewModel.isAGIResponding {
                 RoundButton(action: {
                     withAnimation {
-                        self.viewModel.onCancelAGI()
+                        viewModel.onCancelAGI()
                     }
                 }, imageSize: 30, icon: "stop.fill", bgColor: .orange, isLoading: .constant(false))
             } else {
                 RoundButton(action: {
                     withAnimation {
-                        self.viewModel.onSubmitNewMessage()
-                        self.isFocused = false
+                        params.inputViewActionClosure(.send)
+                        isFocused = false
                     }
                 }, imageSize: 30, icon: "paperplane.fill", bgColor: .blue, isLoading: .constant(false))
+                .disabled(!canSend)
+                .opacity(canSend ? 1 : 0.45)
             }
         }
     }
-    
+
     @ViewBuilder
-    var commentButton: some View {
+    private var commentButton: some View {
         Menu {
-            Section(header: Text("Select AI Service".uppercased()).font(.headline).foregroundColor(.orange)) {
+            Section(header: Text("Select AI Service".uppercased()).font(.headline).foregroundStyle(.orange)) {
                 if hasAgiKey {
                     Button {
-                        self.selectedAGI = .openai
-                        self.viewModel.updateAGIService(selectedAGI: .openai)
+                        selectedAGI = .openai
+                        viewModel.updateAGIService(selectedAGI: .openai)
                     } label: {
                         Label(AGIServiceChoice.openai.name, image: AGIServiceChoice.openai.imageKey)
                     }
                 }
                 if hasClaudeKey {
                     Button {
-                        self.selectedAGI = .claude
-                        self.viewModel.updateAGIService(selectedAGI: .claude)
+                        selectedAGI = .claude
+                        viewModel.updateAGIService(selectedAGI: .claude)
                     } label: {
                         Label(AGIServiceChoice.claude.name, image: AGIServiceChoice.claude.imageKey)
                     }
                 }
                 if hasGeminiKey {
                     Button {
-                        self.selectedAGI = .gemini
-                        self.viewModel.updateAGIService(selectedAGI: .gemini)
+                        selectedAGI = .gemini
+                        viewModel.updateAGIService(selectedAGI: .gemini)
                     } label: {
                         Label(AGIServiceChoice.gemini.name, image: AGIServiceChoice.gemini.imageKey)
                     }
                 }
             }
             Button(action: {
-                self.selectedAGI = .none
-                self.viewModel.updateAGIService(selectedAGI: .none)
+                selectedAGI = .none
+                viewModel.updateAGIService(selectedAGI: .none)
             }) {
                 Label("Personal Note", systemImage: "note")
             }
             Button(action: {
-                self.viewModel.showingSettingsSheet = true
+                viewModel.showingSettingsSheet = true
             }) {
                 Label("Settings", systemImage: "gearshape")
             }
