@@ -27,6 +27,26 @@ extension View {
             self
         }
     }
+
+    @ViewBuilder
+    func glassyEffect<S: Shape>(
+        _ glass: Glass = .regular,
+        in shape: S = DefaultGlassEffectShape()
+    ) -> some View {
+        if ProcessInfo.processInfo.isiOSAppOnMac || ProcessInfo.processInfo.isMacCatalystApp {
+            self.background(.ultraThinMaterial, in: shape)
+        } else {
+            self.glassEffect(glass, in: shape)
+        }
+    }
+    
+    func `if`<Content: View>(_ conditional: Bool, content: (Self) -> Content) -> TupleView<(Self?, Content?)> {
+        if conditional {
+            return TupleView((nil, content(self)))
+        } else {
+            return TupleView((self, nil))
+        }
+    }
 }
 
 enum LoadingViewState<Result> {

@@ -305,7 +305,7 @@ extension UserDefaults {
     
     var hasScopedRole: Bool? {
         get {
-            return bool(forKey: Keys.hasScopedRole)
+            return object(forKey: Keys.hasScopedRole) as? Bool
         }
         set {
             setValue(newValue, forKey: Keys.hasScopedRole)
@@ -314,7 +314,7 @@ extension UserDefaults {
     
     var hasScopedCV: Bool? {
         get {
-            return bool(forKey: Keys.hasScopedCV)
+            return object(forKey: Keys.hasScopedCV) as? Bool
         }
         set {
             setValue(newValue, forKey: Keys.hasScopedCV)
@@ -323,7 +323,7 @@ extension UserDefaults {
     
     var hasScopedHistory: Bool? {
         get {
-            return bool(forKey: Keys.hasScopedHistory)
+            return object(forKey: Keys.hasScopedHistory) as? Bool
         }
         set {
             setValue(newValue, forKey: Keys.hasScopedHistory)

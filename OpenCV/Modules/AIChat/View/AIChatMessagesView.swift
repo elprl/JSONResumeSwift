@@ -11,9 +11,6 @@ import SwiftData
 
 struct AIChatMessagesView: View {
     @State private var viewModel: AIChatMessagesViewModel
-    @AppStorage(UserDefaults.Keys.hasAgiKey) var hasAgiKey: Bool = false
-    @AppStorage(UserDefaults.Keys.hasClaudeKey) var hasClaudeKey: Bool = false
-    @AppStorage(UserDefaults.Keys.hasGeminiKey) var hasGeminiKey: Bool = false
     
     init(modelContext: ModelContext, resumeUrl: String, resume: Resume) {
         _viewModel = State(initialValue: AIChatMessagesViewModel(modelContext: modelContext, resumeUrl: resumeUrl, resume: resume))
@@ -26,6 +23,7 @@ let _ = Self._printChanges()
         ZStack {
             MeshGradientView()
                 .opacity(0.3)
+                .ignoresSafeArea()
             VStack {
                 switch viewModel.state {
                 case .loading, .appeared:
@@ -34,22 +32,13 @@ let _ = Self._printChanges()
                             self.viewModel.fetchData()
                         }
                 case .loaded(_):
-                    if #available(iOS 18.0, *) {
-                        MessageScrollView18(viewModel: viewModel)
-                    } else {
-                        MessageScrollView(viewModel: viewModel)
-                    }
+                    MessageScrollView(viewModel: viewModel)
                 case .empty(_):
-                    noMessages
+                    MessageScrollView(viewModel: viewModel)
                 case .error(let message):
                     error(message: message)
                 }
             }
-        }
-        .ignoresSafeArea()
-        .overlay {
-            TextInputView(viewModel: viewModel)
-                .ignoresSafeArea(.container, edges: .bottom)
         }
         .navigationTitle("AI Chat")
         .navigationBarTitleDisplayMode(.inline)
@@ -82,7 +71,7 @@ let _ = Self._printChanges()
             }
         }
     }
-    
+
     @ViewBuilder
     var loadingView: some View {
         ProgressView()
@@ -91,28 +80,7 @@ let _ = Self._printChanges()
             .padding(.vertical, 24)
             .transition(.scale)
     }
-    
-    @ViewBuilder
-    private var noMessages: some View {
-        if case .empty = viewModel.state {
-            if hasAgiKey || hasClaudeKey || hasGeminiKey {
-                ContentUnavailableView(
-                    "No messages found",
-                    systemImage: "message",
-                    description: Text("Enter a new message or note below")
-                )
-                .contentShape(Rectangle())
-            } else {
-                ContentUnavailableView(
-                    "No messages found",
-                    systemImage: "message",
-                    description: Text("Enter a new note below.\nTo chat with AI, add an API key in Settings")
-                )
-                .contentShape(Rectangle())
-            }
-        }
-    }
-    
+
     @ViewBuilder
     private func error(message: String) -> some View {
         Label(message, systemImage: "exclamationmark.octagon")

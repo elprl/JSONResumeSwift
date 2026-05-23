@@ -13,14 +13,6 @@ For _fastlane_ installation instructions, see [Installing _fastlane_](https://do
 
 # Available Actions
 
-### public_beta
-
-```sh
-[bundle exec] fastlane public_beta
-```
-
-Upload to TestFlight for Live Release
-
 ### make_github_release
 
 ```sh

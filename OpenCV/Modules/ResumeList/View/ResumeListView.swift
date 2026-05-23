@@ -27,18 +27,10 @@ struct ResumeListView: View {
                     .opacity(0.3)
                     .ignoresSafeArea()
                 ScrollView {
-                    LazyVStack {
+                    LazyVStack(spacing: 16) {
                         ForEach(filteredPeople, id: \.self) { person in
-                            Group {
-                                if #available(iOS 18.0, *) {
-                                    ResumeRowView(viewModel: viewModel, person: person, namespace: namespace)
-                                        .transition(.move(edge: .leading))
-                                        .matchedTransitionSource(id: person.id, in: namespace)
-                                } else {
-                                    ResumeRowView(viewModel: viewModel, person: person, namespace: namespace)
-                                        .transition(.move(edge: .leading))
-                                }
-                            }
+                            ResumeRowView(viewModel: viewModel, person: person, namespace: namespace)
+                                .transition(.move(edge: .leading))
                         }
                     }
                     .animation(.easeInOut, value: people)

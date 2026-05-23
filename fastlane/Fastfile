@@ -118,15 +118,14 @@ platform :ios do
       target: "OpenCV"
     )
     release_tag = "v#{marketing_version}"
+    bump(api_key: api_key, marketing_version: marketing_version)
     add_badge(
-      path: ".",
       glob: "/OpenCV/Assets.xcassets/AppIcon.appiconset/*.{png,PNG}",
       shield: "#{marketing_version}-STAGING-blue",
       shield_gravity: "South",
       dark: true,
       alpha: true,
     )
-    bump
     build_staging
     changelog_content = File.exist?("../CHANGELOG.md") ? File.read("../CHANGELOG.md").slice(0, 4000) : ""
     upload_to_testflight(
@@ -162,34 +161,63 @@ platform :ios do
       xcodeproj: "OpenCV.xcodeproj",
       target: "OpenCV"
     )
-    release_tag = "v#{marketing_version}"
+    bump(api_key: api_key, marketing_version: marketing_version)
     add_badge(
-      path: ".",
       glob: "/OpenCV/Assets.xcassets/AppIcon.appiconset/*.{png,PNG}",
       dark: true,
     )
-    bump
     build
     upload_to_testflight(
       api_key: api_key,
       changelog: changelog_content
     )
     tag_github
+    make_github_release
     slack_notify(message: "OpenCV v#{get_version_number(xcodeproj: "OpenCV.xcodeproj")} (#{get_build_number(xcodeproj: "OpenCV.xcodeproj")}) was uploaded to Public beta TestFlight.", success: true)
   end
 
-  desc "Increment build number"
-  lane :bump do
-    api_key = asc_api_key
-    app_id = CredentialsManager::AppfileConfig.try_fetch_value(:app_identifier)
+  private_lane :next_build_number do |options|
+    options ||= {}
+    api_key = options[:api_key] || asc_api_key
+    app_id = options[:app_identifier] || CredentialsManager::AppfileConfig.try_fetch_value(:app_identifier)
+    marketing_version = options[:marketing_version] || get_version_number(
+      xcodeproj: "OpenCV.xcodeproj",
+      target: "OpenCV"
+    )
     latest_tf_build = latest_testflight_build_number(
       api_key: api_key,
-      app_identifier: app_id
+      app_identifier: app_id,
+      version: marketing_version,
+      initial_build_number: 0
+    ).to_i
+    local_build = get_build_number(xcodeproj: "OpenCV.xcodeproj").to_i
+    next_build = [latest_tf_build, local_build].max + 1
+
+    UI.message("Next build number for #{marketing_version}: #{next_build} (TestFlight: #{latest_tf_build}, local: #{local_build})")
+    next_build
+  end
+
+  desc "Increment build number"
+  lane :bump do |options|
+    options ||= {}
+    marketing_version = options[:marketing_version] || get_version_number(
+      xcodeproj: "OpenCV.xcodeproj",
+      target: "OpenCV"
+    )
+    next_build = next_build_number(
+      api_key: options[:api_key],
+      app_identifier: options[:app_identifier],
+      marketing_version: marketing_version
     )
     increment_build_number(
       xcodeproj: "OpenCV.xcodeproj",
-      build_number: latest_tf_build + 1
+      build_number: next_build
     )
+    # commit_version_bump(
+    #   message: "BUMP: build #{next_build} for #{marketing_version}",
+    #   xcodeproj: "OpenCV.xcodeproj"
+    # ) unless options[:commit] == false
+    next_build
   end
 
   desc "Lint code"
@@ -234,7 +262,6 @@ platform :ios do
     )
     release_tag = "v#{marketing_version}"
     add_badge(
-      path: ".", 
       glob: "/OpenCV/Assets.xcassets/AppIcon.appiconset/*.{png,PNG}",
       dark: true,
       alpha: true,
@@ -260,30 +287,6 @@ platform :ios do
       )
     end
   end
-end
-
-desc "Upload to TestFlight for Live Release"
-lane :public_beta do
-  api_key = asc_api_key
-  changelog_content = File.exist?("../CHANGELOG.md") ? File.read("../CHANGELOG.md").slice(0, 4000) : ""
-  marketing_version = get_version_number(
-    xcodeproj: "OpenCV.xcodeproj",
-    target: "OpenCV"
-  )
-  release_tag = "v#{marketing_version}"
-  add_badge(
-    path: ".",
-    glob: "/OpenCV/Assets.xcassets/AppIcon.appiconset/*.{png,PNG}",
-    dark: true,
-  )
-  bump
-  build
-  upload_to_testflight(
-    api_key: api_key,
-    changelog: changelog_content
-  )
-  make_github_release
-  slack_notify(message: "OpenCV v#{marketing_version} (#{get_build_number(xcodeproj: "OpenCV.xcodeproj")}) was uploaded to Public release TestFlight.", success: true)
 end
 
 desc "Make github release"
