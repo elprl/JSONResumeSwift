@@ -57,10 +57,12 @@ The Debug configuration reads these values into `Info.plist` at build time.
 
 ## Schemes
 
-| Scheme | Description |
-|--------|-------------|
-| `OpenCV` | Main app (**JSON CV**) |
+
+| Scheme          | Description                                                           |
+| --------------- | --------------------------------------------------------------------- |
+| `OpenCV`        | Main app (**JSON CV**)                                                |
 | `OpenCVAppClip` | App Clip target (iOS 17.0+, shares AI service code with the main app) |
+
 
 ## Architecture
 
@@ -71,14 +73,16 @@ The Debug configuration reads these values into `Info.plist` at build time.
 
 ## Key dependencies
 
-| Package | Purpose |
-|---------|---------|
-| [firebase-ios-sdk](https://github.com/firebase/firebase-ios-sdk) | Firebase Core + AI Logic (Gemini) |
-| [SwiftAnthropic](https://github.com/jamesrochabrun/SwiftAnthropic) | Claude API |
-| [GPT3-Tokenizer](https://github.com/aespinilla/GPT3-Tokenizer) | Token counting |
-| [CodeScanner](https://github.com/twostraws/CodeScanner) | QR scanning |
-| [swift-markdown](https://github.com/apple/swift-markdown) | Markdown rendering |
-| [Nuke](https://github.com/kean/Nuke) | Image loading |
+
+| Package                                                            | Purpose                           |
+| ------------------------------------------------------------------ | --------------------------------- |
+| [firebase-ios-sdk](https://github.com/firebase/firebase-ios-sdk)   | Firebase Core + AI Logic (Gemini) |
+| [SwiftAnthropic](https://github.com/jamesrochabrun/SwiftAnthropic) | Claude API                        |
+| [GPT3-Tokenizer](https://github.com/aespinilla/GPT3-Tokenizer)     | Token counting                    |
+| [CodeScanner](https://github.com/twostraws/CodeScanner)            | QR scanning                       |
+| [swift-markdown](https://github.com/apple/swift-markdown)          | Markdown rendering                |
+| [Nuke](https://github.com/kean/Nuke)                               | Image loading                     |
+
 
 ## How it started
 
