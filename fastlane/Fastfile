@@ -81,7 +81,7 @@ platform :ios do
   desc "Build the staging app for App Store submission"
   lane :build_staging do
     build_app(
-      scheme: "OpenCV(Staging)",
+      scheme: "OpenCV",
       export_method: "app-store",
       output_directory: "./build",
       output_name: "OpenCV.ipa",
@@ -118,7 +118,7 @@ platform :ios do
       target: "OpenCV"
     )
     release_tag = "v#{marketing_version}"
-    badge(
+    add_badge(
       path: ".",
       glob: "/OpenCV/Assets.xcassets/AppIcon.appiconset/*.{png,PNG}",
       shield: "#{marketing_version}-STAGING-blue",
@@ -163,7 +163,7 @@ platform :ios do
       target: "OpenCV"
     )
     release_tag = "v#{marketing_version}"
-    badge(
+    add_badge(
       path: ".",
       glob: "/OpenCV/Assets.xcassets/AppIcon.appiconset/*.{png,PNG}",
       dark: true,
@@ -233,7 +233,7 @@ platform :ios do
       target: "OpenCV"
     )
     release_tag = "v#{marketing_version}"
-    badge(
+    add_badge(
       path: ".", 
       glob: "/OpenCV/Assets.xcassets/AppIcon.appiconset/*.{png,PNG}",
       dark: true,
@@ -271,7 +271,7 @@ lane :public_beta do
     target: "OpenCV"
   )
   release_tag = "v#{marketing_version}"
-  badge(
+  add_badge(
     path: ".",
     glob: "/OpenCV/Assets.xcassets/AppIcon.appiconset/*.{png,PNG}",
     dark: true,
