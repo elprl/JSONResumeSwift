@@ -16,7 +16,7 @@ It started as a test harness for **Swift 6**, **SwiftData**, and **App Clips**, 
 
 - **Xcode 16** or later
 - **Swift 6**
-- **iOS 17.0+** (main app target)
+- **iOS 18.0+** (main app target)
 - Apple Silicon or Intel Mac for the simulator
 
 ## Getting started
