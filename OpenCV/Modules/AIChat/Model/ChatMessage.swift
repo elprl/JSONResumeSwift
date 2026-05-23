@@ -65,7 +65,7 @@ enum MessageType: String, Codable {
 }
 
 @Model
-final class ChatMessage: ObservableObject {
+final class ChatMessage {
     @Attribute(.unique) var messageId: String
     var author: Author
     var content: String

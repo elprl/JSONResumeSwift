@@ -8,6 +8,7 @@ import Foundation
 import Combine
 import SwiftData
 import CodeScanner
+import OSLog
 
 @MainActor
 final class ResumeListViewModel: ObservableObject {

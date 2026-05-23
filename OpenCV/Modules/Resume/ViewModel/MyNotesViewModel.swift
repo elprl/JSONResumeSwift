@@ -7,6 +7,7 @@
 
 import Combine
 import Foundation
+import OSLog
 
 final class MyNotesViewModel: ObservableObject {
     @Published var notes: String

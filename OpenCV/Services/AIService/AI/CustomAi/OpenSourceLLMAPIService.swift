@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import OSLog
 
 final class OpenSourceLLMAPIService: ChatGPTAPIService, @unchecked Sendable {
 

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct CachedResumeView: View {
     @State var resume: Resume?

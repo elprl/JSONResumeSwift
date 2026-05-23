@@ -11,7 +11,9 @@ import Combine
 import SwiftUI
 import SwiftData
 import SwiftAnthropic
+import OSLog
 
+@MainActor
 @Observable
 final class AIChatMessagesViewModel {
     var messages: [ChatMessage] = [] {
@@ -179,15 +181,15 @@ final class AIChatMessagesViewModel {
         self.isAGIResponding = true
         agiTask?.cancel()
         agiTask = Task {
-            var author = Author.openai(UserDefaults.standard.agiModel ?? "gpt-4o")
+            var author = Author.openai(UserDefaults.standard.agiModel ?? GPTModel.default.id)
             let currentSelectedAGI = UserDefaults.standard.selectedAGI ?? .none
             switch currentSelectedAGI {
             case .gemini:
-                author = .gemini(UserDefaults.standard.geminiModel ?? "gemini-1.5-pro-latest")
+                author = .gemini(UserDefaults.standard.geminiModel ?? GeminiModel.default.id)
             case .claude:
-                author = .claude(UserDefaults.standard.claudeModel ?? "claude-3-sonnet-20240229")
+                author = .claude(UserDefaults.standard.claudeModel ?? ClaudeModel.default.id)
             default:
-                author = .openai(UserDefaults.standard.agiModel ?? "gpt-4o")
+                author = .openai(UserDefaults.standard.agiModel ?? GPTModel.default.id)
             }
             let message = ChatMessage(author: author, content: "", resumeUrl: resumeUrl)
             message.type = .aiAnswer

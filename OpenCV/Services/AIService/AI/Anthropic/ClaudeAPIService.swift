@@ -7,7 +7,8 @@
 //
 
 import Foundation
-@preconcurrency import SwiftAnthropic
+import SwiftAnthropic
+import OSLog
 
 final class ClaudeAPIService: @unchecked Sendable, AGIServiceProtocol {
     let keychainService = KeychainService()
@@ -37,7 +38,7 @@ final class ClaudeAPIService: @unchecked Sendable, AGIServiceProtocol {
         #endif
         self.apiKey = prepToken
         if let key = self.apiKey {
-            self.service = AnthropicServiceFactory.service(apiKey: key)
+            self.service = AnthropicServiceFactory.service(apiKey: key, betaHeaders: nil)
         }
         setIsActive()
     }
@@ -173,7 +174,7 @@ final class ClaudeAPIService: @unchecked Sendable, AGIServiceProtocol {
         let messages = generateMessages(from: text).map { MessageParameter.Message(role: MessageParameter.Message.Role(rawValue: $0.role) ?? .user, content: .text($0.content)) }
         let parameters = MessageParameter(model: Model.other(self.model), messages: messages, maxTokens: 1024)
         let message = try await service?.createMessage(parameters)
-        if case let .text(firstText) = message?.content.first {
+        if case let .text(firstText, _) = message?.content.first {
             return firstText
         } else {
             throw TDAPIError.invalidResponse

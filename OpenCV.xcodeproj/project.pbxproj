@@ -34,7 +34,6 @@
 		E10CC74D2C46E93E00CC34B1 /* ClaudeAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10CC7342C46E93E00CC34B1 /* ClaudeAPIService.swift */; };
 		E10CC74E2C46E93E00CC34B1 /* ChatGPTAPIModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10CC7322C46E93E00CC34B1 /* ChatGPTAPIModels.swift */; };
 		E10CC7522C46E9C000CC34B1 /* SwiftAnthropic in Frameworks */ = {isa = PBXBuildFile; productRef = E10CC7512C46E9C000CC34B1 /* SwiftAnthropic */; };
-		E10CC7552C46EA1A00CC34B1 /* GoogleGenerativeAI in Frameworks */ = {isa = PBXBuildFile; productRef = E10CC7542C46EA1A00CC34B1 /* GoogleGenerativeAI */; };
 		E10CC7572C46EA4700CC34B1 /* TokenServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10CC7562C46EA4700CC34B1 /* TokenServiceProtocol.swift */; };
 		E10CC75B2C46EB2300CC34B1 /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10CC75A2C46EB2300CC34B1 /* KeychainService.swift */; };
 		E10CC75C2C46EB2300CC34B1 /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10CC75A2C46EB2300CC34B1 /* KeychainService.swift */; };
@@ -58,7 +57,6 @@
 		E10CC7752C46F18000CC34B1 /* ClaudeAPIModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10CC7352C46E93E00CC34B1 /* ClaudeAPIModels.swift */; };
 		E10CC7772C46F3E000CC34B1 /* Markdown in Frameworks */ = {isa = PBXBuildFile; productRef = E10CC7762C46F3E000CC34B1 /* Markdown */; };
 		E10CC7792C46F3E000CC34B1 /* SwiftAnthropic in Frameworks */ = {isa = PBXBuildFile; productRef = E10CC7782C46F3E000CC34B1 /* SwiftAnthropic */; };
-		E10CC77B2C46F3E000CC34B1 /* GoogleGenerativeAI in Frameworks */ = {isa = PBXBuildFile; productRef = E10CC77A2C46F3E000CC34B1 /* GoogleGenerativeAI */; };
 		E10CC77D2C46F3E000CC34B1 /* GPT3 Tokenizer in Frameworks */ = {isa = PBXBuildFile; productRef = E10CC77C2C46F3E000CC34B1 /* GPT3 Tokenizer */; };
 		E115BF4B2C370E21000A74C7 /* PeriodProtocolTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E115BF4A2C370E0B000A74C7 /* PeriodProtocolTests.swift */; };
 		E128B7A32C3AC5B000248AA7 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = E128B7A22C3AC5B000248AA7 /* Localizable.xcstrings */; };
@@ -151,6 +149,16 @@
 		E1BDB6B02C4C16D400914DE9 /* TextInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BDB6AE2C4C16CC00914DE9 /* TextInputView.swift */; };
 		E1BDB6B22C4C16F600914DE9 /* MessageScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BDB6B12C4C16EE00914DE9 /* MessageScrollView.swift */; };
 		E1BDB6B32C4C16F600914DE9 /* MessageScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BDB6B12C4C16EE00914DE9 /* MessageScrollView.swift */; };
+		E1CF5ABE2FBF54240048C655 /* FirebaseAILogic in Frameworks */ = {isa = PBXBuildFile; productRef = E1CF5ABD2FBF54240048C655 /* FirebaseAILogic */; };
+		E1CF5AC62FBF58920048C655 /* FirebaseAI in Frameworks */ = {isa = PBXBuildFile; productRef = E1CF5AC52FBF58920048C655 /* FirebaseAI */; };
+		E1CF5ACA2FBF58920048C655 /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = E1CF5AC92FBF58920048C655 /* FirebaseCore */; };
+		E1CF5ACB2FBF58920048C655 /* FirebaseAILogic in Frameworks */ = {isa = PBXBuildFile; productRef = E1CF5ABD2FBF54240048C655 /* FirebaseAILogic */; };
+		E1CF5ACC2FBF58920048C655 /* FirebaseAI in Frameworks */ = {isa = PBXBuildFile; productRef = E1CF5AC52FBF58920048C655 /* FirebaseAI */; };
+		E1CF5ACD2FBF58920048C655 /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = E1CF5AC92FBF58920048C655 /* FirebaseCore */; };
+		E1CF5E3B2FBF5EAA0048C655 /* FirebaseAILogic in Frameworks */ = {isa = PBXBuildFile; productRef = E1CF5ABD2FBF54240048C655 /* FirebaseAILogic */; };
+		E1CF5E3C2FBF5EAA0048C655 /* FirebaseAI in Frameworks */ = {isa = PBXBuildFile; productRef = E1CF5AC52FBF58920048C655 /* FirebaseAI */; };
+		E1CF5E3D2FBF5EAA0048C655 /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = E1CF5AC92FBF58920048C655 /* FirebaseCore */; };
+		E1CF5E3F2FC0B26C0048C655 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E1CF5E3E2FC0B26C0048C655 /* GoogleService-Info.plist */; };
 		E1E210BC2CA436DE005F5DAD /* Glassify.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E210BB2CA436DE005F5DAD /* Glassify.swift */; };
 		E1E210BD2CA436DE005F5DAD /* Glassify.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E210BB2CA436DE005F5DAD /* Glassify.swift */; };
 		E1E210C02CA441D1005F5DAD /* NukeUI in Frameworks */ = {isa = PBXBuildFile; productRef = E1E210BF2CA441D1005F5DAD /* NukeUI */; };
@@ -317,6 +325,7 @@
 		E1BDB6AB2C4C062700914DE9 /* SingleTextEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleTextEditorView.swift; sourceTree = "<group>"; };
 		E1BDB6AE2C4C16CC00914DE9 /* TextInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInputView.swift; sourceTree = "<group>"; };
 		E1BDB6B12C4C16EE00914DE9 /* MessageScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageScrollView.swift; sourceTree = "<group>"; };
+		E1CF5E3E2FC0B26C0048C655 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E1E210BB2CA436DE005F5DAD /* Glassify.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Glassify.swift; sourceTree = "<group>"; };
 		E1E845792C35A9D60065489C /* MyNotesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyNotesView.swift; sourceTree = "<group>"; };
 		E1E8457B2C35AE690065489C /* MyNotesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyNotesViewModel.swift; sourceTree = "<group>"; };
@@ -339,7 +348,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E10CC77B2C46F3E000CC34B1 /* GoogleGenerativeAI in Frameworks */,
+				E1CF5E3D2FBF5EAA0048C655 /* FirebaseCore in Frameworks */,
+				E1CF5E3C2FBF5EAA0048C655 /* FirebaseAI in Frameworks */,
+				E1CF5E3B2FBF5EAA0048C655 /* FirebaseAILogic in Frameworks */,
 				E10CC7772C46F3E000CC34B1 /* Markdown in Frameworks */,
 				E1526DA62C38576100D88453 /* CodeScanner in Frameworks */,
 				E1E210C22CA443E3005F5DAD /* NukeUI in Frameworks */,
@@ -359,6 +370,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1CF5ACB2FBF58920048C655 /* FirebaseAILogic in Frameworks */,
+				E1CF5ACC2FBF58920048C655 /* FirebaseAI in Frameworks */,
+				E1CF5ACD2FBF58920048C655 /* FirebaseCore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -366,12 +380,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E10CC7552C46EA1A00CC34B1 /* GoogleGenerativeAI in Frameworks */,
+				E1CF5AC62FBF58920048C655 /* FirebaseAI in Frameworks */,
+				E1CF5ABE2FBF54240048C655 /* FirebaseAILogic in Frameworks */,
 				E1E210C02CA441D1005F5DAD /* NukeUI in Frameworks */,
 				E10CC72A2C46C6A800CC34B1 /* Markdown in Frameworks */,
 				E152C6CF2C375739000949AB /* CodeScanner in Frameworks */,
 				E10CC76A2C46ED7D00CC34B1 /* GPT3 Tokenizer in Frameworks */,
 				E10CC7522C46E9C000CC34B1 /* SwiftAnthropic in Frameworks */,
+				E1CF5ACA2FBF58920048C655 /* FirebaseCore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -659,6 +675,7 @@
 		E1908B4C2C2F4F2A002C8F5F /* OpenCV */ = {
 			isa = PBXGroup;
 			children = (
+				E1CF5E3E2FC0B26C0048C655 /* GoogleService-Info.plist */,
 				E121AF212C6503DD009B3BAB /* Env */,
 				E1526DAD2C398FDC00D88453 /* README.md */,
 				E115BF492C36F5C1000A74C7 /* Info.plist */,
@@ -892,9 +909,11 @@
 				E1526DA52C38576100D88453 /* CodeScanner */,
 				E10CC7762C46F3E000CC34B1 /* Markdown */,
 				E10CC7782C46F3E000CC34B1 /* SwiftAnthropic */,
-				E10CC77A2C46F3E000CC34B1 /* GoogleGenerativeAI */,
 				E10CC77C2C46F3E000CC34B1 /* GPT3 Tokenizer */,
 				E1E210C12CA443E3005F5DAD /* NukeUI */,
+				E1CF5ABD2FBF54240048C655 /* FirebaseAILogic */,
+				E1CF5AC52FBF58920048C655 /* FirebaseAI */,
+				E1CF5AC92FBF58920048C655 /* FirebaseCore */,
 			);
 			productName = OpenCVAppClip;
 			productReference = E106A16F2C379932009C2D92 /* OpenCVAppClip.app */;
@@ -955,9 +974,11 @@
 				E152C6CE2C375739000949AB /* CodeScanner */,
 				E10CC7292C46C6A800CC34B1 /* Markdown */,
 				E10CC7512C46E9C000CC34B1 /* SwiftAnthropic */,
-				E10CC7542C46EA1A00CC34B1 /* GoogleGenerativeAI */,
 				E10CC7692C46ED7D00CC34B1 /* GPT3 Tokenizer */,
 				E1E210BF2CA441D1005F5DAD /* NukeUI */,
+				E1CF5ABD2FBF54240048C655 /* FirebaseAILogic */,
+				E1CF5AC52FBF58920048C655 /* FirebaseAI */,
+				E1CF5AC92FBF58920048C655 /* FirebaseCore */,
 			);
 			productName = OpenCV;
 			productReference = E1908B4A2C2F4F2A002C8F5F /* JSON CV.app */;
@@ -1007,7 +1028,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1600;
-				LastUpgradeCheck = 1600;
+				LastUpgradeCheck = 2650;
 				TargetAttributes = {
 					E106A16E2C379932009C2D92 = {
 						CreatedOnToolsVersion = 16.0;
@@ -1048,9 +1069,9 @@
 				E152C6CD2C375739000949AB /* XCRemoteSwiftPackageReference "CodeScanner" */,
 				E10CC7282C46C6A800CC34B1 /* XCRemoteSwiftPackageReference "swift-markdown" */,
 				E10CC7502C46E9C000CC34B1 /* XCRemoteSwiftPackageReference "SwiftAnthropic" */,
-				E10CC7532C46EA1A00CC34B1 /* XCRemoteSwiftPackageReference "generative-ai-swift" */,
 				E10CC7682C46ED7D00CC34B1 /* XCRemoteSwiftPackageReference "GPT3-Tokenizer" */,
 				E1E210BE2CA441D1005F5DAD /* XCRemoteSwiftPackageReference "Nuke" */,
+				E1CF5ABC2FBF54240048C655 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = E1908B4B2C2F4F2A002C8F5F /* Products */;
 			projectDirPath = "";
@@ -1097,6 +1118,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E128B7A32C3AC5B000248AA7 /* Localizable.xcstrings in Resources */,
+				E1CF5E3F2FC0B26C0048C655 /* GoogleService-Info.plist in Resources */,
 				E1908B572C2F4F2C002C8F5F /* Preview Assets.xcassets in Resources */,
 				E1908B542C2F4F2C002C8F5F /* Assets.xcassets in Resources */,
 			);
@@ -1362,7 +1384,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.3;
+				MARKETING_VERSION = 1.0.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tapdigital.OpenCV.Clip;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1398,7 +1420,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.3;
+				MARKETING_VERSION = 1.0.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tapdigital.OpenCV.Clip;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1486,6 +1508,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -1540,9 +1563,17 @@
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_STRICT_MEMORY_SAFETY = YES;
+				SWIFT_UPCOMING_FEATURE_EXISTENTIAL_ANY = YES;
+				SWIFT_UPCOMING_FEATURE_INFER_ISOLATED_CONFORMANCES = YES;
+				SWIFT_UPCOMING_FEATURE_INTERNAL_IMPORTS_BY_DEFAULT = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_UPCOMING_FEATURE_NONISOLATED_NONSENDING_BY_DEFAULT = YES;
+				SWIFT_VERSION = 6.0;
 			};
 			name = Debug;
 		};
@@ -1552,6 +1583,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -1599,8 +1631,16 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_STRICT_MEMORY_SAFETY = YES;
+				SWIFT_UPCOMING_FEATURE_EXISTENTIAL_ANY = YES;
+				SWIFT_UPCOMING_FEATURE_INFER_ISOLATED_CONFORMANCES = YES;
+				SWIFT_UPCOMING_FEATURE_INTERNAL_IMPORTS_BY_DEFAULT = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_UPCOMING_FEATURE_NONISOLATED_NONSENDING_BY_DEFAULT = YES;
+				SWIFT_VERSION = 6.0;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -1631,13 +1671,14 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.3;
+				MARKETING_VERSION = 1.0.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tapdigital.OpenCV;
 				PRODUCT_MODULE_NAME = OpenCV;
 				PRODUCT_NAME = "JSON CV";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_STRICT_MEMORY_SAFETY = YES;
 				SWIFT_UPCOMING_FEATURE_CONCISE_MAGIC_FILE = YES;
 				SWIFT_UPCOMING_FEATURE_DEPRECATE_APPLICATION_MAIN = YES;
 				SWIFT_UPCOMING_FEATURE_DISABLE_OUTWARD_ACTOR_ISOLATION = YES;
@@ -1650,7 +1691,7 @@
 				SWIFT_UPCOMING_FEATURE_INTERNAL_IMPORTS_BY_DEFAULT = YES;
 				SWIFT_UPCOMING_FEATURE_ISOLATED_DEFAULT_VALUES = YES;
 				SWIFT_UPCOMING_FEATURE_REGION_BASED_ISOLATION = YES;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -1681,13 +1722,14 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.3;
+				MARKETING_VERSION = 1.0.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tapdigital.OpenCV;
 				PRODUCT_MODULE_NAME = OpenCV;
 				PRODUCT_NAME = "JSON CV";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_STRICT_MEMORY_SAFETY = YES;
 				SWIFT_UPCOMING_FEATURE_CONCISE_MAGIC_FILE = YES;
 				SWIFT_UPCOMING_FEATURE_DEPRECATE_APPLICATION_MAIN = YES;
 				SWIFT_UPCOMING_FEATURE_DISABLE_OUTWARD_ACTOR_ISOLATION = YES;
@@ -1700,7 +1742,7 @@
 				SWIFT_UPCOMING_FEATURE_INTERNAL_IMPORTS_BY_DEFAULT = YES;
 				SWIFT_UPCOMING_FEATURE_ISOLATED_DEFAULT_VALUES = YES;
 				SWIFT_UPCOMING_FEATURE_REGION_BASED_ISOLATION = YES;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -1851,7 +1893,7 @@
 			repositoryURL = "https://github.com/apple/swift-markdown";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 0.4.0;
+				minimumVersion = 0.8.0;
 			};
 		};
 		E10CC7502C46E9C000CC34B1 /* XCRemoteSwiftPackageReference "SwiftAnthropic" */ = {
@@ -1859,15 +1901,7 @@
 			repositoryURL = "https://github.com/jamesrochabrun/SwiftAnthropic";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 1.4.0;
-			};
-		};
-		E10CC7532C46EA1A00CC34B1 /* XCRemoteSwiftPackageReference "generative-ai-swift" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/google-gemini/generative-ai-swift";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.5.4;
+				minimumVersion = 2.2.0;
 			};
 		};
 		E10CC7682C46ED7D00CC34B1 /* XCRemoteSwiftPackageReference "GPT3-Tokenizer" */ = {
@@ -1886,12 +1920,20 @@
 				minimumVersion = 2.5.0;
 			};
 		};
+		E1CF5ABC2FBF54240048C655 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 12.13.0;
+			};
+		};
 		E1E210BE2CA441D1005F5DAD /* XCRemoteSwiftPackageReference "Nuke" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/kean/Nuke";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 12.8.0;
+				minimumVersion = 13.0.6;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -1906,11 +1948,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = E10CC7502C46E9C000CC34B1 /* XCRemoteSwiftPackageReference "SwiftAnthropic" */;
 			productName = SwiftAnthropic;
-		};
-		E10CC7542C46EA1A00CC34B1 /* GoogleGenerativeAI */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = E10CC7532C46EA1A00CC34B1 /* XCRemoteSwiftPackageReference "generative-ai-swift" */;
-			productName = GoogleGenerativeAI;
 		};
 		E10CC7692C46ED7D00CC34B1 /* GPT3 Tokenizer */ = {
 			isa = XCSwiftPackageProductDependency;
@@ -1927,11 +1964,6 @@
 			package = E10CC7502C46E9C000CC34B1 /* XCRemoteSwiftPackageReference "SwiftAnthropic" */;
 			productName = SwiftAnthropic;
 		};
-		E10CC77A2C46F3E000CC34B1 /* GoogleGenerativeAI */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = E10CC7532C46EA1A00CC34B1 /* XCRemoteSwiftPackageReference "generative-ai-swift" */;
-			productName = GoogleGenerativeAI;
-		};
 		E10CC77C2C46F3E000CC34B1 /* GPT3 Tokenizer */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = E10CC7682C46ED7D00CC34B1 /* XCRemoteSwiftPackageReference "GPT3-Tokenizer" */;
@@ -1946,6 +1978,21 @@
 			isa = XCSwiftPackageProductDependency;
 			package = E152C6CD2C375739000949AB /* XCRemoteSwiftPackageReference "CodeScanner" */;
 			productName = CodeScanner;
+		};
+		E1CF5ABD2FBF54240048C655 /* FirebaseAILogic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E1CF5ABC2FBF54240048C655 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAILogic;
+		};
+		E1CF5AC52FBF58920048C655 /* FirebaseAI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E1CF5ABC2FBF54240048C655 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAI;
+		};
+		E1CF5AC92FBF58920048C655 /* FirebaseCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E1CF5ABC2FBF54240048C655 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCore;
 		};
 		E1E210BF2CA441D1005F5DAD /* NukeUI */ = {
 			isa = XCSwiftPackageProductDependency;

@@ -27,29 +27,28 @@ extension GeminiRole {
 
 enum GeminiModel {
     case geminiPro(model: String, tokens: Int)
+    case geminiFlash(model: String, tokens: Int)
     case custom(model: String, tokens: Int)
 }
  
 extension GeminiModel: Hashable, Identifiable, Codable {    
     static var `default`: GeminiModel {
-        return .geminiPro(model: "gemini-1.5-pro-latest", tokens: 30720)
+        return .geminiFlash(model: "gemini-3.5-flash", tokens: 1048576)
     }
     
     static var allCases: [GeminiModel] {
         return [
-            .custom(model: "CUSTOM", tokens: 8192),
-            .geminiPro(model: "gemini-1.5-pro-latest", tokens: 1048576),
-            .geminiPro(model: "gemini-1.5-pro", tokens: 1048576),
-            .geminiPro(model: "gemini-1.5-flash-latest", tokens: 1048576),
-            .geminiPro(model: "gemini-1.5-flash", tokens: 1048576),
-            .geminiPro(model: "gemini-1.0-pro-latest", tokens: 30720),
-            .geminiPro(model: "gemini-1.0-pro", tokens: 30720)
+            .custom(model: "CUSTOM", tokens: 1048576),
+            .geminiFlash(model: "gemini-3.5-flash", tokens: 1048576),
+            .geminiFlash(model: "gemini-2.5-flash", tokens: 1048576),
+            .geminiPro(model: "gemini-3.5-pro", tokens: 1048576),
+            .geminiPro(model: "gemini-2.5-pro", tokens: 1048576),
         ]
     }
     
     var id: String {
         switch self {
-        case .geminiPro(let model, _), .custom(let model, _):
+        case .geminiPro(let model, _), .geminiFlash(let model, _), .custom(let model, _):
             return model
         }
     }
@@ -63,7 +62,7 @@ extension GeminiModel: Hashable, Identifiable, Codable {
         // Iterate through all cases to find a match
         for caseItem in allCases {
             switch caseItem {
-            case .geminiPro(let model, _), .custom(let model, _):
+            case .geminiPro(let model, _), .geminiFlash(let model, _), .custom(let model, _):
                 if model == modelString {
                     return caseItem
                 }
@@ -71,12 +70,12 @@ extension GeminiModel: Hashable, Identifiable, Codable {
         }
         
         // If no match is found, return a custom model with the retrieved string
-        return .custom(model: modelString, tokens: 8192)
+        return .custom(model: modelString, tokens: 1048576)
     }
     
     var maxTokens: Int {
         switch self {
-        case .geminiPro(_, let tokens), .custom(_, let tokens):
+        case .geminiPro(_, let tokens), .geminiFlash(_, let tokens), .custom(_, let tokens):
             return tokens
         }
     }

@@ -7,11 +7,12 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct AIChatMessageRowView: View {
     @Environment(\.colorScheme) private var colorScheme
     var viewModel: AIChatMessagesViewModel
-    @ObservedObject var message: ChatMessage
+    @Bindable var message: ChatMessage
 
     var body: some View {
 #if DEBUG

@@ -270,13 +270,10 @@
     "Gemini Failed: Internal error. Check billing & availability in your country." : {
 
     },
-    "Gemini Failed: Invalid API Key" : {
+    "Gemini Failed: Invalid prompt content" : {
 
     },
     "Gemini Failed: Unknown error" : {
-
-    },
-    "Gemini Failed: Unsupported User Location" : {
 
     },
     "Gemini Failed: Your prompt was blocked" : {
@@ -406,6 +403,9 @@
     "No messages found" : {
 
     },
+    "Nuke\nhttps://github.com/kean/Nuke" : {
+
+    },
     "Open AI Settings" : {
 
     },
@@ -443,9 +443,6 @@
 
     },
     "Scopes: " : {
-
-    },
-    "SDWebImageSwiftUI\nhttps://github.com/SDWebImage/SDWebImageSwiftUI.git" : {
 
     },
     "Select an item" : {
