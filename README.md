@@ -1,5 +1,7 @@
 # JSON Resume — Swift iOS / iPadOS App
 
+[![Download on the App Store](https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg)](https://apps.apple.com/us/app/json-resume/id6511210635)
+
 An app for viewing and sharing a standardised CV based on the open-source [JSON Resume](https://jsonresume.org) schema.
 
 It started as a test harness for **Swift 6**, **SwiftData**, and **App Clips**, and grew into a small resume viewer with built-in AI chat for CV feedback.
