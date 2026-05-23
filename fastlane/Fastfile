@@ -240,7 +240,7 @@ platform :ios do
       alpha: true,
     )
     firebase_app_distribution(
-      app: "1:733849235403:ios:8f436cfb70dc60e1fd504e",
+      app: "1:404149037690:ios:356c62e81b4d0893c1a9c3",
       firebase_cli_token: ENV["FIREBASE_CLI_TOKEN"],
       groups: "Internal",
       release_notes_file: "CHANGELOG.md",
