@@ -3,9 +3,9 @@
 ## Quick Reference
 
 - See @README.md for project overview.
-- -scheme "OpenCV" is release version pointing to live supabase  
-- -scheme "OpenCV(Staging)" is pointing to supabase staging version
-- -scheme "OpenCV(Develop)" points to localhost supabase version.
+- -scheme "OpenCV" is release version pointing to live firebase  
+- -scheme "OpenCV(Staging)" is pointing to firebase staging version
+- -scheme "OpenCV(Develop)" points to localhost firebase version.
 
 ## For Daily Development
 
