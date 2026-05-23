@@ -13,7 +13,7 @@ import OSLog
 final class GeminiAPIService: ChatGPTAPIService, @unchecked Sendable {
     private var geminiClient: GenerativeModel?
     override var model: String {
-        let modelString = UserDefaults.standard.geminiModel ?? "gemini-3.5-flash"
+        let modelString = UserDefaults.standard.geminiModel ?? GeminiModel.default.id
         return modelString
     }
     override var urlRequest: URLRequest {

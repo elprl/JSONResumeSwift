@@ -25,33 +25,28 @@ struct GPTMessage: Codable, Identifiable {
 }
 
 enum GPTModel {
+    case gpt5(model: String, tokens: Int)
     case gpt4(model: String, tokens: Int)
-    case gpt3(model: String, tokens: Int)
     case custom(model: String, tokens: Int)
 }
  
 extension GPTModel: Hashable, Identifiable, Codable {
     static var `default`: GPTModel {
-        return .gpt4(model: "gpt-4o", tokens: 128000)
+        return .gpt5(model: "gpt-5.5", tokens: 1050000)
     }
     
     static var allCases: [GPTModel] {
         return [
-            .custom(model: "CUSTOM", tokens: 128000),
-            .gpt4(model: "o1-preview", tokens: 128000),
-            .gpt4(model: "o1-mini", tokens: 128000),
-            .gpt4(model: "gpt-4o", tokens: 128000),
-            .gpt4(model: "gpt-4o-turbo", tokens: 128000),
-            .gpt4(model: "gpt-4o-mini", tokens: 128000),
-            .gpt4(model: "gpt-4-turbo", tokens: 128000),
-            .gpt4(model: "gpt-4", tokens: 8192),
-            .gpt3(model: "gpt-3.5-turbo", tokens: 16385),
+            .custom(model: "CUSTOM", tokens: 1050000),
+            .gpt5(model: "gpt-5.5", tokens: 1050000),
+            .gpt5(model: "gpt-5.4", tokens: 1050000),
+            .gpt5(model: "gpt-5.4-mini", tokens: 400000)
         ]
     }
     
     var id: String {
         switch self {
-        case .gpt4(let model, _), .gpt3(let model, _), .custom(let model, _):
+        case .gpt5(let model, _), .gpt4(let model, _), .custom(let model, _):
             return model
         }
     }
@@ -65,7 +60,7 @@ extension GPTModel: Hashable, Identifiable, Codable {
         // Iterate through all cases to find a match
         for caseItem in allCases {
             switch caseItem {
-            case .gpt4(let model, _), .gpt3(let model, _), .custom(let model, _):
+            case .gpt5(let model, _), .gpt4(let model, _), .custom(let model, _):
                 if model == modelString {
                     return caseItem
                 }
@@ -78,7 +73,7 @@ extension GPTModel: Hashable, Identifiable, Codable {
     
     var maxTokens: Int {
         switch self {
-        case .gpt4(_, let tokens), .gpt3(_, let tokens), .custom(_, let tokens):
+        case .gpt5(_, let tokens), .gpt4(_, let tokens), .custom(_, let tokens):
             return tokens
         }
     }
