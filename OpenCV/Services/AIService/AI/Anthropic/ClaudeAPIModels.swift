@@ -14,32 +14,29 @@ enum ClaudeRole: String, Codable {
 }
 
 enum ClaudeModel {
-    case claudeInstant(model: String, tokens: Int)
-    case claude(model: String, tokens: Int)
+    case opus(model: String, tokens: Int)
+    case sonnet(model: String, tokens: Int)
+    case haiku(model: String, tokens: Int)
     case custom(model: String, tokens: Int)
 }
  
 extension ClaudeModel: Hashable, Identifiable, Codable {
     static var `default`: ClaudeModel {
-        return .claude(model: "claude-3-5-sonnet-20240620", tokens: 200000)
+        return .sonnet(model: "claude-sonnet-4-6", tokens: 1050000)
     }
 
     static var allCases: [ClaudeModel] {
         return [
             .custom(model: "CUSTOM", tokens: 200000),
-            .claude(model: "claude-3-5-sonnet-20240620", tokens: 200000),
-            .claude(model: "claude-3-haiku-20240307", tokens: 200000),
-            .claude(model: "claude-3-sonnet-20240229", tokens: 200000),
-            .claude(model: "claude-3-opus-20240229", tokens: 200000),
-            .claude(model: "claude-2.1", tokens: 200000),
-            .claude(model: "claude-2.0", tokens: 100000),
-            .claudeInstant(model: "claude-instant-1.2", tokens: 100000)
+            .opus(model: "claude-opus-4-7", tokens: 1050000),
+            .sonnet(model: "claude-sonnet-4-6", tokens: 1050000),
+            .haiku(model: "claude-haiku-4-5", tokens: 200000),
         ]
     }
     
     var id: String {
         switch self {
-        case .claudeInstant(let model, _), .claude(let model, _), .custom(let model, _):
+        case .opus(let model, _), .sonnet(let model, _), .haiku(let model, _), .custom(let model, _):
             return model
         }
     }
@@ -53,7 +50,7 @@ extension ClaudeModel: Hashable, Identifiable, Codable {
         // Iterate through all cases to find a match
         for caseItem in allCases {
             switch caseItem {
-            case .claudeInstant(let model, _), .claude(let model, _), .custom(let model, _):
+            case .opus(let model, _), .sonnet(let model, _), .haiku(let model, _), .custom(let model, _):
                 if model == modelString {
                     return caseItem
                 }
@@ -66,7 +63,7 @@ extension ClaudeModel: Hashable, Identifiable, Codable {
     
     var maxTokens: Int {
         switch self {
-        case .claudeInstant(_, let tokens), .claude(_, let tokens), .custom(_, let tokens):
+        case .opus(_, let tokens), .sonnet(_, let tokens), .haiku(_, let tokens), .custom(_, let tokens):
             return tokens
         }
     }

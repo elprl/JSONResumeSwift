@@ -21,7 +21,7 @@ final class GeminiSettingsViewModel: ObservableObject {
     @Published var errorMessage: String = ""
     let expirationOptions = ["7 days", "30 days", "60 days", "90 days", "Custom", "No expiration"]
     private var apiAccount: UserAPIAccounts?
-    @AppStorage(UserDefaults.Keys.geminiModel) var geminiModel: String = "gemini-pro"
+    @AppStorage(UserDefaults.Keys.geminiModel) var geminiModel: String = GeminiModel.default.id
     @Published var modelSelection: GeminiModel = GeminiModel.fromUserDefaults() {
         didSet {
             self.geminiModel = modelSelection.id
